@@ -1,0 +1,41 @@
+body {
+    background-color: #EFEEEB;
+}
+@font-face {
+    font-family: "CormorantGaramond";
+    src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
+}
+.logo {
+    margin-left: 50px;
+}
+.dark-gray{
+	color: #252420;
+}
+.divbg{
+	display:flex;
+	flex-direction:row;
+	background-color:#252420;
+	border-radius: 31px;
+	margin-left: 80px;
+	margin-right: 80px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.divimg{
+	display:flex;
+	border-radius: 31px;
+	overflow: hidden;
+	margin-left: 60px;
+	margin-right: 30px;
+	margin-top: 90px;
+	margin-bottom: 30px;
+}
+.divsignin{
+	display:flex;
+	flex-direction:row;
+	margin-left: 80px;
+	margin-top: 70px;
+	color: white;
+	font-family: "CormorantGaramond";
+	font-size: 48px;
+}
