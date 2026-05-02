@@ -18,7 +18,7 @@
                         <input type="text" name="email" placeholder="Name">
                     </div>
                     <div class="labeldiv">
-                        <label for="pwd">Password</label>
+                        <label>Password</label>
                         <input type="password" name="pwd"
                             placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;">
                     </div>
