@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/dashboard.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
 </head>
 <body>
 <!-- Header -->
     <jsp:include page="/components/header.jsp" />
 	 <!-- hero section -->
     <section class="hero_section">
-        <img src="<%= request.getContextPath() %>/images/home/farmhouse-allisonwillson103651 1.png" alt="farmhouse">
+        <img src="${pageContext.request.contextPath}/images/home/farmhouse-allisonwillson103651 1.png" alt="farmhouse">
     </section>
 
     <!-- homepage text -->
@@ -29,13 +29,13 @@
 
         <div class="product_holder">
             <div class="product">
-                <img src="<%= request.getContextPath() %>/images/home/Stilvolle Bogenlampen für Ihr Zuhause - Entdecken Sie moderne Designs! 1.png" alt="lamp">
+                <img src="${pageContext.request.contextPath}/images/Stilvolle Bogenlampen für Ihr Zuhause - Entdecken Sie moderne Designs! 1.png" alt="lamp">
             </div>
             <div class="product">
-                <img src="<%= request.getContextPath() %>/images/home/Современное кресло _ 3D визуализация мебели для брендов 1.png" alt="sofa">
+                <img src="${pageContext.request.contextPath}/images/home/Современное кресло _ 3D визуализация мебели для брендов 1.png" alt="sofa">
             </div>
             <div class="product">
-                <img src="<%= request.getContextPath() %>/images/home/download 1.png" alt="lamp2">
+                <img src="${pageContext.request.contextPath}/images/home/download 1.png" alt="lamp2">
             </div>
         </div>
     </section>
@@ -43,12 +43,12 @@
     <!--homepage gallery -->
     <section class="homepage_gallery">
         <div class="image_holder">
-            <img src="<%= request.getContextPath() %>/images/home/Rectangle 17.png">
-            <img src="<%= request.getContextPath() %>/images/home/Rectangle 18.png">
-            <img src="<%= request.getContextPath() %>/images/home/Rectangle 19.png">
-            <img src="<%= request.getContextPath() %>/images/home/Rectangle 20.png">
-            <img src="<%= request.getContextPath() %>/images/home/Rectangle 22.png">
-            <img src="<%= request.getContextPath() %>/images/home/Rectangle 21.png">
+            <img src="${pageContext.request.contextPath}/images/home/Rectangle 17.png">
+            <img src="${pageContext.request.contextPath}/images/home/Rectangle 18.png">
+            <img src="${pageContext.request.contextPath}/images/home/Rectangle 19.png">
+            <img src="${pageContext.request.contextPath}/images/home/Rectangle 20.png">
+            <img src="${pageContext.request.contextPath}/images/home/Rectangle 22.png">
+            <img src="${pageContext.request.contextPath}/images/home/Rectangle 21.png">
         </div>
 
         <h1>Gallery</h1>
