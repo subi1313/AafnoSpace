@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Arsenal';
-    src: url('./Arsenal/Arsenal-Regular.ttf');
+    font-family: "Arsenal"";
+    src: url('../fonts/Arsenal/Arsenal-Regular.ttf');
 }
 
 nav {
@@ -30,7 +30,7 @@ nav {
 .nav-menu a {
     text-decoration: none;
     color: #0A0A0A;
-    font-family: 'Arsenal', sans-serif;
+    font-family: "Arsenal", sans-serif;
     font-size: 22px;
 }
 
