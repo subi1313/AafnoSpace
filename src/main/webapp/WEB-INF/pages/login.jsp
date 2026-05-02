@@ -12,7 +12,7 @@
             </div>
             <div class="divsignin">
                 <p class="signinheading">Sign In</p>
-                <form action="${pageContext.request.contextPath}/home" method="POST">
+                <form action="${pageContext.request.contextPath}/login" method="POST">
                     <div class="labeldiv">
                         <label>Email</label>
                         <input type="text" name="email" placeholder="Name">

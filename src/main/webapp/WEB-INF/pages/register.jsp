@@ -12,7 +12,7 @@
             </div>
           <div class="divregister">
                 <p class="registerheading">Create an Account</p>  
-                <form action="${pageContext.request.contextPath}/login" method="POST">
+                <form action="${pageContext.request.contextPath}/register" method="POST">
                 <div class="divrow">
                 	<div class="labeldiv">
                 		<label>First Name</label>
