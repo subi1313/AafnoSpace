@@ -11,7 +11,49 @@
 <body>
 <!-- Header -->
     <jsp:include page="/components/header.jsp" />
-	
+	 <!-- hero section -->
+    <section class="hero_section">
+        <img src="<%= request.getContextPath() %>/images/home/farmhouse-allisonwillson103651 1.png" alt="farmhouse">
+    </section>
+
+    <!-- homepage text -->
+    <section class="homepage_text">
+        <p>From cozy nooks to living rooms, create your own</p> 
+        <p>space with</p>
+        <h2>आफ्नोspace</h2>
+    </section>
+
+    <!-- homepage products -->
+    <section class="homepage_products">
+        <h1>Our Products</h1>
+
+        <div class="product_holder">
+            <div class="product">
+                <img src="<%= request.getContextPath() %>/images/home/Stilvolle Bogenlampen für Ihr Zuhause - Entdecken Sie moderne Designs! 1.png" alt="lamp">
+            </div>
+            <div class="product">
+                <img src="<%= request.getContextPath() %>/images/home/Современное кресло _ 3D визуализация мебели для брендов 1.png" alt="sofa">
+            </div>
+            <div class="product">
+                <img src="<%= request.getContextPath() %>/images/home/download 1.png" alt="lamp2">
+            </div>
+        </div>
+    </section>
+
+    <!--homepage gallery -->
+    <section class="homepage_gallery">
+        <div class="image_holder">
+            <img src="<%= request.getContextPath() %>/images/home/Rectangle 17.png">
+            <img src="<%= request.getContextPath() %>/images/home/Rectangle 18.png">
+            <img src="<%= request.getContextPath() %>/images/home/Rectangle 19.png">
+            <img src="<%= request.getContextPath() %>/images/home/Rectangle 20.png">
+            <img src="<%= request.getContextPath() %>/images/home/Rectangle 22.png">
+            <img src="<%= request.getContextPath() %>/images/home/Rectangle 21.png">
+        </div>
+
+        <h1>Gallery</h1>
+        <p>Where आफ्नोspace comes to life</p>   
+    </section>
 	<!-- Footer -->
     <jsp:include page="/components/footer.jsp" />
 

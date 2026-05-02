@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Arsenal";
+    src: url("../fonts/Arsenal/Arsenal-Regular.ttf");
+}
+
+
+body{
+    background-color: #EFEEEB;
+}
+
+.hero_section{
+    width: 100%;
+    height:800px;
+}
+
+.hero_section img{
+    height: 800px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.homepage_text{
+    text-align: center;
+    padding: 50px 20px;
+    font-family: "CormorantGaramond";
+    font-size:50px;
+}
+
+.homepage_products{
+    margin-top: 65px;
+    color:#F2EBE3;
+    background-color:#252420;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.product_holder{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:30px;
+    font-family: "CormorantGaramond";
+    font-size: 64px;
+}
+
+.product_holder img{
+    width:350px;
+    height:450px;
+    object-fit:cover;
+}
+
+.homepage_gallery{
+    margin-top: 65px;
+    padding:40px 20px;
+    text-align:center;
+}
+
+.homepage_gallery h1{
+	font-family: "CormorantGaramond";
+    font-size: 64px;
+}
+
+.homepage_gallery p{
+	font-family: "Arsenal";
+    font-size: 35px;
+}
+
+.image_holder{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.image_holder img{
+    width:387px;         
+    height:376px;
+    object-fit:cover;
+}
