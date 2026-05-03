@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
 </head>
 <body>
@@ -29,7 +30,7 @@
 
         <div class="product_holder">
             <div class="product">
-                <img src="${pageContext.request.contextPath}/images/Stilvolle Bogenlampen für Ihr Zuhause - Entdecken Sie moderne Designs! 1.png" alt="lamp">
+                <img src="${pageContext.request.contextPath}/images/home/lamp.png" alt="lamp">
             </div>
             <div class="product">
                 <img src="${pageContext.request.contextPath}/images/home/Современное кресло _ 3D визуализация мебели для брендов 1.png" alt="sofa">
@@ -55,7 +56,7 @@
         <p>Where आफ्नोspace comes to life</p>   
     </section>
 	<!-- Footer -->
-    <jsp:include page="/components/footer.jsp" />
+   	<jsp:include page="/components/footer.jsp" />
 
 </body>
 </html>
