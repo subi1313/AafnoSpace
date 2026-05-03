@@ -12,51 +12,60 @@ body {
     src: url("../fonts/InterVariable.woff2");
 }
 
-.layout {
+.maindiv{
+	display:flex;
+	flex-direction:row;
+}
+
+ .layout {
       display: flex;
       flex-direction: row;
-      margin: 0px 130px;
-}
+      margin-top: 10px;
+      margin-bottom:10px;
+      margin-left:80px;
+      margin-right:80px;
+    }
 
-.divbg {
+.divconfirm {
+    width: 70%;
     display: flex;
     flex-direction: column;
-    background-color: #252420;
-    border-radius: 31px;
-    margin-left: 130px;
-    margin-right: 130px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.divimg {
-    display: flex;
-    margin-left: 60px;
-    margin-top: 70px;
-    margin-bottom: 50px;
-    margin-right: 40px;
-    padding: 10px;
-    width: 40%;
-}
-
-.divimg img{
-	border-radius: 16px;
-	max-width: 100%;
-}
-
-.divsignin {
-	width: 60%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    color: white;
-    font-family: "CormorantGaramond";
-    font-size: 48px;
+    margin-top: 0;
 }
 
 .orderconfirmheading {
-    padding-left: 200px;
+      font-size: 48px;
+      margin-bottom: 20px;
+      margin-top: 0px;
+      margin-left:200px;
+      font-family:"CormorantGaramond"
+    }
+   
+.productbg{
+	display: flex;
+    flex-direction: column;
+    background-color: #252420;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding-left:15px;
+    padding-right:15px;
 }
+
+.proddesc{
+	display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    color: white;
+    font-family:"CormorantGaramond";
+    font-size:25;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+    
+.main {
+      width: 80%;
+      padding: 10px;
+    }
 
 .labeldiv{
 	display:flex;
