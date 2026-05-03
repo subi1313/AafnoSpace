@@ -1,5 +1,5 @@
 <%@ page isELIgnored="false" %>
-<!-- SIDEBAR -->
+<!-- Side panel -->
   <div class="sidebar">
   	<div class="sidePanelLabel">
   	<img src="${pageContext.request.contextPath}/images/main/mainmenu.png" alt="menu" style="width:20px;height:20px;">
@@ -15,7 +15,6 @@
       My Orders</a>
     </div>
     <div class="sidePanelLabel">
-    
       <img src="${pageContext.request.contextPath}/images/main/others.png" alt="menu" style="width:20px;height:20px;">
   	Others
       <a href="${pageContext.request.contextPath}/admin/logout" class="sidePanelItem">

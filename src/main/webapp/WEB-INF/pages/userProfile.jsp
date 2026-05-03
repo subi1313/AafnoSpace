@@ -9,39 +9,30 @@
   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
 </head>
 <body>
-
 <jsp:include page="/components/header.jsp"/>
-
 <div class="layout">
 	<jsp:include page="/components/userPanel.jsp"/>
   </div>
-  
-  <!-- MAIN -->
+  <!--Customer main information card-->
   <div class="main">
-
     <p class="pageTitle">My Profile</p>
-
-    <!-- HERO -->
     <div class="profileHero">
       <div class="profilePicture">
         <img src="${pageContext.request.contextPath}/images/main/avatar.png">
         <a href="${pageContext.request.contextPath}/admin/profile/edit" class="profilePictureEdit">Edit</a>
       </div>
-
       <div class="field">
         <p class="profile-name">${customer.firstName} ${customer.lastName}</p>
         <p>Customer</p>
         <p>${customer.city}, ${customer.country}</p>
       </div>
     </div>
-
-    <!-- PERSONAL -->
+    <!-- Customer personal information card -->
     <div class="detailPanel">
       <div class="panelHeader">
         <p class="panelTitle">Personal Information</p>
         <a href="${pageContext.request.contextPath}/admin/profile/edit?section=personal" class="editLink">Edit Details</a>
       </div>
-
       <div class="fieldsGrid">
         <div class="field"><p>First Name</p>
         <p>${customer.firstName}</p></div>
@@ -57,14 +48,12 @@
         <p>${customer.phone}</p></div>
       </div>
     </div>
-
-    <!-- ADDRESS -->
+    <!--Customer address card-->
     <div class="detailPanel">
       <div class="panelHeader">
         <p class="panelTitle">Address</p>
         <a href="${pageContext.request.contextPath}/admin/profile/edit?section=address" class="editLink">Edit Details</a>
       </div>
-
       <div class="fieldsGrid">
         <div class="field">
         <p>Country</p>
@@ -77,11 +66,8 @@
         <p>${customer.city}</p></div>
       </div>
     </div>
-
   </div>
 </div>
-
 <%@ include file="/components/footer.jsp" %>
-
 </body>
 </html>
