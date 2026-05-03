@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.AafnoSpace.service.RegisterService;
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -40,7 +42,31 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect(request.getContextPath() + "/uploadpfp");
-	}
+		//Fetching data from form:
+		try {
+            // Fetch Form data
+            String firstName = request.getParameter("firstname");
+            String lastName = request.getParameter("lastname");
+            String username = request.getParameter("username");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String address = request.getParameter("address");
+            String phoneNo = request.getParameter("phoneNo");
+            
+           //Calling service to add user:
+            RegisterService service = new RegisterService();
+            boolean success = service.addUser(firstName, lastName, username,
+                    email, password, address, phoneNo);
 
+if (success) {
+	response.sendRedirect(request.getContextPath() + "/uploadpfp");
+} else {
+response.sendRedirect(request.getContextPath() + "/register");
+}
+	}
+		 catch (Exception e) {
+	            e.printStackTrace();
+	            response.getWriter().println("Error: " + e.getMessage());
+	        }
+}
 }
