@@ -58,10 +58,6 @@ public class UserDAO {
 	            user.setaddress(rs.getString("address"));
 	            user.setNumber(rs.getString("phoneNo"));
 	        }
-	        else {
-	            System.out.println("No user found for: " + username); // ← ADD THIS
-	        }
-
 	        rs.close();
 	        pst.close();
 	        con.close();
