@@ -5,7 +5,7 @@
 <head>
   <title>My Profile – आफ्नो SPACE</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userProfile.css">
+  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminProfile.css">
   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 <jsp:include page="/components/header.jsp"/>
 
 <div class="layout">
-	<jsp:include page="/components/userPanel.jsp"/>
+	<jsp:include page="/components/adminPanel.jsp"/>
   </div>
   
   <!-- MAIN -->
@@ -29,9 +29,9 @@
       </div>
 
       <div class="field">
-        <p class="profile-name">${customer.firstName} ${customer.lastName}</p>
-        <p>Customer</p>
-        <p>${customer.city}, ${customer.country}</p>
+        <p class="profile-name">${admin.firstName} ${admin.lastName}</p>
+        <p>Admin</p>
+        <p>${admin.city}, ${admin.country}</p>
       </div>
     </div>
 
@@ -44,17 +44,17 @@
 
       <div class="fieldsGrid">
         <div class="field"><p>First Name</p>
-        <p>${customer.firstName}</p></div>
+        <p>${admin.firstName}</p></div>
         <div class="field"><p>Last Name</p>
-        <p>${customer.lastName}</p></div>
+        <p>${admin.lastName}</p></div>
         <div class="field"><p>Date of Birth</p>
-        <p>${customer.dob}</p></div>
+        <p>${admin.dob}</p></div>
         <div class="field"><p>Gender</p>
-        <p>${customer.gender}</p></div>
+        <p>${admin.gender}</p></div>
         <div class="field"><p>Email</p>
-        <p>${customer.email}</p></div>
+        <p>${admin.email}</p></div>
         <div class="field"><p>Phone</p>
-        <p>${customer.phone}</p></div>
+        <p>${admin.phone}</p></div>
       </div>
     </div>
 
@@ -68,13 +68,13 @@
       <div class="fieldsGrid">
         <div class="field">
         <p>Country</p>
-        <p>${customer.country}</p></div>
+        <p>${admin.country}</p></div>
         <div class="field">
         <p>Province</p>
-        <p>${customer.province}</p></div>
+        <p>${admin.province}</p></div>
         <div class="field">
         <p>City</p>
-        <p>${customer.city}</p></div>
+        <p>${admin.city}</p></div>
       </div>
     </div>
 

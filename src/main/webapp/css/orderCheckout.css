@@ -1,0 +1,176 @@
+body {
+    background-color: #EFEEEB;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterVariable.woff2");
+}
+
+.maindiv{
+	display:flex;
+	flex-direction:row;
+}
+
+ .layout {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+      margin-bottom:10px;
+      margin-left:80px;
+      margin-right:80px;
+    }
+
+.divconfirm {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+.orderconfirmheading {
+      font-size: 48px;
+      margin-bottom: 20px;
+      margin-top: 0px;
+      margin-left:200px;
+      font-family:"CormorantGaramond"
+    }
+   
+.productbg{
+	display: flex;
+    flex-direction: column;
+    background-color: #252420;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.proddesc{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+    font-family:"CormorantGaramond";
+    font-size:25;
+}
+
+.proddesc img{
+	margin-right:20px;
+}
+
+.prodheading{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.totalitemsbg{
+	width:70%;
+	display: flex;
+    flex-direction: column;
+    background-color: #252420;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.totalitemsbg p{
+	color: white;
+    font-family:"CormorantGaramond";
+    font-size:20;
+    margin:10px;
+}
+
+.totalandpay{
+	display: flex;
+	flex-direction: row;
+	gap:40px;
+}
+
+.paymentbg{
+	width:30%;
+	display: flex;
+    flex-direction: column;
+    background-color: #252420;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-left:15px;
+    padding-right:100px;
+    height: fit-content;
+}
+
+.paymentbg p{
+	color: white;
+    font-family:"CormorantGaramond";
+    font-size:25;
+    margin:10px;
+}
+
+.paymentselect {
+    width: 140%;
+    padding-top: 12px;
+    padding-bottom:12px;
+    padding-left:15px;
+    margin-left:10px;
+    margin-bottom:20px;
+    border-radius: 8px;
+    border: none;
+    font-family: "Inter";
+    font-size: 16px;
+    cursor: pointer;
+    background-color:  #EFEEEB;
+}
+    
+.main {
+      width: 80%;
+      padding: 10px;
+    }
+
+
+button {
+	width: 25%;
+    background-color: #412617;
+    color: white;
+    padding: 15px;
+    margin-left: 620px;
+    border-radius: 10px;
+    border: none;
+    font-family: "Inter";
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .divbg {
+        flex-direction: column;
+    }
+
+   .divimg,
+    .divsignin {
+        width: 100%;
+        margin: 0;
+    }
+	
+	.signinheading {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .divimg {
+        display: flex;
+        justify-content: center;
+        padding:10px;
+        box-sizing: border-box;
+    }
+
+    .divsignin {
+        font-size: 32px;
+    }
+}
