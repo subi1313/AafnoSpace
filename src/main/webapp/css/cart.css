@@ -1,0 +1,190 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{ 
+	background-color:#EFEEEB;
+	font-family:"CormorantGaramond"; 
+} 
+
+@font-face { 
+	font-family: "CormorantGaramond"; 
+	src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf"); 
+	} 
+	
+	.layout { 
+	display: flex; 
+	flex-direction: row; 
+	margin-top: 10px; 
+	margin-bottom:10px; 
+	margin-left:80px; 
+	margin-right:80px; 
+	} 
+	
+	.side-panel{ 
+	display: flex; 
+	flex-direction: row; 
+	} 
+	
+	/**Product Cart **/
+	  /* ── Cart area ── */
+    .cart-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* ── Cart card ── */
+    .cart-card {
+      background: var(--dark);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      gap: 16px;
+      transition: background 0.2s;
+    }
+
+    .cart-card:hover { background: var(--dark-hover); }
+
+    .cart-checkbox {
+      width: 18px; height: 18px;
+      border: 2px solid #6b6860;
+      border-radius: 3px;
+      flex-shrink: 0;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cart-checkbox:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .cart-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 5px;
+      width: 5px; height: 9px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .product-img {
+      width: 110px; height: 90px;
+      background: #c8c4bc;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .product-img.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-name {
+      flex: 1;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+    }
+
+    .price-block {
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .price-label {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .price-value {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.04em;
+    }
+
+    .qty-block {
+      text-align: center;
+      min-width: 110px;
+    }
+
+    .qty-label {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .qty-btn {
+      width: 26px; height: 26px;
+      background: #fff;
+      border: none;
+      border-radius: 3px;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      transition: background 0.15s;
+      user-select: none;
+    }
+    .qty-btn:hover { background: #ddd; }
+
+    .qty-value {
+      font-size: 20px;
+      color: var(--text-light);
+      min-width: 24px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    /* ── Buy Now ── */
+    .buy-row {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 4px;
+    }
+
+    .buy-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 12px 40px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .buy-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+    .buy-btn:active { transform: translateY(0); }

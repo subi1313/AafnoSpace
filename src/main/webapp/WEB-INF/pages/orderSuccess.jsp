@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Order Success</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/orderSuccess.css">
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
