@@ -1,0 +1,47 @@
+ .sidebar {
+      width: 30%;
+      background-color: #252420;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+      color: #f0ece4;
+      margin-right:30px;
+    }
+
+    .sidebar-section-label {
+      font-size: 22px;
+      color: #a09890;
+      margin: 10px 0 5px 20px;
+    }
+    
+	.sidebar-section-label svg {
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+    
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #f0ece4;
+      font-size: 22px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      padding-left: 8px;
+      padding-right: 28px;
+      margin-left: 8px;
+      margin-right: 8px;
+      border-radius: 4px;
+      font-family: "Arsenal", sans-serif;
+    }
+   
+    .sidebar-item:hover {
+      background-color: #2e2b28;
+    }
+
+    .sidebar-item.active {
+      color: #c8b89a;
+    }
