@@ -14,12 +14,12 @@
                 <p class="signinheading">Sign In</p>
                 <form action="${pageContext.request.contextPath}/login" method="POST">
                     <div class="labeldiv">
-                        <label>Email</label>
-                        <input type="text" name="email" placeholder="Name">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="Name">
                     </div>
                     <div class="labeldiv">
                         <label>Password</label>
-                        <input type="password" name="pwd"
+                        <input type="password" name="password"
                             placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;">
                     </div>
                     <div style="margin-top:30px;">

@@ -45,7 +45,7 @@
                 </div>
                 <div class="labeldiv" style="margin-left:60px; margin-right:92px;">
                 		<label>Password</label>
-                        <input type="password" name="pwd" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;">
+                        <input type="password" name="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;">
                 </div>
                  <div class="checkboxdiv">
     				<label class="checkboxlabel">
