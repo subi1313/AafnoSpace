@@ -1,7 +1,10 @@
 <%@ page isELIgnored="false" %>
 <header>
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
 	
+=======
+>>>>>>> c440bf2232cccb65bc2648769a2e8f996d2cf452
     <nav>
         <div class="nav-logo">
             <img src="${pageContext.request.contextPath}/images/main/logo.webp" alt="Logo">
