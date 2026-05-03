@@ -1,0 +1,157 @@
+body {
+    background-color: #EFEEEB;
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face {
+    font-family: Cormorant Garamond;
+    src: url(./Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: Arsenal;
+    src: url(./Arsenal/Arsenal-Regular.ttf) format('truetype');
+}
+
+.admin-add {
+    display: flex;
+    gap: 50px;
+    margin: 0px 8.33%;
+}
+
+.admin-panel {
+    width: 20%;
+    border-radius: 10px;
+    height: 750px;
+    background-color: #252420;
+    font-family: Arsenal, serif;
+}
+
+.add-main {
+    width: 80%;
+    font-family: Cormorant Garamond, serif;
+}
+
+.add-main h2 {
+	margin-top: 0px;
+    font-size: 35px;
+    color: #F2EBE3;
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: #252420;
+}
+
+.add-info {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.add-details {
+    width: 70%;
+    background-color: #252420;
+    color: #F2EBE3;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.add-details h3,
+.inventory h3 {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.detail-form,
+.inventory-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px 10px;
+}
+
+.detail-form label,
+.inventory-form label {
+    font-size: 25px;
+}
+
+.add-pic {
+    width: 30%;
+    margin: 50px 0px;
+    border: dashed 2px #0a0a0a;
+    border-radius: 10px;
+}
+
+.add-pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Cormorant Garamond, serif;
+    font-size: 20px;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.add-pic span {
+    margin-top: -5px;
+    color: #684FE4;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.inventory {
+    width: 80%;
+    margin-top: 20px;
+    background-color: #252420;
+    color: #F2EBE3;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.inv-form-part {
+    display: flex;
+    gap: 50px;
+}
+
+.form-part {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+input,
+select,
+textarea {
+    padding: 8px 5px;
+    background-color: #F2EBE3;
+    border-radius: 10px;
+    font-family: Cormorant Garamond, serif;
+    font-size: 20px;
+}
+
+textarea {
+    height: 200px;
+}
+
+.add-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-button button {
+    padding: 10px 20px;
+    background-color: #0A0A0A;
+    color: #FEFDFC;
+    border-radius: 10px;
+    font-family: Cormorant Garamond, serif;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.add-button button:hover {
+    background-color: #2f2f31;
+}
