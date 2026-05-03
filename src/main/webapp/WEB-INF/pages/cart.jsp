@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
       <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
       <style>
-      *{
+   *{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -47,7 +47,7 @@
     .product-cart {
     display: flex;
      flex-direction: column;
-	  height: 800px;
+	  height: 850px;
 	  width: 100vh; 
 	  gap: 15px;     
     }
