@@ -61,7 +61,6 @@
       align-items: center;
       padding: 20px 20px;
       gap: 16px;
-      transition: background 0.2s;
     }
     
     .cart-checkbox {
@@ -71,11 +70,12 @@
       background-color: white;
       border-radius: 5px;
     }
-
+	
     .image-holder img {
       height:160px;
       width: 180px;
       object-fit: cover;
+      border-radius: 5px;
     }
 
     .product-name {
@@ -118,7 +118,7 @@
     .qty-btn {
       width: 25px; 
       height: 25px;
-      background-color: #ffffff;
+      color: #000000;
       border: none;
      font-size: 18px;
       cursor: pointer;
@@ -172,7 +172,7 @@
       <div class="card">
         <input type="checkbox" class="cart-checkbox">
         <div class="image-holder">
-          <img src="${pageContext.request.contextPath}/images/home/lamp.png" alt="lamp">
+          <img src="${pageContext.request.contextPath}/images/cart/download.jpg" alt="lamp">
         </div>
         
         <span class="product-name">Product 1</span>
@@ -196,7 +196,7 @@
      <div class="card">
         <input type="checkbox" class="cart-checkbox">
        <div class="image-holder">
-          <img src="${pageContext.request.contextPath}/images/home/lamp.png" alt="lamp">
+          <img src="${pageContext.request.contextPath}/images/cart/HMVPL Gold Floor Lamps for Living Room, Modern Floor Lamp with Shelves, Crystal Standing Lamps with Table, Brass Tall Lamp with Crystal Shade, On_Off Switch, Mid Century Corner Floor Lamp for Bedroom.jpg" alt="lamp">
         </div>
         
         <span class="product-name">Product 2</span>
@@ -220,7 +220,7 @@
  		<div class="card">
         <input type="checkbox" class="cart-checkbox">
         <div class="image-holder">
-          <img src="${pageContext.request.contextPath}/images/home/lamp.png" alt="lamp">
+          <img src="${pageContext.request.contextPath}/images/cart/Modern Bedroom Furniture 2026 — Stylish Beds, Mattresses, Nightstands & Smart Storage Essentials.jpg" alt="lamp">
         </div>
         
         <span class="product-name">Product 3</span>
@@ -244,7 +244,7 @@
 		<div class="card">
         <input type="checkbox" class="cart-checkbox">
         <div class="image-holder">
-          <img src="${pageContext.request.contextPath}/images/home/lamp.png" alt="lamp">
+          <img src="${pageContext.request.contextPath}/images/cart/Pinterest.jpg" alt="lamp">
         </div>
         
         <span class="product-name">Product 4</span>
@@ -273,7 +273,7 @@
 
 <script>
   function changeQty(btn, delta) {
-    const controls = btn.closest('.qty-controls');
+    const controls = btn.closest('.qty-property');
     const display = controls.querySelector('.qty-value');
     let val = parseInt(display.textContent) + delta;
     if (val < 1) val = 1;
