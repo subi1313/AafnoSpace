@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Arsenal"";
+    font-family: "Arsenal";
     src: url('../fonts/Arsenal/Arsenal-Regular.ttf');
 }
 
@@ -35,7 +35,7 @@ nav {
 }
 
 .nav-menu a:hover {
-    color: #1f3a5f;
+    color: rgb(47, 56, 92);
 }
 
 .nav-icon {

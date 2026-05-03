@@ -1,6 +1,6 @@
 <%@ page isELIgnored="false" %>
+
 <header>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <nav>
         <div class="nav-logo">
             <img src="${pageContext.request.contextPath}/images/main/logo.webp" alt="Logo">
