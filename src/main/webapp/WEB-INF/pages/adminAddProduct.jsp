@@ -41,7 +41,7 @@
 
                     </div>
                     <div class="add-pic">
-                        <img src="./images/adminAddProduct/gallery.png" alt="">
+                        <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png" alt="">
                         <p>Your product image goes here!!</p>
                         <span>Click to browse</span>
                     </div>
