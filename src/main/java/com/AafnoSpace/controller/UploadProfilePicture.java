@@ -8,18 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class HomeServlet
+ * Servlet implementation class UploadProfilePicture
  */
-@WebServlet(
-		asyncSupported = true, 
-		urlPatterns = {"/home"})
-public class HomeServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/uploadpfp" })
+public class UploadProfilePicture extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeServlet() {
+    public UploadProfilePicture() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +26,8 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/pages/uploadProfilePicture.jsp").forward(request, response);
 	}
 
 	/**
@@ -36,6 +35,7 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.sendRedirect(request.getContextPath() + "/login");
 	}
 
 }

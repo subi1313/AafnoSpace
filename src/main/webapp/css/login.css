@@ -21,7 +21,6 @@ body {
     padding: 0;
 }
 
-
 .divbg {
     display: flex;
     flex-direction: row;
@@ -46,7 +45,6 @@ body {
 .divimg img{
 	border-radius: 16px;
 	max-width: 100%;
-	
 }
 
 .divsignin {
@@ -57,6 +55,10 @@ body {
     color: white;
     font-family: "CormorantGaramond";
     font-size: 48px;
+}
+
+.signinheading {
+    padding-left: 200px;
 }
 
 .labeldiv{
@@ -91,22 +93,27 @@ button {
     cursor: pointer;
 }
 
-
 @media (max-width: 768px) {
     .divbg {
         flex-direction: column;
     }
 
-    .divimg,
+   .divimg,
     .divsignin {
         width: 100%;
         margin: 0;
+    }
+	
+	.signinheading {
+        padding-left: 0;
+        text-align: center;
     }
 
     .divimg {
         display: flex;
         justify-content: center;
-        margin-top: 20px;
+        padding:10px;
+        box-sizing: border-box;
     }
 
     .divsignin {
