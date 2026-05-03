@@ -6,10 +6,10 @@
             <img src="${pageContext.request.contextPath}/images/main/logo.webp" alt="Logo">
         </div>
         <div class="nav-menu">
-            <a href="${pageContext.request.contextPath}/index.jsp">HOME</a>
-            <a href="${pageContext.request.contextPath}/products.jsp">PRODUCTS</a>
-            <a href="${pageContext.request.contextPath}/about.jsp">ABOUT US</a>
-            <a href="${pageContext.request.contextPath}/contact.jsp">CONTACT</a>
+            <a href="${pageContext.request.contextPath}/home">HOME</a>
+            <a href="${pageContext.request.contextPath}/product">PRODUCTS</a>
+            <a href="${pageContext.request.contextPath}/about">ABOUT US</a>
+            <a href="${pageContext.request.contextPath}/contact">CONTACT</a>
         </div>
 
         <div class="nav-icon">

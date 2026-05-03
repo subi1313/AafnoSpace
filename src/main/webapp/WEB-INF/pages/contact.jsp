@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>About Us</title>
+    <title>Contact Us</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contact.css">
 </head>

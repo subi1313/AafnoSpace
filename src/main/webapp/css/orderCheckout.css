@@ -54,12 +54,38 @@ body {
 .proddesc{
 	display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-around;
     color: white;
     font-family:"CormorantGaramond";
     font-size:25;
-    margin-top:10px;
-    margin-bottom:10px;
+}
+
+.proddesc img{
+	margin-right:20px;
+}
+
+.prodheading{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.totalitemsbg{
+	width:70%;
+	display: flex;
+    flex-direction: column;
+    background-color: #252420;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.totalitemsbg p{
+	color: white;
+    font-family:"CormorantGaramond";
+    font-size:20;
+    margin:10px;
 }
     
 .main {
@@ -67,32 +93,59 @@ body {
       padding: 10px;
     }
 
-.labeldiv{
-	display:flex;
-	flex-direction:column;
-	font-family: "Inter";
-	color: white;
-	font-size: 16px;
-	margin-bottom: 20px;
-	margin-left: 30px;
+.totalandpay{
+	display: flex;
+	flex-direction: row;
+	gap:40px;
 }
 
-input{
-	width: 90%;
-	border-radius: 10px;
-	padding: 15px;
-	border: none;
-	margin-top: 15px;
+.paymentbg{
+	width:30%;
+	display: flex;
+    flex-direction: column;
+    background-color: #252420;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-left:15px;
+    padding-right:100px;
+    height: fit-content;
 }
+
+.paymentbg p{
+	color: white;
+    font-family:"CormorantGaramond";
+    font-size:25;
+    margin:10px;
+}
+
+.paymentselect {
+    width: 140%;
+    padding-top: 12px;
+    padding-bottom:12px;
+    padding-left:15px;
+    margin-left:10px;
+    margin-bottom:20px;
+    border-radius: 8px;
+    border: none;
+    font-family: "Inter";
+    font-size: 16px;
+    cursor: pointer;
+    background-color:  #EFEEEB;
+}
+    
+.main {
+      width: 80%;
+      padding: 10px;
+    }
+
 
 button {
-	width: 86%;
+	width: 25%;
     background-color: #412617;
     color: white;
     padding: 15px;
-    margin-left: 30px;
+    margin-left: 620px;
     border-radius: 10px;
-    margin-top: 15px;
     border: none;
     font-family: "Inter";
     font-size: 16px;
