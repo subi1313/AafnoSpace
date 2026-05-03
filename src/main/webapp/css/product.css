@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EFEEEB;
+}
+
+@font-face {
+    font-family: Cormorant Garamond;
+    src: url(./Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: Arsenal;
+    src: url(./Arsenal/Arsenal-Regular.ttf) format('truetype');
+}
+
+header {
+    position: relative;
+    background: transparent; 
+}
+
+nav img, .nav-menu a {
+    filter: brightness(0) invert(1);
+}
+
+.product-hero img {
+    width: 100%;
+    margin-top: -130px;
+}
+
+.product-main {
+    display: flex;
+    gap: 30px;
+    padding: 40px 5%;
+    font-family: Arsenal, serif;
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+.filter {
+    margin-top: 50px;
+    width: 270px;
+    height: 550px;
+    background: #252420;
+    color: #F2EBE3;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.filter h3 {
+    font-family: Cormorant Garamond, serif;
+    margin-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.filter h4 {
+    font-family: Arsenal, serif;
+    margin: 20px 0;
+    font-size: 22px;
+}
+
+.filter hr {
+    height: 2px;
+    background: #F2EBE3;
+    opacity: 1;
+    border: none;
+}
+
+.filter label {
+    display: flex;
+    gap: 10px;
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.product-content {
+    flex: 1;
+}
+
+.search {
+    background: #252420;
+    display: flex;
+    gap: 10px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.search input {
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.search input::placeholder {
+    color: #F2EBE3;
+    font-family: Arsenal;
+    font-size: 16px;
+}
+
+.products-grid {
+    margin: 30px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.products img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.prod-info span,
+.prod-info p {
+    font-family: Arsenal, serif;
+    font-size: 20px;
+}
+
+.prod-info {
+    margin-top: 8px;
+}
+
+.prod-info p {
+    margin-top: 2px;
+    font-weight: bold;
+}
