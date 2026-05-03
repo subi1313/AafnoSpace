@@ -1,7 +1,5 @@
 body {
     background-color: #EFEEEB;
-    margin: 0px;
-    padding: 0px;
 }
 
 @font-face {
@@ -14,7 +12,7 @@ body {
     src: url(./Arsenal/Arsenal-Regular.ttf) format('truetype');
 }
 
-.admin-add {
+.admin-update {
     display: flex;
     gap: 50px;
     margin: 0px 8.33%;
@@ -28,12 +26,12 @@ body {
     font-family: Arsenal, serif;
 }
 
-.add-main {
+.update-main {
     width: 80%;
     font-family: Cormorant Garamond, serif;
 }
 
-.add-main h2 {
+.update-main h2 {
 	margin-top: 0px;
     font-size: 35px;
     color: #F2EBE3;
@@ -43,13 +41,13 @@ body {
     background-color: #252420;
 }
 
-.add-info {
+.update-info {
     display: flex;
     gap: 50px;
     margin-bottom: 30px;
 }
 
-.add-details {
+.update-details {
     width: 70%;
     background-color: #252420;
     color: #F2EBE3;
@@ -57,7 +55,7 @@ body {
     padding: 10px;
 }
 
-.add-details h3,
+.update-details h3,
 .inventory h3 {
     font-size: 30px;
     margin-left: 10px;
@@ -76,27 +74,28 @@ body {
     font-size: 25px;
 }
 
-.add-pic {
+.update-pic {
     width: 30%;
     margin: 50px 0px;
-    border: dashed 2px #0a0a0a;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
     font-family: Cormorant Garamond, serif;
     font-size: 20px;
-    justify-content: center;
     padding: 20px;
-    text-align: center;
 }
 
-.add-pic span {
-    margin-top: -5px;
+.update-pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.update-pic span {
     color: #684FE4;
     text-decoration: underline;
     cursor: pointer;
 }
+
 
 .inventory {
     width: 80%;
@@ -132,13 +131,13 @@ textarea {
     height: 200px;
 }
 
-.add-button {
+.update-button {
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
 }
 
-.add-button button {
+.update-button button {
     padding: 10px 20px;
     background-color: #0A0A0A;
     color: #FEFDFC;
@@ -148,6 +147,6 @@ textarea {
     cursor: pointer;
 }
 
-.add-button button:hover {
+.update-button button:hover {
     background-color: #2f2f31;
 }
