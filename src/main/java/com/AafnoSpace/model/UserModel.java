@@ -11,6 +11,7 @@ public class UserModel {
     private String password;
     private String address;
     private String phoneNo;
+    private String role;
     
     //Getter and setter
     public int getuserId() { return UserId; }
@@ -35,6 +36,9 @@ public class UserModel {
     public void setaddress(String address) { this.address = address; }
     
     public String getPhoneNo() { return phoneNo; }
-    public void setNumber(String phoneNo) { this.phoneNo = phoneNo; }    
+    public void setNumber(String phoneNo) { this.phoneNo = phoneNo; }  
+    
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 }
 
