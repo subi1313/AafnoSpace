@@ -42,7 +42,6 @@
                                 </option>
                             </select>
                         </div>
-
                     </div>
                     <div class="update-pic">
                         <img src="${pageContext.request.contextPath}/images/adminUpdateProduct/product.png" alt="Product Image">
