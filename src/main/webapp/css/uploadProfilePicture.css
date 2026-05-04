@@ -73,16 +73,8 @@ body {
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#EFEEEB;
-}
-
-.pfpcircle img {
-    width: 70%;
-    height: 70%;
-    object-fit: cover;  
+    display: block;
+    background-color: #EFEEEB;
 }
 
 .button {
@@ -112,7 +104,23 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
-
+    .pfpcircle img {
+    width: 100%;    
+    height: 100%;
+    object-fit: cover;}
+    
+    .custom-file-upload {
+    display: block;
+    width: fit-content;
+    background-color: #412617;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-family: "Inter";
+    font-size: 13px;
+    cursor: pointer;
+    margin: 10px auto 0 auto; 
+}
 @media (max-width: 768px) {
     .divbg {
         flex-direction: column;
@@ -142,8 +150,14 @@ body {
     }
 
     .pfpcircle {
-        width: 180px;
-        height: 180px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;     
+    cursor: pointer;
+    display: block;         
+    background-color: #EFEEEB;
+}
     }
 
     .button {
@@ -155,4 +169,3 @@ body {
         width: 90%;
         margin-left: 10px;
     }
-}
