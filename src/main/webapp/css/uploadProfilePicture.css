@@ -1,0 +1,158 @@
+body {
+    background-color: #EFEEEB;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterVariable.woff2");
+}
+
+.logo {
+    margin-left: 50px;
+}
+.navvbar img{
+	width:30%;
+	  margin: 0;
+    padding: 0;
+}
+
+.divbg {
+    display: flex;
+    flex-direction: row;
+    background-color: #252420;
+    border-radius: 31px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.divimg {
+    display: flex;
+    margin-left: 60px;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    margin-right: 5px;
+    padding: 10px;
+    width: 45%;
+}
+
+.divimg img{
+	border-radius: 16px;
+	max-width: 100%;
+}
+
+.divpersonalize {
+	width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    color: white;
+    font-family: "CormorantGaramond";
+    font-size: 48px;
+}
+
+.uploadheading {
+    padding-left: 40px;
+}
+
+.divpfp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pfpcircle {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#EFEEEB;
+}
+
+.pfpcircle img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;  
+}
+
+.button {
+	width: 50%;
+    background-color: #412617;
+    color: white;
+    padding: 15px;
+    margin-left: 150px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: none;
+    font-family: "Inter";
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.createbutton {
+	width: 90%;
+    background-color: #EFEEEB;
+    color: #252420;
+    padding: 15px;
+    margin-left: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: none;
+    font-family: "Inter";
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .divbg {
+        flex-direction: column;
+    }
+
+    .divimg,
+    .divpersonalize {
+        width: 100%;
+        margin: 0;
+    }
+
+    .divimg {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .divpersonalize {
+        font-size: 32px;
+    }
+
+    .uploadheading {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .pfpcircle {
+        width: 180px;
+        height: 180px;
+    }
+
+    .button {
+        width: 90%;
+        margin-left: 10px;
+    }
+
+    .createbutton {
+        width: 90%;
+        margin-left: 10px;
+    }
+}

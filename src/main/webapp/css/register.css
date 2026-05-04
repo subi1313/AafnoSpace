@@ -1,0 +1,170 @@
+body {
+    background-color: #EFEEEB;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterVariable.woff2");
+}
+
+.logo {
+    margin-left: 50px;
+}
+
+.divbg {
+    display: flex;
+    flex-direction: row;
+    background-color: #252420;
+    border-radius: 31px;
+    margin-left: 110px;
+    margin-right: 110px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.divimg {
+    display: flex;
+    margin-left: 60px;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    margin-right: 0px;
+    padding: 10px;
+    width: 40%;
+}
+
+.divimg img{
+	border-radius: 16px;
+	max-width: 100%;
+	
+}
+
+.divregister {
+	width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    color: white;
+    font-family: "CormorantGaramond";
+    font-size: 48px;
+}
+
+.registerheading {
+    padding-left: 100px;
+}
+
+.divrow{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-around;
+}
+
+.labeldiv{
+	display:flex;
+	flex-direction:column;
+	font-family: "Inter";
+	color: white;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.checkboxdiv{
+    display: flex;
+    justify-content: flex-start; 
+    font-family: "Inter";
+    color: white;
+    font-size: 14px;
+    padding-left: 60px; 
+}
+
+.checkboxlabel{
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.checkboxlabel input{
+    margin-right: 2px;
+}
+
+input{
+	width: 115%;
+	border-radius: 10px;
+	padding: 15px;
+	border: none;
+	margin-top: 6px;
+}
+
+button {
+	width: 70%;
+    background-color: #412617;
+    color: white;
+    padding: 15px;
+    margin-left: 100px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: none;
+    font-family: "Inter";
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .divbg {
+        flex-direction: column;
+    }
+
+    .divimg,
+    .divregister {
+        width: 100%;
+        margin: 0;
+    }
+
+    .divimg {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .divregister {
+        font-size: 32px;
+    }
+
+    .registerheading {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .divrow {
+        flex-direction: column;
+    }
+
+    .labeldiv {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .labeldiv[style] {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+    input {
+        width: 100%;
+    }
+
+    .checkboxdiv {
+        padding-left: 10px;
+    }
+
+    button {
+        width: 90%;
+        margin-left: 20px;
+    }
+}
