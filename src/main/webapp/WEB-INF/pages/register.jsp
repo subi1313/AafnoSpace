@@ -39,7 +39,7 @@
                 	</div>
                 	<div class="labeldiv">
                 		<label>Phone Number</label>
-                        <input type="text" name="phoneno" placeholder="Phone Number">
+                        <input type="text" name="phoneNo" placeholder="Phone Number">
                 	</div>
                 </div>
                  <div class="divrow">
