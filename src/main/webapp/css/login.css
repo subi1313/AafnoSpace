@@ -92,6 +92,38 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+   .errordiv {
+            background: #fff1f2;;
+            color: #e11d48;
+            padding-left:10px;
+            padding-top:10px;
+            padding-bottom:12px;
+            border-radius: 12px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            margin-left:30px;
+            margin-right:45px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Entrance animation */
+            animation: fadeIn 0.3s ease forwards;
+            /* Preparation for exit transition */
+            transition: opacity 0.5s ease, transform 0.5s ease, margin 0.5s ease;
+            overflow: hidden;
+            font-family: "Inter"
+        }
+
+        /* hides the error box, triggered by JS after 5 seconds */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 0;
+            border: 0;
+}
 
 @media (max-width: 768px) {
     .divbg {
@@ -119,4 +151,5 @@ button {
     .divsignin {
         font-size: 32px;
     }
+
 }
