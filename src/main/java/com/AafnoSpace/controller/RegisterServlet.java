@@ -16,7 +16,7 @@ import com.AafnoSpace.service.RegisterService;
 		asyncSupported = true, 
 		urlPatterns = { 
 				"/register", 
-				"/registration"
+				"/registration", ""
 		})
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
