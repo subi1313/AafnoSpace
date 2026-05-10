@@ -15,9 +15,10 @@ body {
 .logo {
     margin-left: 50px;
 }
-.navvbar img{
-	width:30%;
-	  margin: 0;
+
+.navvbar img {
+    width: 30%;
+    margin: 0;
     padding: 0;
 }
 
@@ -42,13 +43,13 @@ body {
     width: 45%;
 }
 
-.divimg img{
-	border-radius: 16px;
-	max-width: 100%;
+.divimg img {
+    border-radius: 16px;
+    max-width: 100%;
 }
 
 .divpersonalize {
-	width: 55%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     margin-top: 18px;
@@ -78,7 +79,7 @@ body {
 }
 
 .button {
-	width: 50%;
+    width: 50%;
     background-color: #412617;
     color: white;
     padding: 15px;
@@ -92,7 +93,7 @@ body {
 }
 
 .createbutton {
-	width: 90%;
+    width: 90%;
     background-color: #EFEEEB;
     color: #252420;
     padding: 15px;
@@ -104,60 +105,61 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
-    .pfpcircle img {
-    width: 70%;    
+
+.pfpcircle img {
+    width: 70%;
     height: 100%;
     object-fit: contain;
     display: block;
-    margin:auto;
-    }
-    
-   .uploadbutton {
-   display: block; 
-   width: 60%;
+    margin: auto;
+}
+
+.uploadbutton {
+    display: block;
+    width: 60%;
     background-color: #412617;
     color: white;
-    padding-top:15px;
-    padding-bottom:15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-family: "Inter";
     font-size: 16px;
     cursor: pointer;
     border-radius: 10px;
     margin-top: 20px;
-    text-align: center; 
+    text-align: center;
 }
 
-   .errordiv {
-            background: #fff1f2;;
-            color: #e11d48;
-            padding-left:10px;
-            padding-top:10px;
-            padding-bottom:12px;
-            border-radius: 12px;
-            font-size: 15px;
-            margin-bottom: 10px;
-            margin-left:30px;
-            margin-right:45px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            /* Entrance animation */
-            animation: fadeIn 0.3s ease forwards;
-            /* Preparation for exit transition */
-            transition: opacity 0.5s ease, transform 0.5s ease, margin 0.5s ease;
-            overflow: hidden;
-            font-family: "Inter"
-        }
+.errordiv {
+    background: #fff1f2;
+    color: #e11d48;
+    padding-left: 150px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Entrance animation */
+    animation: fadeIn 0.3s ease forwards;
+    /* Preparation for exit transition */
+    transition: opacity 0.5s ease, transform 0.5s ease, margin 0.5s ease;
+    overflow: hidden;
+    font-family: "Inter"
+}
 
-        /* hides the error box, triggered by JS after 5 seconds */
-        .fade-out {
-            opacity: 0;
-            transform: translateY(-10px);
-            margin-bottom: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-            height: 0;
-            border: 0;
+/* hides the error box, triggered by JS after 5 seconds */
+.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 0;
+    border: 0;
 }
 
 @media (max-width: 768px) {
@@ -189,15 +191,16 @@ body {
     }
 
     .pfpcircle {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    overflow: hidden;     
-    cursor: pointer;
-    display: block;         
-    background-color: #EFEEEB;
-}
-     .pfpcircle img {                      
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+        display: block;
+        background-color: #EFEEEB;
+    }
+
+    .pfpcircle img {
         width: 100%;
         height: 100%;
         object-fit: cover;

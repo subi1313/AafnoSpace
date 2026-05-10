@@ -58,14 +58,16 @@ public class UploadProfilePicture extends HttpServlet {
 	                String extension = FileUploadUtil.getFileExtension(filePart.getSubmittedFileName());
 	                String fileName = username + extension;
 	                FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
-	                SessionUtil.setAttribute(request, "message", "Profile picture uploaded!", 60);
+	                //successful upload:
+	                response.sendRedirect(request.getContextPath() + "/login");
 	            } else {
 	                SessionUtil.setAttribute(request, "error", "Invalid image type.", 60);
+	                response.sendRedirect(request.getContextPath() + "/uploadpfp");
 	            }
-	        } else {
-	            SessionUtil.setAttribute(request, "message", "No image selected.", 60);
 	        }
-
-	        response.sendRedirect(request.getContextPath() + "/login");
+	        else {
+	                response.sendRedirect(request.getContextPath() + "/login");
+	            }
+	        }
+	        
 	    }
-	}
