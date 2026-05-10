@@ -14,6 +14,7 @@
             </div>
             <div class="divsignin">
                 <p class="signinheading">Sign In</p>
+                <!-- displaying errors/messages -->
                 <c:if test="${not empty error}">
                 <div id="errorPopup" class="errordiv">
                     <i class="fa-solid fa-circle-exclamation"></i>

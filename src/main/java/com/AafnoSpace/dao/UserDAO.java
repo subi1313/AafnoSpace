@@ -17,8 +17,8 @@ public class UserDAO {
 
 	Connection con = DBconfig.getConnection();
 
-	String sql = "INSERT INTO Users (firstName, lastName, username, email, password, address, phoneNo, role) "
-  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	String sql = "INSERT INTO Users (firstName, lastName, username, email, password, address, phoneNo, role, status) "
+  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	PreparedStatement pst = con.prepareStatement(sql);
 
@@ -30,6 +30,7 @@ public class UserDAO {
 	pst.setString(6, address);
 	pst.setString(7, phoneNo);
 	pst.setString(8, "Customer");
+	pst.setString(9, "Inactive");
 
 	int rows=pst.executeUpdate();
 
@@ -59,6 +60,7 @@ public class UserDAO {
 	            user.setaddress(rs.getString("address"));
 	            user.setNumber(rs.getString("phoneNo"));
 	            user.setRole(rs.getString("role"));
+	            user.setStatus(rs.getString("status"));
 	        }
 	        rs.close();
 	        pst.close();

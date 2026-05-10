@@ -12,6 +12,7 @@ public class UserModel {
     private String address;
     private String phoneNo;
     private String role;
+    private String status;
     
     //Getter and setter
     public int getuserId() { return UserId; }
@@ -40,5 +41,8 @@ public class UserModel {
     
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
+    
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }
 

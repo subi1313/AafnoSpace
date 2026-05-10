@@ -50,13 +50,13 @@ public class UploadProfilePicture extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
+		  String username = (String) SessionUtil.getAttribute(request, "username"); //fetching the username from session
 
 	        Part filePart = request.getPart("profileImage");
 	        if (filePart != null && filePart.getSize() > 0) {
 	            if (FileUploadUtil.isImage(filePart)) {
 	                String extension = FileUploadUtil.getFileExtension(filePart.getSubmittedFileName());
-	                String fileName = user.getUserName() + extension;
+	                String fileName = username + extension;
 	                FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
 	                SessionUtil.setAttribute(request, "message", "Profile picture uploaded!", 60);
 	            } else {

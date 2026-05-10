@@ -57,7 +57,8 @@ public class LoginServlet extends HttpServlet {
             	// User data is stored in userdata object after DAO operation
             	UserModel userdata = UserDAO.getUserByUsername(username);
             	
-            	// Used Session's setAttribute method to store userdata object in server memory
+            	// Using Session's setAttribute method to store userdata object in server memory
+            	request.getSession().invalidate(); 	//killing the older registration session
             	SessionUtil.setAttribute(request, "user", userdata, 3600);
             	
             	// Capture and format the current time
