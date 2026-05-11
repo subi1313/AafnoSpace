@@ -53,17 +53,18 @@ public class RegisterServlet extends HttpServlet {
             String address = request.getParameter("address");
             String phoneNo = request.getParameter("phoneNo");
             
-           //Calling service to add user:
+            //calling register service
             RegisterService service = new RegisterService();
-            boolean success = service.addUser(firstName, lastName, username,
-                    email, password, address, phoneNo);
+            String status = service.addUser(firstName, lastName, username, email, password, address, phoneNo);
 
-if (success) {
-	response.sendRedirect(request.getContextPath() + "/uploadpfp");
-} else {
-response.sendRedirect(request.getContextPath() + "/register");
-}
-	}
+            if ("Success".equals(status)) {
+                response.sendRedirect(request.getContextPath() + "/uploadpfp");
+            } else {
+                request.setAttribute("error", status);
+                request.setAttribute("typedUser", username);
+                request.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(request, response);
+            }
+        }
 		 catch (Exception e) {
 	            e.printStackTrace();
 	            response.getWriter().println("Error: " + e.getMessage());

@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // Call LoginService
+        // Calling LoginService
         LoginService service= new LoginService();
         String status = service.authenticate(username, password);
         System.out.println("LOGIN STATUS = " + status);
@@ -54,12 +54,10 @@ public class LoginServlet extends HttpServlet {
         // Handle the response status
         if ("Success".equals(status)) {
             try {
-            	// Student data is stored in studentdata object after DAO operation
+            	// User data is stored in userdata object after DAO operation
             	UserModel userdata = UserDAO.getUserByUsername(username);
             	
             	// Used Session's setAttribute method to store userdata object in server memory
-            	// No need to set and pass data to jsp when used with session
-            	// Just use EL and JSTL to show data in dashboard.jsp 
             	SessionUtil.setAttribute(request, "user", userdata, 3600);
             	
             	// Capture and format the current time
@@ -68,15 +66,18 @@ public class LoginServlet extends HttpServlet {
             	String loginTime = now.format(formatter);
             	
             	// Cookie is created to record last login time
-            	// look at browser cookie section to verify it
             	CookieUtil.addCookie(response, "last_login", loginTime, 3600);
-            	 // Goto home page
+            	 String role = userdata.getRole();
+                 if ("Admin".equals(role)) {
+                     response.sendRedirect(request.getContextPath() + "/AdminProfile");
+                 } else {
+                     response.sendRedirect(request.getContextPath() + "/home");
+                 }
 	           
 			} catch (Exception e) {
 				// Print error in console of server
 				e.printStackTrace();
 			}
-            response.sendRedirect(request.getContextPath() + "/home");
         }
         else {
         	// Set error and forward it to login page
