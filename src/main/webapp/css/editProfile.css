@@ -36,12 +36,13 @@ body {
 }  
 h2{
       color: var(--sidebar-bg);
-      font-weight: 800;
+      font-weight: 1500;
       margin-bottom: 20px;
       letter-spacing: -0.5px;
+      font-size:32px;
 } 
 .button {
-    width: 60%;
+    width: 65%;
     background-color: #412617;
     color: white;
     padding-left:25px;
@@ -62,7 +63,7 @@ h2{
     cursor: pointer;
     display: block;
     background-color: #EFEEEB;
-    margin-bottom:20px;
+    margin-bottom:30px;
     margin-left:20px;
 }
 .pfpcircle img {
