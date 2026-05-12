@@ -20,15 +20,14 @@ import com.AafnoSpace.utils.SessionUtil;
  * Servlet implementation class UploadProfilePicture
  */
 @MultipartConfig(
-	    fileSizeThreshold = 1024 * 1024 * 2,
-	    maxFileSize = 1024 * 1024 * 10,
-	    maxRequestSize = 1024 * 1024 * 50
+	    fileSizeThreshold = 1024 * 1024 * 2, 	//2MB file upload in RAM, if exceeds stores in the hard drive
+	    maxFileSize = 1024 * 1024 * 10,			//10MB file upload limit
+	    maxRequestSize = 1024 * 1024 * 50		//50MB for HTTP request including other form fields
 	)
 @WebServlet(asyncSupported = true, urlPatterns = { "/uploadpfp" })
 public class UploadProfilePicture extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "profilepicture_uploads";
-    private UserDAO userDAO = new UserDAO();   
+	private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "profilepicture_uploads";  
     /**
      * @see HttpServlet#HttpServlet()
      */
