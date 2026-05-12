@@ -44,7 +44,7 @@
         <div class="field"><p>Email</p>
         <p>${user.email}</p></div>
         <div class="field"><p>Phone</p>
-        <p>${user.phone}</p></div>
+        <p>${user.phoneNo}</p></div>
       </div>
     </div>
 </div>

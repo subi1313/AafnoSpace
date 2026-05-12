@@ -43,6 +43,6 @@
       font-family: "Arsenal", sans-serif;
     }
  
- 	a:hover{
+ 	.sidebar .sidePanelItem:hover{
  	color: #c8b89a;}
 
