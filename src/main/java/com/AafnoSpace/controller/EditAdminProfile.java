@@ -53,7 +53,7 @@ public class EditAdminProfile extends HttpServlet {
 	                String fileName = "admin" + extension;
 	                FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
 	                //if upload is successful
-	                response.sendRedirect(request.getContextPath() + "/adminProfile");
+	                response.sendRedirect(request.getContextPath() + "/AdminProfile");
 	            } 
 	            //if upload is unsuccessful
 	            else {
@@ -62,10 +62,7 @@ public class EditAdminProfile extends HttpServlet {
 	            }
 	        }
 	        else {
-	                response.sendRedirect(request.getContextPath() + "/adminProfile");
+	                response.sendRedirect(request.getContextPath() + "/AdminProfile");
 	            }
 	        }
-	        
-	    
-
 }
