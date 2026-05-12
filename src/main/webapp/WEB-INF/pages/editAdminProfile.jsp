@@ -29,15 +29,15 @@
              </label>
              <div class="textinput">
              <label>First Name</label>
-             <input type="text" name="firstName" value="${user.firstName}" required>
+             <input type="text" name="firstName" value="${user.firstName}">
              <label>Last Name</label>
-             <input type="text" name="lastName" value="${user.lastName}" required>
+             <input type="text" name="lastName" value="${user.lastName}">
              <label>Address</label>
-             <input type="text" name="address" value="${user.address}" required>
+             <input type="text" name="address" value="${user.address}">
              <label>E-mail</label>
-             <input type="text" name="email" value="${user.email}" required>
+             <input type="text" name="email" value="${user.email}">
              <label>Phone Number</label>
-             <input type="text" name="phone" value="${user.phone}" required>
+             <input type="text" name="phone" value="${user.phone}">
              </div>
              <button type="submit" class="submitButton">Save Changes</button>
          </form>

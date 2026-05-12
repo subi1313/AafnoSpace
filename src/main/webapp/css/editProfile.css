@@ -123,13 +123,13 @@ h2{
     margin-top:40px;	
 }
 .cancelLink{
-    margin-top:10px;
+    margin-top:15px;
     color:#252420;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 1000;
     transition: color 0.2s;
+    text-decoration:none;
 }
 .cancelLink:hover{
-	color:black;
+	color:#c8b89a;
 }
-
