@@ -19,31 +19,31 @@
     <div class="profileHero">
       <div class="profilePicture">
         <img src="${pageContext.request.contextPath}/images/main/avatar.png">
-        <a href="${pageContext.request.contextPath}/admin/profile/edit" class="profilePictureEdit">Edit</a>
+        <a href="${pageContext.request.contextPath}/editUserProfile" class="profilePictureEdit">Edit</a>
       </div>
       <div class="field">
-        <p>${customer.firstName} ${customer.lastName}</p>
+        <p>${user.firstName} ${user.lastName}</p>
         <p>Customer</p>
-        <p>${customer.address}</p>
+        <p>${user.address}</p>
       </div>
     </div>
     <!-- Customer personal information card -->
     <div class="detailPanel">
       <div class="panelHeader">
         <p class="panelTitle">Personal Information</p>
-        <a href="${pageContext.request.contextPath}/admin/profile/edit?section=personal" class="editLink">Edit Details</a>
+        <a href="${pageContext.request.contextPath}/editUserProfile" class="editLink">Edit Details</a>
       </div>
       <div class="fieldsGrid">
         <div class="field"><p>First Name</p>
-        <p>${customer.firstName}</p></div>
+        <p>${user.firstName}</p></div>
         <div class="field"><p>Last Name</p>
-        <p>${customer.lastName}</p></div>
+        <p>${user.lastName}</p></div>
         <div class="field"><p>Address</p>
-        <p>${customer.address}</p></div>
+        <p>${user.address}</p></div>
         <div class="field"><p>Email</p>
-        <p>${customer.email}</p></div>
+        <p>${user.email}</p></div>
         <div class="field"><p>Phone</p>
-        <p>${customer.phone}</p></div>
+        <p>${user.phone}</p></div>
       </div>
     </div>
 </div>

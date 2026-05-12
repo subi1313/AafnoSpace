@@ -23,9 +23,9 @@
         <a href="${pageContext.request.contextPath}/editAdminProfile" class="profilePictureEdit">Edit</a>
       </div>
       <div class="field">
-        <p>${admin.firstName} ${admin.lastName}</p>
+        <p>${user.firstName} ${user.lastName}</p>
         <p>Admin</p>
-        <p>${admin.address}</p>
+        <p>${user.address}</p>
       </div>
     </div>
     <!-- Admin personal information card-->
@@ -36,15 +36,15 @@
       </div>
       <div class="fieldsGrid">
         <div class="field"><p>First Name</p>
-        <p>${admin.firstName}</p></div>
+        <p>${user.firstName}</p></div>
         <div class="field"><p>Last Name</p>
-        <p>${admin.lastName}</p></div>
+        <p>${user.lastName}</p></div>
         <div class="field"><p>Address</p>
-        <p>${admin.address}</p></div>
+        <p>${user.address}</p></div>
         <div class="field"><p>Email</p>
-        <p>${admin.email}</p></div>
+        <p>${user.email}</p></div>
         <div class="field"><p>Phone</p>
-        <p>${admin.phone}</p></div>
+        <p>${user.phone}</p></div>
       </div>
     </div>
 </div>
