@@ -22,9 +22,9 @@
         <a href="${pageContext.request.contextPath}/admin/profile/edit" class="profilePictureEdit">Edit</a>
       </div>
       <div class="field">
-        <p class="profile-name">${customer.firstName} ${customer.lastName}</p>
+        <p>${customer.firstName} ${customer.lastName}</p>
         <p>Customer</p>
-        <p>${customer.city}, ${customer.country}</p>
+        <p>${customer.address}</p>
       </div>
     </div>
     <!-- Customer personal information card -->
@@ -38,35 +38,14 @@
         <p>${customer.firstName}</p></div>
         <div class="field"><p>Last Name</p>
         <p>${customer.lastName}</p></div>
-        <div class="field"><p>Date of Birth</p>
-        <p>${customer.dob}</p></div>
-        <div class="field"><p>Gender</p>
-        <p>${customer.gender}</p></div>
+        <div class="field"><p>Address</p>
+        <p>${customer.address}</p></div>
         <div class="field"><p>Email</p>
         <p>${customer.email}</p></div>
         <div class="field"><p>Phone</p>
         <p>${customer.phone}</p></div>
       </div>
     </div>
-    <!--Customer address card-->
-    <div class="detailPanel">
-      <div class="panelHeader">
-        <p class="panelTitle">Address</p>
-        <a href="${pageContext.request.contextPath}/admin/profile/edit?section=address" class="editLink">Edit Details</a>
-      </div>
-      <div class="fieldsGrid">
-        <div class="field">
-        <p>Country</p>
-        <p>${customer.country}</p></div>
-        <div class="field">
-        <p>Province</p>
-        <p>${customer.province}</p></div>
-        <div class="field">
-        <p>City</p>
-        <p>${customer.city}</p></div>
-      </div>
-    </div>
-  </div>
 </div>
 <%@ include file="/components/footer.jsp" %>
 </body>

@@ -57,9 +57,9 @@
       border: 3px solid #3a3632;
     }
     .profilePictureEdit {
-      font-size: 11px;
+      font-size: 15px;
       color: #a09890;
-      text-decoration: underline;
+      text-decoration: none;
       margin-top: 6px;
     }
     .detailPanel {
@@ -85,7 +85,7 @@
     .editLink {
       font-size: 13px;
       color: #a09890;
-      text-decoration: underline;
+      text-decoration: none;
       cursor: pointer;
     }
     .fieldsGrid {
