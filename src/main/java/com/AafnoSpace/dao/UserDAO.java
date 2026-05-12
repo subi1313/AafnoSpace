@@ -66,6 +66,34 @@ public class UserDAO {
 	        pst.close();
 	        con.close();
 	        return user;
-	        // returns user OBJECT so user model
+	        // returns user OBJECT to user model
 	 }
+	   public List<UserModel> getAllUsers() throws Exception {
+	        List<UserModel> users = new ArrayList<>();
+	        Connection con = DBconfig.getConnection();
+	        
+	        String sql = "SELECT * FROM students";
+	        PreparedStatement pst = con.prepareStatement(sql);
+	        ResultSet rs = pst.executeQuery();
+
+	        while (rs.next()) {
+	            UserModel u = new UserModel();
+	            u.setuserId(rs.getInt("UserID")); 
+	            u.setFirstName(rs.getString("firstName"));
+	            u.setLastName(rs.getString("lastName"));
+	            u.setUserName(rs.getString("username"));
+	            u.setEmail(rs.getString("email"));
+	            u.setPassword(rs.getString("password")); 
+	            u.setaddress(rs.getString("address"));
+	            u.setNumber(rs.getString("phoneNo"));
+	            u.setRole(rs.getString("role"));
+	            u.setStatus(rs.getString("status"));
+	            users.add(u);
+	        }
+	        
+	        rs.close();
+	        pst.close();
+	        con.close();
+	        return users;
+	    }
 }

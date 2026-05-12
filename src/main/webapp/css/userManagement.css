@@ -13,23 +13,94 @@ body {
 }
 
 .main {
-      width: 80%;
-      padding: 10px;
-    }
-    
- .layout {
-      display: flex;
-      flex-direction: row;
-      margin-top: 10px;
-      margin-bottom:10px;
-      margin-left:80px;
-      margin-right:80px;
-    }
-    
- .mgmtheading{
- 	  font-size: 48px;
-      margin-bottom: 20px;
-      margin-top: 0px;
-      margin-left:200px;
-      font-family:"CormorantGaramond"
- }   
+    width: 80%;
+    padding: 10px;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.mgmtheading {
+    font-size: 48px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-left: 170px;
+    font-family: "CormorantGaramond";
+    white-space: nowrap;
+}
+
+.maindiv{
+	display:flex;
+	flex-direction:column;
+}
+.container {
+            width: 100%;
+            /* Increased width from 1100px to 1250px */
+            max-width: 1250px; 
+        }
+        
+.tablediv {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    /* Ensures table stretches to fill the wider container */
+    table-layout: auto;
+}
+
+th {
+    background: #f8fafc;
+    padding: 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+td {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.95rem;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+tr:hover td {
+    background-color: #f8fafc;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.username {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.userhandle {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+ .emptystate {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: #94a3b8;
+        }

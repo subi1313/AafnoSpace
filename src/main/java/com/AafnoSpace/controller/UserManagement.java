@@ -6,6 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.AafnoSpace.model.UserModel;
+import com.AafnoSpace.service.ListService;
 
 /**
  * Servlet implementation class UserManagement
@@ -28,6 +32,20 @@ public class UserManagement extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
+		try {
+			ListService service = new ListService();
+			
+            // getting data from service
+            List<UserModel> users= service.fetchAll();
+
+            // setting the data
+            request.setAttribute("users", users);
+
+            // forward to JSP
+            request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new ServletException("Database error", e);
+        }
 	}
 
 	/**
