@@ -7,11 +7,14 @@
   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/editProfile.css">
 </head>
 <body>
-<div class="editDetailsPanel">
-<h2>Update Details</h2>
-<form action="userProfile" method="post" enctype="multipart/form-data">
-	
-</form>
-  </div>
+	<div class="editDetailsPanel">
+		<h2>Update Details</h2>
+		<form action="userProfile" method="post" enctype="multipart/form-data">
+			<div class="profilePicture">
+		        <img src="${pageContext.request.contextPath}/images/main/avatar.png">
+		        <a href="${pageContext.request.contextPath}/admin/profile/edit" class="profilePictureEdit">Edit</a>
+		    </div>
+		</form>
+	</div>
  </body>
  </html>
