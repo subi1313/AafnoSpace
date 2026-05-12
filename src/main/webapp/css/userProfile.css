@@ -25,7 +25,8 @@
       background: var(--bg);
       color: var(--text-dark);
       min-height: 100vh;
-    }    .main {
+    }   
+    .main {
       width: 80%;
       padding: 10px;
     }
