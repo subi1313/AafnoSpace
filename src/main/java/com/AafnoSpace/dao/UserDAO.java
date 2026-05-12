@@ -72,8 +72,9 @@ public class UserDAO {
 	        List<UserModel> users = new ArrayList<>();
 	        Connection con = DBconfig.getConnection();
 	        
-	        String sql = "SELECT * FROM students";
+	        String sql = "SELECT * FROM users WHERE role = ?;";
 	        PreparedStatement pst = con.prepareStatement(sql);
+	        pst.setString(1, "Customer");
 	        ResultSet rs = pst.executeQuery();
 
 	        while (rs.next()) {
@@ -86,7 +87,6 @@ public class UserDAO {
 	            u.setPassword(rs.getString("password")); 
 	            u.setaddress(rs.getString("address"));
 	            u.setNumber(rs.getString("phoneNo"));
-	            u.setRole(rs.getString("role"));
 	            u.setStatus(rs.getString("status"));
 	            users.add(u);
 	        }

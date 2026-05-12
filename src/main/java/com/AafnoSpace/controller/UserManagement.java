@@ -31,7 +31,6 @@ public class UserManagement extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
 		try {
 			ListService service = new ListService();
 			
@@ -44,7 +43,7 @@ public class UserManagement extends HttpServlet {
             // forward to JSP
             request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
         } catch (Exception e) {
-            throw new ServletException("Database error", e);
+            throw new ServletException("Error in database!", e);
         }
 	}
 
