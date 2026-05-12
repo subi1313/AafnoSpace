@@ -8,9 +8,8 @@
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
         </head>
-
         <body>
-            <jsp:include page="/components/header.jsp" />
+        <jsp:include page="/components/header.jsp"/>
             <div class="layout">
                 <jsp:include page="/components/userPanel.jsp" />
             </div>

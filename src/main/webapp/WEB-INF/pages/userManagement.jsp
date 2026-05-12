@@ -64,7 +64,7 @@
                                             <img src="${pageContext.request.contextPath}/getImage?name=${u.userName}" 
                                                  alt="Profile" 
                                                  style="width: 100%; height: 100%; object-fit: cover;"
-                                                 onerror="handleImageError(this, '${s.userName}', '${fn:substring(s.firstName, 0, 1)}${fn:substring(s.lastName, 0, 1)}')">
+                                                 onerror="handleImageError(this, '${u.userName}', '${fn:substring(u.firstName, 0, 1)}${fn:substring(u.lastName, 0, 1)}')">
                                          </div>
                                         
                                         <div class="userinfo">

@@ -82,6 +82,11 @@ body {
     font-size:20;
     margin:10px;
 }
+    
+.main {
+      width: 80%;
+      padding: 10px;
+    }
 
 .totalandpay{
 	display: flex;
