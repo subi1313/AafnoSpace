@@ -53,16 +53,16 @@ public class EditAdminProfile extends HttpServlet {
 	                String fileName = "admin" + extension;
 	                FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
 	                //if upload is successful
-	                response.sendRedirect(request.getContextPath() + "/login");
+	                response.sendRedirect(request.getContextPath() + "/adminProfile");
 	            } 
 	            //if upload is unsuccessful
 	            else {
 	                SessionUtil.setAttribute(request, "error", "Invalid image type.", 60);
-	                response.sendRedirect(request.getContextPath() + "/uploadpfp");
+	                response.sendRedirect(request.getContextPath() + "/editAdminProfile");
 	            }
 	        }
 	        else {
-	                response.sendRedirect(request.getContextPath() + "/login");
+	                response.sendRedirect(request.getContextPath() + "/adminProfile");
 	            }
 	        }
 	        
