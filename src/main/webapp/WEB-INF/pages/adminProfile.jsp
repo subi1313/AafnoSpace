@@ -21,7 +21,6 @@
 
     <p class="pageTitle">My Profile</p>
 
-    <!-- HERO -->
     <div class="profileHero">
       <div class="profilePicture">
         <img src="${pageContext.request.contextPath}/images/main/avatar.png">

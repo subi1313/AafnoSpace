@@ -37,11 +37,7 @@
       border-radius: 4px;
       font-family: "Arsenal", sans-serif;
     }
-   
-    .sidePanelItem:hover {
-      background-color: #2e2b28;
-    }
-
-    .sidePanelItem.active {
-      color: #c8b89a;
-    }
+ 
+ 	a:hover{
+ 	color: #c8b89a;}
+ 	

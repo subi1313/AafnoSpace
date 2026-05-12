@@ -3,7 +3,7 @@
         <html>
 
         <head>
-            <title>Order Checkout Page</title>
+            <title>Order Checkout– आफ्नो SPACE</title>
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/orderCheckout.css">
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
