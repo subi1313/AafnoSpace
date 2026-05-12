@@ -20,16 +20,30 @@
          enctype="multipart/form-data">
         	<input type="file" id="profileImage" name="profileImage" accept="image/*" hidden
              onchange="previewFile()">
-             <div class="divpfp">
-             	<div class="pfpcircle">
-                	<img id="pfpPreview" src="${pageContext.request.contextPath}/images/main/user.png"
-                     alt="profile">
-                </div>
+             <div class="pfpcircle">
+                <img id="pfpPreview" src="${pageContext.request.contextPath}/images/main/user.png"
+                 alt="profile">
              </div>
              <label for="profileImage" class="button">
              	<i class="fas fa-camera"></i> Change Picture
              </label>
+             <div class="textinput">
+             <label>First Name</label>
+             <input type="text" name="firstName" value="${user.firstName}" required>
+             <label>Last Name</label>
+             <input type="text" name="lastName" value="${user.lastName}" required>
+             <label>Address</label>
+             <input type="text" name="address" value="${user.address}" required>
+             <label>E-mail</label>
+             <input type="text" name="email" value="${user.email}" required>
+             <label>Phone Number</label>
+             <input type="text" name="phone" value="${user.phone}" required>
+             </div>
+             <button type="submit" class="submitButton">Save Changes</button>
          </form>
+         <a href="${pageContext.request.contextPath}/AdminProfile" class="cancelLink">
+            <i class="fas fa-arrow-left"></i> Back to profile
+        </a>
 	</div>
             <script>
                 function previewFile() {

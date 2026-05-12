@@ -29,6 +29,7 @@
              <label for="profileImage" class="button">
              	<i class="fas fa-camera"></i> Change Picture
              </label>
+             <button type="submit" class="submitButton">Save Changes</button>
          </form>
 	</div>
             <script>
