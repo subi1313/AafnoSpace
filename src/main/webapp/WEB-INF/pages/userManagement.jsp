@@ -61,7 +61,7 @@
                                         <div class="pfpcircle">
                                             <%-- Start with PNG as default --%>
                                             <!-- using the getter method name in EL -->
-                                            <img src="${pageContext.request.contextPath}/getimage?name=${u.userName}" 
+                                            <img src="${pageContext.request.contextPath}/getImage?name=${u.userName}" 
                                                  alt="Profile" 
                                                  style="width: 100%; height: 100%; object-fit: cover;"
                                                  onerror="handleImageError(this, '${s.userName}', '${fn:substring(s.firstName, 0, 1)}${fn:substring(s.lastName, 0, 1)}')">
