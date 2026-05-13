@@ -6,6 +6,7 @@
 <head>
     <title>Add Product</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminAddProduct.css">
 </head>
 
@@ -13,10 +14,7 @@
     <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-add">
-
-            <div class="admin-panel">
-
-            </div>
+        	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="add-main">
                 <h2>Add Product</h2>
                 <form action="add-product-pic" method="post" enctype="multipart/form-data">
@@ -27,8 +25,6 @@
                             <div class="detail-form">
                                 <label>Product Name</label>
                                 <input type="text" name="productName" placeholder="Enter product name">
-                                <label>Product ID</label>
-                                <input type="text" name="productId" placeholder="Enter product ID">
                                 <label>Category</label>
                                 <select name="category">
                                     <option>Select product category</option>
@@ -42,11 +38,12 @@
 
                         </div>
                         <div class="add-pic">
-                            <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png" alt="">
+                            <img src="./images/adminAddProduct/gallery.png" alt="">
                             <p>Your product image goes here!!</p>
-                            <input type="file" name="productImage" accept="image/*">
-                            <label for="productImage" class="upload-btn"> Click to browse </label>
-                            <span>Click to browse</span>
+                            <label class="pic-upload-btn">
+                                Choose Image
+                                <input type="file" name="productImage" accept="image/*">
+                            </label>
                         </div>
                     </div>
                     <div class="inventory">
@@ -66,7 +63,7 @@
                             </div>
 
                             <label>Description</label>
-                            <textarea name="description" 
+                            <textarea name="description"
                                 placeholder="Write a short description highlighting key benefits and features"></textarea>
                         </div>
                     </div>

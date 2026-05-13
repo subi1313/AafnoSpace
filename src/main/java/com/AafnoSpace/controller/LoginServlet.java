@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
             	CookieUtil.addCookie(response, "last_login", loginTime, 3600);
             	 String role = userdata.getRole();
                  if ("Admin".equals(role)) {
-                     response.sendRedirect(request.getContextPath() + "/AdminProfile");
+                     response.sendRedirect(request.getContextPath() + "/admin-profile");
                  } else {
                      response.sendRedirect(request.getContextPath() + "/home");
                  }

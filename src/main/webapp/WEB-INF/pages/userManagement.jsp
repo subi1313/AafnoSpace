@@ -15,9 +15,9 @@
 <body>
 
 <jsp:include page="/components/header.jsp"/>
-  <div class="layout">
-                <jsp:include page="/components/userPanel.jsp" />
-            </div>
+<div class="admin-profile">
+                <jsp:include page="/components/adminPanel.jsp" />
+         
 		<div class=maindiv>
             <div class="main">
                 <p class="mgmtheading">User Management</p>
@@ -87,5 +87,15 @@
     </div>
 </div>
 </div>
+</div>
+<script>
+function handleImageError(img, username, initials) {
+    const parent = img.parentElement;
+
+    img.style.display = "none";
+
+    parent.innerHTML = initials;
+}
+</script>
           </body>
           </html>
