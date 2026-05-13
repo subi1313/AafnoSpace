@@ -1,24 +1,25 @@
 <%@ page isELIgnored="false" %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Side panel -->
   <div class="sidebar">
   	<div class="sidePanelLabel">
-  	<img src="${pageContext.request.contextPath}/images/main/mainmenu.png" alt="menu" style="width:20px;height:20px;">
+  	<i class="fas fa-bars"></i>
   	Main Menu
       <a href="${pageContext.request.contextPath}/admin/profile" class="sidePanelItem active">
-      <img src="${pageContext.request.contextPath}/images/main/profile.png" alt="profile">
+      <i class="fas fa-user-edit"></i>
       Profile</a>
       <a href="${pageContext.request.contextPath}/admin/cart" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/shoppingCart.png" alt="cart">
+      <i class="fas fa-cart-shopping"></i>
       Cart</a>
       <a href="${pageContext.request.contextPath}/admin/orderHistory" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/myOrders.png" alt="orders">
+      <i class="fas fa-bag-shopping"></i>
       My Orders</a>
     </div>
     <div class="sidePanelLabel">
-      <img src="${pageContext.request.contextPath}/images/main/others.png" alt="menu" style="width:20px;height:20px;">
+      <i class="fas fa-ellipsis"></i>
   	Others
-      <a href="${pageContext.request.contextPath}/admin/logout" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/logout.png" alt="dashboard">
+      <a href="${pageContext.request.contextPath}/logout" class="sidePanelItem">
+      <i class="fas fa-sign-out-alt"></i>
       Logout
       </a>
     </div>
