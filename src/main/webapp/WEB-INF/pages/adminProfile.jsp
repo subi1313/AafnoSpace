@@ -19,12 +19,14 @@
     <p class="pageTitle">My Profile</p>
 
     <div class="profileHero">
-      <div class="profilePicture">
+    <div class="profilePictureWrapper">
+ 	<div class="profilePicture">
 		<img src="${pageContext.request.contextPath}/getImage?name=${user.userName}" 
         alt="Profile" 
         style="width: 100%; height: 100%; object-fit: cover;"
-         onerror="handleImageError(this, '${user.userName}', '${fn:substring(user.firstName, 0, 1)}${fn:substring(user.lastName, 0, 1)}')">                                        
-        <a href="${pageContext.request.contextPath}/editAdminProfile" class="profilePictureEdit">Edit</a>
+         onerror="handleImageError(this, '${user.userName}', '${fn:substring(user.firstName, 0, 1)}${fn:substring(user.lastName, 0, 1)}')">                                       
+      </div>
+         <a href="${pageContext.request.contextPath}/editAdminProfile" class="profilePictureEdit">Edit</a> 
       </div>
       <div class="generalinfo">
         <p>${user.firstName} ${user.lastName}</p>
