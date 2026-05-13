@@ -16,7 +16,7 @@
 
 <jsp:include page="/components/header.jsp"/>
   <div class="layout">
-                <jsp:include page="/components/userPanel.jsp" />
+                <jsp:include page="/components/adminPanel.jsp" />
             </div>
 		<div class=maindiv>
             <div class="main">

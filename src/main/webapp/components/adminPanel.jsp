@@ -1,35 +1,34 @@
-
 <%@ page isELIgnored="false" %>
 <!-- Side panel -->
-  <div class="sidebar">
-  	<div class="sidePanelLabel">
-  	<img src="${pageContext.request.contextPath}/images/main/mainmenu.png" alt="menu" style="width:20px;height:20px;">
-  	Main Menu
-      <a href="${pageContext.request.contextPath}/admin/dashboard" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/dashboard.png" alt="dashboard">
-      Dashboard
-      </a>
-      <a href="${pageContext.request.contextPath}/AdminProfile" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/profile.png" alt="profile">
-      Profile</a>
-      <a href="${pageContext.request.contextPath}/userManagement" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/usermgmt.png" alt="userManagement">
-      User Management</a>
-      <a href="${pageContext.request.contextPath}/admin/products" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/productlist.png" alt="productList">
-      Product List</a>
-      <a href="${pageContext.request.contextPath}/admin/products/add" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/addproduct.png" alt="addProduct">
-      Add Product</a>
-      <a href="${pageContext.request.contextPath}/admin/orders" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/ordermgmt.png" alt="orderManagement">
-      Order Management</a>
+<div class="admin-panel">
+    <h2> <img src="./images/adminPanel/menu.png" alt="Menu Icon">Main menu</h2>
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'dashboard' ? 'active' : ''}">
+                <img src="${pageContext.request.contextPath}/images/adminPanel/dashboard.png" alt="Dashboard Icon">
+                Dashboard</a>
+        </li>
+        <li><a href="${pageContext.request.contextPath}/admin-profile" class="${activeMenu == 'profile' ? 'active' : ''}"> <img
+                    src="${pageContext.request.contextPath}/images/adminPanel/profile.png" alt="Profile Icon">
+                Profile</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'user' ? 'active' : ''}"> <img
+                    src="${pageContext.request.contextPath}/images/adminPanel/user.png" alt="User Icon"> User
+                Management</a>
+        </li>
+        <li><a href="${pageContext.request.contextPath}/add-product" class="${activeMenu == 'product' ? 'active' : ''}"> <img
+                    src="${pageContext.request.contextPath}/images/adminPanel/product.png" alt="Product Icon">
+                Product Management</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'order' ? 'active' : ''}"> <img
+                    src="${pageContext.request.contextPath}/images/adminPanel/order.png" alt="Order Icon"> Order
+                Management</a>
+        </li>
+    </ul>
+    <div class="admin-panel-bottom">
+        <h2> <img src="${pageContext.request.contextPath}/images/adminPanel/others.png" alt="Others Icon"> Others
+        </h2>
+        <ul>
+            <li><a href="#"> <img src="${pageContext.request.contextPath}/images/adminPanel/logout.png"
+                        alt="Log Out Icon"> Log Out</a>
+            </li>
+        </ul>
     </div>
-    <div class="sidePanelLabel">
-      <img src="${pageContext.request.contextPath}/images/main/others.png" alt="menu" style="width:20px;height:20px;">
-  	Others
-      <a href="${pageContext.request.contextPath}/logout" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/logout.png" alt="dashboard">
-      Logout
-      </a>
-    </div>
+</div>

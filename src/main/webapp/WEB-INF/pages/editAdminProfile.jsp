@@ -41,7 +41,7 @@
              </div>
              <button type="submit" class="submitButton">Save Changes</button>
          </form>
-         <a href="${pageContext.request.contextPath}/AdminProfile" class="cancelLink">
+         <a href="${pageContext.request.contextPath}/admin-profile" class="cancelLink">
             <i class="fas fa-arrow-left"></i> Back to profile
         </a>
 	</div>

@@ -71,13 +71,13 @@ public class EditAdminProfileServlet extends HttpServlet {
 			                String extension = FileUploadUtil.getFileExtension(filePart.getSubmittedFileName());
 			                String fileName = user.getUserName() + extension;
 			                FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
-			                response.sendRedirect(request.getContextPath() + "/AdminProfile");
+			                response.sendRedirect(request.getContextPath() + "/admin-profile");
 			            } else {
 			                SessionUtil.setAttribute(request, "error", "Invalid image type.", 60);
 			                response.sendRedirect(request.getContextPath() + "/editAdminProfile");
 			            }
 			        } else {
-			                response.sendRedirect(request.getContextPath() + "/AdminProfile");
+			                response.sendRedirect(request.getContextPath() + "/admin-profile");
 			        }
         	}
         } catch (SQLException e) {
