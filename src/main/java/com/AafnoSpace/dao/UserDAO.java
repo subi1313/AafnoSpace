@@ -17,8 +17,8 @@ public class UserDAO {
 
 	Connection con = DBconfig.getConnection();
 
-	String sql = "INSERT INTO Users (firstName, lastName, username, email, password, address, phoneNo, role) "
-  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	String sql = "INSERT INTO Users (firstName, lastName, username, email, password, address, phoneNo, role, status) "
+  + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	PreparedStatement pst = con.prepareStatement(sql);
 
@@ -30,6 +30,7 @@ public class UserDAO {
 	pst.setString(6, address);
 	pst.setString(7, phoneNo);
 	pst.setString(8, "Customer");
+	pst.setString(9, "Inactive");
 
 	int rows=pst.executeUpdate();
 
@@ -59,11 +60,40 @@ public class UserDAO {
 	            user.setaddress(rs.getString("address"));
 	            user.setNumber(rs.getString("phoneNo"));
 	            user.setRole(rs.getString("role"));
+	            user.setStatus(rs.getString("status"));
 	        }
 	        rs.close();
 	        pst.close();
 	        con.close();
 	        return user;
-	        // returns user OBJECT so user model
+	        // returns user OBJECT to user model
 	 }
+	   public List<UserModel> getAllUsers() throws Exception {
+	        List<UserModel> users = new ArrayList<>();
+	        Connection con = DBconfig.getConnection();
+	        
+	        String sql = "SELECT * FROM users WHERE role = ?;";
+	        PreparedStatement pst = con.prepareStatement(sql);
+	        pst.setString(1, "Customer");
+	        ResultSet rs = pst.executeQuery();
+
+	        while (rs.next()) {
+	            UserModel u = new UserModel();
+	            u.setuserId(rs.getInt("UserID")); 
+	            u.setFirstName(rs.getString("firstName"));
+	            u.setLastName(rs.getString("lastName"));
+	            u.setUserName(rs.getString("username"));
+	            u.setEmail(rs.getString("email"));
+	            u.setPassword(rs.getString("password")); 
+	            u.setaddress(rs.getString("address"));
+	            u.setNumber(rs.getString("phoneNo"));
+	            u.setStatus(rs.getString("status"));
+	            users.add(u);
+	        }
+	        
+	        rs.close();
+	        pst.close();
+	        con.close();
+	        return users;
+	    }
 }

@@ -9,10 +9,10 @@
       <img src="${pageContext.request.contextPath}/images/main/dashboard.png" alt="dashboard">
       Dashboard
       </a>
-      <a href="${pageContext.request.contextPath}/admin/profile" class="sidePanelItem active">
+      <a href="${pageContext.request.contextPath}/AdminProfile" class="sidePanelItem">
       <img src="${pageContext.request.contextPath}/images/main/profile.png" alt="profile">
       Profile</a>
-      <a href="${pageContext.request.contextPath}/admin/users" class="sidePanelItem">
+      <a href="${pageContext.request.contextPath}/userManagement" class="sidePanelItem">
       <img src="${pageContext.request.contextPath}/images/main/usermgmt.png" alt="userManagement">
       User Management</a>
       <a href="${pageContext.request.contextPath}/admin/products" class="sidePanelItem">

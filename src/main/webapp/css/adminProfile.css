@@ -86,7 +86,7 @@
     .editLink {
       font-size: 13px;
       color: #a09890;
-      text-decoration: underline;
+      text-decoration: none;
       cursor: pointer;
     }
     .fieldsGrid {

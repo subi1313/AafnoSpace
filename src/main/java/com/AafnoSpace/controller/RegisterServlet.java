@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.AafnoSpace.service.RegisterService;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -16,7 +17,7 @@ import com.AafnoSpace.service.RegisterService;
 		asyncSupported = true, 
 		urlPatterns = { 
 				"/register", 
-				"/registration", ""
+				"/registration"
 		})
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -58,6 +59,8 @@ public class RegisterServlet extends HttpServlet {
             String status = service.addUser(firstName, lastName, username, email, password, address, phoneNo);
 
             if ("Success".equals(status)) {
+            	//if registration is successful, a temporary session to retrieve username is created
+            	 SessionUtil.setAttribute(request, "username", username, 3600);
                 response.sendRedirect(request.getContextPath() + "/uploadpfp");
             } else {
                 request.setAttribute("error", status);
