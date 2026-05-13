@@ -11,9 +11,9 @@
 </head>
 <body>
 <jsp:include page="/components/header.jsp"/>
-<div class="layout">
+<div class="admin-profile">
 	<jsp:include page="/components/userPanel.jsp"/>
-  </div>
+  
   <!--Customer main information card-->
   <div class="main">
     <p class="pageTitle">My Profile</p>
@@ -27,7 +27,7 @@
         </div>
         <a href="${pageContext.request.contextPath}/editUserProfile" class="profilePictureEdit">Edit</a>
       </div>
-      <div class="field">
+      <div class="generalinfo">
         <p>${user.firstName} ${user.lastName}</p>
         <p>Customer</p>
         <p>${user.address}</p>
@@ -52,6 +52,7 @@
         <p>${user.phoneNo}</p></div>
       </div>
     </div>
+</div>
 </div>
 <script>
 function handleImageWrror(img,username,initials)

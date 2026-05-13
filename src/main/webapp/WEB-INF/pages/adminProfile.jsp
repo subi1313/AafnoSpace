@@ -15,47 +15,42 @@
     <div class="admin-profile">
         <jsp:include page="../../components/adminPanel.jsp" />
         <!-- Admin main information card -->
-        <div class="main">
-            <p class="pageTitle">My Profile</p>
+  <div class="main">
+    <p class="pageTitle">My Profile</p>
 
-            <div class="profileHero">
-                <div class="profilePicture">
-                    <img src="${pageContext.request.contextPath}/images/main/avatar.png">
-                    <a href="${pageContext.request.contextPath}/editAdminProfile" class="profilePictureEdit">Edit</a>
-                </div>
-                <div class="field">
-                    <p>${user.firstName} ${user.lastName}</p>
-                    <p>Admin</p>
-                    <p>${user.address}</p>
-                </div>
-            </div>
-            <!-- Admin personal information card-->
-            <div class="detailPanel">
-                <div class="panelHeader">
-                    <p class="panelTitle">Personal Information</p>
-                    <a href="${pageContext.request.contextPath}/editAdminProfile" class="editLink">Edit
-                        Details</a>
-                </div>
-                <div class="fieldsGrid">
-                    <div class="field">
-                        <p>First Name</p>
-                        <p>${user.firstName}</p>
-                    </div>
-                    <div class="field">
-                        <p>Last Name</p>
-                        <p>${user.lastName}</p>
-                    </div>
-                    <div class="field">
-                        <p>Address</p>
-                        <p>${user.address}</p>
-                    </div>
-                    <div class="field">
-                        <p>Email</p>
-                        <p>${user.email}</p>
-                    </div>
-                    <div class="field">
-                        <p>Phone</p>
-                        <p>${user.phoneNo}</p>
+    <div class="profileHero">
+    <div class="profilePictureWrapper">
+  <div class="profilePicture">
+    <img src="${pageContext.request.contextPath}/getImage?name=${user.userName}" 
+        alt="Profile" 
+        style="width: 100%; height: 100%; object-fit: cover;"
+         onerror="handleImageError(this, '${user.userName}', '${fn:substring(user.firstName, 0, 1)}${fn:substring(user.lastName, 0, 1)}')">                                       
+      </div>
+         <a href="${pageContext.request.contextPath}/editAdminProfile" class="profilePictureEdit">Edit</a> 
+      </div>
+      <div class="generalinfo">
+        <p>${user.firstName} ${user.lastName}</p>
+        <p>Admin</p>
+        <p>${user.address}</p>
+      </div>
+    </div>
+    <!-- Admin personal information card-->
+    <div class="detailPanel">
+      <div class="panelHeader">
+        <p class="panelTitle">Personal Information</p>
+        <a href="${pageContext.request.contextPath}/editAdminProfile" class="editLink">Edit Details</a>
+      </div>
+      <div class="fieldsGrid">
+        <div class="field"><label>First Name</label>
+        <p>${user.firstName}</p></div>
+        <div class="field"><label>Last Name</label>
+        <p>${user.lastName}</p></div>
+        <div class="field"><label>Address</label>
+        <p>${user.address}</p></div>
+        <div class="field"><label>Email</label>
+        <p>${user.email}</p></div>
+        <div class="field"><label>Phone</label>
+        <p>${user.phoneNo}</p>
                     </div>
                 </div>
             </div>
