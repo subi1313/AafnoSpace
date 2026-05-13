@@ -1,6 +1,7 @@
 package com.AafnoSpace.controller;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,11 @@ import com.AafnoSpace.utils.SessionUtil;
 /**
  * Servlet implementation class EditUserProfile
  */
+@MultipartConfig(
+	    fileSizeThreshold = 1024 * 1024 * 2,
+	    maxFileSize = 1024 * 1024 * 10,
+	    maxRequestSize = 1024 * 1024 * 50
+)
 @WebServlet(asyncSupported = true, urlPatterns = { "/editUserProfile" })
 public class EditUserProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
