@@ -28,7 +28,7 @@
     <div class="sidePanelLabel">
       <img src="${pageContext.request.contextPath}/images/main/others.png" alt="menu" style="width:20px;height:20px;">
   	Others
-      <a href="${pageContext.request.contextPath}/admin/logout" class="sidePanelItem">
+      <a href="${pageContext.request.contextPath}/logout" class="sidePanelItem">
       <img src="${pageContext.request.contextPath}/images/main/logout.png" alt="dashboard">
       Logout
       </a>

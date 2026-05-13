@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.AafnoSpace.service.ProductService;
+
 /**
  * Servlet implementation class AdminAddProductServlet
  */
@@ -33,8 +35,29 @@ public class AdminAddProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		try {
+			//getting data from the adminAddProduct page
+			int productId = Integer.parseInt(request.getParameter("productId"));
+			String productName = request.getParameter("productName");
+			String description = request.getParameter("description");
+			String category = request.getParameter("category");
+			double price = Double.parseDouble(request.getParameter("price"));
+			int quantity = Integer.parseInt(request.getParameter("quantity"));
 
+			//calling service to add product
+			ProductService service = new ProductService();
+			int result = service.addProduct(productId, productName, description, category, price, quantity);
+
+			if (result > 0) {
+				response.sendRedirect("add-product?success=true");
+			} else {
+				response.sendRedirect("add-product?error=true");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.getWriter().println("Error: " + e.getMessage());
+		}
+	}
+	
 }

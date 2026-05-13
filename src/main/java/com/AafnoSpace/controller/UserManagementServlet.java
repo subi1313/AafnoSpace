@@ -15,13 +15,13 @@ import com.AafnoSpace.service.ListService;
  * Servlet implementation class UserManagement
  */
 @WebServlet(asyncSupported = true, urlPatterns = { "/userManagement" })
-public class UserManagement extends HttpServlet {
+public class UserManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserManagement() {
+    public UserManagementServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
