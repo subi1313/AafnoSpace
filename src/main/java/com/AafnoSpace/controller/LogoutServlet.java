@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.AafnoSpace.utils.SessionUtil;
+
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -27,7 +29,8 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+		SessionUtil.invalidateSession(request);
+		response.sendRedirect(request.getContextPath() + "/login");
 	}
 
 	/**
