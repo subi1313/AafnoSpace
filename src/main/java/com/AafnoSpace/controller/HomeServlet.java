@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 @WebServlet(
 		asyncSupported = true, 
-		urlPatterns = { "/home"})
+		urlPatterns = { "/home", ""})
 public class HomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     public HomeServlet() {
@@ -30,7 +30,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    	
         // TODO: handle POST request
     }
 }

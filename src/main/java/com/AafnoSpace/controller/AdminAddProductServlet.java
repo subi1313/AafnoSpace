@@ -28,6 +28,7 @@ public class AdminAddProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("activeMenu", "product");
 		request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
 	}
 

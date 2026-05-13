@@ -1,111 +1,135 @@
-
 @font-face {
     font-family: "CormorantGaramond";
     src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
 }
+
 @font-face {
     font-family: "Inter";
     src: url("../fonts/InterVariable.woff2");
 }
+
 @font-face {
     font-family: "Arsenal";
     src: url("../fonts/Arsenal/Arsenal-Regular.ttf");
 }
-:root{
-      --bg: #EFEEEB;
-      --sidebar-bg: #252420;
-      --card-bg: #252220;
-      --text-light: #f0ece4;
-      --text-dark:  #1e1c1a;
-      --text-muted: #a09890;
-      --accent:     #c8b89a;
-      --border:     #3a3632;
-    }
-    body {
-      font-family: 'CormorantGaramond', serif;
-      background: var(--bg);
-      color: var(--text-dark);
-      min-height: 100vh;
-    }
-    .main {
-      width: 80%;
-      padding: 10px;
-    }
-    .pageTitle {
-      font-size: 32px;
-      margin-bottom: 20px;
-      margin-top: 0px;
-    }
-    .profileHero {
-      display: flex;
-      align-items: center;
-      background-color: #252420;
-      border-radius: 16px;
-      padding: 30px;
-      margin-bottom: 20px;
-      color: #f0ece4;
-    }   
-    .profilePicture {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 30px;
-    }
-    .profilePicture img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 3px solid #3a3632;
-    }
-    .profilePictureEdit {
-      font-size: 11px;
-      color: #a09890;
-      text-decoration: underline;
-      margin-top: 6px;
-    }
-    .detailPanel {
-      background-color: #252420;
-      border-radius: 16px;
-      padding: 25px 30px;
-      margin-bottom: 20px;
-      color: #f0ece4;
-    }
-    .panelHeader {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #3a3632;
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-    }
-    .panelTitle {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom:5px;
-      margin-top: 2px;
-    }
-    .editLink {
-      font-size: 13px;
-      color: #a09890;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .fieldsGrid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .field {
-      width: 30%;
-    }
-    .field p {
-      font-size: 20px;
-      margin: 0;
-      font-family: "CormorantGaramond";
-    }
-    .field label {
-      font-size: 13px;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 4px;
-    }
+
+:root {
+    --bg: #EFEEEB;
+    --sidebar-bg: #252420;
+    --card-bg: #252220;
+    --text-light: #f0ece4;
+    --text-dark: #1e1c1a;
+    --text-muted: #a09890;
+    --accent: #c8b89a;
+    --border: #3a3632;
+}
+
+body {
+    font-family: 'CormorantGaramond', serif;
+    background: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+.admin-profile {
+    display: flex;
+    gap: 50px;
+    margin: 20px 8.33%;
+}
+
+.main {
+    width: 80%;
+    padding: 10px;
+}
+
+.pageTitle {
+    font-size: 32px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.profileHero {
+    display: flex;
+    align-items: center;
+    background-color: #252420;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 20px;
+    color: #f0ece4;
+}
+
+.profilePicture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.profilePicture img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #3a3632;
+}
+
+.profilePictureEdit {
+    font-size: 11px;
+    color: #a09890;
+    text-decoration: underline;
+    margin-top: 6px;
+}
+
+.detailPanel {
+    background-color: #252420;
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin-bottom: 20px;
+    color: #f0ece4;
+}
+
+.panelHeader {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #3a3632;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.panelTitle {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+
+.editLink {
+    font-size: 13px;
+    color: #a09890;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fieldsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.field {
+    width: 30%;
+}
+
+.field p {
+    font-size: 20px;
+    margin: 0;
+    font-family: "CormorantGaramond";
+}
+
+.field label {
+    font-size: 13px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+}
+
 
