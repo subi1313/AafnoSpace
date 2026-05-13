@@ -12,27 +12,27 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import com.AafnoSpace.dao.UserDAO;
-import com.AafnoSpace.model.UserModel;
 import com.AafnoSpace.utils.FileUploadUtil;
 import com.AafnoSpace.utils.SessionUtil;
+import com.AafnoSpace.dao.UserDAO;
+import com.AafnoSpace.model.UserModel;
 
 /**
- * Servlet implementation class EditAdminProfile
+ * Servlet implementation class EditUserProfile
  */
 @MultipartConfig(
 	    fileSizeThreshold = 1024 * 1024 * 2,
 	    maxFileSize = 1024 * 1024 * 10,
 	    maxRequestSize = 1024 * 1024 * 50
 )
-@WebServlet(asyncSupported = true, urlPatterns = { "/editAdminProfile" })
-public class EditAdminProfile extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/editUserProfile" })
+public class EditUserProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "profilepicture_uploads";
+	private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "profilepicture_uploads";   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditAdminProfile() {
+    public EditUserProfileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,7 +42,7 @@ public class EditAdminProfile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/editAdminProfile.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/editUserProfile.jsp").forward(request, response);
 	}
 
 	/**

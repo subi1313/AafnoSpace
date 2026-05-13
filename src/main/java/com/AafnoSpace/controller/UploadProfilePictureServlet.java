@@ -25,13 +25,13 @@ import com.AafnoSpace.utils.SessionUtil;
 	    maxRequestSize = 1024 * 1024 * 50		//50MB for HTTP request including other form fields
 	)
 @WebServlet(asyncSupported = true, urlPatterns = { "/uploadpfp" })
-public class UploadProfilePicture extends HttpServlet {
+public class UploadProfilePictureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "profilepicture_uploads";  
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UploadProfilePicture() {
+    public UploadProfilePictureServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
