@@ -5,20 +5,20 @@ import java.sql.PreparedStatement;
 import com.AafnoSpace.utils.DBconfig;
 
 public class ProductDAO {
-	public int insertProduct(int productId, String productName, String description, String category, double price, int quantity) throws Exception {
+	public int insertProduct(String productName, String description, String category, double price, int quantity, String imageName) throws Exception {
 
 		Connection con = DBconfig.getConnection();
 
-		String sql = "INSERT INTO product(ProductID, ProductName, Description, Category, Price, Quantity) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO product(ProductName, Description, Category, Price, Quantity, ImageName) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement pst = con.prepareStatement(sql);
 		
-		pst.setInt(1, productId);
-		pst.setString(2, productName);
-		pst.setString(3, description);
-		pst.setString(4, category);
-		pst.setDouble(5, price);
-		pst.setInt(6, quantity);
+		pst.setString(1, productName);
+		pst.setString(2, description);
+		pst.setString(3, category);
+		pst.setDouble(4, price);
+		pst.setInt(5, quantity);
+		pst.setString(6, imageName);
 		
 		int rowsAffected = pst.executeUpdate();
 		
