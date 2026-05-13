@@ -13,17 +13,6 @@
     src: url("../fonts/Arsenal/Arsenal-Regular.ttf");
 }
 
-:root {
-    --bg: #EFEEEB;
-    --sidebar-bg: #252420;
-    --card-bg: #252220;
-    --text-light: #f0ece4;
-    --text-dark: #1e1c1a;
-    --text-muted: #a09890;
-    --accent: #c8b89a;
-    --border: #3a3632;
-}
-
 body {
     font-family: 'CormorantGaramond', serif;
     background:  #EFEEEB;
