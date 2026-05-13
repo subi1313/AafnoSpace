@@ -15,9 +15,9 @@
 <body>
 
 <jsp:include page="/components/header.jsp"/>
-  <div class="layout">
+<div class="admin-profile">
                 <jsp:include page="/components/adminPanel.jsp" />
-            </div>
+         
 		<div class=maindiv>
             <div class="main">
                 <p class="mgmtheading">User Management</p>
@@ -85,6 +85,7 @@
             </c:otherwise>
         </c:choose>
     </div>
+</div>
 </div>
 </div>
 <script>
