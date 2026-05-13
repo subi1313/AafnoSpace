@@ -87,5 +87,14 @@
     </div>
 </div>
 </div>
+<script>
+function handleImageError(img, username, initials) {
+    const parent = img.parentElement;
+
+    img.style.display = "none";
+
+    parent.innerHTML = initials;
+}
+</script>
           </body>
           </html>
