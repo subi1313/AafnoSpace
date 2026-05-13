@@ -26,8 +26,8 @@
 
 body {
     font-family: 'CormorantGaramond', serif;
-    background: var(--bg);
-    color: var(--text-dark);
+    background:  #EFEEEB;
+    color:  #1e1c1a;
     min-height: 100vh;
 }
 
