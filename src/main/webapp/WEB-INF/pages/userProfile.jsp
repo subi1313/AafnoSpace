@@ -34,15 +34,15 @@
         <a href="${pageContext.request.contextPath}/editUserProfile" class="editLink">Edit Details</a>
       </div>
       <div class="fieldsGrid">
-        <div class="field"><p>First Name</p>
+        <div class="field"><label>First Name</label>
         <p>${user.firstName}</p></div>
-        <div class="field"><p>Last Name</p>
+        <div class="field"><label>Last Name</label>
         <p>${user.lastName}</p></div>
-        <div class="field"><p>Address</p>
+        <div class="field"><label>Address</label>
         <p>${user.address}</p></div>
-        <div class="field"><p>Email</p>
+        <div class="field"><label>Email</label>
         <p>${user.email}</p></div>
-        <div class="field"><p>Phone</p>
+        <div class="field"><label>Phone</label>
         <p>${user.phoneNo}</p></div>
       </div>
     </div>
