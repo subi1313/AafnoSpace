@@ -96,10 +96,10 @@ public class UserDAO {
 	        con.close();
 	        return users;
 	    }
-	   public static int updateStudent(int UserID, String firstName, String lastName, String address, String email, String phoneNo) throws Exception
+	   public static int updateUser(int UserID, String firstName, String lastName, String address, String email, String phoneNo) throws Exception
 	    {
 	    	Connection con=DBconfig.getConnection();
-	    	String sql="UPDATE students SET first_name=?, last_name=?, dob=?, email=?, number=? WHERE student_id=?";
+	    	String sql="UPDATE users SET firstName=?, lastName=?, address=?, email=?, phoneNo=? WHERE UserID=?";
 	    	PreparedStatement pst=con.prepareStatement(sql);;
 	    	pst.setString(1, firstName);
 	    	pst.setString(2, lastName);

@@ -46,22 +46,28 @@
       color: #f0ece4;
     }   
     .profilePicture {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    display: block;
+    background-color: #EFEEEB;
+    margin-bottom:20px;
+    margin-right:20px;
     }
     .profilePicture img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 3px solid #3a3632;
+    width: 70%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
     }
     .profilePictureEdit {
       font-size: 11px;
       color: #a09890;
       text-decoration: underline;
-      margin-top: 6px;
+      margin-top: 10px;
     }
     .detailPanel {
       background-color: #252420;
@@ -88,6 +94,7 @@
       color: #a09890;
       text-decoration: none;
       cursor: pointer;
+      margin-top:20px;
     }
     .fieldsGrid {
       display: flex;
