@@ -37,7 +37,7 @@
 			 <label>E-mail</label>
 			 <input type="text" name="email" value="${user.email}">
 			 <label>Phone Number</label>
-			 <input type="text" name="phone" value="${user.phoneNo}">
+			 <input type="text" name="phoneNo" value="${user.phoneNo}">
 			 </div>
 			 <button type="submit" class="submitButton">Save Changes</button>
 		 </form>
