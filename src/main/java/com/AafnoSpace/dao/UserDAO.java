@@ -1,16 +1,13 @@
 package com.AafnoSpace.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.AafnoSpace.model.UserModel;
 import com.AafnoSpace.utils.DBconfig;
-import com.AafnoSpace.model.UserModel;
 
 public class UserDAO {
 	public boolean registerUser(String firstName, String lastName, String username, String email, String password, String address, String phoneNo) throws Exception {
