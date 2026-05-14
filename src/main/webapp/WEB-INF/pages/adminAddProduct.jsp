@@ -90,6 +90,7 @@
                 img.style.height = "230px";
                 img.style.objectFit = "cover";
                 img.style.borderRadius = "8px";
+                img.style.margin = "10px 0px";
 
                 const preview = document.getElementById("imagePreview");
 

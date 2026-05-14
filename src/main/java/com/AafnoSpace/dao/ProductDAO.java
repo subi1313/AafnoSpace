@@ -100,11 +100,11 @@ public class ProductDAO {
 	
 	public int updateProduct(int productId, String productName,
             String description, String category,
-            double price, int quantity) throws Exception {
+            double price, int quantity, String imageName) throws Exception {
 
 		Connection con = DBconfig.getConnection();
 		
-		String sql = "UPDATE products SET ProductName=?, Description=?, Category=?, Price=?, Quantity=? WHERE ProductID=?";
+		String sql = "UPDATE product SET ProductName=?, Description=?, Category=?, Price=?, Quantity=?, ImageName=? WHERE ProductID=?";
 		
 		PreparedStatement pst = con.prepareStatement(sql);
 		
@@ -113,7 +113,8 @@ public class ProductDAO {
 		pst.setString(3, category);
 		pst.setDouble(4, price);
 		pst.setInt(5, quantity);
-		pst.setInt(6, productId);
+		pst.setString(6, imageName);
+        pst.setInt(7, productId);
 		
 		int rowsAffected = pst.executeUpdate();
 		

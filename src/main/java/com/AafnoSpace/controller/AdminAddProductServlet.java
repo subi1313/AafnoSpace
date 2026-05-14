@@ -56,13 +56,21 @@ public class AdminAddProductServlet extends HttpServlet {
 			String category = request.getParameter("category");
 			double price = Double.parseDouble(request.getParameter("price"));
 			int quantity = Integer.parseInt(request.getParameter("quantity"));
+			
+			if (category == null || category.equals("Select product category")) {
+			    response.setContentType("text/html");
+			    response.getWriter().println("<script>alert('Please select a valid product category!'); window.history.back();</script>");
+			    return;
+			}
 
 			//getting image file
 			Part filePart = request.getPart("productImage");
 	
 			//validating image
 			if (filePart == null || filePart.getSize() == 0) {
-				response.sendRedirect("add-product?error=ImageRequired");
+				response.setContentType("text/html");
+			    response.getWriter().println(
+			        "<script>alert('Please upload a product image!'); window.history.back();</script>");
 				return;
 			}
 	
@@ -87,9 +95,10 @@ public class AdminAddProductServlet extends HttpServlet {
 			int result = service.addProduct(productName, description, category, price, quantity, imageName);
 
 			if (result > 0) {
-				response.sendRedirect("add-product?success=true");
+				response.sendRedirect(request.getContextPath() + "/product-list");
 			} else {
-				response.sendRedirect("add-product?error=true");
+				response.setContentType("text/html");
+	            response.getWriter().println("<script>alert('Failed to add product!'); window.history.back();</script>");
 			}
 
 		} catch (Exception e) {
