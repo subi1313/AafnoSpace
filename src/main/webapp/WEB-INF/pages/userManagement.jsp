@@ -1,23 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>My Profile – आफ्नो SPACE</title>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
-</head>
-<body>
-<jsp:include page="/components/header.jsp"/>
-<div class="layout">
-	<jsp:include page="/components/adminPanel.jsp"/>
-  
-</div>
-<%@ include file="/components/footer.jsp" %>
-</body>
-</html>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
@@ -94,8 +76,23 @@
                                 <td>${u.email}</td>
                                 <td>${u.address}</td>
                                	<td>${u.phoneNo}</td>
-<td>${u.status}</td>
-                 
+								<td>
+    <form method="post" action="${pageContext.request.contextPath}/userManagement">
+		
+        <input type="hidden" name="userId" value="${u.userId}"/>
+		<!-- if user is currently active, upon toggling they should be inactive -->
+        <input type="hidden" name="status"
+               value="${u.status == 'Active' ? 'Inactive' : 'Active'}"/>
+
+        <label class="switch">
+            <input type="checkbox"
+                   ${u.status == 'Active' ? 'checked' : ''}
+                   onchange="this.form.submit()">
+            <span class="slider"></span>
+        </label>
+
+    </form>
+</td>
                             </tr>
                         </c:forEach>
                     </tbody>

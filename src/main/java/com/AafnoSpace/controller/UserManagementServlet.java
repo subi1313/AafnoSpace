@@ -34,10 +34,10 @@ public class UserManagementServlet extends HttpServlet {
 		try {
 			ListService service = new ListService();
 			
-            // getting data from service
+            // getting user data from service
             List<UserModel> users= service.fetchAll();
 
-            // setting the data
+            // setting the retrieved data
             request.setAttribute("users", users);
 
             // forward to JSP
@@ -51,8 +51,19 @@ public class UserManagementServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-	}
+		   try {
+			   //getParameter always returns a string
+		        int userId = Integer.parseInt(request.getParameter("userId"));
+		        String status = request.getParameter("status");
+		        
+		        //calling service method
+		        ListService service = new ListService();
+		        service.updateUserStatus(userId, status);
 
-}
+		        response.sendRedirect(request.getContextPath() + "/userManagement");
+
+		    } catch (Exception e) {
+		        throw new ServletException("Error updating status", e);
+		    }
+		}
+	}

@@ -115,4 +115,20 @@ public class UserDAO {
 	    	}
 	    	return rowsAffected;
 	    	}
+	   public int updateUserStatus(int userId, String status) throws Exception {
+		    Connection con = DBconfig.getConnection();
+
+		    String sql = "UPDATE users SET status = ? WHERE UserID = ?";
+
+		    PreparedStatement pst = con.prepareStatement(sql);
+		    pst.setString(1, status);
+		    pst.setInt(2, userId);
+
+		    int rowsAffected = pst.executeUpdate();
+
+		    pst.close();
+		    con.close();
+
+		    return rowsAffected;
+		}
 }

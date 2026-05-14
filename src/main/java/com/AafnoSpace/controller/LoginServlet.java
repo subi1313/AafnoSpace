@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
             	
             	// Using Session's setAttribute method to store userdata object in server memory
             	request.getSession().invalidate(); 	//killing the older registration session
+            	//Creating new session after login
             	SessionUtil.setAttribute(request, "user", userdata, 3600);
             	
             	// Capture and format the current time
@@ -76,7 +77,6 @@ public class LoginServlet extends HttpServlet {
                  }
 	           
 			} catch (Exception e) {
-				// Print error in console of server
 				e.printStackTrace();
 			}
         }
