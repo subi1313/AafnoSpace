@@ -1,78 +1,110 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Add Product</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminAddProduct.css">
 </head>
 
 <body>
-	<jsp:include page="../../components/header.jsp" />
+    <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-add">
-
-            <div class="admin-panel">
-
-            </div>
+        	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="add-main">
-                <h2>Add Product</h2>
-                <div class="add-info">
-                    <div class="add-details">
-                        <h3>Product Details </h3>
-
-                        <div class="detail-form">
-                            <label>Product Name</label>
-                            <input type="text" id="product-name" placeholder="Enter product name">
-                            <label>Product ID</label>
-                            <input type="text" id="product-id" placeholder="Enter product ID">
-                            <label>Category</label>
-                            <select id="category">
-                                <option>Select product category</option>
-                                <option>Minimal</option>
-                                <option>Japandi</option>
-                                <option>Modern</option>
-                                <option>Bohemian(Boho)</option>
-                                <option>Luxury</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="add-pic">
-                        <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png" alt="">
-                        <p>Your product image goes here!!</p>
-                        <span>Click to browse</span>
-                    </div>
-                </div>
-                <div class="inventory">
-                    <h3>Inventory and Pricing</h3>
-
-                    <div class="inventory-form">
-                        <div class="inv-form-part">
-                            <div class="form-part">
-                                <label>Selling Price</label>
-                                <input type="text" id="price" placeholder="Enter selling price">
-                            </div>
-
-                            <div class="form-part">
-                                <label>Quantity</label>
-                                <input type="text" id="quantity" placeholder="Enter product quantity">
+            	<h2>Add Product</h2>
+                <form action="${pageContext.request.contextPath}/add-product" method="post" enctype="multipart/form-data">
+                    <div class="add-info">
+                        <div class="add-details">
+                            <h3>Product Details </h3>
+                            <div class="detail-form">
+                                <label>Product Name</label>
+                                <input type="text" name="productName" placeholder="Enter product name">
+                                <label>Category</label>
+                                <select name="category">
+                                    <option>Select product category</option>
+                                    <option>Minimal</option>
+                                    <option>Japandi</option>
+                                    <option>Modern</option>
+                                    <option>Bohemian(Boho)</option>
+                                    <option>Luxury</option>
+                                </select>
                             </div>
                         </div>
-
-                        <label>Description</label>
-                        <textarea id="description"
-                            placeholder="Write a short description highlighting key benefits and features"></textarea>
+                        <div class="add-pic" id="imagePreview">
+                            <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png" alt="">
+                            <p>Your product image goes here!!</p>
+                            <label for="productImage" class="pic-upload-btn">
+    							Choose Image
+							</label>
+							<input type="file" name="productImage" id="productImage">
+							
+                        </div>
                     </div>
-                </div>
-                <div class="add-button">
-                    <button type="submit">Add Product</button>
-                </div>
+                    <div class="inventory">
+                        <h3>Inventory and Pricing</h3>
+
+                        <div class="inventory-form">
+                            <div class="inv-form-part">
+                                <div class="form-part">
+                                    <label>Selling Price</label>
+                                    <input type="text" name="price" placeholder="Enter selling price">
+                                </div>
+
+                                <div class="form-part">
+                                    <label>Quantity</label>
+                                    <input type="text" name="quantity" placeholder="Enter product quantity">
+                                </div>
+                            </div>
+
+                            <label>Description</label>
+                            <textarea name="description"
+                                placeholder="Write a short description highlighting key benefits and features"></textarea>
+                        </div>
+                    </div>
+                    <div class="add-button">
+                        <button type="submit">Add Product</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
+    <script>
+    document.getElementById("productImage").addEventListener("change", function(event) {
+
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.width = "100%";
+                img.style.height = "230px";
+                img.style.objectFit = "cover";
+                img.style.borderRadius = "8px";
+                img.style.margin = "10px 0px";
+
+                const preview = document.getElementById("imagePreview");
+
+                preview.querySelectorAll("img").forEach(i => i.remove());
+                const placeholderText = preview.querySelector("p");
+                if (placeholderText) placeholderText.style.display = "none";
+
+                preview.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+	</script>
 </body>
 
 </html>

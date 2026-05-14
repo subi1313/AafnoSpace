@@ -6,18 +6,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.AafnoSpace.model.ProductModel;
+import com.AafnoSpace.service.ProductService;
 
 /**
- * Servlet implementation class UploadProfilePicture
+ * Servlet implementation class AdminProductListServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/uploadpfp" })
-public class UploadProfilePicture extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/product-list" })
+public class AdminProductListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UploadProfilePicture() {
+    public AdminProductListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +30,17 @@ public class UploadProfilePicture extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/uploadProfilePicture.jsp").forward(request, response);
+		try {
+			ProductService service = new ProductService();
+            List<ProductModel> products = service.getAllProducts();
+
+            request.setAttribute("products", products);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		request.setAttribute("activeMenu", "product");
+		request.getRequestDispatcher("/WEB-INF/pages/adminProductList.jsp").forward(request, response);
 	}
 
 	/**
@@ -35,7 +48,7 @@ public class UploadProfilePicture extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect(request.getContextPath() + "/login");
+		doGet(request, response);
 	}
 
 }

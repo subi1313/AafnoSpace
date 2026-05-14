@@ -1,4 +1,4 @@
-   	.layout {
+.layout {
       display: flex;
       flex-direction: row;
       margin-top: 10px;
@@ -6,45 +6,61 @@
       margin-left:80px;
       margin-right:80px;
     }
- .sidebar {
-      width: 30%;
-      background-color: #252420;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px 0;
-      color: #f0ece4;
-      margin-right:30px;
-    }
-    .sidePanelLabel {
-      font-size: 22px;
-      color: #a09890;
-      margin: 10px 0 5px 20px;
-    }
-	.sidePanelLabel svg {
-      flex-shrink: 0;
-      opacity: 0.85;
-    }    
-    .sidePanelItem {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #f0ece4;
-      font-size: 22px;
-      padding-top: 7px;
-      padding-bottom: 7px;
-      padding-left: 8px;
-      padding-right: 28px;
-      margin-left: 8px;
-      margin-right: 8px;
-      border-radius: 4px;
-      font-family: "Arsenal", sans-serif;
-    }
-    .sidePanelItem:hover {
-      background-color: #2e2b28;
-    }
-    .sidePanelItem.active {
-      color: #c8b89a;
-    }
+    
+.admin-panel {
+    width: 20%;
+    margin-top: 30px;
+    border-radius: 10px;
+    height: 750px;
+    background-color: #252420;
+    font-family: Arsenal, serif;
+    padding: 20px;
+    color: #F2EBE3;
+    position: sticky;
+    top: 30px;
+}
+
+.admin-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0px 10px;
+}
+
+.admin-panel ul li a {
+    text-decoration: none;
+    color: #F2EBE3;
+    padding: 10px 12px;
+    font-size: 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 7px;
+    border-radius: 10px;
+}
+
+.admin-panel h2 {
+    font-size: 25px;
+    color: #F2EBE3;
+    margin: 15px 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.admin-panel h2 img,
+.admin-panel ul li a img {
+    width: 30px;
+    height: 30px;
+}
+
+.admin-panel ul li a:hover {
+    background-color: #3a3733;
+}
+
+.admin-panel ul li a.active {
+    color: #BDB5AC;
+}
+
+.admin-panel-bottom {
+	margin-top:300px;
+	}

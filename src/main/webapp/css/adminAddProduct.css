@@ -1,7 +1,5 @@
 body {
     background-color: #EFEEEB;
-    margin: 0px;
-    padding: 0px;
 }
 
 @font-face {
@@ -17,15 +15,7 @@ body {
 .admin-add {
     display: flex;
     gap: 50px;
-    margin: 0px 8.33%;
-}
-
-.admin-panel {
-    width: 20%;
-    border-radius: 10px;
-    height: 750px;
-    background-color: #252420;
-    font-family: Arsenal, serif;
+    margin: 20px 8.33%;
 }
 
 .add-main {
@@ -34,7 +24,6 @@ body {
 }
 
 .add-main h2 {
-	margin-top: 0px;
     font-size: 35px;
     color: #F2EBE3;
     padding: 5px 10px;
@@ -78,7 +67,6 @@ body {
 
 .add-pic {
     width: 30%;
-    margin: 50px 0px;
     border: dashed 2px #0a0a0a;
     border-radius: 10px;
     display: flex;
@@ -91,11 +79,22 @@ body {
     text-align: center;
 }
 
-.add-pic span {
-    margin-top: -5px;
-    color: #684FE4;
-    text-decoration: underline;
+.pic-upload-btn {
+    background-color: #252420;
+    color: #FEFDFC;
+    font-family: Cormorant Garamond, serif;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 10px 18px;
     cursor: pointer;
+}
+
+.pic-upload-btn:hover {
+    background-color: #38383a;
+}
+
+#productImage {
+    display: none;
 }
 
 .inventory {
@@ -141,7 +140,7 @@ textarea {
 .add-button button {
     padding: 10px 20px;
     background-color: #0A0A0A;
-    color: #FEFDFC;
+    color: #F2EBE3;
     border-radius: 10px;
     font-family: Cormorant Garamond, serif;
     font-size: 25px;
@@ -149,5 +148,5 @@ textarea {
 }
 
 .add-button button:hover {
-    background-color: #2f2f31;
+    background-color: #38383a;
 }

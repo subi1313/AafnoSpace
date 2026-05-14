@@ -1,24 +1,25 @@
 <%@ page isELIgnored="false" %>
 <!-- Side panel -->
-  <div class="sidebar">
-  	<div class="sidePanelLabel">
-  	<img src="${pageContext.request.contextPath}/images/main/mainmenu.png" alt="menu" style="width:20px;height:20px;">
-  	Main Menu
-      <a href="${pageContext.request.contextPath}/admin/profile" class="sidePanelItem active">
-      <img src="${pageContext.request.contextPath}/images/main/profile.png" alt="profile">
-      Profile</a>
-      <a href="${pageContext.request.contextPath}/admin/cart" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/shoppingCart.png" alt="cart">
-      Cart</a>
-      <a href="${pageContext.request.contextPath}/admin/orderHistory" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/myOrders.png" alt="orders">
-      My Orders</a>
+<div class="admin-panel">
+    <h2> <img src="./images/adminPanel/menu.png" alt="Menu Icon">Main menu</h2>
+    <ul>
+        <li><a href="${pageContext.request.contextPath}/admin-profile" class="${activeMenu == 'profile' ? 'active' : ''}"> <img
+                    src="${pageContext.request.contextPath}/images/adminPanel/profile.png" alt="Profile Icon">
+                Profile</a></li>
+        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'user' ? 'active' : ''}"> <img
+                    src="${pageContext.request.contextPath}/images/adminPanel/shopping-cart.png" alt="Cart Icon"> Cart</a>
+        </li>
+        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'order' ? 'active' : ''}"> <img
+                    src="${pageContext.request.contextPath}/images/adminPanel/order.png" alt="Order Icon"> Orders</a>
+        </li>
+    </ul>
+    <div class="admin-panel-bottom">
+        <h2> <img src="${pageContext.request.contextPath}/images/adminPanel/others.png" alt="Others Icon"> Others
+        </h2>
+        <ul>
+            <li><a href="#"> <img src="${pageContext.request.contextPath}/images/adminPanel/logout.png"
+                        alt="Log Out Icon"> Log Out</a>
+            </li>
+        </ul>
     </div>
-    <div class="sidePanelLabel">
-      <img src="${pageContext.request.contextPath}/images/main/others.png" alt="menu" style="width:20px;height:20px;">
-  	Others
-      <a href="${pageContext.request.contextPath}/admin/logout" class="sidePanelItem">
-      <img src="${pageContext.request.contextPath}/images/main/logout.png" alt="dashboard">
-      Logout
-      </a>
-    </div>
+</div>

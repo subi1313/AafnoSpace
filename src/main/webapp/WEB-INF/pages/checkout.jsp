@@ -3,16 +3,16 @@
         <html>
 
         <head>
-            <title>Order Checkout Page</title>
+            <title>Order Checkout– आफ्नो SPACE</title>
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/orderCheckout.css">
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
         </head>
         <body>
         <jsp:include page="/components/header.jsp"/>
-            <div class="layout">
+            <div class="admin-profile">
                 <jsp:include page="/components/userPanel.jsp" />
-            </div>
+            
 
             <div class="main">
                 <p class="orderconfirmheading">Order Confirmation</p>
@@ -64,15 +64,16 @@
                 </div>
                 <div class="paymentbg">
                     <p>Payment Method</p>
-                     <select class="paymentselect">
+                     <form action="checkout" method="post">
+    <select name="payment" class="paymentselect">
         <option value="cash">Cash</option>
         <option value="online">Online</option>
     </select>
-</div>
-                     </div>
-             <div>
-                        <button type="submit">Place Order</button>
-                    </div>       
+    </div>
+    </div>
+    <button type="submit">Place Order</button>
+</form>    
+			
 			</div>
         </body>
 
