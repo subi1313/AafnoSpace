@@ -138,3 +138,6 @@
       border-radius: 10px;
       cursor: pointer;
     }
+
+    .qty-btn{
+    background:red;color:white;}

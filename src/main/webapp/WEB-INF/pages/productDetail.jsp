@@ -41,9 +41,7 @@
         
 		<form action="${pageContext.request.contextPath}/cart" method="post">
 		
-		    <input type="hidden" name="UserID" value="1">
-		
-		    <input type="hidden" name="ProductID" value="1">
+		    <input type="hidden" name="ProductID" value="2">
 		
 		    <button type="submit" class="add-to-cart">
 		        Add to Cart

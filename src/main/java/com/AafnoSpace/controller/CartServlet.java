@@ -6,81 +6,82 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
+import com.AafnoSpace.model.CartModel;
 import com.AafnoSpace.model.UserModel;
 import com.AafnoSpace.service.CartService;
 import com.AafnoSpace.utils.SessionUtil;
-import com.AafnoSpace.model.*;
-/**
- * Servlet implementation class CartServlet
- */
+
 @WebServlet(asyncSupported = true, urlPatterns = { "/cart" })
 public class CartServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CartServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-    //Read Operation (View Cart)
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    private static final long serialVersionUID = 1L;
+    private final CartService service = new CartService();
 
-		request.getRequestDispatcher("/WEB-INF/pages/cart.jsp")
-		.forward(request, response);
-	}
-	
-	//Add to Cart
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException, IOException {
-	
-//	UserModel user=(UserModel) request.getAttribute("user");
-	
-	//user not logged in
-//	if(user==null) {
-//		response.sendRedirect(
-//		request.getContextPath() + "/login");
-//		return;
-//	}	
-//	
-//	String UserID = String.valueOf(user.getuserId());
-	
-	
-	String UserID = request.getParameter("UserID"); //getting user id from front end 
-	String ProductID = request.getParameter("ProductID");
-	
-	CartService service = new CartService();
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
+            if (user == null) {
+                user = new UserModel();
+                user.setuserId(1); // hardcoded for testing — remove when auth is ready
+            }
 
-    try {
+            List<CartModel> cartItems = service.getCartItems(user.getuserId());
+            request.setAttribute("cartItems", cartItems);
+            request.getRequestDispatcher("/WEB-INF/pages/cart.jsp")
+                    .forward(request, response);
 
-        boolean result =
-        service.addCart(UserID, ProductID);
-
-        if(result) {
-
-            response.sendRedirect(
-            request.getContextPath() + "/cart");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        else {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-            response.getWriter().println(
-            "Failed To Add Cart"
-            );
+        String action = request.getParameter("action");
+
+        try {
+            UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
+            if (user == null) {
+                user = new UserModel();
+                user.setuserId(1); // hardcoded for testing — remove when auth is ready
+            }
+
+            // ADD TO CART
+            if (action == null || action.equals("add")) {
+                String productId = request.getParameter("ProductID");
+                boolean result = service.addCart(
+                        String.valueOf(user.getuserId()),
+                        productId
+                );
+                if (result) {
+                    response.sendRedirect(request.getContextPath() + "/cart"); 
+                } else {
+                    response.getWriter().println("Failed To Add Cart");
+                }
+                return;
+            }
+
+            // UPDATE / DELETE CART
+            String cartItemIdStr = request.getParameter("cartItemId");
+            if (cartItemIdStr != null) {
+                int cartItemId = Integer.parseInt(cartItemIdStr);
+                switch (action) {
+                    case "increase": service.increaseQuantity(cartItemId); break;
+                    case "decrease": service.decreaseQuantity(cartItemId); break;
+                    case "delete":   service.deleteCartItem(cartItemId);   break;
+                }
+            }
+
+            response.sendRedirect(request.getContextPath() + "/cart");
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
-
-    catch(Exception e) {
-
-        e.printStackTrace();
-    }
-}
 }
