@@ -18,7 +18,7 @@ import com.AafnoSpace.utils.SessionUtil;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/login" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/login", ""})
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
