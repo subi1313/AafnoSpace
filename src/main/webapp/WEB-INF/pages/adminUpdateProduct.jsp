@@ -6,75 +6,100 @@
 <head>
     <title>Update Product</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUpdateProduct.css">
 </head>
 
 <body>
-	<jsp:include page="../../components/header.jsp" />
+    <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-update">
+        	<jsp:include page="../../components/adminPanel.jsp" />
+        	<div class="update-main">
+                <form action="${pageContext.request.contextPath}/update-product" method="post" enctype="multipart/form-data">
+                    <h2>Update Product</h2>
+                    <div class="update-info">
+                        <div class="update-details">
+                            <h3>Product Details </h3>
 
-            <div class="admin-panel">
-
-            </div>
-            <div class="update-main">
-                <h2>Update Product</h2>
-                <div class="update-info">
-                    <div class="update-details">
-                        <h3>Product Details </h3>
-
-                        <div class="detail-form">
-                            <label>Product Name</label>
-                            <input type="text" id="product-name" value="${product.name}">
-                            <label>Product ID</label>
-                            <input type="text" id="product-id" value="${product.id}">
-                            <label>Category</label>
-                            <select id="category">
-                                <option value="Minimal" ${product.category=='Minimal' ? 'selected' : '' }>Minimal
-                                </option>
-                                <option value="Japandi" ${product.category=='Japandi' ? 'selected' : '' }>Japandi
-                                </option>
-                                <option value="Modern" ${product.category=='Modern' ? 'selected' : '' }>Modern
-                                </option>
-                                <option value="Bohemian" ${product.category=='Bohemian' ? 'selected' : '' }>Bohemian
-                                </option>
-                                <option value="Luxury" ${product.category=='Luxury' ? 'selected' : '' }>Luxury
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="update-pic">
-                        <img src="${pageContext.request.contextPath}/images/adminUpdateProduct/product.png" alt="Product Image">
-                        <p>Wanna add another image?</p>
-                        <span>Click to browse</span>
-                    </div>
-                </div>
-                <div class="inventory">
-                    <h3>Inventory and Pricing</h3>
-
-                    <div class="inventory-form">
-                        <div class="inv-form-part">
-                            <div class="form-part">
-                                <label>Selling Price</label>
-                                <input type="text" id="price" value="${product.price}">
-                            </div>
-
-                            <div class="form-part">
-                                <label>Quantity</label>
-                                <input type="text" id="quantity" value="${product.quantity}">
+                            <div class="detail-form">
+                                <label>Product ID</label>
+                                <input type="hidden" name="productId" value="${product.productId}">
+                                <input type="text" id="product-id" value="${product.productId}" readonly>
+                                <label>Product Name</label>
+                                <input type="text" id="product-name" name="productName" value="${product.productName}">
+                                <label>Category</label>
+                                <select id="category" name="category">
+                                    <option value="Minimal" ${product.category=='Minimal' ? 'selected' : '' }>Minimal
+                                    </option>
+                                    <option value="Japandi" ${product.category=='Japandi' ? 'selected' : '' }>Japandi
+                                    </option>
+                                    <option value="Modern" ${product.category=='Modern' ? 'selected' : '' }>Modern
+                                    </option>
+                                    <option value="Bohemian" ${product.category=='Bohemian' ? 'selected' : '' }>Bohemian
+                                    </option>
+                                    <option value="Luxury" ${product.category=='Luxury' ? 'selected' : '' }>Luxury
+                                    </option>
+                                </select>
                             </div>
                         </div>
-
-                        <label>Description</label>
-                        <textarea id="description">${product.description}</textarea>
+                        <div class="update-pic" id="imagePreview">
+                            <img src="${pageContext.request.contextPath}/product-image?name=${product.imageName}" alt="Product Image">
+                            <label for="productImage" class="pic-upload-btn">
+                                Choose Image
+                            </label>
+                            <input type="file" name="productImage" id="productImage">
+                        </div>
                     </div>
-                </div>
-                <div class="update-button">
-                    <button type="submit">Update Product</button>
-                </div>
+                    <div class="inventory">
+                        <h3>Inventory and Pricing</h3>
+
+                        <div class="inventory-form">
+                            <div class="inv-form-part">
+                                <div class="form-part">
+                                    <label>Selling Price</label>
+                                    <input type="text" id="price" name="price" value="${product.price}">
+                                </div>
+
+                                <div class="form-part">
+                                    <label>Quantity</label>
+                                    <input type="text" id="quantity" name="quantity" value="${product.quantity}">
+                                </div>
+                            </div>
+
+                            <label>Description</label>
+                            <textarea id="description" name="description">${product.description}</textarea>
+                        </div>
+                    </div>
+                    <div class="update-button">
+                        <button type="submit">Update Product</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
+    <script>
+    document.getElementById("productImage").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.width = "100%";
+                img.style.height = "340px";
+                img.style.objectFit = "cover";
+                img.style.borderRadius = "8px";
+                img.style.margin = "20px 0px";
+
+                const preview = document.getElementById("imagePreview");
+                preview.querySelectorAll("img").forEach(i => i.remove());
+                preview.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    </script>
 </body>
 
 </html>

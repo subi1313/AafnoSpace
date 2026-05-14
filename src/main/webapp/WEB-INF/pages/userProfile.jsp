@@ -5,15 +5,14 @@
 <html lang="en">
 <head>
   <title>My Profile – आफ्नो SPACE</title>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userProfile.css">
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/userProfile.css">
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
 </head>
 <body>
 <jsp:include page="/components/header.jsp"/>
 <div class="admin-profile">
-	<jsp:include page="/components/userPanel.jsp"/>
-  
+<jsp:include page="/components/userPanel.jsp"/>
   <!--Customer main information card-->
   <div class="main">
     <p class="pageTitle">My Profile</p>
@@ -57,10 +56,10 @@
 <script>
 function handleImageWrror(img,username,initials)
 {
-	const parent=img.parentElement;
-	img.style.display="none";
-	parent.innerHTML=initials;
-	}
+    const parent=img.parentElement;
+    img.style.display="none";
+    parent.innerHTML=initials;
+    }
 </script>
 <%@ include file="/components/footer.jsp" %>
 </body>

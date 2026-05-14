@@ -1,0 +1,95 @@
+body {
+    background-color: #EFEEEB;
+}
+
+@font-face {
+    font-family: Cormorant Garamond;
+    src: url(./Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: Arsenal;
+    src: url(./Arsenal/Arsenal-Regular.ttf) format('truetype');
+}
+
+.admin-list {
+    display: flex;
+    gap: 50px;
+    margin: 20px 8.33%;
+}
+
+.list-main {
+    width: 80%;
+}
+
+.list-top {
+    font-family: Cormorant Garamond, serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.list-top h2 {
+    font-size: 36px;
+    color: #252420;
+}
+
+.list-top a button {
+    background-color: #252420;
+    color: #F2EBE3;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+}
+
+.list-top a button:hover {
+    background-color: #3a3733;
+}
+
+.list-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arsenal, serif;
+}
+
+.list-table th {
+    background-color: #252420;
+    color: #F2EBE3;
+    font-size: 18px;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    text-align: left;
+}
+
+.list-table td {
+    color: #252420;
+    border: 1px solid #dddddd;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.list-table tbody tr:hover {
+    background-color: #e7e5e1;
+}
+
+.update img,
+.delete img {
+    width: 18px;
+    height: 18px;
+}
+
+.update,
+.delete {
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 6px;
+}
+
+.update:hover,
+.delete:hover {
+    transform: scale(1.1);
+}

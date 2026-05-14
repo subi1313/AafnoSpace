@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,12 +17,11 @@
         <div class="admin-add">
         	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="add-main">
-                <h2>Add Product</h2>
-                <form action="add-product-pic" method="post" enctype="multipart/form-data">
+            	<h2>Add Product</h2>
+                <form action="${pageContext.request.contextPath}/add-product" method="post" enctype="multipart/form-data">
                     <div class="add-info">
                         <div class="add-details">
                             <h3>Product Details </h3>
-
                             <div class="detail-form">
                                 <label>Product Name</label>
                                 <input type="text" name="productName" placeholder="Enter product name">
@@ -35,15 +35,15 @@
                                     <option>Luxury</option>
                                 </select>
                             </div>
-
                         </div>
-                        <div class="add-pic">
-                            <img src="./images/adminAddProduct/gallery.png" alt="">
+                        <div class="add-pic" id="imagePreview">
+                            <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png" alt="">
                             <p>Your product image goes here!!</p>
-                            <label class="pic-upload-btn">
-                                Choose Image
-                                <input type="file" name="productImage" accept="image/*">
-                            </label>
+                            <label for="productImage" class="pic-upload-btn">
+    							Choose Image
+							</label>
+							<input type="file" name="productImage" id="productImage">
+							
                         </div>
                     </div>
                     <div class="inventory">
@@ -74,6 +74,37 @@
             </div>
         </div>
     </section>
+    <script>
+    document.getElementById("productImage").addEventListener("change", function(event) {
+
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.width = "100%";
+                img.style.height = "230px";
+                img.style.objectFit = "cover";
+                img.style.borderRadius = "8px";
+                img.style.margin = "10px 0px";
+
+                const preview = document.getElementById("imagePreview");
+
+                preview.querySelectorAll("img").forEach(i => i.remove());
+                const placeholderText = preview.querySelector("p");
+                if (placeholderText) placeholderText.style.display = "none";
+
+                preview.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+	</script>
 </body>
 
 </html>
