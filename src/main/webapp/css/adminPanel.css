@@ -1,4 +1,4 @@
-	.layout {
+.layout {
       display: flex;
       flex-direction: row;
       margin-top: 10px;
@@ -64,4 +64,3 @@
 .admin-panel-bottom {
 	margin-top:300px;
 	}
-	

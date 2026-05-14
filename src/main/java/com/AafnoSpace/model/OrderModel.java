@@ -1,13 +1,13 @@
 package com.AafnoSpace.model;
+import java.util.Date;
 
 import java.util.Date;
 
 public class OrderModel {
-
-	    private int orderId;
-	    private int userId;
-	    private Date orderDate;
-	    private int paymentId;
+    private int orderId;
+    private int userId;
+    private Date orderDate;
+    private int paymentId;
 
 	    public OrderModel(int orderId, int userId, Date orderDate, int paymentId) {
 	        this.orderId = orderId;
@@ -48,3 +48,4 @@ public class OrderModel {
 	        this.paymentId = paymentId;
 	    }
 }
+

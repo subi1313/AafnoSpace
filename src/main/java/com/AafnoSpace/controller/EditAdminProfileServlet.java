@@ -21,14 +21,14 @@ import com.AafnoSpace.utils.SessionUtil;
  * Servlet implementation class EditAdminProfile
  */
 @MultipartConfig(
-	    fileSizeThreshold = 1024 * 1024 * 2,
-	    maxFileSize = 1024 * 1024 * 10,
-	    maxRequestSize = 1024 * 1024 * 50
+        fileSizeThreshold = 1024 * 1024 * 2,
+        maxFileSize = 1024 * 1024 * 10,
+        maxRequestSize = 1024 * 1024 * 50
 )
 @WebServlet(asyncSupported = true, urlPatterns = { "/editAdminProfile" })
 public class EditAdminProfileServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "profilepicture_uploads";
+    private static final long serialVersionUID = 1L;
+    private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "profilepicture_uploads";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,49 +37,49 @@ public class EditAdminProfileServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/editAdminProfile.jsp").forward(request, response);
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        request.getRequestDispatcher("/WEB-INF/pages/editAdminProfile.jsp").forward(request, response);
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
         String firstName=request.getParameter("firstName");
         String lastName=request.getParameter("lastName");
         String address=request.getParameter("address");
         String email=request.getParameter("email");
         String phoneNo=request.getParameter("phoneNo");
         try {
-        	int rowsAffected=UserDAO.updateUser(user.getuserId(),firstName,lastName,address,email,phoneNo);
-        	if (rowsAffected > 0) {
-             	user.setFirstName(firstName);
-             	user.setLastName(lastName);
-             	user.setaddress(address);
-             	user.setEmail(email);
-             	user.setNumber(phoneNo);
-             	
-            	SessionUtil.setAttribute(request, "user", user, 3600);
-				Part filePart = request.getPart("profileImage");
-			        if (filePart != null && filePart.getSize() > 0) {
-			            if (FileUploadUtil.isImage(filePart)) {
-			                String extension = FileUploadUtil.getFileExtension(filePart.getSubmittedFileName());
-			                String fileName = user.getUserName() + extension;
-			                FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
-			                response.sendRedirect(request.getContextPath() + "/admin-profile");
-			            } else {
-			                SessionUtil.setAttribute(request, "error", "Invalid image type.", 60);
-			                response.sendRedirect(request.getContextPath() + "/editAdminProfile");
-			            }
-			        } else {
-			                response.sendRedirect(request.getContextPath() + "/admin-profile");
-			        }
-        	}
+            int rowsAffected=UserDAO.updateUser(user.getuserId(),firstName,lastName,address,email,phoneNo);
+            if (rowsAffected > 0) {
+                 user.setFirstName(firstName);
+                 user.setLastName(lastName);
+                 user.setaddress(address);
+                 user.setEmail(email);
+                 user.setNumber(phoneNo);
+                 
+                SessionUtil.setAttribute(request, "user", user, 3600);
+                Part filePart = request.getPart("profileImage");
+                    if (filePart != null && filePart.getSize() > 0) {
+                        if (FileUploadUtil.isImage(filePart)) {
+                            String extension = FileUploadUtil.getFileExtension(filePart.getSubmittedFileName());
+                            String fileName = user.getUserName() + extension;
+                            FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
+                            response.sendRedirect(request.getContextPath() + "/admin-profile");
+                        } else {
+                            SessionUtil.setAttribute(request, "error", "Invalid image type.", 60);
+                            response.sendRedirect(request.getContextPath() + "/editAdminProfile");
+                        }
+                    } else {
+                            response.sendRedirect(request.getContextPath() + "/admin-profile");
+                    }
+            }
         } catch (SQLException e) {
                  e.printStackTrace();
                  SessionUtil.setAttribute(request, "error", "Database Error: " + e.getMessage(), 60);
