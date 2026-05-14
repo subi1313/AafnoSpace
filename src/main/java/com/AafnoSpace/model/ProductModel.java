@@ -1,6 +1,7 @@
 package com.AafnoSpace.model;
 
 public class ProductModel {
+
 	private int productId;
     private String productName;
     private String description;
