@@ -10,7 +10,7 @@ import java.io.IOException;
 import com.AafnoSpace.model.UserModel;
 import com.AafnoSpace.service.CartService;
 import com.AafnoSpace.utils.SessionUtil;
-
+import com.AafnoSpace.model.*;
 /**
  * Servlet implementation class CartServlet
  */
@@ -32,7 +32,9 @@ public class CartServlet extends HttpServlet {
     //Read Operation (View Cart)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/cart.jsp").forward(request, response);
+
+		request.getRequestDispatcher("/WEB-INF/pages/cart.jsp")
+		.forward(request, response);
 	}
 	
 	//Add to Cart

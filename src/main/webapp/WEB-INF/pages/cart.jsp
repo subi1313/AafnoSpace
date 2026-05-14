@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,51 +12,87 @@
       <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 </head>
 <body>
-	<!-- Header -->
-    <jsp:include page="/components/header.jsp" />
-    
-    <!-- User side panel -->
-	<div class="side-panel">
-    <div class="layout">
+<!-- Header -->
+<jsp:include page="/components/header.jsp" />
+
+<div class="layout">
+
+    <!-- SIDE PANEL -->
+    <div class="side-panel">
         <jsp:include page="/components/userPanel.jsp" />
     </div>
 
-    <!-- Cart cards + Buy Now -->
+    <!-- CART AREA -->
     <div class="product-cart">
 
-    <c:forEach var="item" items="${cartList}">
+        <c:forEach var="item" items="${cartItems}">
 
-        <div class="card">
+            <div class="card">
 
-            <div class="image-holder">
-                <img src="${pageContext.request.contextPath}/images/cart/download.jpg">
+                <form action="${pageContext.request.contextPath}/cart"
+                      method="post"
+                      style="display:flex; width:100%; align-items:center; gap:16px;">
+
+                    <input type="hidden" name="cartItemId" value="${item.cartItemId}">
+
+                    <input type="checkbox" class="cart-checkbox">
+
+                    <div class="image-holder">
+                        <img src="${pageContext.request.contextPath}/images/default.png">
+                    </div>
+
+                    <div class="product-name">
+                        ${item.productName}
+                    </div>
+
+                    <div class="price">
+                        <div class="price-label">Price</div>
+                        <div class="price-value">Rs. ${item.price}</div>
+                    </div>
+
+                    <div class="quantity">
+                        <div class="qty-label">Quantity</div>
+
+                        <div class="qty-property">
+
+                            <button type="submit"
+                                    name="action"
+                                    value="decrease"
+                                    class="qty-btn">−</button>
+
+                            <div class="qty-value">
+                                ${item.quantity}
+                            </div>
+
+                            <button type="submit"
+                                    name="action"
+                                    value="increase"
+                                    class="qty-btn">+</button>
+
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
 
-            <span class="product-name">
-                ${item.productName}
-            </span>
+        </c:forEach>
 
-            <div class="price">
-                <div class="price-label">Price</div>
-                <div class="price-value">
-                    Rs. ${item.price}
-                </div>
-            </div>
+        <!-- BUY BUTTON -->
+        <form action="${pageContext.request.contextPath}/cart"
+              method="post"
+              class="buy-now">
 
-            <div class="quantity">
-                <div class="qty-label">Quantity</div>
-                <div class="qty-value">
-                    ${item.quantity}
-                </div>
-            </div>
+            <button type="submit"
+                    name="action"
+                    value="checkout"
+                    class="buy-btn">
+                Buy Now
+            </button>
 
-        </div>
+        </form>
 
-    </c:forEach>
-
+    </div>
 </div>
-  </div>
-
-
 </body>
 </html>

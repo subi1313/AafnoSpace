@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.AafnoSpace.model.CartModel;
 import com.AafnoSpace.utils.DBconfig;
 
 public class CartDAO {
@@ -22,7 +25,7 @@ public class CartDAO {
         // check if user has already cart
 
         String checkCart =
-        "SELECT * FROM Cart WHERE UserID=?";
+        "SELECT * FROM cart WHERE UserID=?";
 
         PreparedStatement cartPst =
         con.prepareStatement(checkCart);
@@ -45,7 +48,7 @@ public class CartDAO {
         else {
 
             String createCart =
-            "INSERT INTO Cart(UserID) VALUES(?)";
+            "INSERT INTO cart(UserID) VALUES(?)";
 
             PreparedStatement createPst =
             con.prepareStatement(
@@ -70,7 +73,7 @@ public class CartDAO {
         // CHECK PRODUCT ALREADY EXISTS
 
         String checkProduct =
-        "SELECT * FROM User_Product_Cart " +
+        "SELECT * FROM user_product_cart " +
         "WHERE CartID=? AND ProductID=?";
 
         PreparedStatement checkPst =
@@ -88,7 +91,7 @@ public class CartDAO {
         if(checkRs.next()) {
 
             String updateQty =
-            "UPDATE User_Product_Cart " +
+            "UPDATE user_product_cart " +
             "SET Quantity = Quantity + 1 " +
             "WHERE CartID=? AND ProductID=?";
 
@@ -113,7 +116,7 @@ public class CartDAO {
         else {
 
             String insertProduct =
-            "INSERT INTO User_Product_Cart(ProductID, CartID, Quantity) " +
+            "INSERT INTO user_product_cart(ProductID, CartID, Quantity) " +
             "VALUES(?,?,1)";
 
             PreparedStatement pst =
@@ -131,5 +134,48 @@ public class CartDAO {
 
             return rows > 0;
         }
+    }
+    
+    //Read (View cart items)
+    
+    public List<CartModel> getCartItems(int UserID) throws Exception {
+    	List<CartModel> cartItems = new ArrayList<>();
+    	
+    	Connection con = DBconfig.getConnection();
+    	
+    	String sql = "SELECT"
+    			+ "upc.CartItemID, "
+    			+ "p.ProductID, "
+    			+ "p.ProductName, "
+    			+ "p.Price, "
+    			+ "upc.Quantity "
+    			+ "FROM user_product_cart upc "
+    			+ "JOIN product p ON upc.ProductID = p.ProductID "
+    			+ "JOIN cart c ON c.CartID = upc.CartID "
+    			+ "WHERE c.UserID=?";
+    	
+    	PreparedStatement pst = con.prepareStatement(sql);
+    	pst.setInt(1, UserID);
+    	
+    	ResultSet rs = pst.executeQuery();
+    	
+    	while(rs.next()) {
+    		
+    	CartModel item = new CartModel();
+    	
+    	item.setCartItemId(rs.getInt("CartItemID"));
+    	item.setProductId(rs.getInt("ProductID"));
+    	item.setProductName(rs.getString("ProductName"));
+    	item.setPrice(rs.getDouble("Price"));
+    	item.setQuantity(rs.getInt("Quantity"));
+    	
+    	cartItems.add(item);
+    	
+    	}
+    	rs.close();
+    	pst.close();
+    	con.close();
+    	
+    	return cartItems;
     }
 }
