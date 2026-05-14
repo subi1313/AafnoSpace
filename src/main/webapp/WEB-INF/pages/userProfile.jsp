@@ -12,12 +12,7 @@
 <body>
 <jsp:include page="/components/header.jsp"/>
 <div class="admin-profile">
-<<<<<<< HEAD
-    <jsp:include page="/components/userPanel.jsp"/>
-=======
-	<jsp:include page="/components/userPanel.jsp"/>
->>>>>>> 9a2eea9d6e6e1a5ea863df14faa417a2dfd56f15
-  
+<jsp:include page="/components/userPanel.jsp"/>
   <!--Customer main information card-->
   <div class="main">
     <p class="pageTitle">My Profile</p>

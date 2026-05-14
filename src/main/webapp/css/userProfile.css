@@ -7,12 +7,7 @@
     font-family: "Inter";
     src: url("../fonts/InterVariable.woff2");
 }
- 
-@font-face {
-    font-family: "Arsenal";
-    src: url("../fonts/Arsenal/Arsenal-Regular.ttf");
-}
- 
+
 body {
     font-family: 'CormorantGaramond', serif;
     background: #EFEEEB;
