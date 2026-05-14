@@ -10,14 +10,14 @@ import java.io.IOException;
 /**
  * Servlet implementation class AdminProfile
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/AdminProfile" })
-public class AdminProfile extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/admin-profile" })
+public class AdminProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminProfile() {
+    public AdminProfileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

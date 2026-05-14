@@ -12,11 +12,6 @@ body {
     src: url("../fonts/InterVariable.woff2");
 }
 
-.maindiv{
-	display:flex;
-	flex-direction:row;
-}
-
  .layout {
       display: flex;
       flex-direction: row;
@@ -38,7 +33,7 @@ body {
       margin-bottom: 20px;
       margin-top: 0px;
       margin-left:200px;
-      font-family:"CormorantGaramond"
+      font-family:"CormorantGaramond";
     }
    
 .productbg{

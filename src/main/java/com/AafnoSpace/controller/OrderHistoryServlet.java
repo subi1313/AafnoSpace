@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class UploadProfilePicture
+ * Servlet implementation class OrderHistory
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/uploadpfp" })
-public class UploadProfilePicture extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/orderHistory" })
+public class OrderHistoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UploadProfilePicture() {
+    public OrderHistoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class UploadProfilePicture extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/uploadProfilePicture.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/orderHistory.jsp").forward(request, response);
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class UploadProfilePicture extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect(request.getContextPath() + "/login");
+		doGet(request, response);
 	}
 
 }

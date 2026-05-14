@@ -7,20 +7,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.AafnoSpace.model.ProductModel;
-import com.AafnoSpace.service.ProductService;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
- * Servlet implementation class AdminUpdateProductServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/update-product" })
-public class AdminUpdateProductServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/logout" })
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminUpdateProductServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,14 +28,17 @@ public class AdminUpdateProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		SessionUtil.invalidateSession(request);
+		response.sendRedirect(request.getContextPath() + "/login");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
