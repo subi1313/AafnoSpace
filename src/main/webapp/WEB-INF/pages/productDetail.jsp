@@ -37,9 +37,19 @@
             <li>Material: Metal case, Acrylic Lampshade</li>
         </ul>
 
-        <button class="buy-now">Buy Now</button>
-        <button class="add-to-cart">Add to Cart</button>
-
+        <button class="buy-now" >Buy Now</button>
+        
+		<form action="${pageContext.request.contextPath}/cart" method="post">
+		
+		    <input type="hidden" name="UserID" value="1">
+		
+		    <input type="hidden" name="ProductID" value="1">
+		
+		    <button type="submit" class="add-to-cart">
+		        Add to Cart
+		    </button>
+		
+		</form>
     </div>
 
 </div>
