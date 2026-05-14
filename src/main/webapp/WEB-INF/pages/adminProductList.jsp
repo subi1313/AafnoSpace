@@ -19,7 +19,7 @@
             <div class="list-main">
                 <div class="list-top">
                     <h2>Product List</h2>
-                    <a href="/add-product">
+                    <a href="${pageContext.request.contextPath}/add-product">
                         <button>Add Product</button>
                     </a>
                 </div>
@@ -39,19 +39,39 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Farmhouse Wooden Table Wall Table Unique Home Decor </td>
-                                <td>Bohemian</td>
-                                <td>7</td>
-                                <td>28500</td>
-                                <td>Bring warmth and rustic charm into your space with this beautifully crafted
-                                    Farmhouse Wooden ...</td>
-                                <td><button class="update"><img src="${pageContext.request.contextPath}/images/productList/update.png"
-                                            alt="Update Icon"></button></td>
-                                <td><button class="delete"><img src="${pageContext.request.contextPath}/images/productList/delete.png"
-                                            alt="Delete Icon"></button></td>
-                            </tr>
+                            <c:forEach var="p" items="${products}">
+
+						        <tr>
+						            <td>${p.productId}</td>
+						            <td>${p.productName}</td>
+						            <td>${p.category}</td>
+						            <td>${p.quantity}</td>
+						            <td>${p.price}</td>
+						            <td>${p.description}</td>
+						
+						            <td>
+									    <a href="update-product?id=${p.productId}">
+									        <button class="update" type="button">
+									            <img src="${pageContext.request.contextPath}/images/productList/update.png"
+									                 alt="Update Icon">
+									        </button>
+									    </a>
+									</td>
+						
+						            <td>
+									    <form action="delete-product" method="post" style="display:inline;">
+									        <input type="hidden" name="id" value="${p.productId}" />
+									
+									        <button class="delete" type="submit">
+									            <img src="${pageContext.request.contextPath}/images/productList/delete.png"
+									                 alt="Delete Icon">
+									        </button>
+									    </form>
+									</td>
+						        </tr>
+						
+						    </c:forEach>
+
                         </tbody>
                     </table>
                 </div>

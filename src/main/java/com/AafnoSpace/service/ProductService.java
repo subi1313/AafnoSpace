@@ -1,6 +1,9 @@
 package com.AafnoSpace.service;
 
+import java.util.List;
+
 import com.AafnoSpace.dao.ProductDAO;
+import com.AafnoSpace.model.ProductModel;
 
 public class ProductService {
 	ProductDAO dao = new ProductDAO();
@@ -9,7 +12,15 @@ public class ProductService {
     	return dao.insertProduct(productName, description, category, price, quantity, imageName);
     }
     
-    public void updateProduct(int productId, String productName, String description, String category, double price, int quantity) throws Exception {
-    	dao.updateProduct(productId, productName, description, category, price, quantity);
-	}
+    public List <ProductModel> getAllProducts() throws Exception {
+        return dao.getAllProducts();
+    }
+    
+    public ProductModel getProductById(int id) throws Exception {
+        return dao.getProductById(id);
+    }
+    
+    public int updateProduct(int productId, String productName, String description, String category, double price, int quantity) throws Exception {
+    	return dao.updateProduct(productId, productName, description, category, price, quantity);
+    }
 }

@@ -6,6 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.AafnoSpace.model.ProductModel;
+import com.AafnoSpace.service.ProductService;
 
 /**
  * Servlet implementation class AdminProductListServlet
@@ -26,6 +30,16 @@ public class AdminProductListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			ProductService service = new ProductService();
+            List<ProductModel> products = service.getAllProducts();
+
+            request.setAttribute("products", products);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		request.setAttribute("activeMenu", "product");
 		request.getRequestDispatcher("/WEB-INF/pages/adminProductList.jsp").forward(request, response);
 	}
 
