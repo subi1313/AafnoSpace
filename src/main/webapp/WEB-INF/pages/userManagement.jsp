@@ -77,22 +77,18 @@
                                 <td>${u.address}</td>
                                	<td>${u.phoneNo}</td>
 								<td>
-    <form method="post" action="${pageContext.request.contextPath}/userManagement">
-		
-        <input type="hidden" name="userId" value="${u.userId}"/>
-		<!-- if user is currently active, upon toggling they should be inactive -->
-        <input type="hidden" name="status"
-               value="${u.status == 'Active' ? 'Inactive' : 'Active'}"/>
-
-        <label class="switch">
-            <input type="checkbox"
-                   ${u.status == 'Active' ? 'checked' : ''}
-                   onchange="this.form.submit()">
-            <span class="slider"></span>
-        </label>
-
-    </form>
-</td>
+    								<form method="post" action="${pageContext.request.contextPath}/userManagement">
+										<input type="hidden" name="userId" value="${u.userId}"/>
+										<!-- if user is currently active, upon toggling they should be inactive -->
+       								 <input type="hidden" name="status" value="${u.status == 'Active' ? 'Inactive' : 'Active'}"/>
+									 <label class="switch">
+									 	<!-- if status= Active, the checkbox is checked
+									 	after checkbox changes, form is submitted automatically -->
+           								<input type="checkbox" ${u.status == 'Active' ? 'checked' : ''} onchange="this.form.submit()">
+           								<span class="slider"></span>
+        							</label>
+									</form>
+								</td>
                             </tr>
                         </c:forEach>
                     </tbody>
