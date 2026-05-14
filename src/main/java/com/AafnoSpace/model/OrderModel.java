@@ -27,16 +27,10 @@ public class OrderModel {
 
 	    public Date getOrderDate() {return orderDate;}
 
-	    public void setOrderDate(Date orderDate) {
-	        this.orderDate = orderDate;
-	    }
+	    public void setOrderDate(Date orderDate) {this.orderDate = orderDate;}
 
-	    public int getPaymentId() {
-	        return paymentId;
-	    }
+	    public int getPaymentId() {return paymentId;}
 
-	    public void setPaymentId(int paymentId) {
-	        this.paymentId = paymentId;
-	    }
+	    public void setPaymentId(int paymentId) {this.paymentId = paymentId;}
 }
 
