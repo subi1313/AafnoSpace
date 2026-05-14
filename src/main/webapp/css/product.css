@@ -74,6 +74,23 @@ nav img, .nav-menu a {
     font-size: 16px;
 }
 
+.filter button {
+	font-family: Arsenal, serif;
+    font-size: 16px;
+    background-color: #F2EBE3;
+    color: #252420;
+    padding: 8px 16px;
+    margin-top: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+}
+
+.filter button:hover {
+    background-color: #e0d9c7;
+}
+
 .product-content {
     flex: 1;
 }
@@ -92,6 +109,7 @@ nav img, .nav-menu a {
     background: transparent;
     border: none;
     width: 100%;
+    color: #F2EBE3;
 }
 
 .search input::placeholder {
@@ -100,32 +118,48 @@ nav img, .nav-menu a {
     font-size: 16px;
 }
 
-.products-grid {
-    margin: 30px;
+.search input:focus {
+    outline: none;
 }
 
-.products {
+.products-grid {
+	margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 30px;
 }
 
-.products img {
+.product-itelis .products {
     width: 100%;
-    border-radius: 10px;
+    height: 300px;   
 }
 
-.prod-info span,
-.prod-info p {
-    font-family: Arsenal, serif;
-    font-size: 20px;
+.product-itelis .products img {
+	border-radius: 10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-itelis .products img:hover {
+    transform: scale(1.05); /* Zoom in on hover */
 }
 
 .prod-info {
-    margin-top: 8px;
+	font-family: Arsenal, serif;
+	font-size: 20px;
+    color: #252420;
+    padding: 15px 0px;
 }
 
 .prod-info p {
-    margin-top: 2px;
     font-weight: bold;
+}
+
+.prod-info a {
+    text-decoration: none;
+    color: #252420;
+    font-weight: bold;
+    font-size: 20px;
 }

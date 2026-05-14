@@ -123,4 +123,75 @@ public class ProductDAO {
 		
 		return rowsAffected;
 	}
+
+	public List<ProductModel> getFilteredProducts(String search, List<String> categories, List<String> priceRanges) throws Exception {
+	    List<ProductModel> products = new ArrayList<>();
+	    Connection con = DBconfig.getConnection();
+	
+	    StringBuilder sql = new StringBuilder("SELECT * FROM product WHERE 1=1");
+	
+	    // Search by name
+	    if (search != null && !search.isEmpty()) {
+	        sql.append(" AND ProductName LIKE ?");
+	    }
+	
+	    // Filter by categories
+	    if (categories != null && !categories.isEmpty()) {
+	        sql.append(" AND Category IN (");
+	        for (int i = 0; i < categories.size(); i++) {
+	            sql.append("?");
+	            if (i < categories.size() - 1) sql.append(",");
+	        }
+	        sql.append(")");
+	    }
+	
+	    // Filter by price ranges
+	    if (priceRanges != null && !priceRanges.isEmpty()) {
+	        sql.append(" AND (");
+	        for (int i = 0; i < priceRanges.size(); i++) {
+	            String range = priceRanges.get(i);
+	            switch (range) {
+	                case "range1": sql.append("Price < 5000"); break;
+	                case "range2": sql.append("Price BETWEEN 5000 AND 12000"); break;
+	                case "range3": sql.append("Price BETWEEN 12000 AND 27000"); break;
+	                case "range4": sql.append("Price BETWEEN 27000 AND 50000"); break;
+	                case "range5": sql.append("Price BETWEEN 50000 AND 80000"); break;
+	            }
+	            if (i < priceRanges.size() - 1) sql.append(" OR ");
+	        }
+	        sql.append(")");
+	    }
+	
+	    PreparedStatement pst = con.prepareStatement(sql.toString());
+	
+	    int index = 1;
+	    if (search != null && !search.isEmpty()) {
+	        pst.setString(index++, "%" + search + "%");
+	    }
+	    if (categories != null) {
+	        for (String cat : categories) {
+	            pst.setString(index++, cat);
+	        }
+	    }
+	
+	    ResultSet rs = pst.executeQuery();
+	
+	    while (rs.next()) {
+	        ProductModel p = new ProductModel();
+	        p.setProductId(rs.getInt("ProductID"));
+	        p.setProductName(rs.getString("ProductName"));
+	        p.setDescription(rs.getString("Description"));
+	        p.setCategory(rs.getString("Category"));
+	        p.setPrice(rs.getDouble("Price"));
+	        p.setQuantity(rs.getInt("Quantity"));
+	        p.setImageName(rs.getString("ImageName"));
+	        products.add(p);
+	    }
+	
+	    rs.close();
+	    pst.close();
+	    con.close();
+	
+	    return products;
+	}
 }
