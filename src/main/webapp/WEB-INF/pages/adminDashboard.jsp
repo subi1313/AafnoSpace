@@ -12,6 +12,7 @@
 <body>
 <jsp:include page="/components/header.jsp"/>
 <jsp:include page="/components/adminPanel.jsp"/>
+
 <%@ include file="/components/footer.jsp" %>
 </body>
 </html>
