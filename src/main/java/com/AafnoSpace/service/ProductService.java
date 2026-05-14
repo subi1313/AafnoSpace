@@ -28,4 +28,8 @@ public class ProductService {
         ProductDAO dao = new ProductDAO();
         return dao.getFilteredProducts(search, categories, priceRanges);
     }
+    
+    public int softDeleteProduct(int productId) throws Exception {
+        return dao.softDeleteProduct(productId);
+    }
 }

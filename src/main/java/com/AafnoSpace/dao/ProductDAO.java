@@ -39,7 +39,7 @@ public class ProductDAO {
 
         Connection con = DBconfig.getConnection();
 
-        String sql = "SELECT * FROM product";
+        String sql = "SELECT * FROM product WHERE delStatus = FALSE";
 
         PreparedStatement pst = con.prepareStatement(sql);
 
@@ -71,7 +71,7 @@ public class ProductDAO {
 
 	    Connection con = DBconfig.getConnection();
 
-	    String sql = "SELECT * FROM product WHERE ProductID=?";
+	    String sql = "SELECT * FROM product WHERE ProductID=? AND delStatus = FALSE";
 
 	    PreparedStatement pst = con.prepareStatement(sql);
 	    pst.setInt(1, id);
@@ -128,7 +128,7 @@ public class ProductDAO {
 	    List<ProductModel> products = new ArrayList<>();
 	    Connection con = DBconfig.getConnection();
 	
-	    StringBuilder sql = new StringBuilder("SELECT * FROM product WHERE 1=1");
+	    StringBuilder sql = new StringBuilder("SELECT * FROM product WHERE delStatus = FALSE");
 	
 	    // Search by name
 	    if (search != null && !search.isEmpty()) {
@@ -193,5 +193,16 @@ public class ProductDAO {
 	    con.close();
 	
 	    return products;
+	}
+	
+	public int deleteProduct(int productId) throws Exception {
+	    Connection con = DBconfig.getConnection();
+	    String sql = "UPDATE product SET delStatus = TRUE WHERE ProductID = ?";
+	    PreparedStatement pst = con.prepareStatement(sql);
+	    pst.setInt(1, productId);
+	    int rowsAffected = pst.executeUpdate();
+	    pst.close();
+	    con.close();
+	    return rowsAffected;
 	}
 }
