@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import com.AafnoSpace.dao.OrderDAO;
 
 /**
  * Servlet implementation class AdminDashboardServlet
@@ -31,6 +32,11 @@ public class AdminDashboardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		OrderDAO dao = new OrderDAO();
+	    request.setAttribute("totalOrders",dao.getTotalOrders());
+	    request.setAttribute("totalCustomers",dao.getTotalCustomers());
+	    request.setAttribute("totalRevenue",dao.getTotalRevenue());
+
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp")
         .forward(request, response);
