@@ -29,7 +29,7 @@ public class ProductService {
         return dao.getFilteredProducts(search, categories, priceRanges);
     }
     
-    public int softDeleteProduct(int productId) throws Exception {
-        return dao.softDeleteProduct(productId);
+    public int deleteProduct(int productId) throws Exception {
+        return dao.deleteProduct(productId);
     }
 }
