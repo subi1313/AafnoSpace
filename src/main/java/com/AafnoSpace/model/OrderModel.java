@@ -1,4 +1,5 @@
 package com.AafnoSpace.model;
+
 import java.util.Date;
 
 public class OrderModel {
