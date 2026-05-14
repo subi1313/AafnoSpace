@@ -1,4 +1,5 @@
 <%@ page isELIgnored="false" %>
+<!-- Side panel -->
 <div class="admin-panel">
     <h2> <img src="./images/adminPanel/menu.png" alt="Menu Icon">Main menu</h2>
     <ul>

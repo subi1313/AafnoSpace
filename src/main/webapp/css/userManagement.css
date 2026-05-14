@@ -22,6 +22,14 @@ body {
     padding: 10px;
 }
 
+.admin-profile {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
 .layout {
     display: flex;
     flex-direction: row;
@@ -43,7 +51,9 @@ body {
 .maindiv{
 	display:flex;
 	flex-direction:column;
+	margin-left:60px;
 }
+
 .container {
             width: 100%;
             /* Increased width from 1100px to 1250px */

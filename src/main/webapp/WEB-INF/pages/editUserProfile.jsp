@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,7 @@
 			 <label>E-mail</label>
 			 <input type="text" name="email" value="${user.email}">
 			 <label>Phone Number</label>
-			 <input type="text" name="phone" value="${user.phoneNo}">
+			 <input type="text" name="phoneNo" value="${user.phoneNo}">
 			 </div>
 			 <button type="submit" class="submitButton">Save Changes</button>
 		 </form>

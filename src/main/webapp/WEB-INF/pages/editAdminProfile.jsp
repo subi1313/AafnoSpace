@@ -1,31 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>My Profile – आफ्नो SPACE</title>
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/editProfile.css">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/editProfile.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-	<div class="editDetailsPanel">
-		<h2>Update Details</h2>
-		<c:if test="${not empty error}">
-        	<div id="errorPopup" class="errordiv">
-            	<i class="fa-solid fa-circle-exclamation"></i>
+    <div class="editDetailsPanel">
+        <h2>Update Details</h2>
+        <c:if test="${not empty error}">
+            <div id="errorPopup" class="errordiv">
+                <i class="fa-solid fa-circle-exclamation"></i>
                 <span>${error}</span>
             </div>
         </c:if>
         <form action="${pageContext.request.contextPath}/editAdminProfile" method="post"
          enctype="multipart/form-data">
-        	<input type="file" id="profileImage" name="profileImage" accept="image/*" hidden
+            <input type="file" id="profileImage" name="profileImage" accept="image/*" hidden
              onchange="previewFile()">
              <div class="pfpcircle">
                 <img id="pfpPreview" src="${pageContext.request.contextPath}/images/main/user.png"
                  alt="profile">
              </div>
              <label for="profileImage" class="button">
-             	<i class="fas fa-camera"></i> Change Picture
+                 <i class="fas fa-camera"></i> Change Picture
              </label>
              <div class="textinput">
              <label>First Name</label>
@@ -37,14 +38,14 @@
              <label>E-mail</label>
              <input type="text" name="email" value="${user.email}">
              <label>Phone Number</label>
-             <input type="text" name="phone" value="${user.phoneNo}">
+             <input type="text" name="phoneNo" value="${user.phoneNo}">
              </div>
              <button type="submit" class="submitButton">Save Changes</button>
          </form>
-         <a href="${pageContext.request.contextPath}/AdminProfile" class="cancelLink">
+         <a href="${pageContext.request.contextPath}/admin-profile" class="cancelLink">
             <i class="fas fa-arrow-left"></i> Back to profile
         </a>
-	</div>
+    </div>
             <script>
                 function previewFile() {
                     const preview = document.getElementById("pfpPreview");
