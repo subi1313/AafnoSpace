@@ -1,9 +1,13 @@
 package com.AafnoSpace.dao;
 
+import com.AafnoSpace.model.ContactModel;
 import com.AafnoSpace.utils.DBconfig;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactDAO {
 	public int insertContact(String name, String email, String subject, String message) throws Exception {
@@ -26,4 +30,35 @@ public class ContactDAO {
 
 	    return rowsAffected;
 	}
+	
+	public List<ContactModel> getAllContacts() throws Exception {
+
+        List<ContactModel> list = new ArrayList<>();
+
+        Connection con = DBconfig.getConnection();
+
+        String sql = "SELECT * FROM contact";
+
+        PreparedStatement pst = con.prepareStatement(sql);
+
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            ContactModel c = new ContactModel();
+
+            c.setId(rs.getInt("ContactId"));
+            c.setName(rs.getString("ContactName"));
+            c.setEmail(rs.getString("ContactEmail"));
+            c.setSubject(rs.getString("Subject"));
+            c.setMessage(rs.getString("Message"));
+
+            list.add(c);
+        }
+
+        rs.close();
+        pst.close();
+        con.close();
+
+        return list;
+    }
 }
