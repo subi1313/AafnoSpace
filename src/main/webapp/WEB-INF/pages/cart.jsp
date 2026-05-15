@@ -21,12 +21,12 @@
 
 <div class="layout">
 
-    <!-- SIDE PANEL -->
+    <!-- side-panel -->
 
         <jsp:include page="/components/userPanel.jsp" />
 
 
-    <!-- CART AREA -->
+    <!-- cart area-->
     <div class="product-cart">
 
         <c:forEach var="item" items="${cartItems}">
@@ -37,33 +37,33 @@
                       method="post"
                       style="display:flex; width:100%; align-items:center; gap:16px;">
 
-                    <!-- CART ITEM ID -->
+                    <!-- cart item id -->
                     <input type="hidden" name="cartItemId" value="${item.cartItemId}">
 
                     <input type="checkbox" name="selectedItems" value="${item.cartItemId}" class="cart-checkbox">
-                    <!-- IMAGE -->
+                    <!-- image -->
                     <div class="image-holder">
                         <img src="${pageContext.request.contextPath}/product-image?name=${item.imageName}">
                     </div>
 
-                    <!-- PRODUCT NAME -->
+                    <!-- product name -->
                     <div class="product-name">
                         ${item.productName}
                     </div>
 
-                    <!-- PRICE -->
+                    <!-- price -->
                     <div class="price">
                         <div class="price-label">Price</div>
                         <div class="price-value">Rs. ${item.price}</div>
                     </div>
 
-                    <!-- QUANTITY -->
+                    <!--quantity -->
                     <div class="quantity">
                         <div class="qty-label">Quantity</div>
 
                         <div class="qty-property">
 
-                            <!-- DECREASE -->
+                            <!-- decrease -->
                             <button type="submit"
                                     name="action"
                                     value="decrease"
@@ -73,13 +73,13 @@
                                 ${item.quantity}
                             </div>
 
-                            <!-- INCREASE -->
+                            <!-- increase -->
                             <button type="submit"
                                     name="action"
                                     value="increase"
                                     class="qty-btn">+</button>
 
-                            <!-- DELETE BUTTON (NEW) -->
+                            <!-- delete button -->
                             <button type="submit"
                                     name="action"
                                     value="delete"
@@ -96,7 +96,7 @@
 
         </c:forEach>
 
-        <!-- EMPTY CART MESSAGE -->
+        <!-- empty cart message-->
         <c:if test="${empty cartItems}">
             <h3 class="empty-cart">Your cart is empty</h3>
         </c:if>

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class OrderHistory
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/orderHistory" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/order-history" })
 public class OrderHistoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

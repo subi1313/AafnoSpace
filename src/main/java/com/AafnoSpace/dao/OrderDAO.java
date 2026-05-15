@@ -80,4 +80,37 @@ public class OrderDAO {
         }
         return 0;
     }
+    
+    public int getLatestOrderId(int userId) {
+
+        // SQL query to get latest OrderID of logged-in user
+        String sql = "SELECT OrderID FROM Orders WHERE UserID = ? ORDER BY OrderID DESC LIMIT 1";
+
+        try (
+            Connection conn = DBconfig.getConnection();
+            PreparedStatement pst = conn.prepareStatement(sql)
+        ) {
+
+            pst.setInt(1, userId);
+
+            // Execute query
+            ResultSet rs = pst.executeQuery();
+
+            // Check if order exists
+            if (rs.next()) {
+
+                // Return latest OrderID
+                return rs.getInt("OrderID");
+            }
+
+            // Close ResultSet
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Return -1 if no order found
+        return -1;
+    }
 } 

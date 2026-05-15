@@ -18,10 +18,9 @@
     
     <!-- User side panel -->
 
-        <div class="side-panel">
         <div class="layout">
             <jsp:include page="/components/userPanel.jsp" />
-		</div>
+
 		
             <!-- Main Content -->
     <div class="text-content">
@@ -29,8 +28,8 @@
         <h2>Thankyou !</h2>
 
         <p>You have successfully placed your order.</p>
-        <p>${OrderID}</p>
-        <p>20890876</p>
+        <p>Your Order ID is:</p>
+        <p>${orderId}</p>
 
         <p>
             We are currently processing your order and carefully preparing it for shipment.<br>

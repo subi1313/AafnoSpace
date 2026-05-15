@@ -36,10 +36,7 @@
     color: #0A0A0A;
 }
 
-.side-panel{
-	display: flex;
-	flex-direction: row;
-}
+
 
  .layout {
       display: flex;
