@@ -3,34 +3,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My Profile – आफ्नो SPACE</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminDashboard.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+  <title>Admin Dashboard – आफ्नो SPACE</title>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminDashboard.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
 </head>
 <body>
+
 <jsp:include page="/components/header.jsp"/>
-<jsp:include page="/components/adminPanel.jsp"/>
-<div class="dashboard-container">
-    <div class="dashboard-cards">
 
-        <div class="card">
-            <p>Total Orders</p>
-            <h2>${totalOrders}</h2>
-        </div>
- 
-        <div class="card">
-            <p>Total Customers</p>
-            <h2>${totalCustomers}</h2>
-        </div>
+<div class="admin-dashboard">
+    <jsp:include page="/components/adminPanel.jsp"/>
 
-        <div class="card">
-            <p>Total Revenue</p>
-            <h2>Rs. ${totalRevenue}</h2>
+    <div class="main">
+        <p class="pageTitle">Dashboard</p>
+        <div class="dashboard-cards">
+            <div class="card">
+                <p>Total Orders</p>
+                <h2>${totalOrders}</h2>
+            </div>
+            <div class="card">
+                <p>Total Customers</p>
+                <h2>${totalCustomers}</h2>
+            </div>
+            <div class="card">
+                <p>Total Revenue</p>
+                <h2>Rs. ${totalRevenue}</h2>
+            </div>
         </div>
-
     </div>
 </div>
+
 <%@ include file="/components/footer.jsp" %>
 </body>
 </html>
