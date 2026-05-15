@@ -110,3 +110,18 @@ body {
 .button-group form {
     margin: 0;
 }
+
+.popup-message {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    min-width: 220px;
+    background: #28a745; 
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    
+}

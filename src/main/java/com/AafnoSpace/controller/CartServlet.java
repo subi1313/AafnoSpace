@@ -22,11 +22,12 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	//Verify if the user is logged in or not
         try {
             UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
             if (user == null) {
-                user = new UserModel();
-                user.setuserId(1); // hardcoded for testing — remove when auth is ready
+                response.sendRedirect(request.getContextPath() + "/login"); //if not redirect to login page
             }
 
             List<CartModel> cartItems = service.getCartItems(user.getuserId());
@@ -44,29 +45,37 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getParameter("action");
-
+        
+      //Verify if the user is logged in or not
         try {
             UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
             if (user == null) {
-                user = new UserModel();
-                user.setuserId(1); // hardcoded for testing — remove when auth is ready
+               response.sendRedirect(request.getContextPath() + "/login"); //if not redirect to login page
             }
 
-            // ADD TO CART
+            //Add to cart
             if (action == null || action.equals("add")) {
+            	// Get ProductID from product detail
                 String productId = request.getParameter("ProductID");
+
                 boolean result = service.addCart(
                         String.valueOf(user.getuserId()),
                         productId
                 );
+
+                // popup message
                 if (result) {
-//                    response.sendRedirect(request.getContextPath() + "/cart");
-                	 response.setStatus(HttpServletResponse.SC_OK);
-                	 response.getWriter().println("added");
+                    request.getSession().setAttribute("cartMessage",
+                            "Product added to cart successfully!");
                 } else {
-                	response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    response.getWriter().println("Failed To Add Cart");
+                    request.getSession().setAttribute("cartMessage",
+                            "Failed to add product to cart!");
                 }
+
+                // go back to same product detail page
+                response.sendRedirect(
+                        request.getContextPath() + "/product-detail?id=" + productId
+                );
                 return;
             }
 
