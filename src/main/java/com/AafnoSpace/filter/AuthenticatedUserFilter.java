@@ -7,23 +7,28 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = { "/login", "/register" })
+@WebFilter(urlPatterns = { "/login", "/register", "/regisration", "/uploadpfp" })
 public class AuthenticatedUserFilter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
             throws IOException, ServletException {
+        
+    	// Cast the generic request/response to HTTP-specific versions
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        HttpServletRequest  req  = (HttpServletRequest)  request;
-        HttpServletResponse resp = (HttpServletResponse) response;
+		// Logic: Check if the session exists and contains your login identifier
+		// Change "user" to whatever attribute name you set in your LoginServlet
+		boolean isLoggedIn = SessionUtil.getAttribute(httpRequest, "user") != null;
 
-        Object user = SessionUtil.getAttribute(req, "user");
-
-        if (user != null) {
-            //already logged in, send away from login/register
-            resp.sendRedirect(req.getContextPath() + "/home");
+        if (isLoggedIn) {
+            // User is already logged in, redirect them to the dashboard
+            // We use getContextPath() to ensure the URL is absolute to the app root
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/home");
+            return;
         } else {
-            //not logged in, allow access to login/register
+            // User is a guest, let them proceed to login/register/home
             chain.doFilter(request, response);
         }
     }
