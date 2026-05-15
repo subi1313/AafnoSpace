@@ -15,33 +15,28 @@
 <jsp:include page="../../components/header.jsp" />
 
 <div class="container">
-
-    <img src="${pageContext.request.contextPath}/images/productDetail/Lamp 1.png">
+	
+	<!-- Product image -->
+    <img src="${pageContext.request.contextPath}/getImage?name=${product.imageName}" alt="${product.productName}">
 
     <div class="description">
-        <h1>Crystal Shape LED Table Lamp</h1>
+        <h1>${product.productName}</h1>
+        
         <div class="price-container">
-            <p>NPR 3500</p>
+            <p>${product.price}</p>
         </div>
 
         <h2>Description</h2>
-        <p>Coquette aesthetic table lamp in brass finish and crystal reflecting lampshade made of acrylic glass. Will perfectly fit dark academia, vintage and coquette room desks or bedside tables.</p>
+        <p>${product.description}</p>
 
-        <h2>Product Features:</h2>
-        <ul class="features">
-            <li>Light Modes: Warm white, White, Cold White</li>
-            <li>Power: Rechargeable Lithium Battery</li>
-            <li>USB-C Charging port</li>
-            <li>Switch: Touch Control</li>
-            <li>Size: H: 12in W: 6.7in (H: 30.4cm W: 17cm)</li>
-            <li>Material: Metal case, Acrylic Lampshade</li>
-        </ul>
+        <h2>Category</h2>
+        <p>${product.category}</p>
 
         <button class="buy-now" >Buy Now</button>
         
 		<form action="${pageContext.request.contextPath}/cart" method="post">
 		
-		    <input type="hidden" name="ProductID" value="2">
+		    <input type="hidden" name="ProductID" value="2">   <!--value="${product.productId}"  -->
 		
 		    <button type="submit" class="add-to-cart">
 		        Add to Cart

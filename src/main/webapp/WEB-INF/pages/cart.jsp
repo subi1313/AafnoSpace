@@ -10,7 +10,8 @@
     <title>Cart</title>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 </head>
 
@@ -21,9 +22,9 @@
 <div class="layout">
 
     <!-- SIDE PANEL -->
-    <div class="side-panel">
+
         <jsp:include page="/components/userPanel.jsp" />
-    </div>
+
 
     <!-- CART AREA -->
     <div class="product-cart">
@@ -43,7 +44,7 @@
 
                     <!-- IMAGE -->
                     <div class="image-holder">
-                        <img src="${pageContext.request.contextPath}/images/default.png">
+                        <img src="${pageContext.request.contextPath}/getImage?name=${item.imageName}">
                     </div>
 
                     <!-- PRODUCT NAME -->

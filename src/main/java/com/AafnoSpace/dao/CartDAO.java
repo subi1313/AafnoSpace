@@ -75,7 +75,12 @@ public class CartDAO {
         List<CartModel> list = new ArrayList<>();
 
         String sql =
-            "SELECT upc.CartItemID, p.ProductID, p.ProductName, p.Price, upc.Quantity " +
+            "SELECT upc.CartItemID, "
+            + "p.ProductID, "
+            + "p.ProductName, "
+            + "p.Price, "
+            + "p.ImageName, "
+            + "upc.Quantity " +
             "FROM user_product_cart upc " +
             "JOIN product p ON upc.ProductID = p.ProductID " +
             "JOIN cart c ON c.CartID = upc.CartID " +
@@ -94,6 +99,8 @@ public class CartDAO {
                 item.setProductName(rs.getString("ProductName"));
                 item.setPrice(rs.getDouble("Price"));
                 item.setQuantity(rs.getInt("Quantity"));
+                item.setImageName(rs.getString("ImageName"));
+                
                 list.add(item);
             }
         }

@@ -27,10 +27,6 @@
 	margin-right:80px; 
 	} 
 	
-	.side-panel{ 
-	display: flex; 
-	flex-direction: row; 
-	} 
 	
 	/**Product Cart **/
     .product-cart {
@@ -38,7 +34,7 @@
      flex-direction: column;
 	  height: 850px;
 	  width: 100vh; 
-	  gap: 15px;     
+	  gap: 15px;   
     }
 
  	.card{

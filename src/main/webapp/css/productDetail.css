@@ -74,15 +74,6 @@ body {
 
 /* Buttons */
 
-
-/* Features */
-.features li {
-    margin: 10px 0;
-    font-size: 18px;
-    font-family: "Arsenal";
-    font-size: 20px;
-}
-
 .buy-now {
     background: #412617;
     color: #ffffff;
