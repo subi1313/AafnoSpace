@@ -6,23 +6,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import com.AafnoSpace.dao.OrderDAO;
+
+import com.AafnoSpace.model.UserModel;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
- * Servlet implementation class AdminDashboardServlet
+ * Servlet implementation class NavProfileLinkServlet
  */
-@WebServlet(
-		asyncSupported = true, 
-		urlPatterns = { 
-				"/adminDashboard"
-		})
-public class AdminDashboardServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/nav-profile" })
+public class NavProfileLinkServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminDashboardServlet() {
+    public NavProfileLinkServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +29,20 @@ public class AdminDashboardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OrderDAO dao = new OrderDAO();
-	    request.setAttribute("totalOrders",dao.getTotalOrders());
-	    request.setAttribute("totalCustomers",dao.getTotalCustomers());
-	    request.setAttribute("totalRevenue",dao.getTotalRevenue());
+		UserModel user =
+                (UserModel) SessionUtil.getAttribute(request, "user");
 
-		// TODO Auto-generated method stub
-		request.setAttribute("activeMenu", "dashboard");
-		request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp")
-        .forward(request, response);
+        String target;
+
+        if (user == null) {
+            target = request.getContextPath() + "/login";
+        } else if ("Admin".equalsIgnoreCase(user.getRole())) {
+            target = request.getContextPath() + "/admin-profile";
+        } else {
+            target = request.getContextPath() + "/userProfile";
+        }
+
+        response.sendRedirect(target);
 	}
 
 	/**
@@ -49,4 +52,5 @@ public class AdminDashboardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

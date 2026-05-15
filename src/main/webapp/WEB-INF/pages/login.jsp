@@ -35,6 +35,9 @@
                     <div style="margin-top:30px;">
                         <button type="submit">Sign In</button>
                     </div>
+                    <div class="alreadyaccount">
+                    <span>Don't have an account? <a href="${pageContext.request.contextPath}/register">Register</a></span>
+                    </div>
                 </form>
             </div>
         </div>
