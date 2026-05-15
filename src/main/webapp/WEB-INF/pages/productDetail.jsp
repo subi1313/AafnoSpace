@@ -1,6 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +14,15 @@
 
 <jsp:include page="../../components/header.jsp" />
 
+<!-- Popup messsage -->
+	    <c:if test="${not empty sessionScope.cartMessage}">
+    <div class="popup-message">
+        ${sessionScope.cartMessage}
+    </div>
+    <c:remove var="cartMessage" scope="session"/>
+</c:if>
+
 <div class="container">
-	
 	<!-- Product image -->
     <img src="${pageContext.request.contextPath}/product-image?name=${product.imageName}">
 
@@ -45,5 +52,6 @@
 		
     </div>
 </div>
+
 </body>
 </html>
