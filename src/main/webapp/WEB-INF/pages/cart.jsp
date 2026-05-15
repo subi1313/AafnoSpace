@@ -101,6 +101,15 @@
             <h3 class="empty-cart">Your cart is empty</h3>
         </c:if>
         
+        <!-- Checkout button -->
+        <div class="checkout-btn">
+        <form action="${pageContext.request.contextPath}/checkout" method="post">
+        <button type="submit" class="checkout">
+        	Checkout
+        </button>
+        </form>
+        </div>
+        
         
 
     </div>
