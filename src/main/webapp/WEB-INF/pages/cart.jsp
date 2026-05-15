@@ -1,62 +1,111 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
-      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
-      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
-</head>
-<body>
-	<!-- Header -->
-    <jsp:include page="/components/header.jsp" />
-    
-    <!-- User side panel -->
-	<div class="side-panel">
-    <div class="layout">
-        <jsp:include page="/components/userPanel.jsp" />
-    </div>
 
-    <!-- Cart cards + Buy Now -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
+</head>
+
+<body>
+
+<jsp:include page="/components/header.jsp" />
+
+<div class="layout">
+
+    <!-- SIDE PANEL -->
+
+        <jsp:include page="/components/userPanel.jsp" />
+
+
+    <!-- CART AREA -->
     <div class="product-cart">
 
-    <c:forEach var="item" items="${cartList}">
+        <c:forEach var="item" items="${cartItems}">
 
-        <div class="card">
+            <div class="card">
 
-            <div class="image-holder">
-                <img src="${pageContext.request.contextPath}/images/cart/download.jpg">
+                <form action="${pageContext.request.contextPath}/cart"
+                      method="post"
+                      style="display:flex; width:100%; align-items:center; gap:16px;">
+
+                    <!-- CART ITEM ID -->
+                    <input type="hidden" name="cartItemId" value="${item.cartItemId}">
+
+                    <input type="checkbox" class="cart-checkbox">
+
+                    <!-- IMAGE -->
+                    <div class="image-holder">
+                        <img src="${pageContext.request.contextPath}/product-image?name=${item.imageName}">
+                    </div>
+
+                    <!-- PRODUCT NAME -->
+                    <div class="product-name">
+                        ${item.productName}
+                    </div>
+
+                    <!-- PRICE -->
+                    <div class="price">
+                        <div class="price-label">Price</div>
+                        <div class="price-value">Rs. ${item.price}</div>
+                    </div>
+
+                    <!-- QUANTITY -->
+                    <div class="quantity">
+                        <div class="qty-label">Quantity</div>
+
+                        <div class="qty-property">
+
+                            <!-- DECREASE -->
+                            <button type="submit"
+                                    name="action"
+                                    value="decrease"
+                                    class="qty-btn">−</button>
+
+                            <div class="qty-value">
+                                ${item.quantity}
+                            </div>
+
+                            <!-- INCREASE -->
+                            <button type="submit"
+                                    name="action"
+                                    value="increase"
+                                    class="qty-btn">+</button>
+
+                            <!-- DELETE BUTTON (NEW) -->
+                            <button type="submit"
+                                    name="action"
+                                    value="delete"
+                                    class="delete">
+                                X
+                            </button>
+
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
 
-            <span class="product-name">
-                ${item.productName}
-            </span>
+        </c:forEach>
 
-            <div class="price">
-                <div class="price-label">Price</div>
-                <div class="price-value">
-                    Rs. ${item.price}
-                </div>
-            </div>
+        <!-- EMPTY CART MESSAGE -->
+        <c:if test="${empty cartItems}">
+            <h3 class="empty-cart">Your cart is empty</h3>
+        </c:if>
+        
+        
 
-            <div class="quantity">
-                <div class="qty-label">Quantity</div>
-                <div class="qty-value">
-                    ${item.quantity}
-                </div>
-            </div>
-
-        </div>
-
-    </c:forEach>
-
+    </div>
 </div>
-  </div>
-
 
 </body>
 </html>
