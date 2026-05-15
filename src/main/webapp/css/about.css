@@ -89,6 +89,11 @@ portfolio-CTA h2 {
     border-radius: 10px;
 }
 
+.gallery-pics img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
 .gallery-pics span {
     font-family: Cormorant Garamond, serif;
     font-size: 40px;
@@ -128,6 +133,11 @@ portfolio-CTA h2 {
 
 .transition {
     text-align: center;
+}
+
+.transition img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .our-idea {
