@@ -40,6 +40,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("activeMenu", "product");
 		try {
 	        int id = Integer.parseInt(request.getParameter("id"));
 
@@ -54,6 +55,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+		
 	}
 
 	/**

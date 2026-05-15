@@ -17,7 +17,7 @@ nav {
 }
 
 .nav-logo img {
-    width: 35%;
+    width: 122px;
     height: auto;
 }
 
@@ -36,16 +36,21 @@ nav {
 }
 
 .nav-menu a:hover {
+	transform: scale(1.08);
     color: rgb(47, 56, 92);
 }
 
 .nav-icon {
     display: flex;
     justify-content: flex-end;
-    gap: 5%;
 }
 
 .nav-icon img {
-    width: 6%;
-    height: 30%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.nav-icon img:hover {
+    transform: scale(1.08);
 }

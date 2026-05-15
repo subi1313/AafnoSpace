@@ -46,7 +46,6 @@ public class ProductDAO {
         ResultSet rs = pst.executeQuery();
 
         while (rs.next()) {
-
             ProductModel p = new ProductModel();
 
             p.setProductId(rs.getInt("ProductID"));

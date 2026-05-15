@@ -75,14 +75,6 @@ body {
 /* Buttons */
 
 
-/* Features */
-.features li {
-    margin: 10px 0;
-    font-size: 18px;
-    font-family: "Arsenal";
-    font-size: 20px;
-}
-
 .buy-now {
     background: #412617;
     color: #ffffff;
@@ -105,5 +97,31 @@ body {
     border-radius: 10px;
     font-family: "CormorantGaramond";
     font-size:24px;
-    margin-left: 20px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+/* remove form default spacing issue */
+.button-group form {
+    margin: 0;
+}
+
+.popup-message {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    min-width: 220px;
+    background: #28a745; 
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    
 }

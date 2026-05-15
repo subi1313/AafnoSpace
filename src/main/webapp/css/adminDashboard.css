@@ -1,0 +1,55 @@
+.adminDashboard {
+    display: flex;
+    gap: 50px;
+    margin:20px 8.33%;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+    margin-right: 80px;
+    align-items: flex-start;
+}
+
+.main {
+    width: 70%;
+    padding: 10px;
+    margin-left: 30px;
+    align-self: flex-start;
+}
+.pageTitle {
+    font-size: 48px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.dashboardCards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px 30px;
+    flex: 1;
+    min-width: 180px;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #4a90e2;
+}
+
+.card p {
+    font-size: 14px;
+    color: #888888;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333333;
+    margin: 0;
+}

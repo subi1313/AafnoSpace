@@ -7,6 +7,7 @@
     <title>About Us</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/about.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -107,14 +108,15 @@
         <section>
             <div class="contact-CTA">
                 <h2>Ready to Design Your Space?</h2>
-                <a href="/contact" class="contact-button">Get in Touch</a>
+                <a href="${pageContext.request.contextPath}/contact" class="contact-button">Get in Touch</a>
             </div>
             <div class="portfolio-CTA">
                 <h2>Meet the People Behind AafnoSpace... </h2>
-                <a href="/portfolio" class="portfolio-button">View Our Team></a>
+                <a href="${pageContext.request.contextPath}/portfolio" class="portfolio-button">View Our Team></a>
             </div>
         </section>
     </main>
+    <jsp:include page="../../components/footer.jsp" />
 </body>
 
 </html>

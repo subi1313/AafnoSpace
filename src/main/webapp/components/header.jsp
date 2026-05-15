@@ -13,8 +13,9 @@
         </div>
 
         <div class="nav-icon">
-            <img src="${pageContext.request.contextPath}/images/main/cart.webp" alt="Cart Icon">
-            <img src="${pageContext.request.contextPath}/images/main/profile.webp" alt="Profile Icon">
+            <a href="${pageContext.request.contextPath}/nav-profile">
+		        <img src="${pageContext.request.contextPath}/images/main/profile.webp" alt="Profile Icon">
+		    </a>
         </div>
     </nav>
 </header>

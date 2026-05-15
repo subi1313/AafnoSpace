@@ -3,6 +3,7 @@ package com.AafnoSpace.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.Date;
 import com.AafnoSpace.model.OrderModel;
@@ -43,5 +44,40 @@ public class OrderDAO {
         con.close();
 
         return orderId;
+    }
+    public int getTotalOrders() {
+        String sql = "SELECT COUNT(*) AS total FROM Orders";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return rs.getInt("total");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getTotalCustomers() {
+        String sql = "SELECT COUNT(*) AS total FROM Users";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return rs.getInt("total");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public double getTotalRevenue() {
+        String sql = "SELECT SUM(LineTotal) AS revenue FROM Order_Details";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return rs.getDouble("revenue");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 } 

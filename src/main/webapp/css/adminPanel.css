@@ -18,6 +18,8 @@
     color: #F2EBE3;
     position: sticky;
     top: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .admin-panel ul {
@@ -62,5 +64,5 @@
 }
 
 .admin-panel-bottom {
-	margin-top:300px;
-	}
+    margin-top: auto;
+}

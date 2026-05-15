@@ -1,6 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,44 +14,43 @@
 
 <jsp:include page="../../components/header.jsp" />
 
-<div class="container">
+<!-- Popup messsage -->
+	    <c:if test="${not empty sessionScope.cartMessage}">
+    <div class="popup-message">
+        ${sessionScope.cartMessage}
+    </div>
+    <c:remove var="cartMessage" scope="session"/>
+</c:if>
 
-    <img src="${pageContext.request.contextPath}/images/productDetail/Lamp 1.png">
+<div class="container">
+	<!-- Product image -->
+    <img src="${pageContext.request.contextPath}/product-image?name=${product.imageName}">
 
     <div class="description">
-        <h1>Crystal Shape LED Table Lamp</h1>
+        <h1>${product.productName}</h1>
+        
         <div class="price-container">
-            <p>NPR 3500</p>
+            <p>${product.price}</p>
         </div>
 
         <h2>Description</h2>
-        <p>Coquette aesthetic table lamp in brass finish and crystal reflecting lampshade made of acrylic glass. Will perfectly fit dark academia, vintage and coquette room desks or bedside tables.</p>
+        <p>${product.description}</p>
 
-        <h2>Product Features:</h2>
-        <ul class="features">
-            <li>Light Modes: Warm white, White, Cold White</li>
-            <li>Power: Rechargeable Lithium Battery</li>
-            <li>USB-C Charging port</li>
-            <li>Switch: Touch Control</li>
-            <li>Size: H: 12in W: 6.7in (H: 30.4cm W: 17cm)</li>
-            <li>Material: Metal case, Acrylic Lampshade</li>
-        </ul>
+        <h2>Category</h2>
+        <p>${product.category}</p>
 
+		<div class="button-group">
         <button class="buy-now" >Buy Now</button>
         
 		<form action="${pageContext.request.contextPath}/cart" method="post">
-		
-		    <input type="hidden" name="UserID" value="1">
-		
-		    <input type="hidden" name="ProductID" value="1">
-		
+		    <input type="hidden" name="ProductID" value="${product.productId}"> 
 		    <button type="submit" class="add-to-cart">
 		        Add to Cart
 		    </button>
-		
 		</form>
+		</div>
+		
     </div>
-
 </div>
 
 </body>

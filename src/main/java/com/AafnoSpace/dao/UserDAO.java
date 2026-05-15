@@ -1,16 +1,13 @@
 package com.AafnoSpace.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.AafnoSpace.model.UserModel;
 import com.AafnoSpace.utils.DBconfig;
-import com.AafnoSpace.model.UserModel;
 
 public class UserDAO {
 	public boolean registerUser(String firstName, String lastName, String username, String email, String password, String address, String phoneNo) throws Exception {
@@ -118,4 +115,20 @@ public class UserDAO {
 	    	}
 	    	return rowsAffected;
 	    	}
+	   public int updateUserStatus(int userId, String status) throws Exception {
+		    Connection con = DBconfig.getConnection();
+
+		    String sql = "UPDATE users SET status = ? WHERE UserID = ?";
+
+		    PreparedStatement pst = con.prepareStatement(sql);
+		    pst.setString(1, status);
+		    pst.setInt(2, userId);
+
+		    int rowsAffected = pst.executeUpdate();
+
+		    pst.close();
+		    con.close();
+
+		    return rowsAffected;
+		}
 }
