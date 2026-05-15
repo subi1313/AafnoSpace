@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
             	
             	// Using Session's setAttribute method to store userdata object in server memory
             	request.getSession().invalidate(); 	//killing the older registration session
+            	//Creating new session after login
             	SessionUtil.setAttribute(request, "user", userdata, 3600);
             	
             	// Capture and format the current time
@@ -68,15 +69,9 @@ public class LoginServlet extends HttpServlet {
             	
             	// Cookie is created to record last login time
             	CookieUtil.addCookie(response, "last_login", loginTime, 3600);
-            	 String role = userdata.getRole();
-                 if ("Admin".equals(role)) {
-                     response.sendRedirect(request.getContextPath() + "/admin-profile");
-                 } else {
                      response.sendRedirect(request.getContextPath() + "/home");
-                 }
-	           
+                
 			} catch (Exception e) {
-				// Print error in console of server
 				e.printStackTrace();
 			}
         }

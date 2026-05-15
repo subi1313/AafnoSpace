@@ -25,12 +25,16 @@ public class LoginService {
         }
 
         // Verifying the password
-        if (PasswordUtil.checkPassword(password, user.getPassword())) {
-            return "Success";
-        } 
-        else {
+        if (!PasswordUtil.checkPassword(password, user.getPassword())) {
             return "Password is incorrect";
+        } 
+        
+        //Checking the user status
+        if (!"Active".equalsIgnoreCase(user.getStatus())) {
+            return "Sorry! Your account is not active yet!";
         }
+        return "Success";
+       
 
     } catch (Exception e) {
         e.printStackTrace();

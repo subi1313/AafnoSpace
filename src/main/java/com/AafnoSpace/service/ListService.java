@@ -10,4 +10,14 @@ public class ListService {
 		UserDAO userDAO = new UserDAO();
         return userDAO.getAllUsers();
     }
+
+
+public void updateUserStatus(int userId, String status) {
+    UserDAO dao = new UserDAO();
+    try {
+        dao.updateUserStatus(userId, status);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 }

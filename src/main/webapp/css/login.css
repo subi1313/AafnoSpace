@@ -92,6 +92,25 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+
+.alreadyaccount{
+	font-family: "Inter";
+	color: white;
+	font-size: 14px;
+	padding-left: 10px;
+	margin-top:10px;
+	text-align:center;
+}
+
+.alreadyaccount a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.alreadyaccount a:hover {
+    color: #ffffa4;
+}
+
    .errordiv {
             background: #fff1f2;;
             color: #e11d48;
