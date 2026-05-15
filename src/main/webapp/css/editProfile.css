@@ -10,10 +10,6 @@
     font-family: "Arsenal";
     src: url("../fonts/Arsenal/Arsenal-Regular.ttf");
 }
-:root{
-      --bg: #EFEEEB;
-      --sidebar-bg: #252420;
-}
 body {
       font-family: 'CormorantGaramond', serif;
       background: var(--bg);
@@ -34,7 +30,7 @@ body {
       margin-top:30px;
 }  
 h2{
-      color: var(--sidebar-bg);
+      color: #252420;
       font-weight: 1500;
       margin-bottom: 20px;
       letter-spacing: -0.5px;

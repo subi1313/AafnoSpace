@@ -40,8 +40,7 @@
                     <!-- CART ITEM ID -->
                     <input type="hidden" name="cartItemId" value="${item.cartItemId}">
 
-                    <input type="checkbox" class="cart-checkbox">
-
+                    <input type="checkbox" name="selectedItems" value="${item.cartItemId}" class="cart-checkbox">
                     <!-- IMAGE -->
                     <div class="image-holder">
                         <img src="${pageContext.request.contextPath}/product-image?name=${item.imageName}">
