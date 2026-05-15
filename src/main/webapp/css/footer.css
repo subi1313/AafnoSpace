@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "Arsenal";
+    src: url('../fonts/Arsenal/Arsenal-Regular.ttf');
+}
+
+footer {
+    background: #252420;
+    color: #F2EBE3;
+    margin-top: 40px;
+    padding-top: 50px;
+    font-family: Arsenal, serif;
+    font-size: 20px;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    width: 170px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-section p {
+    line-height: 1.5;
+    margin: 2px 0;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 14px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #F2EBE3;
+}
+
+.footer-section ul li a:hover {
+    color: #c1ac95;
+}
+
+.footer-bottom {
+    font-size: 16px;
+    text-align: center;
+    padding: 18px 0;
+    margin: 0;
+}
+
+.footer-line {
+    border: none;
+    height: 1px;
+    background: #3a3630;
+    margin: 0;
+}
