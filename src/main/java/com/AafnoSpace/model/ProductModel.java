@@ -1,12 +1,14 @@
 package com.AafnoSpace.model;
 
 public class ProductModel {
+
 	private int productId;
     private String productName;
     private String description;
     private String category;
     private double price;
     private int quantity;
+    private String imageName;
 
 
     public int getProductId() {
@@ -56,4 +58,12 @@ public class ProductModel {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    
+    public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 }

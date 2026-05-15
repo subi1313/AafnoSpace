@@ -8,20 +8,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import com.AafnoSpace.model.UserModel;
-import com.AafnoSpace.service.ListService;
+import com.AafnoSpace.model.ProductModel;
+import com.AafnoSpace.service.ProductService;
 
 /**
- * Servlet implementation class UserManagement
+ * Servlet implementation class AdminProductListServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = {})
-public class UserManagementServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/product-list" })
+public class AdminProductListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserManagementServlet() {
+    public AdminProductListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +30,17 @@ public class UserManagementServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
-			ListService service = new ListService();
-			
-            // getting data from service
-            List<UserModel> users= service.fetchAll();
+			ProductService service = new ProductService();
+            List<ProductModel> products = service.getAllProducts();
 
-            // setting the data
-            request.setAttribute("users", users);
+            request.setAttribute("products", products);
 
-            // forward to JSP
-            request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
         } catch (Exception e) {
-            throw new ServletException("Error in database!", e);
+            e.printStackTrace();
         }
+		request.setAttribute("activeMenu", "product");
+		request.getRequestDispatcher("/WEB-INF/pages/adminProductList.jsp").forward(request, response);
 	}
 
 	/**
@@ -52,7 +48,7 @@ public class UserManagementServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
+		doGet(request, response);
 	}
 
 }

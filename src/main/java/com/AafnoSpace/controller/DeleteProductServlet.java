@@ -6,22 +6,20 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-import com.AafnoSpace.model.UserModel;
-import com.AafnoSpace.service.ListService;
+import com.AafnoSpace.service.ProductService;
 
 /**
- * Servlet implementation class UserManagement
+ * Servlet implementation class DeleteProductServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = {})
-public class UserManagementServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/delete-product" })
+public class DeleteProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserManagementServlet() {
+    public DeleteProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,29 +28,28 @@ public class UserManagementServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		try {
-			ListService service = new ListService();
-			
-            // getting data from service
-            List<UserModel> users= service.fetchAll();
-
-            // setting the data
-            request.setAttribute("users", users);
-
-            // forward to JSP
-            request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
-        } catch (Exception e) {
-            throw new ServletException("Error in database!", e);
-        }
+		response.sendRedirect(request.getContextPath() + "/product-list");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+		try {
+            String idStr = request.getParameter("id");
+            if (idStr != null) {
+                int productId = Integer.parseInt(idStr);
+
+                ProductService service = new ProductService();
+                service.deleteProduct(productId);
+            }
+
+            response.sendRedirect(request.getContextPath() + "/product-list");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/error.jsp");
+        }
 	}
 
 }

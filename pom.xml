@@ -23,8 +23,6 @@
         <version>9.6.0</version>
     </dependency>
 
-    
-
     <dependency>
         <groupId>org.mindrot</groupId>
         <artifactId>jbcrypt</artifactId>
@@ -36,15 +34,11 @@
         <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
         <version>3.0.0</version>
     </dependency>
+    
     <dependency>
         <groupId>org.glassfish.web</groupId>
         <artifactId>jakarta.servlet.jsp.jstl</artifactId>
         <version>3.0.1</version>
-    </dependency>
-    <dependency>
-    	<groupId>com.islington</groupId>
-    	<artifactId>hashing</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
   

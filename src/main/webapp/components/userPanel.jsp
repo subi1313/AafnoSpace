@@ -6,7 +6,9 @@
         <li><a href="${pageContext.request.contextPath}/admin-profile" class="${activeMenu == 'profile' ? 'active' : ''}"> <img
                     src="${pageContext.request.contextPath}/images/adminPanel/profile.png" alt="Profile Icon">
                 Profile</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'user' ? 'active' : ''}"> <img
+                
+         
+        <li><a href="${pageContext.request.contextPath}/cart" class="${activeMenu == 'user' ? 'active' : ''}"> <img
                     src="${pageContext.request.contextPath}/images/adminPanel/shopping-cart.png" alt="Cart Icon"> Cart</a>
         </li>
         <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'order' ? 'active' : ''}"> <img

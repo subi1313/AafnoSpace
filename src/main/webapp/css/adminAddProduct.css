@@ -79,10 +79,6 @@ body {
     text-align: center;
 }
 
-.pic-upload-btn input[type="file"] {
-    display: none;
-}
-
 .pic-upload-btn {
     background-color: #252420;
     color: #FEFDFC;
@@ -95,6 +91,10 @@ body {
 
 .pic-upload-btn:hover {
     background-color: #38383a;
+}
+
+#productImage {
+    display: none;
 }
 
 .inventory {

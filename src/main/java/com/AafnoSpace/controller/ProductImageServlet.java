@@ -5,23 +5,23 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
 
-import com.AafnoSpace.model.UserModel;
-import com.AafnoSpace.service.ListService;
+import java.io.File;
+import java.io.IOException;
 
 /**
- * Servlet implementation class UserManagement
+ * Servlet implementation class ProductImageServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = {})
-public class UserManagementServlet extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/product-image" })
+public class ProductImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static final String UPLOAD_DIR = System.getProperty("user.home") + "/AafnoSpace/products";
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserManagementServlet() {
+    public ProductImageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +30,18 @@ public class UserManagementServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		try {
-			ListService service = new ListService();
-			
-            // getting data from service
-            List<UserModel> users= service.fetchAll();
-
-            // setting the data
-            request.setAttribute("users", users);
-
-            // forward to JSP
-            request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
-        } catch (Exception e) {
-            throw new ServletException("Error in database!", e);
+		String name = request.getParameter("name");
+        if (name == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
         }
+        File file = new File(UPLOAD_DIR, name);
+        if (!file.exists()) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+        response.setContentType(getServletContext().getMimeType(name));
+        java.nio.file.Files.copy(file.toPath(), response.getOutputStream());
 	}
 
 	/**
@@ -52,7 +49,7 @@ public class UserManagementServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
+		doGet(request, response);
 	}
 
 }
