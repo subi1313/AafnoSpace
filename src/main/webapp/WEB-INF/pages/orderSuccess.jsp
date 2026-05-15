@@ -29,7 +29,7 @@
         <h2>Thankyou !</h2>
 
         <p>You have successfully placed your order.</p>
-        <p>Your order number is:</p>
+        <p>${OrderID}</p>
         <p>20890876</p>
 
         <p>
