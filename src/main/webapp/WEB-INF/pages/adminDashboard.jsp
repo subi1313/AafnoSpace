@@ -12,12 +12,12 @@
 
 <jsp:include page="/components/header.jsp"/>
 
-<div class="admin-dashboard">
+<div class="adminDashboard">
     <jsp:include page="/components/adminPanel.jsp"/>
 
     <div class="main">
-        <p class="pageTitle">Dashboard</p>
-        <div class="dashboard-cards">
+        <p class="pageTitle">Report Overview</p>
+        <div class="dashboardCards">
             <div class="card">
                 <p>Total Orders</p>
                 <h2>${totalOrders}</h2>
