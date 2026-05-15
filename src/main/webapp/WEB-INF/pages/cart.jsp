@@ -44,7 +44,7 @@
 
                     <!-- IMAGE -->
                     <div class="image-holder">
-                        <img src="${pageContext.request.contextPath}/getImage?name=${item.imageName}">
+                        <img src="${pageContext.request.contextPath}/product-image?name=${item.imageName}">
                     </div>
 
                     <!-- PRODUCT NAME -->
@@ -84,8 +84,8 @@
                             <button type="submit"
                                     name="action"
                                     value="delete"
-                                    class="qty-btn">
-                                Remove
+                                    class="delete">
+                                X
                             </button>
 
                         </div>
@@ -99,8 +99,10 @@
 
         <!-- EMPTY CART MESSAGE -->
         <c:if test="${empty cartItems}">
-            <h3>Your cart is empty</h3>
+            <h3 class="empty-cart">Your cart is empty</h3>
         </c:if>
+        
+        
 
     </div>
 </div>

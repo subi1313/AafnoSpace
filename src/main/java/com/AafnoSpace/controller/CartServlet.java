@@ -60,8 +60,11 @@ public class CartServlet extends HttpServlet {
                         productId
                 );
                 if (result) {
-                    response.sendRedirect(request.getContextPath() + "/cart"); 
+//                    response.sendRedirect(request.getContextPath() + "/cart");
+                	 response.setStatus(HttpServletResponse.SC_OK);
+                	 response.getWriter().println("added");
                 } else {
+                	response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                     response.getWriter().println("Failed To Add Cart");
                 }
                 return;

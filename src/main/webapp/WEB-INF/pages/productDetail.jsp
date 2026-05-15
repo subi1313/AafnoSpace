@@ -17,7 +17,7 @@
 <div class="container">
 	
 	<!-- Product image -->
-    <img src="${pageContext.request.contextPath}/getImage?name=${product.imageName}" alt="${product.productName}">
+    <img src="${pageContext.request.contextPath}/product-image?name=${product.imageName}">
 
     <div class="description">
         <h1>${product.productName}</h1>
@@ -32,20 +32,18 @@
         <h2>Category</h2>
         <p>${product.category}</p>
 
+		<div class="button-group">
         <button class="buy-now" >Buy Now</button>
         
 		<form action="${pageContext.request.contextPath}/cart" method="post">
-		
-		    <input type="hidden" name="ProductID" value="2">   <!--value="${product.productId}"  -->
-		
+		    <input type="hidden" name="ProductID" value="${product.productId}"> 
 		    <button type="submit" class="add-to-cart">
 		        Add to Cart
 		    </button>
-		
 		</form>
+		</div>
+		
     </div>
-
 </div>
-
 </body>
 </html>
