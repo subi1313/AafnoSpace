@@ -27,4 +27,7 @@ public class CartService {
     public boolean deleteCartItem(int cartItemId) throws Exception {
         return dao.deleteCartItem(cartItemId);
     }
+    public List<CartModel> getSelectedCartItems(int userId, List<Integer> productIds) throws Exception {
+        return dao.getSelectedCartItems(userId, productIds);
+    }
 }

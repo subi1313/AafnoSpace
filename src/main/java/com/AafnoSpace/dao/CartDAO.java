@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.AafnoSpace.model.CartModel;
+import com.AafnoSpace.service.CartService;
 import com.AafnoSpace.utils.DBconfig;
 
 public class CartDAO {
@@ -155,5 +156,30 @@ public class CartDAO {
             pst.setInt(1, cartItemId);
             return pst.executeUpdate() > 0;
         }
+    }
+    public List<CartModel> getCheckoutItems(int userId, String[] selectedItems) throws Exception {
+
+        CartService cartService = new CartService();
+
+        // 1. Get ALL cart items from DB
+        List<CartModel> allItems = cartService.getCartItems(userId);
+
+        // 2. Convert selectedItems (String[]) → List<Integer>
+        List<Integer> selectedIds = new ArrayList<>();
+
+        for (String id : selectedItems) {
+            selectedIds.add(Integer.parseInt(id));
+        }
+
+        // 3. Filter only selected items
+        List<CartModel> selected = new ArrayList<>();
+
+        for (CartModel item : allItems) {
+            if (selectedIds.contains(item.getProductId())) {
+                selected.add(item);
+            }
+        }
+
+        return selected;
     }
 }

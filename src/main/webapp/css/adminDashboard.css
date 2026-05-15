@@ -1,5 +1,7 @@
 .admin-dashboard {
     display: flex;
+    gap: 50px;
+    margin:20px 8.33%;
     flex-direction: row;
     margin-top: 10px;
     margin-bottom: 10px;
