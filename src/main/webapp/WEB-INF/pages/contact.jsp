@@ -7,6 +7,7 @@
     <title>Contact Us</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contact.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
         <section>
             <div class="contact-main">
                 <div class="contact-img">
-                    <img src="${pageContext.request.contextPath}/images/contact/1.png" alt="">
+                    <img src="${pageContext.request.contextPath}/images/contact/1.png">
                 </div>
                 <form class="contact-info" action="${pageContext.request.contextPath}/contact" method="post">
                     <h3>Reach Out to Us</h3>
@@ -39,10 +40,10 @@
                         <button type="submit" class="contact-button">Submit</button>
                     </div>
                 </form>
-
             </div>
         </section>
     </main>
+    <jsp:include page="../../components/footer.jsp" />
 </body>
 
 </html>
