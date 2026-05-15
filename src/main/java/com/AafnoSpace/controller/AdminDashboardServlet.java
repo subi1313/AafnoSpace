@@ -32,6 +32,7 @@ public class AdminDashboardServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setAttribute("activeMenu", "dashboard");
 		request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp")
         .forward(request, response);
 	}
