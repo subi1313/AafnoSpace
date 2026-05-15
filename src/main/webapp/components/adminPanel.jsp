@@ -26,7 +26,7 @@
         <h2> <img src="${pageContext.request.contextPath}/images/adminPanel/others.png" alt="Others Icon"> Others
         </h2>
         <ul>
-            <li><a href="#"> <img src="${pageContext.request.contextPath}/images/adminPanel/logout.png"
+            <li><a href="${pageContext.request.contextPath}/logout"> <img src="${pageContext.request.contextPath}/images/adminPanel/logout.png"
                         alt="Log Out Icon"> Log Out</a>
             </li>
         </ul>

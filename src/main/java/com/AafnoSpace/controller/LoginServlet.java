@@ -69,13 +69,8 @@ public class LoginServlet extends HttpServlet {
             	
             	// Cookie is created to record last login time
             	CookieUtil.addCookie(response, "last_login", loginTime, 3600);
-            	 String role = userdata.getRole();
-                 if ("Admin".equals(role)) {
-                     response.sendRedirect(request.getContextPath() + "/admin-profile");
-                 } else {
                      response.sendRedirect(request.getContextPath() + "/home");
-                 }
-	           
+                
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
