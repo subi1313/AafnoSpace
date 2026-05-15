@@ -36,6 +36,7 @@ nav {
 }
 
 .nav-menu a:hover {
+	transform: scale(1.08);
     color: rgb(47, 56, 92);
 }
 

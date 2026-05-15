@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.AafnoSpace.service.ContactService;
+
 /**
  * Servlet implementation class ContactServlet
  */
@@ -18,6 +20,8 @@ import java.io.IOException;
 		})
 public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private ContactService service = new ContactService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,8 +42,24 @@ public class ContactServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try {
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String subject = request.getParameter("subject");
+            String message = request.getParameter("message");
+            
+            int result = service.addContact(name, email, subject, message);
+
+            if (result > 0) {
+                response.sendRedirect(request.getContextPath() + "/contact?success=true");
+            } else {
+                response.sendRedirect(request.getContextPath() + "/contact?error=true");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/contact?error=true");
+        }
 	}
 
 }

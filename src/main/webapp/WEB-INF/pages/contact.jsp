@@ -24,21 +24,21 @@
                 <div class="contact-img">
                     <img src="${pageContext.request.contextPath}/images/contact/1.png" alt="">
                 </div>
-                <div class="contact-info">
+                <form class="contact-info" action="${pageContext.request.contextPath}/contact" method="post">
                     <h3>Reach Out to Us</h3>
                     <p>Your questions and feedback matter to us </p>
                     <div class="contact-form">
                         <label>Name*</label>
-                        <input type="text">
+                        <input type="text" name="name" required>
                         <label>Email*</label>
-                        <input type="email">
+                        <input type="email" name="email" required>
                         <label>Subject*</label>
-                        <input type="text">
+                        <input type="text" name="subject" required>
                         <label>Message*</label>
-                        <textarea></textarea>
-                        <button class="contact-button">Submit</button>
+                        <textarea name="message" required></textarea>
+                        <button type="submit" class="contact-button">Submit</button>
                     </div>
-                </div>
+                </form>
 
             </div>
         </section>
