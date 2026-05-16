@@ -10,8 +10,8 @@
     <title>Cart</title>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 </head>
 
@@ -21,14 +21,11 @@
 
 <div class="layout">
 
-    <!-- side-panel -->
+    <jsp:include page="/components/userPanel.jsp" />
 
-        <jsp:include page="/components/userPanel.jsp" />
-
-
-    <!-- cart area-->
     <div class="product-cart">
 
+        <!-- cart items -->
         <c:forEach var="item" items="${cartItems}">
 
             <div class="card">
@@ -37,10 +34,14 @@
                       method="post"
                       style="display:flex; width:100%; align-items:center; gap:16px;">
 
-                    <!-- cart item id -->
                     <input type="hidden" name="cartItemId" value="${item.cartItemId}">
 
-                    <input type="checkbox" name="selectedItems" value="${item.cartItemId}" class="cart-checkbox">
+                    <!-- checkbox for checkout -->
+                    <input type="checkbox"
+                           name="selectedItems"
+                           value="${item.cartItemId}"
+                           class="cart-checkbox">
+
                     <!-- image -->
                     <div class="image-holder">
                         <img src="${pageContext.request.contextPath}/product-image?name=${item.imageName}">
@@ -57,33 +58,21 @@
                         <div class="price-value">Rs. ${item.price}</div>
                     </div>
 
-                    <!--quantity -->
+                    <!-- quantity -->
                     <div class="quantity">
                         <div class="qty-label">Quantity</div>
 
                         <div class="qty-property">
 
-                            <!-- decrease -->
-                            <button type="submit"
-                                    name="action"
-                                    value="decrease"
-                                    class="qty-btn">−</button>
+                            <button type="submit" name="action" value="decrease" class="qty-btn">−</button>
 
                             <div class="qty-value">
                                 ${item.quantity}
                             </div>
 
-                            <!-- increase -->
-                            <button type="submit"
-                                    name="action"
-                                    value="increase"
-                                    class="qty-btn">+</button>
+                            <button type="submit" name="action" value="increase" class="qty-btn">+</button>
 
-                            <!-- delete button -->
-                            <button type="submit"
-                                    name="action"
-                                    value="delete"
-                                    class="delete">
+                            <button type="submit" name="action" value="delete" class="delete">
                                 X
                             </button>
 
@@ -96,19 +85,26 @@
 
         </c:forEach>
 
-        <!-- empty cart message-->
+        <!-- empty cart -->
         <c:if test="${empty cartItems}">
             <h3 class="empty-cart">Your cart is empty</h3>
         </c:if>
-        
-        <!-- Checkout button -->
+
+        <!-- checkout button-->
         <div class="checkout-btn">
-        <form action="${pageContext.request.contextPath}/checkout" method="post">
-        <button type="submit" class="checkout">
-        	Checkout
-        </button>
-        </form>
+
+            <form action="${pageContext.request.contextPath}/checkout"
+                  method="post"
+                  id="checkoutForm">
+
+                <button type="submit" class="checkout">
+                    Checkout
+                </button>
+
+            </form>
+
         </div>
+
     </div>
 </div>
 

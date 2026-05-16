@@ -44,29 +44,29 @@ public class CheckoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
 
-	    try {
-
-	        UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
-
-	        String[] selectedItems = request.getParameterValues("selectedItems");
-
-	        if (selectedItems == null || selectedItems.length == 0) {
-	            response.sendRedirect(request.getContextPath() + "/cart");
-	            return;
-	        }
-	        CheckoutService service = new CheckoutService();
-	        List<CartModel> items =service.getCheckoutItems(user.getuserId(), selectedItems);
-	        double subtotal = service.calculateSubtotal(items);
-	        double total = service.calculateTotal(subtotal);
-	        request.setAttribute("items", items);
-	        request.setAttribute("subtotal", subtotal);
-	        request.setAttribute("delivery", 100);
-	        request.setAttribute("total", total);
-	        request.getRequestDispatcher("/WEB-INF/pages/checkout.jsp")
-	                .forward(request, response);
-
-	    } catch (Exception e) {
-	        throw new ServletException("Checkout error", e);
-	    }
+//	    try {
+//
+//	        UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
+//
+//	        String[] selectedItems = request.getParameterValues("selectedItems");
+//
+//	        if (selectedItems == null || selectedItems.length == 0) {
+//	            response.sendRedirect(request.getContextPath() + "/cart");
+//	            return;
+//	        }
+//	        CheckoutService service = new CheckoutService();
+//	        List<CartModel> items =service.getCheckoutItems(user.getuserId(), selectedItems);
+//	        double subtotal = service.calculateSubtotal(items);
+//	        double total = service.calculateTotal(subtotal);
+//	        request.setAttribute("items", items);
+//	        request.setAttribute("subtotal", subtotal);
+//	        request.setAttribute("delivery", 100);
+//	        request.setAttribute("total", total);
+//	        request.getRequestDispatcher("/WEB-INF/pages/checkout.jsp")
+//	                .forward(request, response);
+//
+//	    } catch (Exception e) {
+//	        throw new ServletException("Checkout error", e);
+//	    }
 	}
 }
