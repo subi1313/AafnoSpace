@@ -154,17 +154,10 @@ textarea {
 .errorPopup {
     background-color: #ffe5e5;
     color: #d8000c;
-    border: 1px solid #d8000c;
     padding: 12px 16px;
-    margin-bottom: 15px;
     border-radius: 6px;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
+    margin-bottom: 15px;
+    border: 1px solid #d8000c;
     font-size: 14px;
-    font-weight: 500;
-
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }

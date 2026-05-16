@@ -19,8 +19,7 @@
             <div class="add-main">
             	<!-- Error -->
             	<c:if test="${not empty error}">
-				    <div class="errorPopup">
-				    	<i class="fa-solid fa-circle-exclamation"></i>
+				    <div class="errorPopup" id="errorPopup">
 				        ${error}
 				    </div>
 				</c:if>
@@ -71,7 +70,7 @@
 
                             <label>Description</label>
                             <textarea name="description"
-                                placeholder="Write a short description highlighting key benefits and features"> ${description} </textarea>
+                                placeholder="Write a short description highlighting key benefits and features">${description}</textarea>
                         </div>
                     </div>
                     <div class="add-button">
@@ -109,6 +108,23 @@
             };
 
             reader.readAsDataURL(file);
+        }
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorPopup = document.getElementById('errorPopup');
+        
+        if (errorPopup) {
+            // Wait for 5 seconds (5000ms)
+            setTimeout(() => {
+            	// Add the fade-out class to trigger CSS transitions
+                errorPopup.classList.add('fade-out');
+            	
+                //Remove from DOM entirely after transition finishes (500ms later)
+                setTimeout(() => {
+                    errorPopup.remove();
+                }, 500);
+            }, 5000);
         }
     });
 	</script>

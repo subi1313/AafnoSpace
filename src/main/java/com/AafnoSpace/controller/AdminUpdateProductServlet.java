@@ -62,16 +62,51 @@ public class AdminUpdateProductServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		try {
             int id = Integer.parseInt(request.getParameter("productId"));
-            String name = request.getParameter("productName");
-            String desc = request.getParameter("description");
+            String productName = request.getParameter("productName");
+            String description = request.getParameter("description");
             String category = request.getParameter("category");
-            double price = Double.parseDouble(request.getParameter("price"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-
+            String priceStr = request.getParameter("price");
+            String quantityStr = request.getParameter("quantity");
+            
             ProductService service = new ProductService();
             ProductModel existingProduct = service.getProductById(id);
+            
+            if (productName == null || productName.trim().isEmpty() || description == null || description.trim().isEmpty() || 
+					category == null || category.trim().isEmpty()  || category.equals("Select product category") || priceStr == null || 
+					priceStr.trim().isEmpty() || quantityStr == null || quantityStr.trim().isEmpty()) {
+				request.setAttribute("error", "All fields are required!");
+				request.setAttribute("product", existingProduct);
+				request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
+				return;
+	        }
+			
+			double price;
+			int quantity;
+			
+			try {
+				price = Double.parseDouble(priceStr);
+			    quantity = Integer.parseInt(quantityStr);
+
+                if (price <= 0 || quantity < 0) {
+                	request.setAttribute("error", "Invalid price or quantity!");
+                	request.setAttribute("product", existingProduct);
+                    request.getRequestDispatcher( "/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
+                    return;
+                }
+
+            } 
+			catch (NumberFormatException e) {
+                request.setAttribute("error", "Price and quantity must be numeric!");
+                request.setAttribute("product", existingProduct);
+                request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
+                return;
+            }
+
+            
 
             if (existingProduct == null) {
                 throw new ServletException("Product not found with ID: " + id);
@@ -93,7 +128,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
                 filePart.write(UPLOAD_DIR + File.separator + imageName);
             }
 
-            service.updateProduct(id, name, desc, category, price, quantity, imageName);
+            service.updateProduct(id, productName, description, category, price, quantity, imageName);
 
             response.sendRedirect(request.getContextPath() + "/product-list");
 

@@ -17,6 +17,12 @@
         	<jsp:include page="../../components/adminPanel.jsp" />
         	<div class="update-main">
                 <form action="${pageContext.request.contextPath}/update-product" method="post" enctype="multipart/form-data">
+                	<!-- Error -->
+	            	<c:if test="${not empty error}">
+					    <div class="errorPopup" id="errorPopup">
+					        ${error}
+					    </div>
+					</c:if>
                     <h2>Update Product</h2>
                     <div class="update-info">
                         <div class="update-details">
@@ -97,6 +103,23 @@
                 preview.appendChild(img);
             };
             reader.readAsDataURL(file);
+        }
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorPopup = document.getElementById('errorPopup');
+        
+        if (errorPopup) {
+            // Wait for 5 seconds (5000ms)
+            setTimeout(() => {
+            	// Add the fade-out class to trigger CSS transitions
+                errorPopup.classList.add('fade-out');
+            	
+                //Remove from DOM entirely after transition finishes (500ms later)
+                setTimeout(() => {
+                    errorPopup.remove();
+                }, 500);
+            }, 5000);
         }
     });
     </script>
