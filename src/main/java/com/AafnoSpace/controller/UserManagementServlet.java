@@ -14,7 +14,7 @@ import com.AafnoSpace.service.ListService;
 /**
  * Servlet implementation class UserManagement
  */
-@WebServlet(asyncSupported = true, urlPatterns = {})
+@WebServlet(asyncSupported = true, urlPatterns = {"/userManagement"})
 public class UserManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

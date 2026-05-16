@@ -1,4 +1,4 @@
-.admin-dashboard {
+.adminDashboard {
     display: flex;
     gap: 50px;
     margin:20px 8.33%;
@@ -22,7 +22,7 @@
     margin-top: 0px;
 }
 
-.dashboard-cards {
+.dashboardCards {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
