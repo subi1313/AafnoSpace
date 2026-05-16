@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import com.AafnoSpace.service.ProductService;
 import com.AafnoSpace.utils.FileUploadUtil;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
  * Servlet implementation class AdminAddProductServlet
@@ -146,6 +147,7 @@ public class AdminAddProductServlet extends HttpServlet {
 			int result = service.addProduct(productName, description, category, price, quantity, imageName);
 
 			if (result > 0) {
+				SessionUtil.setAttribute(request, "success", "Product added successfully!", 3600);
 				response.sendRedirect(request.getContextPath() + "/product-list");
 			} else {
 				request.setAttribute("error", "Failed to add product!");

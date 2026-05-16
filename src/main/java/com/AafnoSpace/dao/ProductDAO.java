@@ -168,8 +168,8 @@ public class ProductDAO {
 	        pst.setString(index++, "%" + search + "%");
 	    }
 	    if (categories != null) {
-	        for (String cat : categories) {
-	            pst.setString(index++, cat);
+	        for (String category : categories) {
+	            pst.setString(index++, category);
 	        }
 	    }
 	

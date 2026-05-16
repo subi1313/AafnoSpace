@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import com.AafnoSpace.model.ProductModel;
 import com.AafnoSpace.service.ProductService;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
  * Servlet implementation class AdminUpdateProductServlet
@@ -49,21 +50,17 @@ public class AdminUpdateProductServlet extends HttpServlet {
 
 	        request.setAttribute("product", product);
 
-	        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
-	               .forward(request, response);
+	        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		try {
             int id = Integer.parseInt(request.getParameter("productId"));
             String productName = request.getParameter("productName");
@@ -129,6 +126,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
             }
 
             service.updateProduct(id, productName, description, category, price, quantity, imageName);
+            SessionUtil.setAttribute(request, "success", "Product updated successfully!", 3600);
 
             response.sendRedirect(request.getContextPath() + "/product-list");
 

@@ -17,6 +17,11 @@
         <div class="admin-list">
         	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="list-main">
+            	<c:if test="${not empty success}">
+					<div class="successPopup" id="successPopup">
+						${success}
+					</div>
+				</c:if>		    
                 <div class="list-top">
                     <h2>Product List</h2>
                     <a href="${pageContext.request.contextPath}/add-product">
@@ -78,6 +83,21 @@
             </div>
         </div>
     </section>
+    <script>
+	document.addEventListener('DOMContentLoaded', function () {
+	    const popup = document.getElementById('successPopup');
+	
+	    if (popup) {
+	        setTimeout(() => {
+	            popup.classList.add('fade-out');
+	
+	            setTimeout(() => {
+	                popup.remove();
+	            }, 500);
+	        }, 5000);
+	    }
+	});
+	</script>
 </body>
 
 </html>
