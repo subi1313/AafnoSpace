@@ -65,7 +65,7 @@ public class CheckoutServlet extends HttpServlet {
 	        request.getRequestDispatcher("/WEB-INF/pages/checkout.jsp").forward(request, response);
 
 	    } catch (Exception e) {
-	        throw new ServletException("Checkout error", e);
+	    	e.printStackTrace();
 	    }
 	}
 }

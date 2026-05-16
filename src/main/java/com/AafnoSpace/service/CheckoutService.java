@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.AafnoSpace.dao.OrderDAO;
 import com.AafnoSpace.dao.OrderDetailDAO;
+import com.AafnoSpace.dao.PaymentDAO;
 import com.AafnoSpace.model.CartModel;
 
 public class CheckoutService {
@@ -42,17 +43,12 @@ public class CheckoutService {
     }
     
     public int placeOrder(int userId, List<CartModel> items, String payment, double total) throws Exception {
-        
-        // payment method to ID (1 = cash, 2 = online)
-    	int paymentId;
-    	if (payment.equals("online")) {
-    	    paymentId = 2;
-    	} else {
-    	    paymentId = 1;
-    	}
-       LocalDateTime now = LocalDateTime.now();
-    	String orderDate = now.toLocalDate().toString();
-        
+    	 LocalDateTime now = LocalDateTime.now();
+      	String orderDate = now.toLocalDate().toString();
+          
+    	PaymentDAO paymentDAO = new PaymentDAO();
+    	int paymentId = paymentDAO.insertPayment(total, orderDate, payment);
+     
         OrderDAO orderDAO = new OrderDAO();
         OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
         

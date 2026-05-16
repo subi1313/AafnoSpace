@@ -50,6 +50,7 @@ public class OrderSuccessServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String payment = request.getParameter("payment");
+        //getting all selected items
         String[] selectedItems = request.getParameterValues("selectedItems");
 
         try {
@@ -62,7 +63,6 @@ public class OrderSuccessServlet extends HttpServlet {
             checkoutService.placeOrder(userId, items, payment, total);
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
         response.sendRedirect(request.getContextPath() + "/order-success");
     }
