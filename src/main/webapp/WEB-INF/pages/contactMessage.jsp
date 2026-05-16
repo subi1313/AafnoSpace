@@ -1,0 +1,45 @@
+<%@ page isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Message</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contactMessage.css">
+</head>
+
+<body>
+    <jsp:include page="../../components/header.jsp" />
+    <section>
+        <div class="admin-contact">
+        	<jsp:include page="../../components/adminPanel.jsp" />
+        	<div class="message-main">
+                <h2>Contact Messages</h2>
+			    <table>
+			        <tr>
+			            <th>ID</th>
+			            <th>Name</th>
+			            <th>Email</th>
+			            <th>Subject</th>
+			            <th>Message</th>
+			        </tr>
+			        <c:forEach var="c" items="${contacts}">
+			            <tr>
+			                <td>${c.id}</td>
+			                <td>${c.name}</td>
+			                <td>${c.email}</td>
+			                <td>${c.subject}</td>
+			                <td>${c.message}</td>
+			            </tr>
+			        </c:forEach>
+			    </table>
+            </div>
+        </div>
+	</section>
+    
+</body>
+
+</html>

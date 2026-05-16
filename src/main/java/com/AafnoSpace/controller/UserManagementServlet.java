@@ -14,7 +14,9 @@ import com.AafnoSpace.service.ListService;
 /**
  * Servlet implementation class UserManagement
  */
-@WebServlet(asyncSupported = true, urlPatterns = {"/userManagement"})
+@WebServlet(asyncSupported = true, urlPatterns = {
+		"/userManagement"
+})
 public class UserManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +32,7 @@ public class UserManagementServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setAttribute("activeMenu", "user");
 		try {
 			ListService service = new ListService();
 			

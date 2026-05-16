@@ -7,6 +7,7 @@
     <title>Contact Us</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contact.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -22,27 +23,27 @@
         <section>
             <div class="contact-main">
                 <div class="contact-img">
-                    <img src="${pageContext.request.contextPath}/images/contact/1.png" alt="">
+                    <img src="${pageContext.request.contextPath}/images/contact/1.png">
                 </div>
-                <div class="contact-info">
+                <form class="contact-info" action="${pageContext.request.contextPath}/contact" method="post">
                     <h3>Reach Out to Us</h3>
                     <p>Your questions and feedback matter to us </p>
                     <div class="contact-form">
                         <label>Name*</label>
-                        <input type="text">
+                        <input type="text" name="name" required>
                         <label>Email*</label>
-                        <input type="email">
+                        <input type="email" name="email" required>
                         <label>Subject*</label>
-                        <input type="text">
+                        <input type="text" name="subject" required>
                         <label>Message*</label>
-                        <textarea></textarea>
-                        <button class="contact-button">Submit</button>
+                        <textarea name="message" required></textarea>
+                        <button type="submit" class="contact-button">Submit</button>
                     </div>
-                </div>
-
+                </form>
             </div>
         </section>
     </main>
+    <jsp:include page="../../components/footer.jsp" />
 </body>
 
 </html>

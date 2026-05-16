@@ -14,7 +14,7 @@ import com.AafnoSpace.dao.OrderDAO;
 @WebServlet(
 		asyncSupported = true, 
 		urlPatterns = { 
-				"/adminDashboard"
+				"/admin", "/admin-dashboard"
 		})
 public class AdminDashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,8 +35,13 @@ public class AdminDashboardServlet extends HttpServlet {
 	    request.setAttribute("totalOrders",dao.getTotalOrders());
 	    request.setAttribute("totalCustomers",dao.getTotalCustomers());
 	    request.setAttribute("totalRevenue",dao.getTotalRevenue());
-
+	    request.setAttribute("totalCategories", dao.getTotalCategories());
+	    double totalRevenue = dao.getTotalRevenue();
+	    int totalProfit = (int)(totalRevenue*0.30);
+	    request.setAttribute("totalRevenue",(int) totalRevenue);
+	    request.setAttribute("totalProfit",totalProfit);
 		// TODO Auto-generated method stub
+		request.setAttribute("activeMenu", "dashboard");
 		request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp")
         .forward(request, response);
 	}
@@ -48,5 +53,4 @@ public class AdminDashboardServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
