@@ -17,6 +17,13 @@
         <div class="admin-add">
         	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="add-main">
+            	<!-- Error -->
+            	<c:if test="${not empty error}">
+				    <div class="errorPopup">
+				    	<i class="fa-solid fa-circle-exclamation"></i>
+				        ${error}
+				    </div>
+				</c:if>
             	<h2>Add Product</h2>
                 <form action="${pageContext.request.contextPath}/add-product" method="post" enctype="multipart/form-data">
                     <div class="add-info">
@@ -24,20 +31,20 @@
                             <h3>Product Details </h3>
                             <div class="detail-form">
                                 <label>Product Name</label>
-                                <input type="text" name="productName" placeholder="Enter product name">
+                                <input type="text" name="productName" value="${productName}" placeholder="Enter product name">
                                 <label>Category</label>
                                 <select name="category">
                                     <option>Select product category</option>
-                                    <option>Minimal</option>
-                                    <option>Japandi</option>
-                                    <option>Modern</option>
-                                    <option>Bohemian(Boho)</option>
-                                    <option>Luxury</option>
+                                    <option value="Minimal" ${category == 'Minimal' ? 'selected' : ''}>Minimal</option>
+								    <option value="Japandi" ${category == 'Japandi' ? 'selected' : ''}>Japandi</option>
+								    <option value="Modern" ${category == 'Modern' ? 'selected' : ''}>Modern</option>
+								    <option value="Bohemian(Boho)" ${category == 'Bohemian(Boho)' ? 'selected' : ''}>Bohemian(Boho)</option>
+								    <option value="Luxury" ${category == 'Luxury' ? 'selected' : ''}>Luxury</option>
                                 </select>
                             </div>
                         </div>
                         <div class="add-pic" id="imagePreview">
-                            <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png" alt="">
+                            <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png">
                             <p>Your product image goes here!!</p>
                             <label for="productImage" class="pic-upload-btn">
     							Choose Image
@@ -53,18 +60,18 @@
                             <div class="inv-form-part">
                                 <div class="form-part">
                                     <label>Selling Price</label>
-                                    <input type="text" name="price" placeholder="Enter selling price">
+                                    <input type="text" name="price" value="${price}" placeholder="Enter selling price">
                                 </div>
 
                                 <div class="form-part">
                                     <label>Quantity</label>
-                                    <input type="text" name="quantity" placeholder="Enter product quantity">
+                                    <input type="text" name="quantity" value="${quantity}" placeholder="Enter product quantity">
                                 </div>
                             </div>
 
                             <label>Description</label>
                             <textarea name="description"
-                                placeholder="Write a short description highlighting key benefits and features"></textarea>
+                                placeholder="Write a short description highlighting key benefits and features"> ${description} </textarea>
                         </div>
                     </div>
                     <div class="add-button">

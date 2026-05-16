@@ -54,23 +54,74 @@ public class AdminAddProductServlet extends HttpServlet {
 			String productName = request.getParameter("productName");
 			String description = request.getParameter("description");
 			String category = request.getParameter("category");
-			double price = Double.parseDouble(request.getParameter("price"));
-			int quantity = Integer.parseInt(request.getParameter("quantity"));
+			String priceStr = request.getParameter("price");
+			String quantityStr = request.getParameter("quantity");
 			
-			if (category == null || category.equals("Select product category")) {
-			    response.setContentType("text/html");
-			    response.getWriter().println("<script>alert('Please select a valid product category!'); window.history.back();</script>");
-			    return;
-			}
+			if (productName == null || productName.trim().isEmpty() || description == null || description.trim().isEmpty() || 
+					category == null || category.trim().isEmpty()  || category.equals("Select product category") || priceStr == null || 
+					priceStr.trim().isEmpty() || quantityStr == null || quantityStr.trim().isEmpty()) {
+				request.setAttribute("error", "All fields are required!");
+				
+				request.setAttribute("productName", productName);
+				request.setAttribute("description", description);
+				request.setAttribute("category", category);
+				request.setAttribute("price", priceStr);
+				request.setAttribute("quantity", quantityStr);
+				
+				request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
+				return;
+	        }
+			
+			double price;
+			int quantity;
+			
+			try {
+				price = Double.parseDouble(priceStr);
+			    quantity = Integer.parseInt(quantityStr);
+
+                if (price <= 0 || quantity < 0) {
+                	request.setAttribute("error", "Invalid price or quantity!");
+                	
+                	request.setAttribute("productName", productName);
+                	request.setAttribute("description", description);
+                	request.setAttribute("category", category);
+                	request.setAttribute("price", priceStr);
+                	request.setAttribute("quantity", quantityStr);
+                	
+                    request.getRequestDispatcher( "/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
+                    return;
+                }
+
+            } 
+			catch (NumberFormatException e) {
+                request.setAttribute("error", "Price and quantity must be numeric!");
+                
+                request.setAttribute("productName", productName);
+                request.setAttribute("description", description);
+                request.setAttribute("category", category);
+                request.setAttribute("price", priceStr);
+                request.setAttribute("quantity", quantityStr);
+                
+                request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
+                return;
+            }
+			
+			
 
 			//getting image file
 			Part filePart = request.getPart("productImage");
 	
 			//validating image
 			if (filePart == null || filePart.getSize() == 0) {
-				response.setContentType("text/html");
-			    response.getWriter().println(
-			        "<script>alert('Please upload a product image!'); window.history.back();</script>");
+				request.setAttribute("error", "Please upload a product image!");
+				
+				request.setAttribute("productName", productName);
+				request.setAttribute("description", description);
+				request.setAttribute("category", category);
+				request.setAttribute("price", priceStr);
+				request.setAttribute("quantity", quantityStr);
+				
+				request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
 				return;
 			}
 	
@@ -97,8 +148,8 @@ public class AdminAddProductServlet extends HttpServlet {
 			if (result > 0) {
 				response.sendRedirect(request.getContextPath() + "/product-list");
 			} else {
-				response.setContentType("text/html");
-	            response.getWriter().println("<script>alert('Failed to add product!'); window.history.back();</script>");
+				request.setAttribute("error", "Failed to add product!");
+				request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
 			}
 
 		} catch (Exception e) {
