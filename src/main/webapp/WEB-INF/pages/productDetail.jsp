@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/productDetail.css">
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
     
 </head>
 
@@ -53,6 +54,6 @@
 		
     </div>
 </div>
-
+<jsp:include page="/components/footer.jsp" />
 </body>
 </html>
