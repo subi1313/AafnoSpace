@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUpdateProduct.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -85,6 +86,7 @@
             </div>
         </div>
     </section>
+    <jsp:include page="../../components/footer.jsp" />
     <script>
     document.getElementById("productImage").addEventListener("change", function(event) {
         const file = event.target.files[0];

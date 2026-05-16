@@ -8,6 +8,8 @@
     <title>Product</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/product.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -40,10 +42,15 @@
             </div>
             <div class="product-content">
                 <form action="${pageContext.request.contextPath}/products" method="get">
-                    <div class="search">
-                        <img src="${pageContext.request.contextPath}/images/product/search.png" alt="Search Icon">
-                        <input type="text" id="searchbar" name="searchbar" placeholder="What are you looking for?">
-                    </div>
+                	<div class="search-row">
+	                    <div class="search">
+	                        <img src="${pageContext.request.contextPath}/images/product/search.png" alt="Search Icon">
+	                        <input type="text" id="searchbar" name="searchbar" placeholder="What are you looking for?">
+	                    </div>
+	                    <a href="${pageContext.request.contextPath}/cart" class="cart-icon">
+				            <i class="fa-solid fa-cart-shopping"></i>
+				        </a>
+			        </div>
                 </form>
                 <div class="products-grid">
                     <c:forEach var="product" items="${products}">
@@ -67,6 +74,7 @@
             </div>
         </div>
     </section>
+    <jsp:include page="../../components/footer.jsp" />
 </body>
 
 </html>

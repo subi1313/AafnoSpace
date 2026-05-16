@@ -72,36 +72,66 @@ public class AdminUpdateProductServlet extends HttpServlet {
             ProductService service = new ProductService();
             ProductModel existingProduct = service.getProductById(id);
             
-            if (productName == null || productName.trim().isEmpty() || description == null || description.trim().isEmpty() || 
-					category == null || category.trim().isEmpty()  || category.equals("Select product category") || priceStr == null || 
-					priceStr.trim().isEmpty() || quantityStr == null || quantityStr.trim().isEmpty()) {
-				request.setAttribute("error", "All fields are required!");
-				request.setAttribute("product", existingProduct);
-				request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
-				return;
-	        }
+            if (productName == null || productName.trim().isEmpty()) {
+                request.setAttribute("error", "Product name is required!");
+            }
+            else if (description == null || description.trim().isEmpty()) {
+                request.setAttribute("error", "Description is required!");
+            }
+            else if (priceStr == null || priceStr.trim().isEmpty()) {
+                request.setAttribute("error", "Price is required!");
+            }
+            else if (quantityStr == null || quantityStr.trim().isEmpty()) {
+                request.setAttribute("error", "Quantity is required!");
+            }
+
+            if (request.getAttribute("error") != null) {
+                request.setAttribute("product", existingProduct);
+                request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+                       .forward(request, response);
+                return;
+            }
 			
 			double price;
 			int quantity;
 			
 			try {
-				price = Double.parseDouble(priceStr);
+			    price = Double.parseDouble(priceStr);
+
+			    if (price <= 0) {
+			        request.setAttribute("error", "Price must be greater than 0!");
+			        request.setAttribute("product", existingProduct);
+			        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			               .forward(request, response);
+			        return;
+			    }
+
+			} catch (NumberFormatException e) {
+			    request.setAttribute("error", "Price must be a valid number!");
+			    request.setAttribute("product", existingProduct);
+			    request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			           .forward(request, response);
+			    return;
+			}
+
+			try {
 			    quantity = Integer.parseInt(quantityStr);
 
-                if (price <= 0 || quantity < 0) {
-                	request.setAttribute("error", "Invalid price or quantity!");
-                	request.setAttribute("product", existingProduct);
-                    request.getRequestDispatcher( "/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
-                    return;
-                }
+			    if (quantity < 0) {
+			        request.setAttribute("error", "Quantity cannot be negative!");
+			        request.setAttribute("product", existingProduct);
+			        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			               .forward(request, response);
+			        return;
+			    }
 
-            } 
-			catch (NumberFormatException e) {
-                request.setAttribute("error", "Price and quantity must be numeric!");
-                request.setAttribute("product", existingProduct);
-                request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
-                return;
-            }
+			} catch (NumberFormatException e) {
+			    request.setAttribute("error", "Quantity must be a valid integer!");
+			    request.setAttribute("product", existingProduct);
+			    request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			           .forward(request, response);
+			    return;
+			}
 
             
 
@@ -110,7 +140,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
             }
 
             Part filePart = request.getPart("productImage");
-            String imageName = existingProduct.getImageName(); // use existing image by default
+            String imageName = existingProduct.getImageName();
 
             if (filePart != null && filePart.getSize() > 0) {
                 String originalFileName = filePart.getSubmittedFileName();

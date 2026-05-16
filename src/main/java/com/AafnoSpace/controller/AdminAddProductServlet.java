@@ -37,6 +37,20 @@ public class AdminAddProductServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    private void returnToForm(HttpServletRequest request, HttpServletResponse response, String message, String productName, String description,
+            String category, String price, String quantity) throws ServletException, IOException {
+
+        request.setAttribute("error", message);
+
+        request.setAttribute("productName", productName);
+        request.setAttribute("description", description);
+        request.setAttribute("category", category);
+        request.setAttribute("price", price);
+        request.setAttribute("quantity", quantity);
+
+        request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -58,71 +72,64 @@ public class AdminAddProductServlet extends HttpServlet {
 			String priceStr = request.getParameter("price");
 			String quantityStr = request.getParameter("quantity");
 			
-			if (productName == null || productName.trim().isEmpty() || description == null || description.trim().isEmpty() || 
-					category == null || category.trim().isEmpty()  || category.equals("Select product category") || priceStr == null || 
-					priceStr.trim().isEmpty() || quantityStr == null || quantityStr.trim().isEmpty()) {
-				request.setAttribute("error", "All fields are required!");
-				
-				request.setAttribute("productName", productName);
-				request.setAttribute("description", description);
-				request.setAttribute("category", category);
-				request.setAttribute("price", priceStr);
-				request.setAttribute("quantity", quantityStr);
-				
-				request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
+			if (productName == null || productName.trim().isEmpty()) {
+				returnToForm(request, response, "Product name is required!", productName, description, category, priceStr, quantityStr);
 				return;
-	        }
+			}
+
+			if (description == null || description.trim().isEmpty()) {
+				returnToForm(request, response, "Description is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (category == null || category.trim().isEmpty() || category.equals("Select product category")) {
+			    returnToForm(request, response, "Category is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (priceStr == null || priceStr.trim().isEmpty()) {
+				returnToForm(request, response, "Price is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (quantityStr == null || quantityStr.trim().isEmpty()) {
+				returnToForm(request, response, "Quantity is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
 			
 			double price;
 			int quantity;
 			
 			try {
-				price = Double.parseDouble(priceStr);
+			    price = Double.parseDouble(priceStr);
+			} catch (NumberFormatException e) {
+				returnToForm(request, response, "Price must be a valid number!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			try {
 			    quantity = Integer.parseInt(quantityStr);
+			} catch (NumberFormatException e) {
+				returnToForm(request, response, "Quantity must be a valid number!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
 
-                if (price <= 0 || quantity < 0) {
-                	request.setAttribute("error", "Invalid price or quantity!");
-                	
-                	request.setAttribute("productName", productName);
-                	request.setAttribute("description", description);
-                	request.setAttribute("category", category);
-                	request.setAttribute("price", priceStr);
-                	request.setAttribute("quantity", quantityStr);
-                	
-                    request.getRequestDispatcher( "/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
-                    return;
-                }
+			if (price <= 0) {
+				returnToForm(request, response, "Price can not be negative or zero!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
 
-            } 
-			catch (NumberFormatException e) {
-                request.setAttribute("error", "Price and quantity must be numeric!");
-                
-                request.setAttribute("productName", productName);
-                request.setAttribute("description", description);
-                request.setAttribute("category", category);
-                request.setAttribute("price", priceStr);
-                request.setAttribute("quantity", quantityStr);
-                
-                request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
-                return;
-            }
+			if (quantity < 0) {
+				returnToForm(request, response, "Quantity can not be negative!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
 			
-			
-
 			//getting image file
 			Part filePart = request.getPart("productImage");
 	
 			//validating image
 			if (filePart == null || filePart.getSize() == 0) {
-				request.setAttribute("error", "Please upload a product image!");
-				
-				request.setAttribute("productName", productName);
-				request.setAttribute("description", description);
-				request.setAttribute("category", category);
-				request.setAttribute("price", priceStr);
-				request.setAttribute("quantity", quantityStr);
-				
-				request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
+				returnToForm(request, response, "Please upload a product image!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
 	
@@ -138,7 +145,6 @@ public class AdminAddProductServlet extends HttpServlet {
 			if (!uploadPath.exists()) {
 				uploadPath.mkdirs();
 			}
-	
 			//saving image
 			FileUploadUtil.saveFile(filePart, UPLOAD_DIR, imageName);
 			
