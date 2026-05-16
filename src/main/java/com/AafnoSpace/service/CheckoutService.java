@@ -52,7 +52,7 @@ public class CheckoutService {
         OrderDAO orderDAO = new OrderDAO();
         OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
         
-        // inserting order and getting back orderId
+        // inserting into orders and getting back orderId
         int orderId = orderDAO.insertOrder(userId, orderDate, paymentId, total);
         
         // inserting each item into OrderDetails
