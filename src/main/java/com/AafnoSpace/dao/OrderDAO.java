@@ -107,4 +107,31 @@ public class OrderDAO {
         }
         return "N/A";
     }
+    public int getHighestRevenue() {
+        String sql = "SELECT SUM(od.LineTotal) AS revenue FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY revenue DESC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return (int) rs.getDouble("revenue");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getLowestRevenue() {
+        String sql = "SELECT SUM(od.LineTotal) AS revenue FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY revenue ASC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return (int) rs.getDouble("revenue");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 } 

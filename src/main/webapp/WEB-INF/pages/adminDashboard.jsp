@@ -40,12 +40,12 @@
 			</div>
 			<div class="card">
 			    <p>Highest Revenue Category</p>
-			    <h2>${highestCategory}</h2>
+			    <h2>${highestCategory} : ${highestRevenue}</h2>
 			</div>
 			
 			<div class="card">
 			    <p>Lowest Revenue Category</p>
-			    <h2>${lowestCategory}</h2>
+			    <h2>${lowestCategory} : ${lowestRevenue}</h2>
 			</div>
         </div>
     </div>
