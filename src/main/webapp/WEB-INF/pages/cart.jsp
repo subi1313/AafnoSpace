@@ -10,8 +10,8 @@
     <title>Cart</title>
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
-  	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 </head>
 
@@ -21,14 +21,11 @@
 
 <div class="layout">
 
-    <!-- SIDE PANEL -->
+    <jsp:include page="/components/userPanel.jsp" />
 
-        <jsp:include page="/components/userPanel.jsp" />
-
-
-    <!-- CART AREA -->
     <div class="product-cart">
 
+        <!-- cart items -->
         <c:forEach var="item" items="${cartItems}">
 
             <div class="card">
@@ -37,53 +34,45 @@
                       method="post"
                       style="display:flex; width:100%; align-items:center; gap:16px;">
 
-                    <!-- CART ITEM ID -->
                     <input type="hidden" name="cartItemId" value="${item.cartItemId}">
 
-                    <input type="checkbox" name="selectedItems" value="${item.cartItemId}" class="cart-checkbox">
-                    <!-- IMAGE -->
+                    <!-- checkbox for checkout -->
+                    <input type="checkbox"
+                           name="selectedItems"
+                           value="${item.cartItemId}"
+                           class="cart-checkbox">
+
+                    <!-- image -->
                     <div class="image-holder">
                         <img src="${pageContext.request.contextPath}/product-image?name=${item.imageName}">
                     </div>
 
-                    <!-- PRODUCT NAME -->
+                    <!-- product name -->
                     <div class="product-name">
                         ${item.productName}
                     </div>
 
-                    <!-- PRICE -->
+                    <!-- price -->
                     <div class="price">
                         <div class="price-label">Price</div>
                         <div class="price-value">Rs. ${item.price}</div>
                     </div>
 
-                    <!-- QUANTITY -->
+                    <!-- quantity -->
                     <div class="quantity">
                         <div class="qty-label">Quantity</div>
 
                         <div class="qty-property">
 
-                            <!-- DECREASE -->
-                            <button type="submit"
-                                    name="action"
-                                    value="decrease"
-                                    class="qty-btn">−</button>
+                            <button type="submit" name="action" value="decrease" class="qty-btn">−</button>
 
                             <div class="qty-value">
                                 ${item.quantity}
                             </div>
 
-                            <!-- INCREASE -->
-                            <button type="submit"
-                                    name="action"
-                                    value="increase"
-                                    class="qty-btn">+</button>
+                            <button type="submit" name="action" value="increase" class="qty-btn">+</button>
 
-                            <!-- DELETE BUTTON (NEW) -->
-                            <button type="submit"
-                                    name="action"
-                                    value="delete"
-                                    class="delete">
+                            <button type="submit" name="action" value="delete" class="delete">
                                 X
                             </button>
 
@@ -96,19 +85,26 @@
 
         </c:forEach>
 
-        <!-- EMPTY CART MESSAGE -->
+        <!-- empty cart -->
         <c:if test="${empty cartItems}">
             <h3 class="empty-cart">Your cart is empty</h3>
         </c:if>
-        
-        <!-- Checkout button -->
+
+        <!-- checkout button-->
         <div class="checkout-btn">
-        <form action="${pageContext.request.contextPath}/checkout" method="post">
-        <button type="submit" class="checkout">
-        	Buy Now
-        </button>
-        </form>
+
+            <form action="${pageContext.request.contextPath}/checkout"
+                  method="post"
+                  id="checkoutForm">
+
+                <button type="submit" class="checkout">
+                    Checkout
+                </button>
+
+            </form>
+
         </div>
+
     </div>
 </div>
 

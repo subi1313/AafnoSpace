@@ -62,8 +62,7 @@ public class CheckoutServlet extends HttpServlet {
 	        request.setAttribute("subtotal", subtotal);
 	        request.setAttribute("delivery", 100);
 	        request.setAttribute("total", total);
-	        request.getRequestDispatcher("/WEB-INF/pages/checkout.jsp")
-	                .forward(request, response);
+	        request.getRequestDispatcher("/WEB-INF/pages/checkout.jsp").forward(request, response);
 
 	    } catch (Exception e) {
 	        throw new ServletException("Checkout error", e);

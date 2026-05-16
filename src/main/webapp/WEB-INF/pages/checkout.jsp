@@ -52,15 +52,17 @@
                 </div>
                 <div class="paymentbg">
                     <p>Payment Method</p>
-                     <form action="checkout" method="post">
+               <form action="${pageContext.request.contextPath}/order-success" method="post">
+               <!-- saving cartItemId for order success -->
+    <c:forEach var="item" items="${items}">
+        <input type="hidden" name="selectedItems" value="${item.cartItemId}">
+    </c:forEach>
     <select name="payment" class="paymentselect">
         <option value="cash">Cash</option>
         <option value="online">Online</option>
     </select>
-    </div>
-    </div>
     <button type="submit">Place Order</button>
-</form>    
+</form>
 			
 			</div>
 			</div>

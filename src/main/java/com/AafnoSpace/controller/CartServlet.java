@@ -79,7 +79,7 @@ public class CartServlet extends HttpServlet {
                 return;
             }
 
-            // UPDATE / DELETE CART
+            // update/delete cart
             String cartItemIdStr = request.getParameter("cartItemId");
             if (cartItemIdStr != null) {
                 int cartItemId = Integer.parseInt(cartItemIdStr);
