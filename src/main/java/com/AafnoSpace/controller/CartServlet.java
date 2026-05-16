@@ -88,12 +88,12 @@ public class CartServlet extends HttpServlet {
                     case "decrease": service.decreaseQuantity(cartItemId); break;
                     case "delete":   service.deleteCartItem(cartItemId);   break;
                 }
+                
             }
-
             response.sendRedirect(request.getContextPath() + "/cart");
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
 }

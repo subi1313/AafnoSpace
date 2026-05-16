@@ -105,7 +105,7 @@
         <div class="checkout-btn">
         <form action="${pageContext.request.contextPath}/checkout" method="post">
         <button type="submit" class="checkout">
-        	Checkout
+        	Buy Now
         </button>
         </form>
         </div>
