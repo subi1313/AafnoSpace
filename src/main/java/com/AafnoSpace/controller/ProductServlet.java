@@ -40,6 +40,7 @@ public class ProductServlet extends HttpServlet {
 		try {
 		    ProductService service = new ProductService();
 		    List<ProductModel> products;
+		    
 
 		    // getting search item
 		    String searchItem = request.getParameter("searchbar");
@@ -51,6 +52,10 @@ public class ProductServlet extends HttpServlet {
 		    // converting arrays to lists
 		    List<String> categoryList = (categories != null) ? List.of(categories) : new ArrayList<>();
 		    List<String> priceList = (prices != null) ? List.of(prices) : new ArrayList<>();
+		    
+		    request.setAttribute("selectedCategories", categoryList);
+		    request.setAttribute("selectedPrices", priceList);
+		    request.setAttribute("searchbar", searchItem);
 
 		    // deciding what to fetch
 		    if ((searchItem != null && !searchItem.isEmpty()) 

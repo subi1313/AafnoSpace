@@ -204,4 +204,24 @@ public class ProductDAO {
 	    con.close();
 	    return rowsAffected;
 	}
+	
+	public int decreaseQuantity(int productId, int purchasedQty) throws Exception {
+
+	    Connection con = DBconfig.getConnection();
+
+	    String sql = "UPDATE product SET Quantity = Quantity - ? " + "WHERE ProductID = ? AND Quantity >= ?";
+
+	    PreparedStatement pst = con.prepareStatement(sql);
+
+	    pst.setInt(1, purchasedQty);
+	    pst.setInt(2, productId);
+	    pst.setInt(3, purchasedQty);
+
+	    int rowsAffected = pst.executeUpdate();
+
+	    pst.close();
+	    con.close();
+
+	    return rowsAffected;
+	}
 }

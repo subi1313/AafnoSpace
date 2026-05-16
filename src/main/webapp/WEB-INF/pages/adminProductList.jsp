@@ -22,6 +22,7 @@
 					<div class="successPopup" id="successPopup">
 						${success}
 					</div>
+					<c:remove var="success" scope="session"/>
 				</c:if>		    
                 <div class="list-top">
                     <h2>Product List</h2>

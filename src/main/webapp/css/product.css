@@ -122,6 +122,18 @@ nav img, .nav-menu a {
     outline: none;
 }
 
+.search button {
+	font-size: 16px;
+    background: transparent;
+    border: none;
+    color: #F2EBE3;
+    cursor: pointer;
+}
+
+.search button:hover {
+    color: #e0d9c7;
+}
+
 .products-grid {
 	margin-top: 40px;
     display: grid;
