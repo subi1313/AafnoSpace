@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ page isELIgnored="false" %>
         <html>
 
@@ -35,32 +36,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="productbg">
-                    <div class="proddesc">
-                        <img src="${pageContext.request.contextPath}/images/main/greensofa.jpg" alt="product" style="width:150px; height:150px; 
-    margin-top:10px;
-    margin-bottom:10px;">
+                <c:forEach var="item" items="${items}">
+    <div class="productbg">
+        <div class="proddesc">
 
-                        <div class="prodheading">
-                            <p>Product 1</p>
-                        </div>
-                        <div class="prodheading">
-                            <p>Price</p>
-                            <p>Rs.1500</p>
-                        </div>
-                        <div class="prodheading">
-                            <p>Quantity</p>
-                            <p>2</p>
-                        </div>
-                    </div>
-                </div>
+            <img src="${pageContext.request.contextPath}/product-image?name=${item.imageName}"
+                 alt="product"
+                 style="width:150px; height:150px; margin-top:10px; margin-bottom:10px;">
+
+            <div class="prodheading">
+                <p>${item.productName}</p>
+            </div>
+
+            <div class="prodheading">
+                <p>Price</p>
+                <p>Rs. ${item.price}</p>
+            </div>
+
+            <div class="prodheading">
+                <p>Quantity</p>
+                <p>${item.quantity}</p>
+            </div>
+
+        </div>
+    </div>
+</c:forEach>
 				<div class="totalandpay">
                 <div class="totalitemsbg">
-                    <p>Total Items: 1</p>
-                    <p>Total Price:1000</p>
-                    <p>Delivery Charge: Rs.100</p>
-                    <p>Shipping Address: Kamalpokhari, Kathmandu</p>
-                    <p>Total Price:Rs.1100</p>
+				    <p>Total Items: ${items.size()}</p>
+				    <p>Total Price: Rs. ${subtotal}</p>
+				    <p>Delivery Charge: Rs. ${delivery}</p>
+				    <p>Shipping Address: Kamalpokhari, Kathmandu</p>
+				    <p><b>Total Price: Rs. ${total}</b></p>
                 </div>
                 <div class="paymentbg">
                     <p>Payment Method</p>

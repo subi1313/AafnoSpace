@@ -45,7 +45,7 @@ public class OrderDAO {
         return 0;
     }
     public int getTotalCustomers() {
-        String sql="SELECT COUNT(*) AS total FROM Users";
+        String sql="SELECT COUNT(*) AS total FROM Users WHERE role = 'Customer'";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
