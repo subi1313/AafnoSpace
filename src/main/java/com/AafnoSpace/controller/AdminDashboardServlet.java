@@ -14,7 +14,7 @@ import com.AafnoSpace.dao.OrderDAO;
 @WebServlet(
 		asyncSupported = true, 
 		urlPatterns = { 
-				"/adminDashboard"
+				"/admin", "/admin-dashboard"
 		})
 public class AdminDashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
