@@ -15,6 +15,7 @@
 
   <link rel="stylesheet" type="text/css"
         href="${pageContext.request.contextPath}/css/adminPanel.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -31,26 +32,25 @@
 
         <div class="tableWrapper">
 
-            <table>
+<table>
 
-                <tr>
-                    <th style="padding-right:250px;">Order ID</th>
-                    <th style="padding-right:160px;">Order Date</th>
-                    <th style="padding-right:50px;">Payment ID</th>
-                </tr>
+    <tr>
+        <th style="padding-right:250px;">Order ID</th>
+        <th style="padding-right:160px;">Order Date</th>
+        <th style="padding-right:50px;">Total Amount</th>
+    </tr>
 
-                <!-- LOOP ALL ORDERS -->
-                <c:forEach var="order" items="${orders}">
+    <c:forEach var="order" items="${orders}">
 
-                    <tr>
-                        <td>${order.orderId}</td>
-                        <td>${order.orderDate}</td>
-                        <td>${order.paymentId}</td>
-                    </tr>
+        <tr>
+            <td>${order.orderId}</td>
+            <td>${order.orderDate}</td>
+            <td>Rs. ${order.totalAmount}</td>
+        </tr>
 
-                </c:forEach>
+    </c:forEach>
 
-            </table>
+</table>
 
         </div>
 
@@ -58,7 +58,7 @@
 
 </div>
 
-<%@ include file="/components/footer.jsp" %>
+<jsp:include page="/components/footer.jsp" />
 
 </body>
 </html>

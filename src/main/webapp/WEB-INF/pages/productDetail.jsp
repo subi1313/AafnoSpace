@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/productDetail.css">
+    
 </head>
 
 <body>
