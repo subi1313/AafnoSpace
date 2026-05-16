@@ -38,6 +38,15 @@
 			    <p>Total Profit</p>
 			    <h2>Rs. ${totalProfit}</h2>
 			</div>
+			<div class="card">
+			    <p>Highest Revenue Category</p>
+			    <h2>${highestCategory}</h2>
+			</div>
+			
+			<div class="card">
+			    <p>Lowest Revenue Category</p>
+			    <h2>${lowestCategory}</h2>
+			</div>
         </div>
     </div>
 </div>

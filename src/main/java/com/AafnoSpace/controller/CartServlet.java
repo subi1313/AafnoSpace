@@ -90,7 +90,7 @@ public class CartServlet extends HttpServlet {
                 }
             }
 
-            response.sendRedirect(request.getContextPath() + "/cart");
+            response.sendRedirect(request.getContextPath() + "/checkout");
 
         } catch (Exception e) {
             e.printStackTrace();

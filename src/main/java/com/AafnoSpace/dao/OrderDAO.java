@@ -80,5 +80,31 @@ public class OrderDAO {
     	} 
     	return 0;
     }
-    
+    public String getHighestRevenueCategory() {
+        String sql = "SELECT p.Category FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY SUM(od.LineTotal) DESC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst= conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return rs.getString("Category");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "N/A";
+    }
+
+    public String getLowestRevenueCategory() {
+        String sql = "SELECT p.Category FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY SUM(od.LineTotal) ASC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return rs.getString("Category");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "N/A";
+    }
 } 
