@@ -26,31 +26,31 @@
                 <div class="divrow">
                 	<div class="labeldiv">
                 		<label>First Name</label>
-                        <input type="text" name="firstname" placeholder="First Name">
+                        <input type="text" name="firstname" placeholder="First Name" value="${firstname}">
                 	</div>
                 	<div class="labeldiv">
                 		<label>Last Name</label>
-                        <input type="text" name="lastname" placeholder="Last Name">
+                        <input type="text" name="lastname" placeholder="Last Name" value="${lastname}">
                 	</div>
                 </div>
                  <div class="divrow">
                 	<div class="labeldiv">
                 		<label>Email</label>
-                        <input type="text" name="email" placeholder="Email">
+                        <input type="text" name="email" placeholder="Email" value="${email}">
                 	</div>
                 	<div class="labeldiv">
                 		<label>Phone Number</label>
-                        <input type="text" name="phoneNo" placeholder="Phone Number">
+                        <input type="text" name="phoneNo" placeholder="Phone Number" value="${phone}">
                 	</div>
                 </div>
                  <div class="divrow">
                 	<div class="labeldiv">
                 		<label>Address</label>
-                        <input type="text" name="address" placeholder="Address">
+                        <input type="text" name="address" placeholder="Address" value="${address}">
                 	</div>
                 	<div class="labeldiv">
                 		<label>Username</label>
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" name="username" placeholder="Username" value="${typedUser}">
                 	</div>
                 </div>
                 <div class="labeldiv" style="margin-left:60px; margin-right:92px;">
