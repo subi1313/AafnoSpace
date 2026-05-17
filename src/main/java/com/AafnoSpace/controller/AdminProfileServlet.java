@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.AafnoSpace.utils.CookieUtil;
+
 /**
  * Servlet implementation class AdminProfile
  */
@@ -27,6 +29,8 @@ public class AdminProfileServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setAttribute("activeMenu", "profile");
+    	String lastLogin = CookieUtil.getCookieValue(request, "last_login");
+	    request.setAttribute("last_login", lastLogin);
         request.getRequestDispatcher("/WEB-INF/pages/adminProfile.jsp").forward(request, response);
     }
 

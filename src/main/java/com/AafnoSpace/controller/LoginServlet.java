@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
             	
             	// Cookie is created to record last login time
             	CookieUtil.addCookie(response, "last_login", loginTime, 3600);
-                     response.sendRedirect(request.getContextPath() + "/home");
+                response.sendRedirect(request.getContextPath() + "/home");
                 
 			} catch (Exception e) {
 				e.printStackTrace();
