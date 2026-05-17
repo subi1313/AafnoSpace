@@ -21,6 +21,6 @@
     </div>
     <hr class="footer-line">
     <p class="footer-bottom">
-        &copy; 2026 आफ्नोspace. All Rights Reserved
+        &copy; 2026 AafnoSpace. All Rights Reserved
     </p>
 </footer>

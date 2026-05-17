@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminDashboard.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 <body>
 
@@ -35,6 +36,14 @@
 			    <h2>${totalCategories}</h2>
 			</div>
 			<div class="card">
+			    <p>Highest Revenue Category</p>
+			    <h2>${highestCategory} : Rs${highestRevenue}</h2>
+			</div>
+			<div class="card">
+			    <p>Lowest Revenue Category</p>
+			    <h2>${lowestCategory} : Rs${lowestRevenue}</h2>
+			</div>
+			<div class="card">
 			    <p>Total Profit</p>
 			    <h2>Rs. ${totalProfit}</h2>
 			</div>
@@ -42,6 +51,6 @@
     </div>
 </div>
 
-<%@ include file="/components/footer.jsp" %>
+<jsp:include page="/components/footer.jsp"/>
 </body>
 </html>

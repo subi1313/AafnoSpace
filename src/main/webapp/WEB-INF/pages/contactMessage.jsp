@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contactMessage.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -39,7 +40,7 @@
             </div>
         </div>
 	</section>
-    
+    <jsp:include page="../../components/footer.jsp" />
 </body>
 
 </html>

@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.AafnoSpace.service.ProductService;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
  * Servlet implementation class DeleteProductServlet
@@ -43,7 +44,7 @@ public class DeleteProductServlet extends HttpServlet {
                 ProductService service = new ProductService();
                 service.deleteProduct(productId);
             }
-
+            SessionUtil.setAttribute(request, "success", "Product deleted successfully!", 3600);
             response.sendRedirect(request.getContextPath() + "/product-list");
 
         } catch (Exception e) {
