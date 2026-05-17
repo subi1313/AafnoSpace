@@ -221,7 +221,12 @@ public class OrderDAO {
     //getting orders for order management
     public List<OrderModel> getAllOrders() {
         List<OrderModel> orders = new ArrayList<>();
-        String sql = "SELECT * FROM Orders ORDER BY OrderID DESC";
+        //joining tables for user id and payment method
+        String sql = "SELECT o.OrderID, o.UserID, u.Username, o.OrderDate, o.PaymentID, p.PaymentMethod, o.TotalAmount " +
+                "FROM Orders o " +
+                "JOIN Users u ON o.UserID = u.UserID " +
+                "JOIN Payment p ON o.PaymentID = p.PaymentID " +
+                "ORDER BY o.OrderID DESC";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
@@ -233,6 +238,9 @@ public class OrderDAO {
                     rs.getInt("PaymentID"),
                     rs.getDouble("TotalAmount")
                 );
+                //adding setters as username and password are displayed in order management as they are not required in other methods
+                order.setUsername(rs.getString("Username"));       
+                order.setPaymentMethod(rs.getString("PaymentMethod"));
                 orders.add(order);
             }
         } catch (Exception e) {

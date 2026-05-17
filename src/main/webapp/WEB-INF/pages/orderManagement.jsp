@@ -44,18 +44,22 @@
                                 <tr>
                                     <th>Order ID</th>
                                     <th>User ID</th>
+                                    <th>Username</th>
                                     <th>Order Date</th>
                                     <th>Payment ID</th>
+                                    <th>Payment Method</th>
                                     <th>Total Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:forEach var="o" items="${orders}">
                                     <tr>
-                                        <td>#${o.orderId}</td>
+                                        <td>${o.orderId}</td>
                                         <td>${o.userId}</td>
+                                        <td>${o.username}</td>
                                         <td>${o.orderDate}</td>
                                         <td>${o.paymentId}</td>
+                                        <td>${o.paymentMethod}</td>
                                         <td>Rs. ${o.totalAmount}</td>
                                     </tr>
                                 </c:forEach>
