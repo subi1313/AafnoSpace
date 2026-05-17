@@ -18,15 +18,12 @@ public class OrderDAO {
         LocalDate localDate = LocalDate.parse(orderDate);
         Date sqlDate = Date.valueOf(localDate);
         Connection con = DBconfig.getConnection();
-
         String sql = "INSERT INTO Orders (UserID, OrderDate, PaymentID, TotalAmount) VALUES (?, ?, ?, ?)";
-
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setInt(1, userId);
         pst.setDate(2, sqlDate);
         pst.setInt(3, paymentId);
         pst.setDouble(4, totalAmount);
-        
         pst.executeUpdate();
         
         String latestOrder= "SELECT MAX(OrderID) AS OrderID FROM Orders";
@@ -40,41 +37,51 @@ public class OrderDAO {
         con.close();
         return orderId;
     }
-    public int getTotalOrders() {
+    public int getTotalOrders() 
+    {
+    	//SQL query to get total number of orders
         String sql="SELECT COUNT(*) AS total FROM Orders";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
             if (rs.next()) return rs.getInt("total");
-        } catch (SQLException e) {
+        } catch (SQLException e) 
+        {
             e.printStackTrace();
         }
         return 0;
     }
-    public int getTotalCustomers() {
+    public int getTotalCustomers() 
+    {
+    	//SQL query to get the total number of customers
         String sql="SELECT COUNT(*) AS total FROM Users WHERE role = 'Customer'";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
             if (rs.next()) return rs.getInt("total");
-        } catch (SQLException e) {
+        } catch (SQLException e) 
+        {
             e.printStackTrace();
         }
         return 0;
     }
-    public double getTotalRevenue() {
+    public double getTotalRevenue() 
+    {
+    	//SQL query to get the total revenue
         String sql="SELECT SUM(LineTotal) AS revenue FROM Order_Details";
         try (Connection conn= DBconfig.getConnection();
              PreparedStatement pst= conn.prepareStatement(sql);
              ResultSet rs= pst.executeQuery()) {
             if (rs.next()) return rs.getDouble("revenue");
-        } catch (SQLException e) {
+        } catch (SQLException e) 
+        {
             e.printStackTrace();
         }
         return 0;
     }
-
-    public int getTotalCategories() {
+    public int getTotalCategories() 
+    {
+    	//SQL query to get the total number of categories
     	String sql="SELECT COUNT(DISTINCT Category) AS TotalCategory FROM Product";
     	try(Connection conn=DBconfig.getConnection();
     			PreparedStatement pst=conn.prepareStatement(sql);
@@ -88,16 +95,15 @@ public class OrderDAO {
     	} 
     	return 0;
     }
-
     public int getLatestOrderId(int userId) {
-
-        // SQL query to get latest OrderID of logged-in user
+    	// SQL query to get latest OrderID of logged-in user
         String sql = "SELECT OrderID FROM Orders WHERE UserID = ? ORDER BY OrderID DESC LIMIT 1";
 
         try (
             Connection conn = DBconfig.getConnection();
             PreparedStatement pst = conn.prepareStatement(sql)
-        ) {
+        ) 
+        {
 
             pst.setInt(1, userId);
 
@@ -109,7 +115,7 @@ public class OrderDAO {
 
                 // Return latest OrderID
                 return rs.getInt("OrderID");
-            }
+        }
 
             // Close ResultSet
             rs.close();
@@ -121,29 +127,24 @@ public class OrderDAO {
         // Return -1 if no order found
         return -1;
     }
-    
     public List<OrderModel> getOrdersByUser(int userId) {
-
-        // Create list to store orders
+        // Creating list to store orders
         List<OrderModel> orders = new ArrayList<>();
-
-        // SQL query
+        // SQL query to get orders made by a specific user
         String sql = "SELECT * FROM Orders WHERE UserID = ? ORDER BY OrderID DESC";
-
         try (
             Connection conn = DBconfig.getConnection();
             PreparedStatement pst = conn.prepareStatement(sql)
-        ) {
-
-            // Set user ID
+        ) 
+        {
+            // Setting user ID
             pst.setInt(1, userId);
 
-            // Execute query
+            // Executing query
             ResultSet rs = pst.executeQuery();
 
-            // Loop through all orders
+            // Looping through all orders
             while (rs.next()) {
-
                 OrderModel order = new OrderModel(
                     rs.getInt("OrderID"),
                     rs.getInt("UserID"),
@@ -151,53 +152,58 @@ public class OrderDAO {
                     rs.getInt("PaymentID"),
                     rs.getDouble("TotalAmount")
                 );
-
-                // Add order to list
+                // Adding order to list
                 orders.add(order);
             }
-
             rs.close();
-
-        } catch (Exception e) {
+        } catch (Exception e) 
+        {
             e.printStackTrace();
         }
-
         return orders;
     }
-    public String getHighestRevenueCategory() {
+    public String getHighestRevenueCategory() 
+    {
+    	//SQL query to get the category that generates the highest revenue
         String sql = "SELECT p.Category FROM Order_Details od " +
                      "JOIN Product p ON od.ProductID = p.ProductID " +
                      "GROUP BY p.Category ORDER BY SUM(od.LineTotal) DESC LIMIT 1";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst= conn.prepareStatement(sql);
-             ResultSet rs = pst.executeQuery()) {
+             ResultSet rs = pst.executeQuery()) 
+        {
             if (rs.next()) return rs.getString("Category");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return "N/A";
     }
-
-    public String getLowestRevenueCategory() {
+    public String getLowestRevenueCategory() 
+    {
+    	//SQL query to get the category that generates the lowest revenue
         String sql = "SELECT p.Category FROM Order_Details od " +
                      "JOIN Product p ON od.ProductID = p.ProductID " +
                      "GROUP BY p.Category ORDER BY SUM(od.LineTotal) ASC LIMIT 1";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
-             ResultSet rs = pst.executeQuery()) {
+             ResultSet rs = pst.executeQuery()) 
+        {
             if (rs.next()) return rs.getString("Category");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return "N/A";
     }
-    public int getHighestRevenue() {
+    public int getHighestRevenue() 
+    {
+    	//SQL query to get the highest revenue by a category
         String sql = "SELECT SUM(od.LineTotal) AS revenue FROM Order_Details od " +
                      "JOIN Product p ON od.ProductID = p.ProductID " +
                      "GROUP BY p.Category ORDER BY revenue DESC LIMIT 1";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
-             ResultSet rs = pst.executeQuery()) {
+             ResultSet rs = pst.executeQuery()) 
+        {
             if (rs.next()) return (int) rs.getDouble("revenue");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -205,7 +211,9 @@ public class OrderDAO {
         return 0;
     }
 
-    public int getLowestRevenue() {
+    public int getLowestRevenue() 
+    {
+    	//SQL query to get the lowest revenue by a category
         String sql = "SELECT SUM(od.LineTotal) AS revenue FROM Order_Details od " +
                      "JOIN Product p ON od.ProductID = p.ProductID " +
                      "GROUP BY p.Category ORDER BY revenue ASC LIMIT 1";
@@ -213,7 +221,8 @@ public class OrderDAO {
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
             if (rs.next()) return (int) rs.getDouble("revenue");
-        } catch (SQLException e) {
+        } catch (SQLException e) 
+        {
             e.printStackTrace();
         }
         return 0;
