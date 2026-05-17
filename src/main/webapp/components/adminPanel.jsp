@@ -17,7 +17,7 @@
         <li><a href="${pageContext.request.contextPath}/product-list" class="${activeMenu == 'product' ? 'active' : ''}"> <img
                     src="${pageContext.request.contextPath}/images/adminPanel/product.png" alt="Product Icon">
                 Product Management</a></li>
-        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'order' ? 'active' : ''}"> <img
+        <li><a href="${pageContext.request.contextPath}/orderManagement" class="${activeMenu == 'order' ? 'active' : ''}"> <img
                     src="${pageContext.request.contextPath}/images/adminPanel/order.png" alt="Order Icon"> Order
                 Management</a>
         </li>

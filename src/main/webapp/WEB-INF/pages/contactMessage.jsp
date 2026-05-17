@@ -36,6 +36,13 @@
 			                <td>${c.message}</td>
 			            </tr>
 			        </c:forEach>
+			        <c:if test="${empty contacts}">
+				        <tr>
+				            <td colspan="5" style="text-align:center; padding:20px;">
+				                No contact messages found.
+				            </td>
+				        </tr>
+				    </c:if>
 			    </table>
             </div>
         </div>

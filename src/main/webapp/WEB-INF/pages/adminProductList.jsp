@@ -78,7 +78,13 @@
 						        </tr>
 						
 						    </c:forEach>
-
+						    <c:if test="${empty products}">
+						        <tr>
+						            <td colspan="8" style="text-align:center; padding:20px;">
+						                No products found.
+						            </td>
+						        </tr>
+						    </c:if>
                         </tbody>
                     </table>
                 </div>
