@@ -79,7 +79,7 @@ public class CartServlet extends HttpServlet {
                 return;
             }
 
-            // UPDATE / DELETE CART
+            // update/delete cart
             String cartItemIdStr = request.getParameter("cartItemId");
             if (cartItemIdStr != null) {
                 int cartItemId = Integer.parseInt(cartItemIdStr);
@@ -88,10 +88,17 @@ public class CartServlet extends HttpServlet {
                     case "decrease": service.decreaseQuantity(cartItemId); break;
                     case "delete":   service.deleteCartItem(cartItemId);   break;
                 }
+<<<<<<< HEAD
              response.sendRedirect(request.getContextPath() + "/cart");
             }
+=======
+                
+            }
+            response.sendRedirect(request.getContextPath() + "/cart");
+>>>>>>> 654b5f9f037dba4209ecfad928cf4787f006dff4
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
 }

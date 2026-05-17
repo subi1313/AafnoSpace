@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import com.AafnoSpace.model.ProductModel;
 import com.AafnoSpace.service.ProductService;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
  * Servlet implementation class AdminUpdateProductServlet
@@ -49,13 +50,11 @@ public class AdminUpdateProductServlet extends HttpServlet {
 
 	        request.setAttribute("product", product);
 
-	        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
-	               .forward(request, response);
+	        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-		
 	}
 
 	/**
@@ -64,21 +63,84 @@ public class AdminUpdateProductServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
             int id = Integer.parseInt(request.getParameter("productId"));
-            String name = request.getParameter("productName");
-            String desc = request.getParameter("description");
+            String productName = request.getParameter("productName");
+            String description = request.getParameter("description");
             String category = request.getParameter("category");
-            double price = Double.parseDouble(request.getParameter("price"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-
+            String priceStr = request.getParameter("price");
+            String quantityStr = request.getParameter("quantity");
+            
             ProductService service = new ProductService();
             ProductModel existingProduct = service.getProductById(id);
+            
+            if (productName == null || productName.trim().isEmpty()) {
+                request.setAttribute("error", "Product name is required!");
+            }
+            else if (description == null || description.trim().isEmpty()) {
+                request.setAttribute("error", "Description is required!");
+            }
+            else if (priceStr == null || priceStr.trim().isEmpty()) {
+                request.setAttribute("error", "Price is required!");
+            }
+            else if (quantityStr == null || quantityStr.trim().isEmpty()) {
+                request.setAttribute("error", "Quantity is required!");
+            }
+
+            if (request.getAttribute("error") != null) {
+                request.setAttribute("product", existingProduct);
+                request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+                       .forward(request, response);
+                return;
+            }
+			
+			double price;
+			int quantity;
+			
+			try {
+			    price = Double.parseDouble(priceStr);
+
+			    if (price <= 0) {
+			        request.setAttribute("error", "Price must be greater than 0!");
+			        request.setAttribute("product", existingProduct);
+			        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			               .forward(request, response);
+			        return;
+			    }
+
+			} catch (NumberFormatException e) {
+			    request.setAttribute("error", "Price must be a valid number!");
+			    request.setAttribute("product", existingProduct);
+			    request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			           .forward(request, response);
+			    return;
+			}
+
+			try {
+			    quantity = Integer.parseInt(quantityStr);
+
+			    if (quantity < 0) {
+			        request.setAttribute("error", "Quantity cannot be negative!");
+			        request.setAttribute("product", existingProduct);
+			        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			               .forward(request, response);
+			        return;
+			    }
+
+			} catch (NumberFormatException e) {
+			    request.setAttribute("error", "Quantity must be a valid integer!");
+			    request.setAttribute("product", existingProduct);
+			    request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
+			           .forward(request, response);
+			    return;
+			}
+
+            
 
             if (existingProduct == null) {
                 throw new ServletException("Product not found with ID: " + id);
             }
 
             Part filePart = request.getPart("productImage");
-            String imageName = existingProduct.getImageName(); // use existing image by default
+            String imageName = existingProduct.getImageName();
 
             if (filePart != null && filePart.getSize() > 0) {
                 String originalFileName = filePart.getSubmittedFileName();
@@ -93,7 +155,8 @@ public class AdminUpdateProductServlet extends HttpServlet {
                 filePart.write(UPLOAD_DIR + File.separator + imageName);
             }
 
-            service.updateProduct(id, name, desc, category, price, quantity, imageName);
+            service.updateProduct(id, productName, description, category, price, quantity, imageName);
+            SessionUtil.setAttribute(request, "success", "Product updated successfully!", 3600);
 
             response.sendRedirect(request.getContextPath() + "/product-list");
 

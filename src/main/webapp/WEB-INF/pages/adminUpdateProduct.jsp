@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUpdateProduct.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -17,6 +19,12 @@
         	<jsp:include page="../../components/adminPanel.jsp" />
         	<div class="update-main">
                 <form action="${pageContext.request.contextPath}/update-product" method="post" enctype="multipart/form-data">
+                	<!-- Error -->
+	            	<c:if test="${not empty error}">
+					    <div class="errorPopup" id="errorPopup">
+					        ${error}
+					    </div>
+					</c:if>
                     <h2>Update Product</h2>
                     <div class="update-info">
                         <div class="update-details">
@@ -78,6 +86,7 @@
             </div>
         </div>
     </section>
+    <jsp:include page="../../components/footer.jsp" />
     <script>
     document.getElementById("productImage").addEventListener("change", function(event) {
         const file = event.target.files[0];
@@ -97,6 +106,23 @@
                 preview.appendChild(img);
             };
             reader.readAsDataURL(file);
+        }
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorPopup = document.getElementById('errorPopup');
+        
+        if (errorPopup) {
+            // Wait for 5 seconds (5000ms)
+            setTimeout(() => {
+            	// Add the fade-out class to trigger CSS transitions
+                errorPopup.classList.add('fade-out');
+            	
+                //Remove from DOM entirely after transition finishes (500ms later)
+                setTimeout(() => {
+                    errorPopup.remove();
+                }, 500);
+            }, 3000);
         }
     });
     </script>

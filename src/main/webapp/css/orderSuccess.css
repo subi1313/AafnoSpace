@@ -1,55 +1,171 @@
+/* Layout */
+*{
+	margin: 0;
+	padding: 0;
+}
 
-/* Text content */
+body{
+	height: 100%;
+	background-color: #EFEEEB;
+}
+.layout {
+    display: flex;
+    gap: 40px;
+
+    max-width: 1400px;
+    margin: 40px auto;
+
+    padding: 0 30px;
+}
+/* Hide default checkbox */
+.round-check input {
+    display: none;
+}
+
+/* Outer circle */
+.round-check .checkmark {
+    width: 80px;
+    height: 80px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background-color: #4CAF50;
+
+    position: relative;
+
+    margin: 0 auto 25px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Tick mark */
+.round-check .checkmark::after {
+    content: "";
+    position: absolute;
+
+    left: 30px;
+    top: 18px;
+
+    width: 18px;
+    height: 35px;
+
+    border: solid white;
+    border-width: 0 5px 5px 0;
+
+    transform: rotate(45deg);
+}
+
+/* Center it */
+.round-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Wrapper */
+.confirmation-wrapper {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.confirmation-card {
+    width: 100%;
+    max-width: 700px;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    padding: 70px 60px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+/* Main Heading */
+.confirmation-card h1 {
+    font-size: 64px;
+    font-family: "CormorantGaramond";
+    margin-bottom: 10px;
+
+    color: #111;
+}
+
+/* Subheading */
+.confirmation-card h2 {
+    font-size: 34px;
+    margin-bottom: 25px;
+
+    color: #444;
+    font-weight: 500;
+}
+
+/* Text */
+.success-text,
+.shipping-text {
+    font-size: 18px;
+    line-height: 1.8;
+
+    color: #555;
+
+    margin-bottom: 18px;
+}
+
+/* Order ID Box */
 
 @font-face {
     font-family: "CormorantGaramond";
     src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
 }
 
-
-.text-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    text-align: center;
-    font-family: "CormorantGaramond";
+@font-face {
+    font-family: "Arsenal";
+    src: url("../fonts/Arsenal/Arsenal-Regular.ttf");
 }
 
-/* Headings */
-.text-content h1 {
-    font-size: 64px;
-    margin: 0;
-   
+.order-id-box {
+    margin: 35px auto;
+
+    padding: 16px 24px;
+
+    background: #F5EEE6;
+
+    width: fit-content;
+
+    border-radius: 12px;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    color: #412617;
 }
 
-.text-content h2 {
-    font-size: 50px;
-    margin-bottom: 20px;
+.order-id-box span {
+    font-weight: bold;
 }
 
-/* Paragraphs */
-.text-content p {
-    font-size: 32px;
-    margin: 6px 0;
-    color: #0A0A0A;
-}
+/* Responsive */
+@media (max-width: 900px) {
 
-.side-panel{
-	display: flex;
-	flex-direction: row;
-}
-
- .layout {
-      display: flex;
-      flex-direction: row;
-      margin-top: 10px;
-      margin-bottom:10px;
-      margin-left:80px;
-      margin-right:80px;
+    .layout {
+        flex-direction: column;
     }
 
+    .confirmation-card {
+        padding: 50px 30px;
+    }
 
+    .confirmation-card h1 {
+        font-size: 42px;
+    }
 
-
+    .confirmation-card h2 {
+        font-size: 28px;
+    }
+}

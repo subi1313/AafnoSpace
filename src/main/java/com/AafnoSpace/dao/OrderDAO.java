@@ -8,18 +8,25 @@ import java.time.LocalDate;
 import java.sql.Date;
 import com.AafnoSpace.model.OrderModel;
 import com.AafnoSpace.utils.DBconfig;
+import java.util.List;
+import java.util.ArrayList;
 
 public class OrderDAO {
 
-    public int insertOrder(int userId, String orderDate, int paymentId) throws Exception {
+    public int insertOrder(int userId, String orderDate, int paymentId, double totalAmount) throws Exception {
+
         LocalDate localDate = LocalDate.parse(orderDate);
         Date sqlDate = Date.valueOf(localDate);
         Connection con = DBconfig.getConnection();
-        String sql = "INSERT INTO Orders (UserID, OrderDate, PaymentID) VALUES (?, ?, ?)";
+
+        String sql = "INSERT INTO Orders (UserID, OrderDate, PaymentID, TotalAmount) VALUES (?, ?, ?, ?)";
+
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setInt(1, userId);
         pst.setDate(2, sqlDate);
         pst.setInt(3, paymentId);
+        pst.setDouble(4, totalAmount);
+        
         pst.executeUpdate();
         
         String latestOrder= "SELECT MAX(OrderID) AS OrderID FROM Orders";
@@ -66,6 +73,7 @@ public class OrderDAO {
         }
         return 0;
     }
+
     public int getTotalCategories() {
     	String sql="SELECT COUNT(DISTINCT Category) AS TotalCategory FROM Product";
     	try(Connection conn=DBconfig.getConnection();
@@ -79,6 +87,82 @@ public class OrderDAO {
     		e.printStackTrace();
     	} 
     	return 0;
+    }
+
+    public int getLatestOrderId(int userId) {
+
+        // SQL query to get latest OrderID of logged-in user
+        String sql = "SELECT OrderID FROM Orders WHERE UserID = ? ORDER BY OrderID DESC LIMIT 1";
+
+        try (
+            Connection conn = DBconfig.getConnection();
+            PreparedStatement pst = conn.prepareStatement(sql)
+        ) {
+
+            pst.setInt(1, userId);
+
+            // Execute query
+            ResultSet rs = pst.executeQuery();
+
+            // Check if order exists
+            if (rs.next()) {
+
+                // Return latest OrderID
+                return rs.getInt("OrderID");
+            }
+
+            // Close ResultSet
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Return -1 if no order found
+        return -1;
+    }
+    
+    public List<OrderModel> getOrdersByUser(int userId) {
+
+        // Create list to store orders
+        List<OrderModel> orders = new ArrayList<>();
+
+        // SQL query
+        String sql = "SELECT * FROM Orders WHERE UserID = ? ORDER BY OrderID DESC";
+
+        try (
+            Connection conn = DBconfig.getConnection();
+            PreparedStatement pst = conn.prepareStatement(sql)
+        ) {
+
+            // Set user ID
+            pst.setInt(1, userId);
+
+            // Execute query
+            ResultSet rs = pst.executeQuery();
+
+            // Loop through all orders
+            while (rs.next()) {
+
+                OrderModel order = new OrderModel(
+                    rs.getInt("OrderID"),
+                    rs.getInt("UserID"),
+                    rs.getDate("OrderDate"),
+                    rs.getInt("PaymentID"),
+                    rs.getDouble("TotalAmount")
+                );
+
+                // Add order to list
+                orders.add(order);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return orders;
     }
     public String getHighestRevenueCategory() {
         String sql = "SELECT p.Category FROM Order_Details od " +
@@ -134,4 +218,6 @@ public class OrderDAO {
         }
         return 0;
     }
+} 
+
 } 
