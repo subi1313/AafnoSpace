@@ -118,13 +118,6 @@ td {
     border-bottom: 1px solid #f1f5f9;
 }
 
-.userinfo {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 180px;
-}
-
 .userdiv { 
 	display: flex; align-items: center; gap: 12px; 
 	}
