@@ -218,6 +218,26 @@ public class OrderDAO {
         }
         return 0;
     }
-} 
-
+    //getting orders for order management
+    public List<OrderModel> getAllOrders() {
+        List<OrderModel> orders = new ArrayList<>();
+        String sql = "SELECT * FROM Orders ORDER BY OrderID DESC";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                OrderModel order = new OrderModel(
+                    rs.getInt("OrderID"),
+                    rs.getInt("UserID"),
+                    rs.getDate("OrderDate"),
+                    rs.getInt("PaymentID"),
+                    rs.getDouble("TotalAmount")
+                );
+                orders.add(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
 } 

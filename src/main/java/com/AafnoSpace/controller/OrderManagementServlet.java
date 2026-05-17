@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import com.AafnoSpace.model.UserModel;
-import com.AafnoSpace.service.ListService;
+import com.AafnoSpace.dao.OrderDAO;
+import com.AafnoSpace.model.OrderModel;
 
 /**
  * Servlet implementation class OrderManagementServlet
@@ -29,24 +29,17 @@ public class OrderManagementServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setAttribute("activeMenu", "order");
-		try {
-			ListService service = new ListService();
-			
-            // getting user data from service
-            List<UserModel> users= service.fetchAll();
-
-            // setting the retrieved data
-            request.setAttribute("users", users);
-
-            // forward to JSP
-            request.getRequestDispatcher("/WEB-INF/pages/userManagement.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("activeMenu", "order");
+        try {
+            OrderDAO orderDAO = new OrderDAO();
+            List<OrderModel> orders = orderDAO.getAllOrders();
+            request.setAttribute("orders", orders);
+            request.getRequestDispatcher("/WEB-INF/pages/orderManagement.jsp").forward(request, response);
         } catch (Exception e) {
             throw new ServletException("Error in database!", e);
         }
-	}
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,9 +47,7 @@ public class OrderManagementServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			  
-		        response.sendRedirect(request.getContextPath() + "/orderManagement");
-
+			response.sendRedirect(request.getContextPath() + "/orderManagement");
 		    } catch (Exception e) {
 		        throw new ServletException("Error updating status", e);
 		    }
