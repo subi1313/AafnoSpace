@@ -136,9 +136,10 @@ public class CartServlet extends HttpServlet {
                 }
              response.sendRedirect(request.getContextPath() + "/cart");
             }
-        } catch (Exception e) {
+
+        }
+            catch (Exception e) {
             e.printStackTrace();
         }
-        
-    }
+}
 }
