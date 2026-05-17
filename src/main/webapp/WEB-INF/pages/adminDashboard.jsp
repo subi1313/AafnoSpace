@@ -28,20 +28,20 @@
                 <h2>${totalCustomers}</h2>
             </div>
             <div class="card">
-                <p>Total Revenue</p>
-                <h2>Rs. ${totalRevenue}</h2>
-            </div>
-            <div class="card">
 			    <p>Total Categories</p>
 			    <h2>${totalCategories}</h2>
 			</div>
 			<div class="card">
-			    <p>Highest Revenue Category</p>
-			    <h2>${highestCategory} : Rs${highestRevenue}</h2>
+                <p>Total Revenue</p>
+                <h2>Rs. ${totalRevenue}</h2>
+            </div>
+			<div class="card">
+			    <p>Highest Revenue By Category</p>
+			    <h2>${highestCategory} : Rs. ${highestRevenue}</h2>
 			</div>
 			<div class="card">
-			    <p>Lowest Revenue Category</p>
-			    <h2>${lowestCategory} : Rs${lowestRevenue}</h2>
+			    <p>Lowest Revenue By Category</p>
+			    <h2>${lowestCategory} : Rs. ${lowestRevenue}</h2>
 			</div>
 			<div class="card">
 			    <p>Total Profit</p>
