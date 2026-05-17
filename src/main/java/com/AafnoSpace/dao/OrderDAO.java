@@ -227,4 +227,34 @@ public class OrderDAO {
         }
         return 0;
     }
+    //getting orders for order management
+    public List<OrderModel> getAllOrders() {
+        List<OrderModel> orders = new ArrayList<>();
+        //joining tables for user id and payment method
+        String sql = "SELECT o.OrderID, o.UserID, u.Username, o.OrderDate, o.PaymentID, p.PaymentMethod, o.TotalAmount " +
+                "FROM Orders o " +
+                "JOIN Users u ON o.UserID = u.UserID " +
+                "JOIN Payment p ON o.PaymentID = p.PaymentID " +
+                "ORDER BY o.OrderID DESC";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                OrderModel order = new OrderModel(
+                    rs.getInt("OrderID"),
+                    rs.getInt("UserID"),
+                    rs.getDate("OrderDate"),
+                    rs.getInt("PaymentID"),
+                    rs.getDouble("TotalAmount")
+                );
+                //adding setters as username and password are displayed in order management as they are not required in other methods
+                order.setUsername(rs.getString("Username"));       
+                order.setPaymentMethod(rs.getString("PaymentMethod"));
+                orders.add(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
 } 

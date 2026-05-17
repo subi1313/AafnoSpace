@@ -50,6 +50,8 @@
         <p>${user.email}</p></div>
         <div class="field"><label>Phone</label>
         <p>${user.phoneNo}</p></div>
+        <div class="field"><label>Last Login</label>
+        <p>${last_login}</p></div>
       </div>
     </div>
 </div>

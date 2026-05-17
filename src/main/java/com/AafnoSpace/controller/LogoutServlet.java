@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.AafnoSpace.utils.CookieUtil;
 import com.AafnoSpace.utils.SessionUtil;
 
 /**
@@ -30,6 +31,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		SessionUtil.invalidateSession(request);
+		CookieUtil.deleteCookie(response,"last_login");
 		response.sendRedirect(request.getContextPath() + "/login");
 	}
 
