@@ -60,7 +60,7 @@ body {
             max-width: 1250px; 
         }
         
- .totalusers {
+ .totalorders {
 			font-family:"Arsenal";
             font-size: 20px;
             }     
@@ -129,24 +129,8 @@ td {
 	display: flex; align-items: center; gap: 12px; 
 	}
 
-.username {
-    color: #EFEEEB;
-}
-
-.userhandle {
-    font-size: 15px;
-    color: #fbf2d0;
-}
-
  .emptystate {
             text-align: center;
             padding: 5rem 2rem;
             color: #94a3b8;
         }
-        
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 45px;
-  height: 24px;
-}

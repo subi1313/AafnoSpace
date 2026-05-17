@@ -46,7 +46,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>User</th>
+                            <th>Users</th>
                             <th>Email Address</th>
                             <th>Address</th>
                             <th>Phone Number</th>

@@ -24,7 +24,7 @@
             <div class="headerdiv">
                 <p>Order <span>List</span></p>
                 <c:if test="${not empty orders}">
-                    <div class="totalusers">
+                    <div class="totalorders">
                         <i class="fa fa-box"></i> &nbsp; ${fn:length(orders)} Orders
                     </div>
                 </c:if>
