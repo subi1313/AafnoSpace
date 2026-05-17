@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminProductList.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -17,6 +18,12 @@
         <div class="admin-list">
         	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="list-main">
+            	<c:if test="${not empty success}">
+					<div class="successPopup" id="successPopup">
+						${success}
+					</div>
+					<c:remove var="success" scope="session"/>
+				</c:if>		    
                 <div class="list-top">
                     <h2>Product List</h2>
                     <a href="${pageContext.request.contextPath}/add-product">
@@ -78,6 +85,22 @@
             </div>
         </div>
     </section>
+    <jsp:include page="../../components/footer.jsp" />
+    <script>
+	document.addEventListener('DOMContentLoaded', function () {
+	    const popup = document.getElementById('successPopup');
+	
+	    if (popup) {
+	        setTimeout(() => {
+	            popup.classList.add('fade-out');
+	
+	            setTimeout(() => {
+	                popup.remove();
+	            }, 500);
+	        }, 3000);
+	    }
+	});
+	</script>
 </body>
 
 </html>

@@ -7,12 +7,14 @@ public class OrderModel {
     private int userId;
     private Date orderDate;
     private int paymentId;
-
-	    public OrderModel(int orderId, int userId, Date orderDate, int paymentId) {
+    private double totalAmount;
+    
+	    public OrderModel(int orderId, int userId, Date orderDate, int paymentId, double totalAmount) {
 	        this.orderId = orderId;
 	        this.userId = userId;
 	        this.orderDate = orderDate;
 	        this.paymentId = paymentId;
+	        this.totalAmount = totalAmount;
 	    }
 
 	    public int getOrderId() {return orderId;}
@@ -30,5 +32,13 @@ public class OrderModel {
 	    public int getPaymentId() {return paymentId;}
 
 	    public void setPaymentId(int paymentId) {this.paymentId = paymentId;}
+	    
+	    public double getTotalAmount() {
+	        return totalAmount;
+	    }
+
+	    public void setTotalAmount(double totalAmount) {
+	        this.totalAmount = totalAmount;
+	    }
 }
 

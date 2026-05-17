@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +22,17 @@
             </div>
         </section>
         <section>
+        	<c:if test="${not empty error}">
+        		<div class="errorPopup" id="errorPopup">
+					${error}
+				</div>
+			</c:if>
+			<c:if test="${not empty success}">
+				<div class="successPopup" id="successPopup">
+					${success}
+				</div>
+			</c:if>        	
+
             <div class="contact-main">
                 <div class="contact-img">
                     <img src="${pageContext.request.contextPath}/images/contact/1.png">
@@ -30,13 +42,13 @@
                     <p>Your questions and feedback matter to us </p>
                     <div class="contact-form">
                         <label>Name*</label>
-                        <input type="text" name="name" required>
+                        <input type="text" name="name">
                         <label>Email*</label>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email">
                         <label>Subject*</label>
-                        <input type="text" name="subject" required>
+                        <input type="text" name="subject">
                         <label>Message*</label>
-                        <textarea name="message" required></textarea>
+                        <textarea name="message"></textarea>
                         <button type="submit" class="contact-button">Submit</button>
                     </div>
                 </form>
@@ -44,6 +56,25 @@
         </section>
     </main>
     <jsp:include page="../../components/footer.jsp" />
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorPopup = document.getElementById('errorPopup');
+        const successPopup = document.getElementById('successPopup');
+        
+        if (errorPopup) {
+            // Wait for 5 seconds (5000ms)
+            setTimeout(() => {
+            	// Add the fade-out class to trigger CSS transitions
+                errorPopup.classList.add('fade-out');
+            	
+                //Remove from DOM entirely after transition finishes (500ms later)
+                setTimeout(() => {
+                    errorPopup.remove();
+                }, 500);
+            }, 3000);
+        }
+    });
+	</script>
 </body>
 
 </html>

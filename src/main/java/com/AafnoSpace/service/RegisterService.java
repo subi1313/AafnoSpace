@@ -18,12 +18,16 @@ public class RegisterService {
 	        	return "Username is required";
 	        if (email == null || email.trim().isEmpty())
 	        	return "Email is required";
+	        if (!email.contains("@"))
+	            return "Email must contain '@'";
 	        if (password == null || password.isEmpty()) 
 	        	return "Password is required";
 	        if (address == null || address.trim().isEmpty())
 	        	return "Address is required";
 	        if (phoneNo == null || phoneNo.trim().isEmpty()) 
 	        	return "Phone number is required";
+	        if (phoneNo.trim().length()!=10)
+	        	return "Phone number must be 10 digits";
 	        try {
 	            password = PasswordUtil.getHashPassword(password);
 	            boolean success = Userdao.registerUser(firstName, lastName, username, email, password, address, phoneNo);

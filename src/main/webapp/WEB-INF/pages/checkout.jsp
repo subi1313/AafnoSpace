@@ -17,25 +17,6 @@
 
             <div class="main">
                 <p class="orderconfirmheading">Order Confirmation</p>
-                <div class="productbg">
-                    <div class="proddesc">
-                        <img src="${pageContext.request.contextPath}/images/main/greensofa.jpg" alt="product" style="width:150px; height:150px; 
-    margin-top:10px;
-    margin-bottom:10px;">
-
-                        <div class="prodheading">
-                            <p>Product 1</p>
-                        </div>
-                        <div class="prodheading">
-                            <p>Price</p>
-                            <p>Rs.1500</p>
-                        </div>
-                        <div class="prodheading">
-                            <p>Quantity</p>
-                            <p>2</p>
-                        </div>
-                    </div>
-                </div>
                 <c:forEach var="item" items="${items}">
     <div class="productbg">
         <div class="proddesc">
@@ -71,7 +52,11 @@
                 </div>
                 <div class="paymentbg">
                     <p>Payment Method</p>
-                     <form action="checkout" method="post">
+               <form action="${pageContext.request.contextPath}/order-success" method="post">
+               <!-- saving cartItemId for order success -->
+    <c:forEach var="item" items="${items}">
+        <input type="hidden" name="selectedItems" value="${item.cartItemId}">
+    </c:forEach>
     <select name="payment" class="paymentselect">
         <option value="cash">Cash</option>
         <option value="online">Online</option>
@@ -79,9 +64,6 @@
     </div>
     </div>
     <button type="submit">Place Order</button>
-</form>    
-			
-			</div>
-        </body>
-
-        </html>
+</form>
+	</body>
+</html>

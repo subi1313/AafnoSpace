@@ -63,8 +63,14 @@ public class RegisterServlet extends HttpServlet {
             	 SessionUtil.setAttribute(request, "username", username, 3600);
                 response.sendRedirect(request.getContextPath() + "/uploadpfp");
             } else {
+            	//sending typed values to frontend for better user experience
                 request.setAttribute("error", status);
                 request.setAttribute("typedUser", username);
+                request.setAttribute("firstname", firstName);
+                request.setAttribute("lastname", lastName);
+                request.setAttribute("email", email);
+                request.setAttribute("address", address);
+                request.setAttribute("phone", phoneNo);
                 request.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(request, response);
             }
         }
