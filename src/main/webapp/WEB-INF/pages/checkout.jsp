@@ -17,25 +17,6 @@
 
             <div class="main">
                 <p class="orderconfirmheading">Order Confirmation</p>
-                <div class="productbg">
-                    <div class="proddesc">
-                        <img src="${pageContext.request.contextPath}/images/main/greensofa.jpg" alt="product" style="width:150px; height:150px; 
-    margin-top:10px;
-    margin-bottom:10px;">
-
-                        <div class="prodheading">
-                            <p>Product 1</p>
-                        </div>
-                        <div class="prodheading">
-                            <p>Price</p>
-                            <p>Rs.1500</p>
-                        </div>
-                        <div class="prodheading">
-                            <p>Quantity</p>
-                            <p>2</p>
-                        </div>
-                    </div>
-                </div>
                 <c:forEach var="item" items="${items}">
     <div class="productbg">
         <div class="proddesc">
