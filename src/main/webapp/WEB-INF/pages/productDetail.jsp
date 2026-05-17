@@ -43,14 +43,9 @@
         <p>${product.category}</p>
 
 		<div class="button-group">
-
-	    <form action="${pageContext.request.contextPath}/cart" method="post">
-	        <input type="hidden" name="ProductID" value="${product.productId}">
-	        <input type="hidden" name="action" value="buyNow">
 	        <button type="submit" class="buy-now">
 	            Buy Now
 	        </button>
-    </form>
 
     <form action="${pageContext.request.contextPath}/cart" method="post">
         <input type="hidden" name="ProductID" value="${product.productId}">

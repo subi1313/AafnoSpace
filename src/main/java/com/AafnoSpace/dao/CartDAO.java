@@ -12,114 +12,106 @@ import com.AafnoSpace.utils.DBconfig;
 
 public class CartDAO {
 
-    // ADD TO CART (WITH STOCK CHECK)
-    public boolean addCart(String userId, String productId) throws Exception {
+    // ADD TO CART
+	public boolean addCart(String userId, String productId) throws Exception {
 
-        try (Connection con = DBconfig.getConnection()) {
+	    try (Connection con = DBconfig.getConnection()) {
 
-            int cartId = 0;
+	        int cartId = 0;
 
-            //Get existing cart or create new
-            String checkCart = "SELECT CartID FROM cart WHERE UserID = ?";
+	        // Get or create cart
+	        String checkCart = "SELECT CartID FROM cart WHERE UserID = ?";
 
-            try (PreparedStatement pst = con.prepareStatement(checkCart)) {
-                pst.setString(1, userId);
-                ResultSet rs = pst.executeQuery();
+	        try (PreparedStatement pst = con.prepareStatement(checkCart)) {
+	            pst.setString(1, userId);
+	            ResultSet rs = pst.executeQuery();
 
-                if (rs.next()) {
-                    cartId = rs.getInt("CartID");
-                }
-            }
+	            if (rs.next()) {
+	                cartId = rs.getInt("CartID");
+	            }
+	        }
 
-            if (cartId == 0) {
-                String createCart = "INSERT INTO cart (UserID) VALUES (?)";
+	        if (cartId == 0) {
+	            String createCart = "INSERT INTO cart (UserID) VALUES (?)";
 
-                try (PreparedStatement pst =
-                             con.prepareStatement(createCart, Statement.RETURN_GENERATED_KEYS)) {
+	            try (PreparedStatement pst =
+	                    con.prepareStatement(createCart, Statement.RETURN_GENERATED_KEYS)) {
 
-                    pst.setString(1, userId);
-                    pst.executeUpdate();
+	                pst.setString(1, userId);
+	                pst.executeUpdate();
 
-                    ResultSet keys = pst.getGeneratedKeys();
-                    if (keys.next()) {
-                        cartId = keys.getInt(1);
-                    }
-                }
-            }
+	                ResultSet keys = pst.getGeneratedKeys();
+	                if (keys.next()) {
+	                    cartId = keys.getInt(1);
+	                }
+	            }
+	        }
 
-            // STOCK CHECK (IMPORTANT)
-            String stockSql =
-                "SELECT p.Quantity AS StockQty, " +
-                "COALESCE(upc.Quantity, 0) AS CartQty " +
-                "FROM product p " +
-                "LEFT JOIN user_product_cart upc " +
-                "ON p.ProductID = upc.ProductID AND upc.CartID = ? " +
-                "WHERE p.ProductID = ?";
+	        // STOCK CHECK
+	        String stockSql =
+	            "SELECT p.Quantity AS StockQty, " +
+	            "COALESCE(upc.Quantity, 0) AS CartQty " +
+	            "FROM product p " +
+	            "LEFT JOIN user_product_cart upc " +
+	            "ON p.ProductID = upc.ProductID AND upc.CartID = ? " +
+	            "WHERE p.ProductID = ?";
 
-            try (PreparedStatement pst = con.prepareStatement(stockSql)) {
+	        try (PreparedStatement pst = con.prepareStatement(stockSql)) {
 
-                pst.setInt(1, cartId);
-                pst.setString(2, productId);
+	            pst.setInt(1, cartId);
+	            pst.setString(2, productId);
 
-                ResultSet rs = pst.executeQuery();
+	            ResultSet rs = pst.executeQuery();
 
-                if (rs.next()) {
+	            if (rs.next()) {
 
-                    int stockQty = rs.getInt("StockQty");
-                    int cartQty = rs.getInt("CartQty");
+	                int stockQty = rs.getInt("StockQty");
+	                int cartQty = rs.getInt("CartQty");
 
-                    if (cartQty >= stockQty) {
-                        return false; // stop adding
-                    }
-                }
-            }
+	                if (cartQty >= stockQty) {
+	                    return false;
+	                }
+	            }
+	        }
 
-            // CHECK IF PRODUCT EXISTS IN CART
-            String checkProduct =
-                "SELECT CartItemID FROM user_product_cart WHERE CartID = ? AND ProductID = ?";
+	        // CHECK EXISTING PRODUCT
+	        String checkProduct =
+	            "SELECT Quantity FROM user_product_cart WHERE CartID = ? AND ProductID = ?";
 
-            try (PreparedStatement pst = con.prepareStatement(checkProduct)) {
+	        try (PreparedStatement pst = con.prepareStatement(checkProduct)) {
 
-                pst.setInt(1, cartId);
-                pst.setString(2, productId);
+	            pst.setInt(1, cartId);
+	            pst.setString(2, productId);
 
-                ResultSet rs = pst.executeQuery();
+	            ResultSet rs = pst.executeQuery();
 
-                if (rs.next()) {
+	            if (rs.next()) {
 
-                    // increase quantity
-                    String updateQty =
-                        "UPDATE user_product_cart " +
-                        "SET Quantity = Quantity + 1 " +
-                        "WHERE CartID = ? AND ProductID = ?";
+	                String update =
+	                    "UPDATE user_product_cart SET Quantity = Quantity + 1 WHERE CartID = ? AND ProductID = ?";
 
-                    try (PreparedStatement updatePst = con.prepareStatement(updateQty)) {
+	                try (PreparedStatement up = con.prepareStatement(update)) {
+	                    up.setInt(1, cartId);
+	                    up.setString(2, productId);
+	                    return up.executeUpdate() > 0;
+	                }
 
-                        updatePst.setInt(1, cartId);
-                        updatePst.setString(2, productId);
+	            } else {
 
-                        return updatePst.executeUpdate() > 0;
-                    }
+	                String insert =
+	                    "INSERT INTO user_product_cart (ProductID, CartID, Quantity) VALUES (?, ?, 1)";
 
-                } else {
-
-                    // insert new product
-                    String insert =
-                        "INSERT INTO user_product_cart (ProductID, CartID, Quantity) " +
-                        "VALUES (?, ?, 1)";
-
-                    try (PreparedStatement insertPst = con.prepareStatement(insert)) {
-
-                        insertPst.setString(1, productId);
-                        insertPst.setInt(2, cartId);
-
-                        return insertPst.executeUpdate() > 0;
-                    }
-                }
-            }
-        }
-    }
-    
+	                try (PreparedStatement ins = con.prepareStatement(insert)) {
+	                    ins.setString(1, productId);
+	                    ins.setInt(2, cartId);
+	                    return ins.executeUpdate() > 0;
+	                }
+	            }
+	        }
+	    }
+	}
+	
+    // CHECK IF PRODUCT EXISTS
     public boolean isProductInCart(int userId, int productId) throws Exception {
 
         String sql =
@@ -134,24 +126,18 @@ public class CartDAO {
             pst.setInt(2, productId);
 
             ResultSet rs = pst.executeQuery();
-
             return rs.next();
         }
     }
-    
+
     // GET CART ITEMS
     public List<CartModel> getCartItems(int userId) throws Exception {
 
         List<CartModel> list = new ArrayList<>();
 
         String sql =
-            "SELECT upc.CartItemID, " +
-            "p.ProductID, " +
-            "p.ProductName, " +
-            "p.Price, " +
-            "p.ImageName, " +
-            "p.Quantity AS StockQty, " +
-            "upc.Quantity " +
+            "SELECT upc.CartItemID, p.ProductID, p.ProductName, p.Price, " +
+            "p.ImageName, p.Quantity AS StockQty, upc.Quantity " +
             "FROM user_product_cart upc " +
             "JOIN product p ON upc.ProductID = p.ProductID " +
             "JOIN cart c ON c.CartID = upc.CartID " +
@@ -173,8 +159,6 @@ public class CartDAO {
                 item.setPrice(rs.getDouble("Price"));
                 item.setQuantity(rs.getInt("Quantity"));
                 item.setImageName(rs.getString("ImageName"));
-
-                // IMPORTANT for UI stock control
                 item.setStockQty(rs.getInt("StockQty"));
 
                 list.add(item);
@@ -184,42 +168,34 @@ public class CartDAO {
         return list;
     }
 
-    // INCREASE QUANTITY (WITH STOCK CHECK)
+    // INCREASE QUANTITY
     public boolean increaseQuantity(int cartItemId) throws Exception {
 
-        String checkSql =
-            "SELECT upc.Quantity AS CartQty, p.Quantity AS StockQty " +
+        String check =
+            "SELECT upc.Quantity, p.Quantity AS StockQty " +
             "FROM user_product_cart upc " +
             "JOIN product p ON upc.ProductID = p.ProductID " +
             "WHERE upc.CartItemID = ?";
 
         try (Connection con = DBconfig.getConnection();
-             PreparedStatement checkPst = con.prepareStatement(checkSql)) {
+             PreparedStatement pst = con.prepareStatement(check)) {
 
-            checkPst.setInt(1, cartItemId);
+            pst.setInt(1, cartItemId);
 
-            ResultSet rs = checkPst.executeQuery();
+            ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-
-                int cartQty = rs.getInt("CartQty");
-                int stockQty = rs.getInt("StockQty");
-
-                if (cartQty >= stockQty) {
+                if (rs.getInt("Quantity") >= rs.getInt("StockQty")) {
                     return false;
                 }
             }
 
-            String updateSql =
-                "UPDATE user_product_cart " +
-                "SET Quantity = Quantity + 1 " +
-                "WHERE CartItemID = ?";
+            String sql =
+                "UPDATE user_product_cart SET Quantity = Quantity + 1 WHERE CartItemID = ?";
 
-            try (PreparedStatement pst = con.prepareStatement(updateSql)) {
-
-                pst.setInt(1, cartItemId);
-
-                return pst.executeUpdate() > 0;
+            try (PreparedStatement up = con.prepareStatement(sql)) {
+                up.setInt(1, cartItemId);
+                return up.executeUpdate() > 0;
             }
         }
     }
@@ -229,13 +205,13 @@ public class CartDAO {
 
         try (Connection con = DBconfig.getConnection()) {
 
-            String checkSql =
+            String check =
                 "SELECT Quantity FROM user_product_cart WHERE CartItemID = ?";
 
-            try (PreparedStatement checkPst = con.prepareStatement(checkSql)) {
+            try (PreparedStatement pst = con.prepareStatement(check)) {
 
-                checkPst.setInt(1, cartItemId);
-                ResultSet rs = checkPst.executeQuery();
+                pst.setInt(1, cartItemId);
+                ResultSet rs = pst.executeQuery();
 
                 if (rs.next() && rs.getInt("Quantity") <= 1) {
                     return deleteCartItem(cartItemId);
@@ -243,14 +219,10 @@ public class CartDAO {
             }
 
             String sql =
-                "UPDATE user_product_cart " +
-                "SET Quantity = Quantity - 1 " +
-                "WHERE CartItemID = ?";
+                "UPDATE user_product_cart SET Quantity = Quantity - 1 WHERE CartItemID = ?";
 
             try (PreparedStatement pst = con.prepareStatement(sql)) {
-
                 pst.setInt(1, cartItemId);
-
                 return pst.executeUpdate() > 0;
             }
         }
@@ -259,14 +231,12 @@ public class CartDAO {
     // DELETE ITEM
     public boolean deleteCartItem(int cartItemId) throws Exception {
 
-        String sql =
-            "DELETE FROM user_product_cart WHERE CartItemID = ?";
+        String sql = "DELETE FROM user_product_cart WHERE CartItemID = ?";
 
         try (Connection con = DBconfig.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1, cartItemId);
-
             return pst.executeUpdate() > 0;
         }
     }

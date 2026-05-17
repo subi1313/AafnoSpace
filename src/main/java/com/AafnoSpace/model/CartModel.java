@@ -9,7 +9,7 @@ public class CartModel {
     private int quantity;
     private String imageName;
     private int stockQty;
-    // GETTERS & SETTERS
+    // Getters and Setters
 
     public int getCartItemId() {
         return cartItemId;
