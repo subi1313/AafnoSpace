@@ -23,8 +23,13 @@
 
     <jsp:include page="/components/userPanel.jsp" />
 
-    <div class="product-cart">
-
+	    <div class="product-cart">
+		<c:if test="${not empty sessionScope.cartMessage}">
+    <div class="cart-message">
+        ${sessionScope.cartMessage}
+    </div>
+    <c:remove var="cartMessage" scope="session"/>
+</c:if>
         <!-- cart items -->
         <c:forEach var="item" items="${cartItems}">
 

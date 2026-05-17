@@ -11,6 +11,10 @@ public class CartService {
     public boolean addCart(String userId, String productId) throws Exception {
         return dao.addCart(userId, productId);
     }
+    
+    public boolean isProductInCart(int userId, int productId) throws Exception {
+        return dao.isProductInCart(userId, productId);
+    }
 
     public List<CartModel> getCartItems(int userId) throws Exception {
         return dao.getCartItems(userId);
@@ -27,4 +31,5 @@ public class CartService {
     public boolean deleteCartItem(int cartItemId) throws Exception {
         return dao.deleteCartItem(cartItemId);
     }
+    
 }

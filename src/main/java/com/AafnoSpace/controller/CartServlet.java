@@ -27,7 +27,8 @@ public class CartServlet extends HttpServlet {
         try {
             UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
             if (user == null) {
-                response.sendRedirect(request.getContextPath() + "/login"); //if not redirect to login page
+                response.sendRedirect(request.getContextPath() + "/login");
+                return; //if not redirect to login page
             }
 
             List<CartModel> cartItems = service.getCartItems(user.getuserId());
@@ -50,7 +51,41 @@ public class CartServlet extends HttpServlet {
         try {
             UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
             if (user == null) {
-               response.sendRedirect(request.getContextPath() + "/login"); //if not redirect to login page
+               response.sendRedirect(request.getContextPath() + "/login"); 
+               return; //if not redirect to login page
+            }
+            
+            //Buy now
+            if ("buyNow".equals(action)) {
+
+                String productId = request.getParameter("ProductID");
+
+                try {
+
+                    boolean exists = service.isProductInCart(
+                        user.getuserId(),
+                        Integer.parseInt(productId)
+                    );
+
+                    // ONLY insert if not already in cart
+                    if (!exists) {
+                        service.addCart(
+                            String.valueOf(user.getuserId()),
+                            productId
+                        );
+                    }
+
+                    request.getSession().setAttribute(
+                        "cartMessage",
+                        "Product ready in cart"
+                    );
+
+                    response.sendRedirect(request.getContextPath() + "/cart");
+                    return;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             //Add to cart
@@ -66,12 +101,11 @@ public class CartServlet extends HttpServlet {
                 // popup message
                 if (result) {
                     request.getSession().setAttribute("cartMessage",
-                            "Product added to cart successfully!");
+                        "Product added to cart successfully!");
                 } else {
                     request.getSession().setAttribute("cartMessage",
-                            "Failed to add product to cart!");
+                        "Cannot add: Stock limit reached!");
                 }
-
                 // go back to same product detail page
                 response.sendRedirect(
                         request.getContextPath() + "/product-detail?id=" + productId
@@ -84,7 +118,19 @@ public class CartServlet extends HttpServlet {
             if (cartItemIdStr != null) {
                 int cartItemId = Integer.parseInt(cartItemIdStr);
                 switch (action) {
-                    case "increase": service.increaseQuantity(cartItemId); break;
+                  	case "increase":
+
+                  		boolean increased = service.increaseQuantity(cartItemId);
+
+                  		if (!increased) {
+                  			request.getSession().setAttribute(
+	                            "cartMessage",
+	                            "Stock limit reached!"
+                        );
+                    }
+                  	
+
+                    break;
                     case "decrease": service.decreaseQuantity(cartItemId); break;
                     case "delete":   service.deleteCartItem(cartItemId);   break;
                 }
