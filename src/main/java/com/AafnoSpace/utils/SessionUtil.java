@@ -31,7 +31,7 @@ public class SessionUtil {
         }
     }
 
-    // remove all session at all
+    // remove all session
     public static void invalidateSession(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {

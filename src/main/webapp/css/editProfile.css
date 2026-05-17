@@ -12,7 +12,7 @@
 }
 body {
       font-family: 'CormorantGaramond', serif;
-      background: var(--bg);
+      background: #EFEEEB;
       align-items:center;
 }
 .editDetailsPanel {
@@ -129,7 +129,6 @@ h2{
 .cancelLink:hover{
 	color:#c8b89a;
 }
-
  .errordiv {
             background: #fff1f2;;
             color: #e11d48;
@@ -144,9 +143,7 @@ h2{
             display: flex;
             align-items: center;
             gap: 10px;
-            /* Entrance animation */
             animation: fadeIn 0.3s ease forwards;
-            /* Preparation for exit transition */
             transition: opacity 0.5s ease, transform 0.5s ease, margin 0.5s ease;
             overflow: hidden;
             font-family: "Inter"

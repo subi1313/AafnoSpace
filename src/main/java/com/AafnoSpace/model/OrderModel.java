@@ -8,6 +8,9 @@ public class OrderModel {
     private Date orderDate;
     private int paymentId;
     private double totalAmount;
+    //adding for username and payment method in order management
+    private String username;
+    private String paymentMethod;
     
 	    public OrderModel(int orderId, int userId, Date orderDate, int paymentId, double totalAmount) {
 	        this.orderId = orderId;
@@ -40,5 +43,12 @@ public class OrderModel {
 	    public void setTotalAmount(double totalAmount) {
 	        this.totalAmount = totalAmount;
 	    }
+	    public String getUsername() { return username; }
+	    
+	    public void setUsername(String username) { this.username = username; }
+	    
+	    public String getPaymentMethod() { return paymentMethod; }
+	    
+	    public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
 }
 

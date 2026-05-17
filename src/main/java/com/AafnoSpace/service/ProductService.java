@@ -32,4 +32,8 @@ public class ProductService {
     public int deleteProduct(int productId) throws Exception {
         return dao.deleteProduct(productId);
     }
+    
+    public int decreaseQuantity(int productId, int purchasedQty) throws Exception {
+        return dao.decreaseQuantity(productId, purchasedQty);
+    }
 }

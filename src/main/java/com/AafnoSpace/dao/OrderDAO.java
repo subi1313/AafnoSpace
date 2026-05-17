@@ -17,39 +17,31 @@ public class OrderDAO {
 
         LocalDate localDate = LocalDate.parse(orderDate);
         Date sqlDate = Date.valueOf(localDate);
-
         Connection con = DBconfig.getConnection();
 
         String sql = "INSERT INTO Orders (UserID, OrderDate, PaymentID, TotalAmount) VALUES (?, ?, ?, ?)";
 
         PreparedStatement pst = con.prepareStatement(sql);
-
         pst.setInt(1, userId);
         pst.setDate(2, sqlDate);
         pst.setInt(3, paymentId);
         pst.setDouble(4, totalAmount);
         
         pst.executeUpdate();
-
+        
         String latestOrder= "SELECT MAX(OrderID) AS OrderID FROM Orders";
-
         PreparedStatement pst2 = con.prepareStatement(latestOrder);
-
         ResultSet rs = pst2.executeQuery();
-
         rs.next();
-
         int orderId = rs.getInt("OrderID");
-
         rs.close();
         pst.close();
         pst2.close();
         con.close();
-
         return orderId;
     }
     public int getTotalOrders() {
-        String sql = "SELECT COUNT(*) AS total FROM Orders";
+        String sql="SELECT COUNT(*) AS total FROM Orders";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
@@ -59,9 +51,8 @@ public class OrderDAO {
         }
         return 0;
     }
-
     public int getTotalCustomers() {
-        String sql = "SELECT COUNT(*) AS total FROM Users";
+        String sql="SELECT COUNT(*) AS total FROM Users WHERE role = 'Customer'";
         try (Connection conn = DBconfig.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
@@ -71,19 +62,33 @@ public class OrderDAO {
         }
         return 0;
     }
-
     public double getTotalRevenue() {
-        String sql = "SELECT SUM(LineTotal) AS revenue FROM Order_Details";
-        try (Connection conn = DBconfig.getConnection();
-             PreparedStatement pst = conn.prepareStatement(sql);
-             ResultSet rs = pst.executeQuery()) {
+        String sql="SELECT SUM(LineTotal) AS revenue FROM Order_Details";
+        try (Connection conn= DBconfig.getConnection();
+             PreparedStatement pst= conn.prepareStatement(sql);
+             ResultSet rs= pst.executeQuery()) {
             if (rs.next()) return rs.getDouble("revenue");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
     }
-    
+
+    public int getTotalCategories() {
+    	String sql="SELECT COUNT(DISTINCT Category) AS TotalCategory FROM Product";
+    	try(Connection conn=DBconfig.getConnection();
+    			PreparedStatement pst=conn.prepareStatement(sql);
+    			ResultSet rs=pst.executeQuery())
+    	{
+    		if(rs.next()) return rs.getInt("TotalCategory");
+    	}
+    	catch(SQLException e)
+    	{
+    		e.printStackTrace();
+    	} 
+    	return 0;
+    }
+
     public int getLatestOrderId(int userId) {
 
         // SQL query to get latest OrderID of logged-in user
@@ -157,6 +162,90 @@ public class OrderDAO {
             e.printStackTrace();
         }
 
+        return orders;
+    }
+    public String getHighestRevenueCategory() {
+        String sql = "SELECT p.Category FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY SUM(od.LineTotal) DESC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst= conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return rs.getString("Category");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "N/A";
+    }
+
+    public String getLowestRevenueCategory() {
+        String sql = "SELECT p.Category FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY SUM(od.LineTotal) ASC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return rs.getString("Category");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "N/A";
+    }
+    public int getHighestRevenue() {
+        String sql = "SELECT SUM(od.LineTotal) AS revenue FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY revenue DESC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return (int) rs.getDouble("revenue");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getLowestRevenue() {
+        String sql = "SELECT SUM(od.LineTotal) AS revenue FROM Order_Details od " +
+                     "JOIN Product p ON od.ProductID = p.ProductID " +
+                     "GROUP BY p.Category ORDER BY revenue ASC LIMIT 1";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            if (rs.next()) return (int) rs.getDouble("revenue");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    //getting orders for order management
+    public List<OrderModel> getAllOrders() {
+        List<OrderModel> orders = new ArrayList<>();
+        //joining tables for user id and payment method
+        String sql = "SELECT o.OrderID, o.UserID, u.Username, o.OrderDate, o.PaymentID, p.PaymentMethod, o.TotalAmount " +
+                "FROM Orders o " +
+                "JOIN Users u ON o.UserID = u.UserID " +
+                "JOIN Payment p ON o.PaymentID = p.PaymentID " +
+                "ORDER BY o.OrderID DESC";
+        try (Connection conn = DBconfig.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                OrderModel order = new OrderModel(
+                    rs.getInt("OrderID"),
+                    rs.getInt("UserID"),
+                    rs.getDate("OrderDate"),
+                    rs.getInt("PaymentID"),
+                    rs.getDouble("TotalAmount")
+                );
+                //adding setters as username and password are displayed in order management as they are not required in other methods
+                order.setUsername(rs.getString("Username"));       
+                order.setPaymentMethod(rs.getString("PaymentMethod"));
+                orders.add(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return orders;
     }
 } 

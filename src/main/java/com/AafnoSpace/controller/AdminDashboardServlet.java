@@ -35,7 +35,15 @@ public class AdminDashboardServlet extends HttpServlet {
 	    request.setAttribute("totalOrders",dao.getTotalOrders());
 	    request.setAttribute("totalCustomers",dao.getTotalCustomers());
 	    request.setAttribute("totalRevenue",dao.getTotalRevenue());
-
+	    request.setAttribute("totalCategories", dao.getTotalCategories());
+	    double totalRevenue = dao.getTotalRevenue();
+	    int totalProfit = (int)(totalRevenue*0.30);
+	    request.setAttribute("totalRevenue",(int) totalRevenue);
+	    request.setAttribute("totalProfit",totalProfit);
+	    request.setAttribute("highestCategory", dao.getHighestRevenueCategory());
+	    request.setAttribute("lowestCategory",  dao.getLowestRevenueCategory());
+	    request.setAttribute("highestRevenue", dao.getHighestRevenue());
+	    request.setAttribute("lowestRevenue",  dao.getLowestRevenue());
 		// TODO Auto-generated method stub
 		request.setAttribute("activeMenu", "dashboard");
 		request.getRequestDispatcher("/WEB-INF/pages/adminDashboard.jsp")

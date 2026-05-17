@@ -45,7 +45,8 @@
                     <input type="checkbox"
                            name="selectedItems"
                            value="${item.cartItemId}"
-                           class="cart-checkbox">
+                           class="cart-checkbox"
+                           form="checkoutForm">
 
                     <!-- image -->
                     <div class="image-holder">
@@ -98,9 +99,7 @@
         <!-- checkout button-->
         <div class="checkout-btn">
 
-            <form action="${pageContext.request.contextPath}/checkout"
-                  method="post"
-                  id="checkoutForm">
+            <form action="${pageContext.request.contextPath}/checkout" method="post" id="checkoutForm">
 
                 <button type="submit" class="checkout">
                     Checkout

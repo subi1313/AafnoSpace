@@ -12,16 +12,14 @@ import com.AafnoSpace.utils.DBconfig;
 
 public class CartDAO {
 
-    // =========================
     // ADD TO CART (WITH STOCK CHECK)
-    // =========================
     public boolean addCart(String userId, String productId) throws Exception {
 
         try (Connection con = DBconfig.getConnection()) {
 
             int cartId = 0;
 
-            // 1. Get existing cart or create new
+            //Get existing cart or create new
             String checkCart = "SELECT CartID FROM cart WHERE UserID = ?";
 
             try (PreparedStatement pst = con.prepareStatement(checkCart)) {
@@ -49,7 +47,7 @@ public class CartDAO {
                 }
             }
 
-            // 2. STOCK CHECK (IMPORTANT)
+            // STOCK CHECK (IMPORTANT)
             String stockSql =
                 "SELECT p.Quantity AS StockQty, " +
                 "COALESCE(upc.Quantity, 0) AS CartQty " +
@@ -76,7 +74,7 @@ public class CartDAO {
                 }
             }
 
-            // 3. CHECK IF PRODUCT EXISTS IN CART
+            // CHECK IF PRODUCT EXISTS IN CART
             String checkProduct =
                 "SELECT CartItemID FROM user_product_cart WHERE CartID = ? AND ProductID = ?";
 
@@ -141,9 +139,7 @@ public class CartDAO {
         }
     }
     
-    // =========================
     // GET CART ITEMS
-    // =========================
     public List<CartModel> getCartItems(int userId) throws Exception {
 
         List<CartModel> list = new ArrayList<>();
@@ -188,9 +184,7 @@ public class CartDAO {
         return list;
     }
 
-    // =========================
     // INCREASE QUANTITY (WITH STOCK CHECK)
-    // =========================
     public boolean increaseQuantity(int cartItemId) throws Exception {
 
         String checkSql =
@@ -230,9 +224,7 @@ public class CartDAO {
         }
     }
 
-    // =========================
     // DECREASE QUANTITY
-    // =========================
     public boolean decreaseQuantity(int cartItemId) throws Exception {
 
         try (Connection con = DBconfig.getConnection()) {
@@ -264,9 +256,7 @@ public class CartDAO {
         }
     }
 
-    // =========================
     // DELETE ITEM
-    // =========================
     public boolean deleteCartItem(int cartItemId) throws Exception {
 
         String sql =
