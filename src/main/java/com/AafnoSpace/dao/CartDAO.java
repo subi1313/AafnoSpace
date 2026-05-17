@@ -17,7 +17,7 @@ public class CartDAO {
     public boolean addCart(String userId, String productId) throws Exception {
         try (Connection con = DBconfig.getConnection()) {
 
-            // 1. Get or create cart for this user
+            // Get or create cart for this user
             int cartId = 0;
 
             String checkCart = "SELECT CartID FROM cart WHERE UserID = ?";
@@ -41,7 +41,7 @@ public class CartDAO {
                 }
             }
 
-            // 2. Check if product already in cart → increase qty, else insert
+            // Check if product already in cart --> increase qty, else insert
             String checkProduct = "SELECT CartItemID FROM user_product_cart WHERE CartID = ? AND ProductID = ?";
             try (PreparedStatement pst = con.prepareStatement(checkProduct)) {
                 pst.setInt(1, cartId);
@@ -49,7 +49,7 @@ public class CartDAO {
                 ResultSet rs = pst.executeQuery();
 
                 if (rs.next()) {
-                    // Already exists → increase quantity
+                    // Already exists --> increase quantity
                     String updateQty = "UPDATE user_product_cart SET Quantity = Quantity + 1 WHERE CartID = ? AND ProductID = ?";
                     try (PreparedStatement updatePst = con.prepareStatement(updateQty)) {
                         updatePst.setInt(1, cartId);
@@ -57,7 +57,7 @@ public class CartDAO {
                         return updatePst.executeUpdate() > 0;
                     }
                 } else {
-                    // New product → insert with quantity 1
+                    // New product --> insert with quantity 1
                     String insert = "INSERT INTO user_product_cart (ProductID, CartID, Quantity) VALUES (?, ?, 1)";
                     try (PreparedStatement insertPst = con.prepareStatement(insert)) {
                         insertPst.setString(1, productId);
@@ -70,7 +70,7 @@ public class CartDAO {
     }
 
 
-    // GET CART ITEMS BY USER ID
+    // get cart items by user id
 
     public List<CartModel> getCartItems(int userId) throws Exception {
         List<CartModel> list = new ArrayList<>();
@@ -121,7 +121,7 @@ public class CartDAO {
     }
 
 
-    // DECREASE QUANTITY (auto-delete if reaches 0)
+    //decrease quantity (auto-delete if reaches 0)
 
     public boolean decreaseQuantity(int cartItemId) throws Exception {
         try (Connection con = DBconfig.getConnection()) {
@@ -133,7 +133,7 @@ public class CartDAO {
                 ResultSet rs = checkPst.executeQuery();
 
                 if (rs.next() && rs.getInt("Quantity") <= 1) {
-                    // Quantity is 1 → delete the item
+                    // Quantity is 1 --> delete the item
                     return deleteCartItem(cartItemId);
                 }
             }
@@ -148,7 +148,7 @@ public class CartDAO {
     }
 
 
-    // DELETE CART ITEM
+    // Delete cart item
     public boolean deleteCartItem(int cartItemId) throws Exception {
         String sql = "DELETE FROM user_product_cart WHERE CartItemID = ?";
         try (Connection con = DBconfig.getConnection();

@@ -30,6 +30,14 @@
                 <p>Total Revenue</p>
                 <h2>Rs. ${totalRevenue}</h2>
             </div>
+            <div class="card">
+			    <p>Total Categories</p>
+			    <h2>${totalCategories}</h2>
+			</div>
+			<div class="card">
+			    <p>Total Profit</p>
+			    <h2>Rs. ${totalProfit}</h2>
+			</div>
         </div>
     </div>
 </div>

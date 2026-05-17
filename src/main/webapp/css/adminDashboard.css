@@ -29,19 +29,19 @@
 }
 
 .card {
-    background-color: #ffffff;
+    background-color: #252420;
     border-radius: 10px;
     padding: 25px 30px;
     flex: 1;
     min-width: 180px;
     max-width: 300px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #4a90e2;
+    border-left: 5px solid #8f9779;
 }
 
 .card p {
     font-size: 14px;
-    color: #888888;
+    color: #FFFFFF;
     margin: 0 0 10px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -50,6 +50,6 @@
 .card h2 {
     font-size: 32px;
     font-weight: 700;
-    color: #333333;
+    color:#F2EBE3;
     margin: 0;
 }
