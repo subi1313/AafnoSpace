@@ -1,7 +1,15 @@
 <%@ page isELIgnored="false" %>
-<!-- Side panel -->
+<%-- side navigation panel for admin dashboard --%>
 <div class="admin-panel">
     <h2> <img src="./images/adminPanel/menu.png" alt="Menu Icon">Main menu</h2>
+    <%-- navigation Links --%>
+    <%--
+	   The activeMenu condition is used to highlight
+	   the currently selected navigation menu item.
+	
+	   If the activeMenu value matches 'dashboard',
+	   the 'active' CSS class is applied to the link.
+	--%>
     <ul>
         <li><a href="${pageContext.request.contextPath}/admin-dashboard" class="${activeMenu == 'dashboard' ? 'active' : ''}">
                 <img src="${pageContext.request.contextPath}/images/adminPanel/dashboard.png" alt="Dashboard Icon">
