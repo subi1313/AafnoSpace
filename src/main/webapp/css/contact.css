@@ -120,3 +120,69 @@ body {
     margin-top: 10px;
     margin-right: 50px;
 }
+
+@media (max-width: 900px) {
+
+    /* Banner */
+    .contact-banner {
+        padding: 30px 5%;
+    }
+
+    .contact-banner h2 {
+        font-size: 32px;
+    }
+
+    .contact-banner p {
+        font-size: 16px;
+    }
+
+    /* Main layout stack */
+    .contact-main {
+        flex-direction: column;
+        padding: 40px 5%;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .contact-img,
+    .contact-info {
+        width: 100%;
+    }
+
+    .contact-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Form */
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+    }
+
+    .contact-form textarea {
+        width: 100%;
+    }
+
+    .contact-info h3 {
+        font-size: 30px;
+    }
+
+    .contact-info p {
+        font-size: 18px;
+    }
+
+    .contact-button {
+        align-self: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Popups */
+    .errorPopup,
+    .successPopup {
+        margin-right: 10px;
+        margin-left: 10px;
+        width: auto;
+    }
+}
