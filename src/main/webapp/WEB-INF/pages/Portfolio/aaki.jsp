@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simran Bist</title>
+    <title>Aaki Prajapati</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teamMember.css">
     
 </head>
@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav>
-            <div class="left">Simran's Portfolio</div>
+            <div class="left">Aaki's Portfolio</div>
             <div class="right">
                 <ul>
                     <li><a href="#home">About me</a></li>
@@ -30,19 +30,19 @@
         <!-- About me section -->
         <section class="firstSection" id="home">
             <div class="leftSection">
-                Hi, My name is <span class="pink">Simran Bista</span>
+                Hi, My name is <span class="pink">Aaki Prajapati</span>
                 <div>and I am a</div>
                 <span id="element"></span>
                 <br>
-                <a href="/CV Simran Bist.pdf" target="_blank" class="btn-download">
+                <a href="#" target="_blank" class="btn-download">
                     View Resume
                 </a>
-                <a href="https://github.com/Simranbist2005" target="_blank" class="btn-download">
+                <a href="https://github.com/aakiprajapati" target="_blank" class="btn-download">
                     View Github
                 </a>
             </div>
             <div class="rightSection">
-                <img src="${pageContext.request.contextPath}/images/portfolio/Myphoto.jpg" alt="image">
+                <img src="${pageContext.request.contextPath}/images/team/aaki.jpeg" alt="image">
             </div>
         </section>
         <hr>
@@ -59,15 +59,15 @@
                 </div>
 
                 <div class="edu-item">
-                    <h3>Radiant Higher Secondary School</h3>
-                    <p>High School, GPA: 3.53</p>
-                    <a href="https://radiantmnr.edu.np/">radiantmnr.edu.np</a>
+                    <h3>Xavier's Academy</h3>
+                    <p>High School, GPA: 3.90</p>
+                    <a href="https://www.xa.edu.np/">xa.edu.np</a>
                 </div>
 
                 <div class="edu-item">
-                    <h3>Sunrise Public Higher Secondary School</h3>
-                    <p>SEE, GPA: 3.65</p>
-                    <a href="https://www.facebook.com/sunrisepublicacademy/about/?_rdr">sunrisepublicacademy</a>
+                    <h3>GEMS School </h3>
+                    <p>SEE, GPA: 3.85</p>
+                    <a href="https://gems.edu.np/">gems.edu.np</a>
                 </div>
             </div>
             <div class="image">
@@ -131,22 +131,30 @@
                     <p>A fully functional front-end watch e-commerce website which is created using HTML, CSS and
                         JavaScript.</p>
                 </div>
+                
+                 <div class="project_card">
+                    <div class="project_image">
+                        <img src="${pageContext.request.contextPath}/images/portfolio/gymmgmt.jpg" alt="Gym Management Project">
+                    </div>
+                    <h3>Gym Management System</h3>
+                    <p>A gym management system developed using Java in BlueJ, that allows user registration, membership options and more.</p>
+                </div>
 
                 <div class="project_card">
                     <div class="project_image">
                         <img src="${pageContext.request.contextPath}/images/portfolio/Python_project.png" alt="Information_System Project">
                     </div>
                     <h3>Skincare Wholesale System</h3>
-                    <p>A fully functional skincare wholesale management system developed in Python using IDLE..</p>
+                    <p>A fully functional skincare wholesale management system developed in Python using IDLE.</p>
                 </div>
-
+				
                 <div class = "project_card">
                     <div class="project_image">
-                        <a href="https://rus-woods.vercel.app/index.html" target="_blank">
-                        <img src="${pageContext.request.contextPath}/images/portfolio/Screenshot 2026-01-06 085057.png" alt="RusWoods">
+                        <a href="https://londonunlocked.vercel.app/" target="_blank">
+                        <img src="${pageContext.request.contextPath}/images/portfolio/londonunlocked.jpg" alt="LondonUnlocked">
                         </a>
                     </div>
-                    <h3>RusWoods</h3>
+                    <h3>London Unlocked</h3>
                     <p>A fully functional website developed using HTML, CSS, Javasript.</p>
                 </div>
             </div>
@@ -162,7 +170,7 @@
     <div class="contact-container">
         <div class="contact-intro">
             <h2>Have a Project?</h2>
-            <p class="contact-description">"Let's bring it to life. Whether near or far, I'm always open to connect and collaborate."</p>
+            <p class="contact-description">Enter your details to contact me!</p>
         </div>
         
         <div class="contact-form-wrapper">
@@ -193,7 +201,7 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
         var typed = new Typed('#element', {
-            strings: ['Student', 'Frontend Developer', 'Web Designer'],
+            strings: ['Student', 'Frontend Developer', 'UI/UX Designer'],
             typeSpeed: 50,
         });
     </script>
