@@ -256,7 +256,6 @@
             Contact me with the mail below !!
         </a>
     </div>
-    <!-- <hr style="border: 1px solid #DE9EA1; "> -->
     <footer id="footer" style="text-align: center; padding-top: 35px;">
         <img src="${pageContext.request.contextPath}/images/portfolio/Supragya/footer.png" height="200px">
     </footer>
