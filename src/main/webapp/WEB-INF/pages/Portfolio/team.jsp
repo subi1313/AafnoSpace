@@ -53,7 +53,7 @@
 
         <div class="team-grid">
 
-  <!-- Member -->
+  <!-- Member 1-->
 <div class="team-card">
 
     <div class="team-image">
@@ -71,7 +71,7 @@
 </div>
 
 
-            <!-- Member -->
+            <!-- Member 2 -->
 <div class="team-card">
 
     <div class="team-image">
@@ -88,7 +88,7 @@
 
 </div>
 
-<!-- Member -->
+<!-- Member 3 -->
 <div class="team-card">
 
     <div class="team-image">
@@ -106,7 +106,7 @@
 
 </div>
 
-<!-- Member -->
+<!-- Member 4-->
 <div class="team-card">
 
     <div class="team-image">
