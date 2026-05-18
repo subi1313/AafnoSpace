@@ -18,7 +18,6 @@ body {
 }
 
 .main {
-    width: 90%;
     padding: 10px;
 }
 
@@ -46,6 +45,7 @@ body {
 }
 
 .maindiv{
+	width:80%;
 	display:flex;
 	flex-direction:column;
 	margin-left:60px;
@@ -57,7 +57,7 @@ body {
             max-width: 1250px; 
         }
         
- .totalusers {
+ .totalorders {
 			font-family:"Arsenal";
             font-size: 20px;
             }     
@@ -115,35 +115,12 @@ td {
     border-bottom: 1px solid #f1f5f9;
 }
 
-.userinfo {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 180px;
-}
-
 .userdiv { 
 	display: flex; align-items: center; gap: 12px; 
 	}
-
-.username {
-    color: #EFEEEB;
-}
-
-.userhandle {
-    font-size: 15px;
-    color: #fbf2d0;
-}
 
  .emptystate {
             text-align: center;
             padding: 5rem 2rem;
             color: #94a3b8;
         }
-        
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 45px;
-  height: 24px;
-}
