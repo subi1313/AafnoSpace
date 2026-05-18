@@ -69,6 +69,7 @@ footer {
     margin: 0;
 }
 
+/* Responsive Footer component styling */
 @media (max-width: 768px) {
 
     .footer-main {

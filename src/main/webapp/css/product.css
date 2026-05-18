@@ -156,7 +156,7 @@ nav img, .nav-menu a {
 }
 
 .product-itelis .products img:hover {
-    transform: scale(1.05); /* Zoom in on hover */
+    transform: scale(1.05); 
 }
 
 .prod-info {
@@ -187,6 +187,7 @@ nav img, .nav-menu a {
 	align-items: center;
 }
 
+/* Responsive product page styling */
 @media (max-width: 1000px) {
 
     .product-main {

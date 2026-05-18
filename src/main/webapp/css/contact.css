@@ -121,9 +121,9 @@ body {
     margin-right: 50px;
 }
 
+/* Responsive contact us page styling */
 @media (max-width: 900px) {
 
-    /* Banner */
     .contact-banner {
         padding: 30px 5%;
     }
@@ -136,7 +136,6 @@ body {
         font-size: 16px;
     }
 
-    /* Main layout stack */
     .contact-main {
         flex-direction: column;
         padding: 40px 5%;
@@ -154,7 +153,6 @@ body {
         height: auto;
     }
 
-    /* Form */
     .contact-form input,
     .contact-form textarea {
         width: 100%;
@@ -178,7 +176,6 @@ body {
         text-align: center;
     }
 
-    /* Popups */
     .errorPopup,
     .successPopup {
         margin-right: 10px;
