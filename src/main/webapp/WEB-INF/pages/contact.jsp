@@ -68,9 +68,9 @@
         const successPopup = document.getElementById('successPopup');
         
         if (errorPopup) {
-            // Wait for 5 seconds (5000ms)
+            // Waits for 3 seconds (3000ms)
             setTimeout(() => {
-            	// Add the fade-out class to trigger CSS transitions
+            	//Adds the fade-out class to trigger CSS transitions
                 errorPopup.classList.add('fade-out');
             	
                 //Remove from DOM entirely after transition finishes (500ms later)
