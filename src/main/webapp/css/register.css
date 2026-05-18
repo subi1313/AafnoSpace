@@ -228,11 +228,7 @@ button {
     }
     
      .passworddiv {
-        width: 90%;
+        width: 95%;
 }
 }
 
-.passworddiv {
-    width: 63%;
-    margin-left: 15%;
-}
