@@ -53,7 +53,7 @@
                         <input type="text" name="username" placeholder="Username" value="${typedUser}">
                 	</div>
                 </div>
-                <div class="labeldiv" style="margin-left:60px; margin-right:92px;">
+                <div class="labeldiv passworddiv">
                 		<label>Password</label>
                         <input type="password" name="password" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;">
                 </div>
