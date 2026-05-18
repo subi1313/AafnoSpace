@@ -22,6 +22,7 @@
         	<jsp:include page="../../components/adminPanel.jsp" />
         	<div class="message-main">
                 <h2>Contact Messages</h2>
+                <%-- Table displaying all contact messages sent by users --%>
 			    <table>
 			        <tr>
 			            <th>ID</th>
@@ -30,6 +31,8 @@
 			            <th>Subject</th>
 			            <th>Message</th>
 			        </tr>
+			        
+			        <%-- Loop through contact messages list --%>
 			        <c:forEach var="c" items="${contacts}">
 			            <tr>
 			                <td>${c.id}</td>
@@ -39,6 +42,8 @@
 			                <td>${c.message}</td>
 			            </tr>
 			        </c:forEach>
+			        
+			        <%-- Message shown when no contact records exist --%>
 			        <c:if test="${empty contacts}">
 				        <tr>
 				            <td colspan="5" style="text-align:center; padding:20px;">

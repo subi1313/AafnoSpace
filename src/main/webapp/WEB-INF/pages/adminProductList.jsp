@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-    <title>ProductList</title>
+    <title>Product Management</title>
     <%-- Linking external CSS files for header, admin panel, admin product list page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
