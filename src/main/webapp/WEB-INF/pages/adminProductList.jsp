@@ -21,14 +21,18 @@
         	<%-- Including reusable admin Panel component --%>
         	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="list-main">
+            	<%-- Success message popup after add/update/delete operations --%>
             	<c:if test="${not empty success}">
 					<div class="successPopup" id="successPopup">
 						${success}
 					</div>
+					
+					<%-- Clear session success message after displaying --%>
 					<c:remove var="success" scope="session"/>
 				</c:if>		    
                 <div class="list-top">
                     <h2>Product List</h2>
+                    <%-- Navigate to Add Product page --%>
                     <a href="${pageContext.request.contextPath}/add-product">
                         <button>Add Product</button>
                     </a>
@@ -49,6 +53,7 @@
                         </thead>
 
                         <tbody>
+                        	<%-- Loop through product list --%>
                             <c:forEach var="p" items="${products}">
 
 						        <tr>
@@ -58,7 +63,8 @@
 						            <td>${p.quantity}</td>
 						            <td>${p.price}</td>
 						            <td>${p.description}</td>
-						
+									
+									<%-- Update product action --%>
 						            <td>
 									    <a href="update-product?id=${p.productId}">
 									        <button class="update" type="button">
@@ -67,7 +73,8 @@
 									        </button>
 									    </a>
 									</td>
-						
+									
+									<%-- Delete product action --%>
 						            <td>
 									    <form action="delete-product" method="post" style="display:inline;">
 									        <input type="hidden" name="id" value="${p.productId}" />
@@ -81,6 +88,7 @@
 						        </tr>
 						
 						    </c:forEach>
+						    <%-- Message when no products exist --%>
 						    <c:if test="${empty products}">
 						        <tr>
 						            <td colspan="8" style="text-align:center; padding:20px;">
@@ -96,6 +104,8 @@
     </section>
     <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
+    
+    <%-- JavaScript for auto-hiding success popup --%>
     <script>
 	document.addEventListener('DOMContentLoaded', function () {
 	    const popup = document.getElementById('successPopup');
