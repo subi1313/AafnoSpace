@@ -17,6 +17,7 @@
 	<jsp:include page="../../components/header.jsp" />
     <main>
         <section>
+        	<%-- Contact banner section --%>
             <div class="contact-banner">
                 <h2> Get in Touch </h2>
                 <p>We’re here to help with any questions or inquiries you may have. <br>
@@ -24,6 +25,7 @@
             </div>
         </section>
         <section>
+        	<%-- Success and error message displaying --%>
         	<c:if test="${not empty error}">
         		<div class="errorPopup" id="errorPopup">
 					${error}
@@ -39,6 +41,7 @@
                 <div class="contact-img">
                     <img src="${pageContext.request.contextPath}/images/contact/1.png">
                 </div>
+                <%-- Contact form section --%>
                 <form class="contact-info" action="${pageContext.request.contextPath}/contact" method="post">
                     <h3>Reach Out to Us</h3>
                     <p>Your questions and feedback matter to us </p>
