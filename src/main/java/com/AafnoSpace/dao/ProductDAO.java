@@ -9,7 +9,18 @@ import java.util.List;
 import com.AafnoSpace.model.ProductModel;
 import com.AafnoSpace.utils.DBconfig;
 
+/**
+ * ProductDAO handles all database operations related to Product.
+ * This includes CRUD operations, filtering and stock management.
+ */
 public class ProductDAO {
+	
+	/**
+     * Inserts a new product record into the database.
+     *
+     * This method takes product details from the application layer
+     * and stores them into the "product" table.
+     */
 	public int insertProduct(String productName, String description, String category, double price, int quantity, String imageName) throws Exception {
 
 		Connection con = DBconfig.getConnection();
@@ -33,6 +44,12 @@ public class ProductDAO {
 		return rowsAffected;
 	}
 	
+	/**
+     * Retrieves all products that are not marked as deleted.
+     *
+     * This method ignores soft-deleted records where 'delStatus = TRUE'
+     * and returns only active products to the application.
+     */
 	public List<ProductModel> getAllProducts() throws Exception {
 
         List<ProductModel> products = new ArrayList<>();
@@ -66,6 +83,10 @@ public class ProductDAO {
         return products;
     }
 	
+	/**
+     * Fetches a single product using its unique ProductID.
+     *
+     */
 	public ProductModel getProductById(int id) throws Exception {
 
 	    Connection con = DBconfig.getConnection();
@@ -97,6 +118,10 @@ public class ProductDAO {
 	    return p;
 	}
 	
+	/**
+     * Updates an existing product's details in the database based on ProductID.
+     *
+     */
 	public int updateProduct(int productId, String productName,
             String description, String category,
             double price, int quantity, String imageName) throws Exception {
@@ -123,6 +148,13 @@ public class ProductDAO {
 		return rowsAffected;
 	}
 
+	/**
+     * Filters products based on search text, selected categories,
+     * and price range options.
+     *
+     * This method dynamically builds the SQL query depending on
+     * which filters are applied by the user.
+     */
 	public List<ProductModel> getFilteredProducts(String search, List<String> categories, List<String> priceRanges) throws Exception {
 	    List<ProductModel> products = new ArrayList<>();
 	    Connection con = DBconfig.getConnection();
@@ -194,6 +226,13 @@ public class ProductDAO {
 	    return products;
 	}
 	
+	/**
+     * Performs a soft delete of a product.
+     *
+     * Instead of permanently removing the record, it sets delStatus = TRUE,
+     * so the product is hidden from users but still exists in the database
+     * as data are most essential asset in today's world!
+     */
 	public int deleteProduct(int productId) throws Exception {
 	    Connection con = DBconfig.getConnection();
 	    String sql = "UPDATE product SET delStatus = TRUE WHERE ProductID = ?";
@@ -205,6 +244,12 @@ public class ProductDAO {
 	    return rowsAffected;
 	}
 	
+	/**
+     * Reduces product stock after a purchase is made.
+     *
+     * It ensures that quantity is only decreased if enough stock is available,
+     * preventing negative inventory values.
+     */
 	public int decreaseQuantity(int productId, int purchasedQty) throws Exception {
 
 	    Connection con = DBconfig.getConnection();
