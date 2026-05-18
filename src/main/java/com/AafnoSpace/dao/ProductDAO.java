@@ -21,7 +21,8 @@ public class ProductDAO {
      * This method takes product details from the application layer
      * and stores them into the "product" table.
      */
-	public int insertProduct(String productName, String description, String category, double price, int quantity, String imageName) throws Exception {
+	public int insertProduct(String productName, String description, String category, double price, int quantity, String imageName) 
+			throws Exception {
 
 		Connection con = DBconfig.getConnection();
 

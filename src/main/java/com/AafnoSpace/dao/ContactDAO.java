@@ -9,7 +9,18 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ContactDAO handles all database operations related to Contact messages.
+ *
+ */
 public class ContactDAO {
+	
+	/**
+     * Inserts a new contact message into the database.
+     *
+     * This method stores user-submitted contact form data into the
+     * "contact" table.
+     */
 	public int insertContact(String name, String email, String subject, String message) throws Exception {
 
 	    Connection con = DBconfig.getConnection();
@@ -31,6 +42,12 @@ public class ContactDAO {
 	    return rowsAffected;
 	}
 	
+	/**
+     * Retrieves all contact messages from the database.
+     *
+     * This method fetches all records from the "contact" table and
+     * converts them into a list of ContactModel objects.
+     */
 	public List<ContactModel> getAllContacts() throws Exception {
 
         List<ContactModel> list = new ArrayList<>();
