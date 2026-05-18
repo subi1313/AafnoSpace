@@ -6,6 +6,7 @@
 
 <head>
     <title>Update Product</title>
+    <%-- Linking external CSS files for header, admin panel, admin update product page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUpdateProduct.css">
@@ -13,13 +14,16 @@
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
     <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-update">
+        	<%-- Including reusable admin Panel component --%>
         	<jsp:include page="../../components/adminPanel.jsp" />
         	<div class="update-main">
+        		<%-- Form for updating product details which supports image update --%>
                 <form action="${pageContext.request.contextPath}/update-product" method="post" enctype="multipart/form-data">
-                	<!-- Error -->
+                	<%-- Error message display if update fails --%>
 	            	<c:if test="${not empty error}">
 					    <div class="errorPopup" id="errorPopup">
 					        ${error}
@@ -31,6 +35,7 @@
                             <h3>Product Details </h3>
 
                             <div class="detail-form">
+                            	<%-- Product ID readonly display --%>
                                 <label>Product ID</label>
                                 <input type="hidden" name="productId" value="${product.productId}">
                                 <input type="text" id="product-id" value="${product.productId}" readonly>
@@ -51,6 +56,7 @@
                                 </select>
                             </div>
                         </div>
+                        <%-- Product image update section --%>
                         <div class="update-pic" id="imagePreview">
                             <img src="${pageContext.request.contextPath}/product-image?name=${product.imageName}" alt="Product Image">
                             <label for="productImage" class="pic-upload-btn">
@@ -86,8 +92,12 @@
             </div>
         </div>
     </section>
+    <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
+    
+    <%-- JavaScript for image preview and error popup auto-hide --%>
     <script>
+ 	// Image preview when new file is selected
     document.getElementById("productImage").addEventListener("change", function(event) {
         const file = event.target.files[0];
         if (file) {
@@ -108,17 +118,15 @@
             reader.readAsDataURL(file);
         }
     });
-    
+ 
+ 	// Auto-hide error popup after 3 seconds
     document.addEventListener('DOMContentLoaded', function() {
         const errorPopup = document.getElementById('errorPopup');
         
         if (errorPopup) {
-            // Wait for 5 seconds (5000ms)
             setTimeout(() => {
-            	// Add the fade-out class to trigger CSS transitions
                 errorPopup.classList.add('fade-out');
             	
-                //Remove from DOM entirely after transition finishes (500ms later)
                 setTimeout(() => {
                     errorPopup.remove();
                 }, 500);

@@ -6,6 +6,7 @@
 
 <head>
     <title>Add Product</title>
+    <%-- Linking external CSS files for header, admin panel, admin add product page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminAddProduct.css">
@@ -13,18 +14,21 @@
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
     <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-add">
+        	<%-- Including reusable admin Panel component --%>
         	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="add-main">
-            	<!-- Error -->
+            	<%-- Display error message if product submission fails --%>
             	<c:if test="${not empty error}">
 				    <div class="errorPopup" id="errorPopup">
 				        ${error}
 				    </div>
 				</c:if>
             	<h2>Add Product</h2>
+            	<%-- Product submission form with image upload support --%>
                 <form action="${pageContext.request.contextPath}/add-product" method="post" enctype="multipart/form-data">
                     <div class="add-info">
                         <div class="add-details">
@@ -43,6 +47,7 @@
                                 </select>
                             </div>
                         </div>
+                        <%-- Product image upload section --%>
                         <div class="add-pic" id="imagePreview">
                             <img src="${pageContext.request.contextPath}/images/adminAddProduct/gallery.png">
                             <p>Your product image goes here!!</p>
@@ -81,8 +86,10 @@
             </div>
         </div>
     </section>
+    <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
     <script>
+ 	// Image preview functionality after file selection
     document.getElementById("productImage").addEventListener("change", function(event) {
 
         const file = event.target.files[0];
@@ -112,17 +119,15 @@
             reader.readAsDataURL(file);
         }
     });
-    
+ 
+ 	// Auto-hide error popup after 3 seconds
     document.addEventListener('DOMContentLoaded', function() {
         const errorPopup = document.getElementById('errorPopup');
         
         if (errorPopup) {
-            // Wait for 5 seconds (5000ms)
             setTimeout(() => {
-            	// Add the fade-out class to trigger CSS transitions
                 errorPopup.classList.add('fade-out');
             	
-                //Remove from DOM entirely after transition finishes (500ms later)
                 setTimeout(() => {
                     errorPopup.remove();
                 }, 500);
