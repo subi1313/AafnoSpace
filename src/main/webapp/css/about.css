@@ -180,3 +180,145 @@ portfolio-CTA h2 {
     display: flex;
     justify-content: flex-end;
 }
+
+/* Responsive About us page styling */
+@media (max-width: 1024px) {
+
+    .main-heading {
+        font-size: 120px;
+    }
+
+    .main-line {
+        font-size: 40px;
+    }
+
+    .about-hero img {
+        width: 50%;
+        margin-top: -60px;
+    }
+
+    .about-banner,
+    .contact-CTA {
+        padding: 50px 10%;
+    }
+
+    .about-banner p {
+        font-size: 28px;
+    }
+
+    .about-banner h2,
+    .about-speciality h2,
+    .about-story h2,
+    .transition h2,
+    .contact-CTA h2,
+    .portfolio-CTA h2 {
+        font-size: 36px;
+    }
+
+    .our-story {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .story-pic img {
+        width: 280px;
+        height: 280px;
+    }
+
+    .about-gallery {
+        gap: 20px;
+    }
+
+    .gallery-pics span {
+        font-size: 28px;
+    }
+
+    .our-idea {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .main-heading {
+        font-size: 70px;
+    }
+
+    .main-line {
+        font-size: 24px;
+    }
+
+    .about-hero img {
+        width: 70%;
+        margin-top: -40px;
+    }
+
+    .about-banner,
+    .contact-CTA {
+        padding: 40px 5%;
+    }
+
+    .about-banner p {
+        font-size: 20px;
+    }
+
+    .about-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-pics span {
+        font-size: 22px;
+    }
+
+    .story p {
+        font-size: 18px;
+    }
+
+    .our-idea {
+        flex-direction: column;
+    }
+
+    .contact-button {
+        font-size: 24px;
+        padding: 10px 20px;
+    }
+
+    .portfolio-button {
+        font-size: 22px;
+        padding: 10px 40px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .main-heading {
+        font-size: 50px;
+    }
+
+    .main-line {
+        font-size: 18px;
+    }
+
+    .about-banner p {
+        font-size: 16px;
+    }
+
+    .story-pic img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .gallery-pics span {
+        font-size: 18px;
+    }
+
+    .contact-button,
+    .portfolio-button {
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+}
