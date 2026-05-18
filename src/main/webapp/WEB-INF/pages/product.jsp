@@ -17,15 +17,18 @@
 <body>
 	<%-- Including reusable header component --%>
     <jsp:include page="../../components/header.jsp" />
+    <%-- Product hero section --%>
     <section>
         <div class="product-hero">
             <img src="${pageContext.request.contextPath}/images/product/1.png" alt="Product Hero">
         </div>
     </section>
+    <%-- Main product section with filters and product listing --%>
     <section>
     	<%-- form to wrap both filter and search --%>
     	<form id="filterForm" action="${pageContext.request.contextPath}/product" method="get">
         	<div class="product-main">
+        		<%-- Sidebar filter section --%>
                 <div class="filter">
                     <h3>Filter Options</h3>
                     <hr>
@@ -85,7 +88,7 @@
 
                     <button type="submit">Apply Filters</button>
                 </div>
-
+                <%-- Product listing section --%>
                 <div class="product-content">
                     <div class="search-row">
                         <div class="search">
@@ -100,7 +103,7 @@
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </div>
-
+                    <%-- Dynamic product grid --%>
                     <div class="products-grid">
                         <c:forEach var="product" items="${products}">
                             <div class="product-itelis">
@@ -116,6 +119,7 @@
                                 </div>
                             </div>
                         </c:forEach>
+                        <%-- Message when no products exist --%>
                         <c:if test="${empty products}">
                             <p>No products found.</p>
                         </c:if>
