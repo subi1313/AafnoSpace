@@ -5,13 +5,16 @@
 
 <head>
     <title>About Us</title>
+    <%-- Linking external CSS files for header, about page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/about.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 <body>
+	<%-- Including reusable header component --%>
 	<jsp:include page="../../components/header.jsp" />
     <main>
+    	<%-- About us Hero section --%>
         <section>
             <div class="about-hero">
                 <span class="main-heading">ABOUT</span>
@@ -19,12 +22,14 @@
                 <span class="main-line">Dream it . Design it . Live it</span>
             </div>
         </section>
+        <%-- About us Banner section --%>
         <section>
             <div class="about-banner">
                 <h2>Our Story, Your Space</h2>
                 <p>Because every home deserves to feel personal, warm, and truly yours.</p>
             </div>
         </section>
+        <%-- Speciality section showing features of AafnoSpace --%>
         <section>
             <div class="about-speciality">
                 <h2>What Makes AafnoSpace Different</h2>
@@ -51,8 +56,8 @@
                     </div>
                 </div>
             </div>
-
         </section>
+        <%-- Company story section --%>
         <section>
             <div class="about-story">
                 <h2>
@@ -81,6 +86,7 @@
                 </div>
             </div>
         </section>
+        <%-- Idea to reality transition section --%>
         <section>
             <div class="transition">
                 <h2>
@@ -105,16 +111,19 @@
             </div>
         </section>
         <section>
+        	<%-- Contact CTA --%>
             <div class="contact-CTA">
                 <h2>Ready to Design Your Space?</h2>
                 <a href="${pageContext.request.contextPath}/contact" class="contact-button">Get in Touch</a>
             </div>
+            <%-- Portfolio CTA --%>
             <div class="portfolio-CTA">
                 <h2>Meet the People Behind AafnoSpace... </h2>
                 <a href="${pageContext.request.contextPath}/team" class="portfolio-button">View Our Team></a>
             </div>
         </section>
     </main>
+    <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
 </body>
 

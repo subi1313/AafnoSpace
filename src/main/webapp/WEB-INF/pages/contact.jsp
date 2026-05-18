@@ -6,15 +6,18 @@
 
 <head>
     <title>Contact Us</title>
+    <%-- Linking external CSS files for header, contact page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contact.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
 	<jsp:include page="../../components/header.jsp" />
     <main>
         <section>
+        	<%-- Contact banner section --%>
             <div class="contact-banner">
                 <h2> Get in Touch </h2>
                 <p>We’re here to help with any questions or inquiries you may have. <br>
@@ -22,6 +25,7 @@
             </div>
         </section>
         <section>
+        	<%-- Success and error message displaying --%>
         	<c:if test="${not empty error}">
         		<div class="errorPopup" id="errorPopup">
 					${error}
@@ -37,6 +41,7 @@
                 <div class="contact-img">
                     <img src="${pageContext.request.contextPath}/images/contact/1.png">
                 </div>
+                <%-- Contact form section --%>
                 <form class="contact-info" action="${pageContext.request.contextPath}/contact" method="post">
                     <h3>Reach Out to Us</h3>
                     <p>Your questions and feedback matter to us </p>
@@ -55,6 +60,7 @@
             </div>
         </section>
     </main>
+    <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -62,9 +68,9 @@
         const successPopup = document.getElementById('successPopup');
         
         if (errorPopup) {
-            // Wait for 5 seconds (5000ms)
+            // Waits for 3 seconds (3000ms)
             setTimeout(() => {
-            	// Add the fade-out class to trigger CSS transitions
+            	//Adds the fade-out class to trigger CSS transitions
                 errorPopup.classList.add('fade-out');
             	
                 //Remove from DOM entirely after transition finishes (500ms later)
