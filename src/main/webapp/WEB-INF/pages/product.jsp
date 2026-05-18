@@ -7,6 +7,7 @@
 
 <head>
     <title>Product</title>
+    <%-- Linking external CSS files for header, product page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/product.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
@@ -14,6 +15,7 @@
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
     <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="product-hero">
@@ -21,11 +23,9 @@
         </div>
     </section>
     <section>
+    	<%-- form to wrap both filter and search --%>
     	<form id="filterForm" action="${pageContext.request.contextPath}/product" method="get">
-        <div class="product-main">
-
-            <%-- ONE single form wrapping both filter and search --%>
-            
+        	<div class="product-main">
                 <div class="filter">
                     <h3>Filter Options</h3>
                     <hr>
@@ -121,12 +121,10 @@
                         </c:if>
                     </div>
                 </div>
-
-            
-
-        </div>
+        	</div>
         </form>
     </section>
+    <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
 </body>
 </html>

@@ -6,6 +6,7 @@
 
 <head>
     <title>Add Product</title>
+    <%-- Linking external CSS files for header, admin panel, admin add product page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminAddProduct.css">
@@ -13,9 +14,11 @@
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
     <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-add">
+        	<%-- Including reusable admin Panel component --%>
         	<jsp:include page="../../components/adminPanel.jsp" />
             <div class="add-main">
             	<!-- Error -->
@@ -81,6 +84,7 @@
             </div>
         </div>
     </section>
+    <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
     <script>
     document.getElementById("productImage").addEventListener("change", function(event) {

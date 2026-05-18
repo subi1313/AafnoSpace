@@ -6,12 +6,14 @@
 
 <head>
     <title>Contact Us</title>
+    <%-- Linking external CSS files for header, contact page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contact.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
 	<jsp:include page="../../components/header.jsp" />
     <main>
         <section>
@@ -55,6 +57,7 @@
             </div>
         </section>
     </main>
+    <%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
     <script>
     document.addEventListener('DOMContentLoaded', function() {
