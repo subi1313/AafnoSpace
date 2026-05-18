@@ -1,28 +1,41 @@
 <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Update Product</title>
+    <%-- Linking external CSS files for header, admin panel, admin update product page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminUpdateProduct.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
     <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-update">
+        	<%-- Including reusable admin Panel component --%>
         	<jsp:include page="../../components/adminPanel.jsp" />
         	<div class="update-main">
+        		<%-- Form for updating product details which supports image update --%>
                 <form action="${pageContext.request.contextPath}/update-product" method="post" enctype="multipart/form-data">
+                	<%-- Error message display if update fails --%>
+	            	<c:if test="${not empty error}">
+					    <div class="errorPopup" id="errorPopup">
+					        ${error}
+					    </div>
+					</c:if>
                     <h2>Update Product</h2>
                     <div class="update-info">
                         <div class="update-details">
                             <h3>Product Details </h3>
 
                             <div class="detail-form">
+                            	<%-- Product ID readonly display --%>
                                 <label>Product ID</label>
                                 <input type="hidden" name="productId" value="${product.productId}">
                                 <input type="text" id="product-id" value="${product.productId}" readonly>
@@ -43,6 +56,7 @@
                                 </select>
                             </div>
                         </div>
+                        <%-- Product image update section --%>
                         <div class="update-pic" id="imagePreview">
                             <img src="${pageContext.request.contextPath}/product-image?name=${product.imageName}" alt="Product Image">
                             <label for="productImage" class="pic-upload-btn">
@@ -78,7 +92,12 @@
             </div>
         </div>
     </section>
+    <%-- Including reusable footer component --%>
+    <jsp:include page="../../components/footer.jsp" />
+    
+    <%-- JavaScript for image preview and error popup auto-hide --%>
     <script>
+ 	// Image preview when new file is selected
     document.getElementById("productImage").addEventListener("change", function(event) {
         const file = event.target.files[0];
         if (file) {
@@ -97,6 +116,21 @@
                 preview.appendChild(img);
             };
             reader.readAsDataURL(file);
+        }
+    });
+ 
+ 	// Auto-hide error popup after 3 seconds
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorPopup = document.getElementById('errorPopup');
+        
+        if (errorPopup) {
+            setTimeout(() => {
+                errorPopup.classList.add('fade-out');
+            	
+                setTimeout(() => {
+                    errorPopup.remove();
+                }, 500);
+            }, 3000);
         }
     });
     </script>

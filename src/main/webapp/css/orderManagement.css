@@ -1,0 +1,126 @@
+body {
+    background-color: #EFEEEB;
+}
+
+@font-face {
+    font-family: "CormorantGaramond";
+    src: url("../fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/InterVariable.woff2");
+}
+
+@font-face {
+    font-family: "Arsenal";
+    src: url('../fonts/Arsenal/Arsenal-Regular.ttf');
+}
+
+.main {
+    padding: 10px;
+}
+
+.admin-profile {
+    display: flex;
+    gap: 50px;
+    margin: 20px 8.33%;
+}
+.layout {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.mgmtheading {
+    font-size: 48px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 200px;
+    font-family: "CormorantGaramond";
+    white-space: nowrap;
+}
+
+.maindiv{
+	width:80%;
+	display:flex;
+	flex-direction:column;
+	margin-left:60px;
+}
+
+.container {
+            width: 100%;
+            /* Increased width from 1100px to 1250px */
+            max-width: 1250px; 
+        }
+        
+ .totalorders {
+			font-family:"Arsenal";
+            font-size: 20px;
+            }     
+            
+ .headerdiv {
+            display: flex;
+            flex-direction:row;
+            justify-content:space-between;
+            margin-bottom: 10px;
+            margin-top:20px;
+            align-items: center;
+            background: #252420;
+            border-radius:15px;
+            padding:15px;
+            color:  #EFEEEB;
+            font-family: "Arsenal";
+        	font-size:20px;
+        }
+  
+  .headerdiv p {
+    margin: 0;
+}
+
+.tablediv {
+    background: #252420;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    /* Ensures table stretches to fill the wider container */
+    table-layout: auto;
+}
+
+th {
+    background:  #EFEEEB;
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Arsenal";
+    color: #252420;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+td {
+	padding:20px;
+    font-size: 18px;
+    font-family: "Arsenal";
+    color: #EFEEEB;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.userdiv { 
+	display: flex; align-items: center; gap: 12px; 
+	}
+
+ .emptystate {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: #94a3b8;
+        }

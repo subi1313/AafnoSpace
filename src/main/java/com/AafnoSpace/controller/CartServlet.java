@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -22,16 +23,19 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
-    	//Verify if the user is logged in or not
+
         try {
             UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
+
             if (user == null) {
-                response.sendRedirect(request.getContextPath() + "/login"); //if not redirect to login page
+                response.sendRedirect(request.getContextPath() + "/login");
+                return;
             }
 
             List<CartModel> cartItems = service.getCartItems(user.getuserId());
+
             request.setAttribute("cartItems", cartItems);
+
             request.getRequestDispatcher("/WEB-INF/pages/cart.jsp")
                     .forward(request, response);
 
@@ -45,52 +49,71 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getParameter("action");
-        
-      //Verify if the user is logged in or not
+
         try {
             UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
-            if (user == null) {
-               response.sendRedirect(request.getContextPath() + "/login"); //if not redirect to login page
-            }
 
-            //Add to cart
+            if (user == null) {
+                response.sendRedirect(request.getContextPath() + "/login");
+                return;
+            }
+            // ADD TO CART
             if (action == null || action.equals("add")) {
-            	// Get ProductID from product detail
+
                 String productId = request.getParameter("ProductID");
 
                 boolean result = service.addCart(
-                        String.valueOf(user.getuserId()),
-                        productId
-                );
+                        String.valueOf(user.getuserId()), productId);
 
-                // popup message
                 if (result) {
-                    request.getSession().setAttribute("cartMessage",
-                            "Product added to cart successfully!");
+                    request.getSession().setAttribute(
+                            "cartMessage",
+                            "Product added to cart successfully!"
+                    );
                 } else {
-                    request.getSession().setAttribute("cartMessage",
-                            "Failed to add product to cart!");
+                    request.getSession().setAttribute(
+                            "cartMessage",
+                            "Cannot add: Stock limit reached!"
+                    );
                 }
 
-                // go back to same product detail page
                 response.sendRedirect(
                         request.getContextPath() + "/product-detail?id=" + productId
                 );
                 return;
             }
-
             // UPDATE / DELETE CART
             String cartItemIdStr = request.getParameter("cartItemId");
-            if (cartItemIdStr != null) {
-                int cartItemId = Integer.parseInt(cartItemIdStr);
-                switch (action) {
-                    case "increase": service.increaseQuantity(cartItemId); break;
-                    case "decrease": service.decreaseQuantity(cartItemId); break;
-                    case "delete":   service.deleteCartItem(cartItemId);   break;
-                }
-            }
 
-            response.sendRedirect(request.getContextPath() + "/cart");
+            if (cartItemIdStr != null) {
+
+                int cartItemId = Integer.parseInt(cartItemIdStr);
+
+                switch (action) {
+
+                    case "increase":
+
+                        boolean increased = service.increaseQuantity(cartItemId);
+
+                        if (!increased) {
+                            request.getSession().setAttribute(
+                                    "cartMessage",
+                                    "Stock limit reached!"
+                            );
+                        }
+                        break;
+
+                    case "decrease":
+                        service.decreaseQuantity(cartItemId);
+                        break;
+
+                    case "delete":
+                        service.deleteCartItem(cartItemId);
+                        break;
+                }
+
+                response.sendRedirect(request.getContextPath() + "/cart");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

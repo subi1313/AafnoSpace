@@ -66,7 +66,7 @@ public class CheckoutServlet extends HttpServlet {
 	                .forward(request, response);
 
 	    } catch (Exception e) {
-	        throw new ServletException("Checkout error", e);
+	    	e.printStackTrace();
 	    }
 	}
 }

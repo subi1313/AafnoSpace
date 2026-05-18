@@ -1,4 +1,7 @@
+/* Admin add product page styling */
 body {
+	margin: 0;
+    padding: 0;
     background-color: #EFEEEB;
 }
 
@@ -149,4 +152,16 @@ textarea {
 
 .add-button button:hover {
     background-color: #38383a;
+}
+
+.errorPopup {
+    background-color: #ffe5e5;
+    color: #d8000c;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #d8000c;
+    font-size: 14px;
+    width: fit-content;
+    margin-left: auto;
 }

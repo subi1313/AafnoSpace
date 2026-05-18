@@ -18,17 +18,13 @@ body {
 }
 
 .main {
-    width: 90%;
     padding: 10px;
 }
 
 .admin-profile {
     display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 80px;
-    margin-right: 80px;
+    gap: 50px;
+    margin: 20px 8.33%;
 }
 .layout {
     display: flex;
@@ -49,6 +45,7 @@ body {
 }
 
 .maindiv{
+	width:80%;
 	display:flex;
 	flex-direction:column;
 	margin-left:60px;

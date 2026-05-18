@@ -1,0 +1,137 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#EFEEEB;
+    color:#252420;
+    font-family:Georgia, serif;
+    overflow-x:hidden;
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.about-section{
+    min-height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:120px 8%;
+    background: #252420;
+    background-position:center;
+}
+
+.about-content{
+    max-width:850px;
+    text-align:center;
+    color:#fff;
+}
+
+.section-tag{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:30px;
+    margin-bottom:24px;
+    font-size:15px;
+    letter-spacing:1px;
+    backdrop-filter:blur(8px);
+}
+
+.about-content h1{
+    font-size:72px;
+    line-height:1.1;
+    margin-bottom:28px;
+    font-weight:600;
+}
+
+.about-content p{
+    font-size:20px;
+    line-height:1.9;
+    color:#f0f0f0;
+}
+
+/* ================= TEAM SECTION ================= */
+
+.team-section{
+    padding:80px 20px;
+}
+
+.team-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.team-header h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.team-header p{
+    font-size:18px;
+    color:#555;
+}
+
+/* GRID */
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+}
+
+/* CARD */
+.team-card{
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.team-image img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.team-info{
+    padding:15px;
+}
+
+.team-info h3{
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.team-info span{
+    font-size:14px;
+    color:#777;
+    display:block;
+    margin-bottom:12px;
+}
+
+.team-info a{
+    display:inline-block;
+    padding:8px 14px;
+    background:#412617;
+    color:#fff;
+    text-decoration:none;
+    border-radius:5px;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px){
+    .team-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px){
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+}

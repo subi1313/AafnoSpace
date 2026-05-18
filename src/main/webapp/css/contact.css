@@ -1,3 +1,4 @@
+/* contact us page styling */
 body {
     background-color: #EFEEEB;
     margin: 0;
@@ -90,4 +91,32 @@ body {
     color: #FEFDFC;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.errorPopup {
+    background-color: #ffe5e5;
+    color: #d8000c;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #d8000c;
+    font-size: 14px;
+    width: fit-content;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 50px;
+}
+
+.successPopup {
+    background-color: #28a745;
+    color: #F2EBE3;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    border: 1px solid #507652;
+    width: fit-content;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 50px;
 }

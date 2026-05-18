@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import com.AafnoSpace.service.ProductService;
 import com.AafnoSpace.utils.FileUploadUtil;
+import com.AafnoSpace.utils.SessionUtil;
 
 /**
  * Servlet implementation class AdminAddProductServlet
@@ -36,6 +37,20 @@ public class AdminAddProductServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    private void returnToForm(HttpServletRequest request, HttpServletResponse response, String message, String productName, String description,
+            String category, String price, String quantity) throws ServletException, IOException {
+
+        request.setAttribute("error", message);
+
+        request.setAttribute("productName", productName);
+        request.setAttribute("description", description);
+        request.setAttribute("category", category);
+        request.setAttribute("price", price);
+        request.setAttribute("quantity", quantity);
+
+        request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,23 +69,67 @@ public class AdminAddProductServlet extends HttpServlet {
 			String productName = request.getParameter("productName");
 			String description = request.getParameter("description");
 			String category = request.getParameter("category");
-			double price = Double.parseDouble(request.getParameter("price"));
-			int quantity = Integer.parseInt(request.getParameter("quantity"));
+			String priceStr = request.getParameter("price");
+			String quantityStr = request.getParameter("quantity");
 			
-			if (category == null || category.equals("Select product category")) {
-			    response.setContentType("text/html");
-			    response.getWriter().println("<script>alert('Please select a valid product category!'); window.history.back();</script>");
-			    return;
+			if (productName == null || productName.trim().isEmpty()) {
+				returnToForm(request, response, "Product name is required!", productName, description, category, priceStr, quantityStr);
+				return;
 			}
 
+			if (description == null || description.trim().isEmpty()) {
+				returnToForm(request, response, "Description is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (category == null || category.trim().isEmpty() || category.equals("Select product category")) {
+			    returnToForm(request, response, "Category is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (priceStr == null || priceStr.trim().isEmpty()) {
+				returnToForm(request, response, "Price is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (quantityStr == null || quantityStr.trim().isEmpty()) {
+				returnToForm(request, response, "Quantity is required!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+			
+			double price;
+			int quantity;
+			
+			try {
+			    price = Double.parseDouble(priceStr);
+			} catch (NumberFormatException e) {
+				returnToForm(request, response, "Price must be a valid number!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			try {
+			    quantity = Integer.parseInt(quantityStr);
+			} catch (NumberFormatException e) {
+				returnToForm(request, response, "Quantity must be a valid number!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (price <= 0) {
+				returnToForm(request, response, "Price can not be negative or zero!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+
+			if (quantity < 0) {
+				returnToForm(request, response, "Quantity can not be negative!", productName, description, category, priceStr, quantityStr);
+				return;
+			}
+			
 			//getting image file
 			Part filePart = request.getPart("productImage");
 	
 			//validating image
 			if (filePart == null || filePart.getSize() == 0) {
-				response.setContentType("text/html");
-			    response.getWriter().println(
-			        "<script>alert('Please upload a product image!'); window.history.back();</script>");
+				returnToForm(request, response, "Please upload a product image!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
 	
@@ -86,7 +145,6 @@ public class AdminAddProductServlet extends HttpServlet {
 			if (!uploadPath.exists()) {
 				uploadPath.mkdirs();
 			}
-	
 			//saving image
 			FileUploadUtil.saveFile(filePart, UPLOAD_DIR, imageName);
 			
@@ -95,10 +153,11 @@ public class AdminAddProductServlet extends HttpServlet {
 			int result = service.addProduct(productName, description, category, price, quantity, imageName);
 
 			if (result > 0) {
+				SessionUtil.setAttribute(request, "success", "Product added successfully!", 3600);
 				response.sendRedirect(request.getContextPath() + "/product-list");
 			} else {
-				response.setContentType("text/html");
-	            response.getWriter().println("<script>alert('Failed to add product!'); window.history.back();</script>");
+				request.setAttribute("error", "Failed to add product!");
+				request.getRequestDispatcher("/WEB-INF/pages/adminAddProduct.jsp").forward(request, response);
 			}
 
 		} catch (Exception e) {

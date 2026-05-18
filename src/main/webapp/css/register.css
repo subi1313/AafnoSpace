@@ -110,8 +110,14 @@ body {
     color: #ffffa4;
 }
 
+.passworddiv{
+	margin-left: 60px;
+    margin-right: 50px;
+}
+
 input{
-	width: 115%;
+	width: 100%;
+	box-sizing: border-box;
 	border-radius: 10px;
 	padding: 15px;
 	border: none;
@@ -220,4 +226,14 @@ button {
         width: 90%;
         margin-left: 20px;
     }
+    
+     .passworddiv {
+        margin-left: 10px;
+        margin-right: 10px;
+}
+}
+
+.passworddiv {
+    width: 63%;
+    margin-left: 15%;
 }
