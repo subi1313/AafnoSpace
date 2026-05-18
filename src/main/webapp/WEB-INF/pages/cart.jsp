@@ -11,8 +11,9 @@
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 
 <body>
@@ -23,8 +24,13 @@
 
     <jsp:include page="/components/userPanel.jsp" />
 
-    <div class="product-cart">
-
+	    <div class="product-cart">
+		<c:if test="${not empty sessionScope.cartMessage}">
+    <div class="cart-message">
+        ${sessionScope.cartMessage}
+    </div>
+    <c:remove var="cartMessage" scope="session"/>
+</c:if>
         <!-- cart items -->
         <c:forEach var="item" items="${cartItems}">
 
@@ -106,6 +112,6 @@
 
     </div>
 </div>
-
+<jsp:include page="/components/footer.jsp" />
 </body>
 </html>

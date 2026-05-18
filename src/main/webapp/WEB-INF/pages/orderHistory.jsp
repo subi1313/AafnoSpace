@@ -25,21 +25,15 @@
 <div class="layout">
 
     <jsp:include page="/components/userPanel.jsp"/>
-
     <div class="main">
-
         <h1>Order history</h1>
-
         <div class="tableWrapper">
-
 <table>
-
     <tr>
-        <th style="padding-right:250px;">Order ID</th>
-        <th style="padding-right:160px;">Order Date</th>
-        <th style="padding-right:50px;">Total Amount</th>
+        <th>Order ID</th>
+        <th>Order Date</th>
+        <th>Total Amount</th>
     </tr>
-
     <c:forEach var="order" items="${orders}">
 
         <tr>
@@ -47,18 +41,12 @@
             <td>${order.orderDate}</td>
             <td>Rs. ${order.totalAmount}</td>
         </tr>
-
     </c:forEach>
-
 </table>
-
         </div>
-
     </div>
-
 </div>
 
 <jsp:include page="/components/footer.jsp" />
-
 </body>
 </html>
