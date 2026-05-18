@@ -6,6 +6,7 @@
 
 <head>
     <title>Contact Message</title>
+    <%-- Linking external CSS files for header, admin panel, contact message page, and footer styling --%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/contactMessage.css">
@@ -13,12 +14,15 @@
 </head>
 
 <body>
+	<%-- Including reusable header component --%>
     <jsp:include page="../../components/header.jsp" />
     <section>
         <div class="admin-contact">
+        	<%-- Including reusable admin Panel component --%>
         	<jsp:include page="../../components/adminPanel.jsp" />
         	<div class="message-main">
                 <h2>Contact Messages</h2>
+                <%-- Table displaying all contact messages sent by users --%>
 			    <table>
 			        <tr>
 			            <th>ID</th>
@@ -27,6 +31,8 @@
 			            <th>Subject</th>
 			            <th>Message</th>
 			        </tr>
+			        
+			        <%-- Loop through contact messages list --%>
 			        <c:forEach var="c" items="${contacts}">
 			            <tr>
 			                <td>${c.id}</td>
@@ -36,10 +42,20 @@
 			                <td>${c.message}</td>
 			            </tr>
 			        </c:forEach>
+			        
+			        <%-- Message shown when no contact records exist --%>
+			        <c:if test="${empty contacts}">
+				        <tr>
+				            <td colspan="5" style="text-align:center; padding:20px;">
+				                No contact messages found.
+				            </td>
+				        </tr>
+				    </c:if>
 			    </table>
             </div>
         </div>
 	</section>
+	<%-- Including reusable footer component --%>
     <jsp:include page="../../components/footer.jsp" />
 </body>
 
