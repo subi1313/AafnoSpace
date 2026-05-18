@@ -8,8 +8,8 @@ public class CartModel {
     private double price;
     private int quantity;
     private String imageName;
-
-    // GETTERS & SETTERS
+    private int stockQty;
+    // Getters and Setters
 
     public int getCartItemId() {
         return cartItemId;
@@ -57,5 +57,13 @@ public class CartModel {
     
     public void setImageName (String imageName) {
     	this.imageName = imageName;
+    }
+    
+    public int getStockQty() {
+        return stockQty;
+    }
+
+    public void setStockQty(int stockQty) {
+        this.stockQty = stockQty;
     }
 }

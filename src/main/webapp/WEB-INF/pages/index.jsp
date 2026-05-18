@@ -12,11 +12,31 @@
 </head>
 <body>
 <!-- Header -->
-    <jsp:include page="/components/header.jsp" />
-	 <!-- hero section -->
-    <section class="hero_section">
-        <img src="${pageContext.request.contextPath}/images/home/farmhouse-allisonwillson103651 1.png" alt="farmhouse">
-    </section>
+<jsp:include page="/components/header.jsp" />
+<!-- hero section -->
+<section class="hero_section">
+
+    <img 
+        src="${pageContext.request.contextPath}/images/home/farmhouse-allisonwillson103651 1.png" 
+        alt="farmhouse"
+    >
+
+    <div class="hero_overlay">
+
+        <h1>Design a home that feels truly yours</h1>
+
+        <p>
+            Discover timeless furniture and decor crafted
+            to bring warmth, comfort, and elegance into every space.
+        </p>
+
+        <a href="${pageContext.request.contextPath}/products" class="hero_btn">
+            View Products
+        </a>
+
+    </div>
+
+</section>
 
     <!-- homepage text -->
     <section class="homepage_text">

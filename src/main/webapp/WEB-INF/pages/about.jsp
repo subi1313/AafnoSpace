@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/about.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
-
 <body>
 	<%-- Including reusable header component --%>
 	<jsp:include page="../../components/header.jsp" />
@@ -120,7 +119,7 @@
             <%-- Portfolio CTA --%>
             <div class="portfolio-CTA">
                 <h2>Meet the People Behind AafnoSpace... </h2>
-                <a href="${pageContext.request.contextPath}/portfolio" class="portfolio-button">View Our Team></a>
+                <a href="${pageContext.request.contextPath}/team" class="portfolio-button">View Our Team></a>
             </div>
         </section>
     </main>
