@@ -166,6 +166,7 @@ textarea {
     margin-left: auto;
 }
 
+/* Responsive Admin add product page styling */
 @media (max-width: 768px) {
 
     .admin-add {
