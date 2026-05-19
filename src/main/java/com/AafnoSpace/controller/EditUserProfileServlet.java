@@ -16,6 +16,7 @@ import com.AafnoSpace.utils.FileUploadUtil;
 import com.AafnoSpace.utils.SessionUtil;
 import com.AafnoSpace.dao.UserDAO;
 import com.AafnoSpace.model.UserModel;
+import com.AafnoSpace.service.EditProfileService;
 
 /**
  * Servlet implementation class EditUserProfile
@@ -55,6 +56,14 @@ public class EditUserProfileServlet extends HttpServlet {
         String address=request.getParameter("address");
         String email=request.getParameter("email");
         String phoneNo=request.getParameter("phoneNo");
+        EditProfileService service = new EditProfileService();
+        String result = service.validateUser(firstName, lastName, address, email, phoneNo);
+        if (!"Validated".equals(result)) 
+        {
+            SessionUtil.setAttribute(request, "error", result, 60);
+            response.sendRedirect(request.getContextPath() + "/editUserProfile");
+            return;
+        }
         try {
         	int rowsAffected=UserDAO.updateUser(user.getuserId(),firstName,lastName,address,email,phoneNo);
         	if (rowsAffected > 0) {
