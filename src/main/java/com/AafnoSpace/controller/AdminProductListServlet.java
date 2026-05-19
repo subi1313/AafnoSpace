@@ -32,6 +32,7 @@ public class AdminProductListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			ProductService service = new ProductService();
+			// Retrieve all products from database
             List<ProductModel> products = service.getAllProducts();
 
             request.setAttribute("products", products);
