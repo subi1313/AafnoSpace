@@ -8,7 +8,8 @@ import com.AafnoSpace.model.ProductModel;
 public class ProductService {
 	ProductDAO dao = new ProductDAO();
 
-    public int addProduct(String productName, String description, String category, double price, int quantity, String imageName) throws Exception {
+    public int addProduct(String productName, String description, String category, double price, int quantity, String imageName) 
+    		throws Exception {
     	return dao.insertProduct(productName, description, category, price, quantity, imageName);
     }
     
@@ -20,7 +21,8 @@ public class ProductService {
         return dao.getProductById(id);
     }
     
-    public int updateProduct(int productId, String productName, String description, String category, double price, int quantity, String imageName) throws Exception {
+    public int updateProduct(int productId, String productName, String description, String category, double price, int quantity, 
+    		String imageName) throws Exception {
     	return dao.updateProduct(productId, productName, description, category, price, quantity, imageName);
     }
     
