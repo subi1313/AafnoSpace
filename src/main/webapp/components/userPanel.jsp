@@ -11,7 +11,7 @@
         <li><a href="${pageContext.request.contextPath}/cart" class="${activeMenu == 'user' ? 'active' : ''}"> <img
                     src="${pageContext.request.contextPath}/images/adminPanel/shopping-cart.png" alt="Cart Icon"> Cart</a>
         </li>
-        <li><a href="${pageContext.request.contextPath}/admin" class="${activeMenu == 'order' ? 'active' : ''}"> <img
+        <li><a href="${pageContext.request.contextPath}/order-history" class="${activeMenu == 'order' ? 'active' : ''}"> <img
                     src="${pageContext.request.contextPath}/images/adminPanel/order.png" alt="Order Icon"> Orders</a>
         </li>
     </ul>
