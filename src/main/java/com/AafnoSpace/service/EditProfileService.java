@@ -3,9 +3,9 @@ package com.AafnoSpace.service;
 import com.AafnoSpace.dao.UserDAO;
 
 public class EditProfileService {
-
     public String validateUser(String firstName, String lastName, String address, String email, String phoneNo)
     {
+    	//This method is used for validating the details
     	if (firstName == null || firstName.trim().isEmpty()) 
             return "First name is required";
     	if (lastName == null || lastName.trim().isEmpty()) 
