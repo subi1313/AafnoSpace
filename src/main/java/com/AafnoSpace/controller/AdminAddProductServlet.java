@@ -28,6 +28,7 @@ import com.AafnoSpace.utils.SessionUtil;
 public class AdminAddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	// Directory where uploaded product images will be stored
 	private static final String UPLOAD_DIR = System.getProperty("user.home") + File.separator + "AafnoSpace" + File.separator + "products";
      
     /**
@@ -38,11 +39,16 @@ public class AdminAddProductServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
+    /**
+     * method to return user back to form with error message
+     * and previously entered values
+     */
     private void returnToForm(HttpServletRequest request, HttpServletResponse response, String message, String productName, String description,
             String category, String price, String quantity) throws ServletException, IOException {
 
         request.setAttribute("error", message);
-
+        
+        // preserve previously entered form values
         request.setAttribute("productName", productName);
         request.setAttribute("description", description);
         request.setAttribute("category", category);
@@ -72,26 +78,31 @@ public class AdminAddProductServlet extends HttpServlet {
 			String priceStr = request.getParameter("price");
 			String quantityStr = request.getParameter("quantity");
 			
+			// Validate product name
 			if (productName == null || productName.trim().isEmpty()) {
 				returnToForm(request, response, "Product name is required!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
-
+			
+			// Validate description
 			if (description == null || description.trim().isEmpty()) {
 				returnToForm(request, response, "Description is required!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
 
+			// Validate category selection
 			if (category == null || category.trim().isEmpty() || category.equals("Select product category")) {
 			    returnToForm(request, response, "Category is required!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
 
+			// Validate price input
 			if (priceStr == null || priceStr.trim().isEmpty()) {
 				returnToForm(request, response, "Price is required!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
 
+			// Validate quantity input
 			if (quantityStr == null || quantityStr.trim().isEmpty()) {
 				returnToForm(request, response, "Quantity is required!", productName, description, category, priceStr, quantityStr);
 				return;
@@ -100,13 +111,15 @@ public class AdminAddProductServlet extends HttpServlet {
 			double price;
 			int quantity;
 			
+			// Convert price from string to double
 			try {
 			    price = Double.parseDouble(priceStr);
 			} catch (NumberFormatException e) {
 				returnToForm(request, response, "Price must be a valid number!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
-
+			
+			// Convert quantity string to integer
 			try {
 			    quantity = Integer.parseInt(quantityStr);
 			} catch (NumberFormatException e) {
@@ -114,11 +127,13 @@ public class AdminAddProductServlet extends HttpServlet {
 				return;
 			}
 
+			//price validation
 			if (price <= 0) {
 				returnToForm(request, response, "Price can not be negative or zero!", productName, description, category, priceStr, quantityStr);
 				return;
 			}
 
+			//quantity validation
 			if (quantity < 0) {
 				returnToForm(request, response, "Quantity can not be negative!", productName, description, category, priceStr, quantityStr);
 				return;
@@ -133,7 +148,7 @@ public class AdminAddProductServlet extends HttpServlet {
 				return;
 			}
 	
-			//filename
+			//extracting original filename and extension
 			String originalFileName = filePart.getSubmittedFileName();
 			String extension = FileUploadUtil.getFileExtension(originalFileName);
 	
@@ -151,7 +166,8 @@ public class AdminAddProductServlet extends HttpServlet {
 			//calling service to add product
 			ProductService service = new ProductService();
 			int result = service.addProduct(productName, description, category, price, quantity, imageName);
-
+			
+			//handle service response
 			if (result > 0) {
 				SessionUtil.setAttribute(request, "success", "Product added successfully!", 3600);
 				response.sendRedirect(request.getContextPath() + "/product-list");

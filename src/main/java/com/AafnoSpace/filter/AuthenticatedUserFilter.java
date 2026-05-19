@@ -8,6 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(urlPatterns = { "/login", "/register", "/regisration", "/uploadpfp" })
+/*
+ * This filter prevents already logged-in users
+ * from accessing login and registration pages again.
+ * Logged-in users are automatically redirected
+ * to the home page.
+ */
 public class AuthenticatedUserFilter implements Filter {
 
     @Override
@@ -18,17 +24,15 @@ public class AuthenticatedUserFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-		// Logic: Check if the session exists and contains your login identifier
-		// Change "user" to whatever attribute name you set in your LoginServlet
+		//Check if the session exists and contains your login identifier
 		boolean isLoggedIn = SessionUtil.getAttribute(httpRequest, "user") != null;
 
         if (isLoggedIn) {
             // User is already logged in, redirect them to the dashboard
-            // We use getContextPath() to ensure the URL is absolute to the app root
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/home");
             return;
         } else {
-            // User is a guest, let them proceed to login/register/home
+            //User is a guest, let them proceed to login/register/home
             chain.doFilter(request, response);
         }
     }

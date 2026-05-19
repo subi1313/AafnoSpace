@@ -35,13 +35,13 @@ public class ContactMessageServlet extends HttpServlet {
 		try {
             List<ContactModel> contacts = service.getAllContacts();
 
-            // 2. Send data to JSP
+            //send data to JSP
             request.setAttribute("contacts", contacts);
 
-            // 3. Active menu highlight
+            //active menu highlight
             request.setAttribute("activeMenu", "message");
 
-            // 4. Forward to JSP
+            //forward to JSP
             request.getRequestDispatcher("/WEB-INF/pages/contactMessage.jsp")
                     .forward(request, response);
 

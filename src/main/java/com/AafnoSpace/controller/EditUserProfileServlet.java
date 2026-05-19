@@ -16,6 +16,7 @@ import com.AafnoSpace.utils.FileUploadUtil;
 import com.AafnoSpace.utils.SessionUtil;
 import com.AafnoSpace.dao.UserDAO;
 import com.AafnoSpace.model.UserModel;
+import com.AafnoSpace.service.EditProfileService;
 
 /**
  * Servlet implementation class EditUserProfile
@@ -55,6 +56,16 @@ public class EditUserProfileServlet extends HttpServlet {
         String address=request.getParameter("address");
         String email=request.getParameter("email");
         String phoneNo=request.getParameter("phoneNo");
+        //Creating new instance of EditProfileService
+        EditProfileService service = new EditProfileService();
+        //storing message from the if section of EditProfileService
+        String result = service.validateUser(firstName, lastName, address, email, phoneNo);
+        if (!"Validated".equals(result)) 
+        {
+            SessionUtil.setAttribute(request, "error", result, 60);
+            response.sendRedirect(request.getContextPath() + "/editUserProfile");
+            return;
+        }
         try {
         	int rowsAffected=UserDAO.updateUser(user.getuserId(),firstName,lastName,address,email,phoneNo);
         	if (rowsAffected > 0) {
@@ -63,7 +74,7 @@ public class EditUserProfileServlet extends HttpServlet {
              	user.setaddress(address);
              	user.setEmail(email);
              	user.setNumber(phoneNo);
-             	
+             	//profile picture loader for edit profile
             	SessionUtil.setAttribute(request, "user", user, 3600);
 				Part filePart = request.getPart("profileImage");
 			        if (filePart != null && filePart.getSize() > 0) {
@@ -72,11 +83,16 @@ public class EditUserProfileServlet extends HttpServlet {
 			                String fileName = user.getUserName() + extension;
 			                FileUploadUtil.saveFile(filePart, UPLOAD_DIR, fileName);
 			                response.sendRedirect(request.getContextPath() + "/userProfile");
-			            } else {
+			            } 
+			            //error in loading image
+			            else 
+			            {
 			                SessionUtil.setAttribute(request, "error", "Invalid image type.", 60);
 			                response.sendRedirect(request.getContextPath() + "/editUserProfile");
 			            }
-			        } else {
+			        } 
+			        else 
+			        {
 			                response.sendRedirect(request.getContextPath() + "/userProfile");
 			        }
         	}

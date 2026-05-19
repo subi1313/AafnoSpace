@@ -45,12 +45,16 @@ public class ContactServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			// Get logged-in user from session
 			UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");
+			
+			// Retrieve form inputs
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String subject = request.getParameter("subject");
             String message = request.getParameter("message");
             
+            // Restrict admin users from sending contact messages
             String role = user.getRole();
             if ("Admin".equalsIgnoreCase(role)) {
                 request.setAttribute("error", "Admins are not allowed to send contact messages!");
@@ -58,6 +62,7 @@ public class ContactServlet extends HttpServlet {
                 return;
             }
             
+            // Validations
             if (name == null || name.trim().isEmpty()) {
                 request.setAttribute("error", "Name is required!");
                 request.getRequestDispatcher("/WEB-INF/pages/contact.jsp").forward(request, response);
@@ -88,6 +93,7 @@ public class ContactServlet extends HttpServlet {
                 return;
             }
             
+            // Save contact message using service layer
             int result = service.addContact(name, email, subject, message);
 
             if (result > 0) {
