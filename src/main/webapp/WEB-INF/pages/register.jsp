@@ -77,6 +77,7 @@
 
                     </div>
                 </div>
+                 <!-- Managing error pop up -->
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
                         const errorPopup = document.getElementById('errorPopup');
