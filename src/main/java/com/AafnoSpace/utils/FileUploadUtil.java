@@ -30,13 +30,6 @@ public class FileUploadUtil {
     }
 
     /**
-     * Builds the final filename: uniqueID + extension
-     */
-    public static String buildFileName(String identifier, String extension) {
-        return identifier + extension;
-    }
-
-    /**
      * Handles the physical saving of the file to the disk
      */
     public static void saveFile(Part part, String uploadDir, String fileName) throws IOException {
