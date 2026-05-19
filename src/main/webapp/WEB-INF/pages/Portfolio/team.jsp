@@ -17,32 +17,25 @@
 
     <!-- ABOUT HERO -->
     <section class="about-section">
-
 <div class="about-content">
-
     <span class="section-tag">About आफ्नोSpace</span>
-
     <h1>
         Built with passion,<br>
         shaped by nature
     </h1>
-
     <p>
         आफ्नोSpace is a creative furniture brand inspired by nature and simplicity.
         We design wooden pieces that bring warmth, comfort, and meaning into your space.
-
         Our team is a small group of designers and creators who believe in quality,
         sustainability, and thoughtful design.
     </p>
 
 </div>
-
     </section>
 
 
     <!-- TEAM SECTION -->
     <section class="team-section">
-
         <div class="team-header">
             <h2>Meet Our Team</h2>
             <p>
@@ -50,12 +43,10 @@
                 innovation, and craftsmanship.
             </p>
         </div>
-
         <div class="team-grid">
 
   <!-- Member 1-->
 <div class="team-card">
-
     <div class="team-image">
 	 <img src="${pageContext.request.contextPath}/images/team/Simranbist.jpeg" alt="Team_Member">
     </div>
@@ -73,7 +64,6 @@
 
             <!-- Member 2 -->
 <div class="team-card">
-
     <div class="team-image">
         <img src="${pageContext.request.contextPath}/images/team/aaki.jpeg" alt="Team_Member">
     </div>
@@ -90,7 +80,6 @@
 
 <!-- Member 3 -->
 <div class="team-card">
-
     <div class="team-image">
        <img src="${pageContext.request.contextPath}/images/team/sulav.jpg" alt="Team_Member">
     </div>
@@ -98,7 +87,6 @@
     <div class="team-info">
         <h3>Sulav Shrestha</h3>
         <span>Data Analyst</span>
-
         <a href="${pageContext.request.contextPath}/teamMember?member=sulav">
 	    View Portfolio
 		</a>

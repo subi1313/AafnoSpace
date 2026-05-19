@@ -8,7 +8,7 @@ public class CartService {
 
     private final CartDAO dao = new CartDAO();
 
-    // ADD TO CART (NORMAL ONLY)
+    // ADD TO CART
     public boolean addCart(String userId, String productId) throws Exception {
         return dao.addCart(userId, productId);
     }
