@@ -13,6 +13,12 @@ import java.io.IOException;
 @WebFilter(urlPatterns = {
 		"/cart", "/checkout", "/editUserProfile", "/orderHistory", "/order-success", "/userProfile"
 })
+/*
+ * This filter restricts access to customer-only pages
+ * such as cart, checkout, and order history.
+ * Only users with the "Customer" role are allowed access.
+ * Unauthorized users are redirected to login or home page.
+ */
 public class UserFilter implements Filter {
 
     @Override
@@ -22,13 +28,13 @@ public class UserFilter implements Filter {
 
         UserModel user = (UserModel) SessionUtil.getAttribute(httpRequest, "user");
 
-        // not logged in
+        //not logged in
         if (user == null) {
         	httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
             return;
         }
 
-        // role check (safe even if null)
+        //role check
         if (user.getRole() == null || !"Customer".equals(user.getRole())) {
         	httpResponse.sendRedirect(httpRequest.getContextPath() + "/home");
             return;

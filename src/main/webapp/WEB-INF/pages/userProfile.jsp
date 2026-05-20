@@ -63,6 +63,7 @@
 	            </div>
 	        </div>
 	    </div>
+	   	<!-- If no profile picture is added -->
 	    <script>
 	        function handleImageWrror(img, username, initials) {
 	            const parent = img.parentElement;

@@ -96,6 +96,7 @@ public class UserDAO {
 	    }
 	   public static int updateUser(int UserID, String firstName, String lastName, String address, String email, String phoneNo) throws Exception
 	    {
+		   //Updating information of Users
 	    	Connection con=DBconfig.getConnection();
 	    	String sql="UPDATE users SET firstName=?, lastName=?, address=?, email=?, phoneNo=? WHERE UserID=?";
 	    	PreparedStatement pst=con.prepareStatement(sql);;

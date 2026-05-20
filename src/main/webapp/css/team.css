@@ -11,7 +11,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ================= ABOUT SECTION ================= */
+/*ABOUT SECTION  */
 
 .about-section{
     min-height:60vh;
@@ -53,7 +53,7 @@ body{
     color:#f0f0f0;
 }
 
-/* ================= TEAM SECTION ================= */
+/* TEAM SECTION */
 
 .team-section{
     padding:80px 20px;

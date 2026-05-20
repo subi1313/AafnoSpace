@@ -13,6 +13,7 @@ import com.AafnoSpace.dao.OrderDAO;
 import com.AafnoSpace.model.CartModel;
 import com.AafnoSpace.model.UserModel;
 import com.AafnoSpace.service.CheckoutService;
+import com.AafnoSpace.service.ProductService;
 import com.AafnoSpace.utils.SessionUtil;
 
 @WebServlet(asyncSupported = true, urlPatterns = { "/order-success" })
@@ -59,6 +60,23 @@ public class OrderSuccessServlet extends HttpServlet {
             List<CartModel> items = checkoutService.getCheckoutItems(user.getuserId(), selectedItems);
             double subtotal = checkoutService.calculateSubtotal(items);
             double total = checkoutService.calculateTotal(subtotal);
+            
+            ProductService productService = new ProductService();
+
+            for (CartModel item : items) {
+
+                int result = productService.decreaseQuantity(
+                        item.getProductId(),
+                        item.getQuantity()
+                );
+
+                if (result <= 0) {
+                    request.setAttribute("error","Insufficient stock for " + item.getProductName());
+                    request.getRequestDispatcher("/WEB-INF/pages/cart.jsp").forward(request, response);
+                    return;
+                }
+            }
+            
             int userId = user.getuserId();
             checkoutService.placeOrder(userId, items, payment, total);
         } catch (Exception e) {

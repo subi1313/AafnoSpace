@@ -59,3 +59,34 @@ body {
 .message-main tbody tr:hover {
     background-color: #e7e5e1;
 }
+
+@media (max-width: 768px) {
+
+    .admin-contact {
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px 5%;
+    }
+
+    .message-main {
+        width: 100%;
+    }
+
+    .message-main h2 {
+        font-size: 28px;
+    }
+
+    .message-main {
+        overflow-x: auto;
+    }
+
+    .message-main table {
+        min-width: 700px;
+    }
+
+    .message-main th,
+    .message-main td {
+        font-size: 13px;
+        padding: 10px;
+    }
+}

@@ -68,3 +68,27 @@ footer {
     background: #3a3630;
     margin: 0;
 }
+
+/* Responsive Footer component styling */
+@media (max-width: 768px) {
+
+    .footer-main {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .footer-section {
+        align-items: center;
+    }
+
+    .footer-logo {
+        width: 140px;
+    }
+
+    footer {
+        font-size: 18px;
+    }
+}
+

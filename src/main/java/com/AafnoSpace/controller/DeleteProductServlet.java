@@ -37,10 +37,12 @@ public class DeleteProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			// Get product ID from request
             String idStr = request.getParameter("id");
             if (idStr != null) {
                 int productId = Integer.parseInt(idStr);
 
+             // Call service layer to delete product
                 ProductService service = new ProductService();
                 service.deleteProduct(productId);
             }

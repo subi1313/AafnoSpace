@@ -16,6 +16,7 @@ import java.io.IOException;
 public class ProductImageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	// Directory where product images are stored
 	private static final String UPLOAD_DIR = System.getProperty("user.home") + "/AafnoSpace/products";
        
     /**
@@ -30,11 +31,14 @@ public class ProductImageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Get image filename
 		String name = request.getParameter("name");
         if (name == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
+        
+        // Locate file in upload directory
         File file = new File(UPLOAD_DIR, name);
         if (!file.exists()) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);

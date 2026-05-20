@@ -43,11 +43,14 @@ public class AdminUpdateProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("activeMenu", "product");
 		try {
+			// Getting product ID
 	        int id = Integer.parseInt(request.getParameter("id"));
 
+	        // Fetch product from database
 	        ProductService service = new ProductService();
 	        ProductModel product = service.getProductById(id);
 
+	        // Pass product data to JSP
 	        request.setAttribute("product", product);
 
 	        request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp").forward(request, response);
@@ -62,6 +65,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			// Retrieve form inputs
             int id = Integer.parseInt(request.getParameter("productId"));
             String productName = request.getParameter("productName");
             String description = request.getParameter("description");
@@ -69,9 +73,11 @@ public class AdminUpdateProductServlet extends HttpServlet {
             String priceStr = request.getParameter("price");
             String quantityStr = request.getParameter("quantity");
             
+            // Load existing product
             ProductService service = new ProductService();
             ProductModel existingProduct = service.getProductById(id);
             
+            // field validation
             if (productName == null || productName.trim().isEmpty()) {
                 request.setAttribute("error", "Product name is required!");
             }
@@ -85,6 +91,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
                 request.setAttribute("error", "Quantity is required!");
             }
 
+            // If validation failed, return to form
             if (request.getAttribute("error") != null) {
                 request.setAttribute("product", existingProduct);
                 request.getRequestDispatcher("/WEB-INF/pages/adminUpdateProduct.jsp")
@@ -95,6 +102,7 @@ public class AdminUpdateProductServlet extends HttpServlet {
 			double price;
 			int quantity;
 			
+			// Validating and parsing price
 			try {
 			    price = Double.parseDouble(priceStr);
 
@@ -113,7 +121,8 @@ public class AdminUpdateProductServlet extends HttpServlet {
 			           .forward(request, response);
 			    return;
 			}
-
+			
+			// Validating and parsing quantity
 			try {
 			    quantity = Integer.parseInt(quantityStr);
 
@@ -133,15 +142,18 @@ public class AdminUpdateProductServlet extends HttpServlet {
 			    return;
 			}
 
-            
-
+			// Ensure product exists before updating
             if (existingProduct == null) {
                 throw new ServletException("Product not found with ID: " + id);
             }
 
+            // Handle optional image upload
             Part filePart = request.getPart("productImage");
+            
+            // Keep old image by default
             String imageName = existingProduct.getImageName();
 
+            // If new image is uploaded, replace old one
             if (filePart != null && filePart.getSize() > 0) {
                 String originalFileName = filePart.getSubmittedFileName();
                 String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
@@ -154,10 +166,14 @@ public class AdminUpdateProductServlet extends HttpServlet {
 
                 filePart.write(UPLOAD_DIR + File.separator + imageName);
             }
-
+            
+            // Update product in database
             service.updateProduct(id, productName, description, category, price, quantity, imageName);
+            
+            // Set success message in session
             SessionUtil.setAttribute(request, "success", "Product updated successfully!", 3600);
 
+         // Redirect to product management page
             response.sendRedirect(request.getContextPath() + "/product-list");
 
         } catch (Exception e) {
