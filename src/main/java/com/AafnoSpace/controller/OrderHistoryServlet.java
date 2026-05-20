@@ -33,7 +33,7 @@ public class OrderHistoryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setAttribute("activeMenu", "order");
 		
 		  // Check login
         UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");

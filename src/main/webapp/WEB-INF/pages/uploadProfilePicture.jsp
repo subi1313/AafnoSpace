@@ -43,6 +43,7 @@
                     </form>
                 </div>
             </div>
+            <!-- Managing image size and error pop up -->
             <script>
                 function previewFile() {
                     const preview = document.getElementById("pfpPreview");

@@ -23,6 +23,7 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	request.setAttribute("activeMenu", "cart");
 
         try {
             UserModel user = (UserModel) SessionUtil.getAttribute(request, "user");

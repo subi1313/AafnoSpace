@@ -28,7 +28,6 @@
 	<!-- Product image -->
     <img src="${pageContext.request.contextPath}/product-image?name=${product.imageName}"
                                     alt="${product.productName}" />
-
     <div class="description">
         <h1>${product.productName}</h1>
         

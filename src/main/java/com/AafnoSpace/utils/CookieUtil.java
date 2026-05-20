@@ -21,7 +21,6 @@ public class CookieUtil {
         
         // Security Best Practices
         cookie.setHttpOnly(true); // Prevents XSS access to the cookie
-        // cookie.setSecure(true); // Uncomment if using HTTPS
         
         response.addCookie(cookie);
     }

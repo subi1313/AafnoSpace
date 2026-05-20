@@ -44,6 +44,7 @@
                         </form>
                     </div>
                 </div>
+              	<!-- Managing error pop up -->  
                 <script>
                     // Execute when the page is fully loaded
                     document.addEventListener('DOMContentLoaded', function () {

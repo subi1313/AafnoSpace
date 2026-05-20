@@ -24,7 +24,6 @@
 <div class="confirmation-wrapper">
 
     <div class="confirmation-card">
-
      <label class="round-check">
     <input type="checkbox" checked disabled>
     <span class="checkmark"></span>

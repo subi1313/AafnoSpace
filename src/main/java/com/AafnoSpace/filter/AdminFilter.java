@@ -12,8 +12,14 @@ import java.io.IOException;
 
 @WebFilter(urlPatterns = {
 		"/admin", "/admin-dashboard", "/admin-profile", "/add-product", "/product-list", "/update-product", "/delete-product", "/editAdminProfile", 
-	    "/userManagement"
+	    "/userManagement, /orderManagement"
 })
+/*
+ * This filter restricts access to admin-only pages
+ * such as dashboard, product management, and user management.
+ * Only users with the "Admin" role are allowed access.
+ * Unauthorized users are redirected to login or home page.
+ */
 public class AdminFilter implements Filter {
 
     @Override

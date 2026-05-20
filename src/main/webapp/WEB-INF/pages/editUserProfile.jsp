@@ -45,6 +45,7 @@
 	            <i class="fas fa-arrow-left"></i> Back to profile
 	        </a>
 	    </div>
+	   	<!-- Managing image size and error pop up -->
 	    <script>
 	        function previewFile() {
 	            const preview = document.getElementById("pfpPreview");
@@ -52,7 +53,6 @@
 	
 	            if (file) {
 	                const reader = new FileReader();
-	
 	                reader.onload = function (e) {
 	                    preview.src = e.target.result;
 	                    preview.style.width = "100%";
