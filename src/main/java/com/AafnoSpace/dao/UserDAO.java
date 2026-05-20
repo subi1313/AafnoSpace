@@ -10,7 +10,8 @@ import com.AafnoSpace.model.UserModel;
 import com.AafnoSpace.utils.DBconfig;
 
 public class UserDAO {
-	public boolean registerUser(String firstName, String lastName, String username, String email, String password, String address, String phoneNo) throws Exception {
+	public boolean registerUser(String firstName, String lastName, String username, String email, String password, 
+			String address, String phoneNo) throws Exception {
 
 	Connection con = DBconfig.getConnection();
 
@@ -113,6 +114,8 @@ public class UserDAO {
 	    	{
 	    		System.out.println("Details update unsuccessul.");
 	    	}
+	    	pst.close();
+	        con.close();
 	    	return rowsAffected;
 	    	}
 	   public int updateUserStatus(int userId, String status) throws Exception {

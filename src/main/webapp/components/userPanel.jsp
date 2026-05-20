@@ -3,7 +3,7 @@
 <div class="admin-panel">
     <h2> <img src="./images/adminPanel/menu.png" alt="Menu Icon">Main menu</h2>
     <ul>
-        <li><a href="${pageContext.request.contextPath}/admin-profile" class="${activeMenu == 'profile' ? 'active' : ''}"> <img
+        <li><a href="${pageContext.request.contextPath}/userProfile" class="${activeMenu == 'profile' ? 'active' : ''}"> <img
                     src="${pageContext.request.contextPath}/images/adminPanel/profile.png" alt="Profile Icon">
                 Profile</a></li>
                 

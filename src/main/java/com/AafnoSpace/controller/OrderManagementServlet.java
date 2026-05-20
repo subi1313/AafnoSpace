@@ -46,11 +46,7 @@ public class OrderManagementServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
-			response.sendRedirect(request.getContextPath() + "/orderManagement");
-		    } catch (Exception e) {
-		        throw new ServletException("Error updating status", e);
-		    }
+		
 		}
 	}
 
