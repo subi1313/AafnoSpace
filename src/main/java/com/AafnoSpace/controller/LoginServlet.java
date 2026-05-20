@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
             	UserModel userdata = UserDAO.getUserByUsername(username);
             	
             	// Using Session's setAttribute method to store userdata object in server memory
-            	request.getSession().invalidate(); 	//killing the older registration session
+            	SessionUtil.invalidateSession(request); 	//killing the older registration session
             	//Creating new session after login
             	SessionUtil.setAttribute(request, "user", userdata, 3600);
             	
