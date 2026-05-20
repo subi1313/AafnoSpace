@@ -38,7 +38,10 @@ public class FileUploadUtil {
             Files.createDirectories(uploadPath);
         }
 
-        // resolving the full path (root_path + filename)
+        /* resolving the full path (root_path + filename): 
+        uploadPath = Path.of("uploads");
+        fileName = "john.jpg";
+        filePath = uploads/john.jpg*/
         Path filePath = uploadPath.resolve(fileName);
 
         // saving the file (overwrite if it already exists)
