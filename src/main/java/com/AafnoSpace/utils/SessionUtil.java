@@ -23,6 +23,14 @@ public class SessionUtil {
         return (session != null) ? session.getAttribute(name) : null;
     }
 
+    // remove session specific attribute
+    public static void removeAttribute(HttpServletRequest request, String name) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.removeAttribute(name);
+        }
+    }
+
     // remove all session
     public static void invalidateSession(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
